@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="log4net.config" />
+    <None Remove="xunit.runner.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="xunit.runner.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0-preview-20180510-03" />
+    <PackageReference Include="xunit" Version="2.4.0-beta.2.build4010" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0-beta.2.build4010" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\F1.OrdExamplesApp.SingleThread\F1.OrdExamplesApp.SingleThread.csproj" />
+    <ProjectReference Include="..\F2.OrdExamplesApp.MultiThread\F2.OrdExamplesApp.Slots.MThreads.csproj" />
+    <ProjectReference Include="..\F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj" />
+    <ProjectReference Include="..\F4.IntFactExamplesApp.Conn\F4.IntFactExamplesApp.TRS.csproj" />
+  </ItemGroup>
+
+</Project>

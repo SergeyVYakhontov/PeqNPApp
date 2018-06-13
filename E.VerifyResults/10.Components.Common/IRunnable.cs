@@ -1,0 +1,28 @@
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using Core;
+using ExistsAcceptingPath;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+namespace VerifyResults
+{
+  public interface IRunnable
+  {
+    string Kind { get; }
+
+    bool RunCheckAlgorithm { get; }
+    bool ComputationFinished { get; }
+    bool CompareOutputs { get; }
+
+    bool Decide(int[] input);
+    int[] Compute(int[] input);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
