@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D.MTExtDefinitions", "D.MTE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F1.OrdExamplesApp.SingleThread", "F1.OrdExamplesApp.SingleThread\F1.OrdExamplesApp.SingleThread.csproj", "{BB9A7DA5-C86C-4363-A4B5-24486C8924CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F2.OrdExamplesApp.Slots.MThreads", "F2.OrdExamplesApp.MultiThread\F2.OrdExamplesApp.Slots.MThreads.csproj", "{EAA326B7-FFDC-4562-9C8E-E45FCC238287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F2.OrdExamplesApp.Slots.MThreads", "F2.OrdExamplesApp.MultiThreads\F2.OrdExamplesApp.Slots.MThreads.csproj", "{EAA326B7-FFDC-4562-9C8E-E45FCC238287}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F3.IntFactExamplesApp.Comms", "F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj", "{5C26F53B-D252-4D48-BBE6-800751999CA3}"
 EndProject

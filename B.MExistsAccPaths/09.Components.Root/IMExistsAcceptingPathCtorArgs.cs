@@ -14,7 +14,11 @@ namespace ExistsAcceptingPath
 {
   public sealed class MExistsAcceptingPathCtorArgs
   {
+    #region public members
+
     public OneTapeTuringMachine tMachine { get; set; }
+
+    #endregion
   }
 }
 

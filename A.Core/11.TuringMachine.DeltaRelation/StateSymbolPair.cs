@@ -27,6 +27,13 @@ namespace Core
     public int State { get; set; }
     public int Symbol { get; set; }
 
+    public override bool Equals(object obj)
+    {
+      StateSymbolPair toCompare = (StateSymbolPair)obj;
+
+      return (State == toCompare.State) && (Symbol == toCompare.Symbol);
+    }
+
     public override int GetHashCode()
     {
       return State;
