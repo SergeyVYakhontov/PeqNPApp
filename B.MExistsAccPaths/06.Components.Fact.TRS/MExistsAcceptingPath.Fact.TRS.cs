@@ -29,10 +29,11 @@ namespace ExistsAcceptingPath
 
     public void Determine(int[] input, out bool result, out int[] output)
     {
-      MEAPSharedContext MEAPSharedContext = new MEAPSharedContext();
-
-      MEAPSharedContext.MNP = tMachine;
-      MEAPSharedContext.Input = input;
+      MEAPSharedContext MEAPSharedContext = new MEAPSharedContext
+      {
+        MNP = tMachine,
+        Input = input
+      };
 
       MEAPSharedContext.InitInstance = new TMInstance(
         MEAPSharedContext.MNP,
@@ -66,9 +67,11 @@ namespace ExistsAcceptingPath
               {
                 tMachine = tMachine,
                 input = input,
-                currentMu = currentMu++,
+                currentMu = currentMu,
                 MEAPSharedContext = MEAPSharedContext
               };
+
+          currentMu++;
 
           DeterminePathRunner determinePathRunner =
             configuration.Get<DeterminePathRunner>(

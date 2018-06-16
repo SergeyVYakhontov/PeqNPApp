@@ -84,9 +84,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
     #endregion
   }
 }

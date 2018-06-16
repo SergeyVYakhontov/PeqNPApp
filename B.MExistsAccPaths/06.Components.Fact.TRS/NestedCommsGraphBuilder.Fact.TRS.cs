@@ -29,7 +29,7 @@ namespace ExistsAcceptingPath
 
     public string Name { get; }
 
-    public void Init()
+    public void Setup()
     {
       meapContext.NestedCommsGraph =
         new TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>(
@@ -80,12 +80,12 @@ namespace ExistsAcceptingPath
     private readonly MEAPContext meapContext;
     private long nodeId = 0;
 
-    private SortedDictionary<long, DAGNode> commToNodeMap =
+    private readonly SortedDictionary<long, DAGNode> commToNodeMap =
       new SortedDictionary<long, DAGNode>();
-    private SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap =
+    private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap =
       new SortedDictionary<long, LinkedList<long>>();
 
-    private SortedDictionary<long, LinkedList<long>> varToCommoditiesMap =
+    private readonly SortedDictionary<long, LinkedList<long>> varToCommoditiesMap =
       new SortedDictionary<long, LinkedList<long>>();
 
     private void CreateNodes()

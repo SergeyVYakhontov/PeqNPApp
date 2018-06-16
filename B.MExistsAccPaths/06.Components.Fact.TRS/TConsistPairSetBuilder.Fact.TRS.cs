@@ -29,7 +29,7 @@ namespace ExistsAcceptingPath
 
     public String Name { get; }
 
-    public void Init()
+    public void Setup()
     {
       log.Info("Build TConsist pair set");
 
@@ -66,8 +66,6 @@ namespace ExistsAcceptingPath
 
       foreach (KeyValuePair<long, SortedSet<DefUsePair>> varToDefUsePair in defUsePairSet)
       {
-        long variable = varToDefUsePair.Key;
-
         foreach (DefUsePair defUsePair in varToDefUsePair.Value)
         {
           long defNodeId = defUsePair.DefNode;
@@ -155,7 +153,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -192,8 +189,6 @@ namespace ExistsAcceptingPath
         }
       }
 
-      ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
-
       long L = meapContext.TASGBuilder.TapeLBound;
       long R = meapContext.TASGBuilder.TapeRBound;
 
@@ -201,9 +196,6 @@ namespace ExistsAcceptingPath
       {
         long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
         long tNodeId = meapContext.TArbSeqCFG.GetSinkNodeId();
-
-        ICollection<long> sNodeAssignments = AppHelper.TakeValueByKey(meapContext.Assignments, sNodeId, () => new SortedSet<long>());
-        ICollection<long> sNodeUsages = AppHelper.TakeValueByKey(meapContext.Usages, tNodeId, () => new SortedSet<long>());
 
         meapContext.Vars.Add(variable);
 

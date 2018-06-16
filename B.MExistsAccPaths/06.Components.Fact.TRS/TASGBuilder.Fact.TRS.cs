@@ -185,14 +185,12 @@ namespace ExistsAcceptingPath
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
-      long nodeId;
-
-      if (!newCompStepToNode.TryGetValue(compStep, out nodeId))
+      if (!newCompStepToNode.TryGetValue(compStep, out long nodeIdToTake))
       {
         return null;
       }
 
-      return newNodeEnumeration[nodeId];
+      return newNodeEnumeration[nodeIdToTake];
     }
 
     private List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>>

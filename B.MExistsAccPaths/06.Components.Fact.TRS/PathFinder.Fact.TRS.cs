@@ -22,22 +22,6 @@ namespace ExistsAcceptingPath
     {
       log.Info("Finding shortest path");
 
-      /*
-       meapContext.AppTracer.WriteDelim(TraceLevel.Debug);
-       meapContext.AppTracer.WriteLn(TraceLevel.Debug, String.Format("Start retrieve path"));
-
-       long tNodeId = meapContext.CommsGraph.GetSinkNodeId();
-       long stLength = meapContext.PathLengths[tNodeId];
-       tConsistPath = meapContext.Paths[tNodeId]; */
-
-      /* if (stLength == 0)
-       {
-         ExtractTConsistSeq();
-
-         pathExists = true;
-         pathFound = true;
-       }*/
-
       CopyResult();
 
       meapContext.AcceptingNodes.Clear();

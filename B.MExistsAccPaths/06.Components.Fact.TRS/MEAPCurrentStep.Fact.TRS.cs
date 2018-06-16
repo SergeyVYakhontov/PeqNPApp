@@ -66,18 +66,19 @@ namespace ExistsAcceptingPath
       meapContext.Commodities = meapContext.CommoditiesBuilder.CreateCommodities();
       meapContext.CommoditiesBuilder = null;
 
-      eliminateOverlapping = new EliminateOverlappingCommsFactTRS(meapContext);
+      EliminateOverlappingCommsFactTRS eliminateOverlapping = new EliminateOverlappingCommsFactTRS(meapContext);
       eliminateOverlapping.Run();
       eliminateOverlapping = null;
 
       meapContext.UnusedNodes = new SortedSet<long>();
-      nestedCommsGraphBuilder = new NestedCommsGraphBuilderFactTRS(meapContext);
-      nestedCommsGraphBuilder.Init();
+
+      NestedCommsGraphBuilderFactTRS nestedCommsGraphBuilder = new NestedCommsGraphBuilderFactTRS(meapContext);
+      nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder.Trace();
       nestedCommsGraphBuilder = null;
 
-      pathFinder = new PathFinderFactTRS(meapContext);
+      PathFinderFactTRS pathFinder = new PathFinderFactTRS(meapContext);
       pathFinder.Run();
       pathFinder = null;
     }
@@ -92,10 +93,6 @@ namespace ExistsAcceptingPath
 
     private TASGBuilderFactTRS tasgBuilder;
     private SortedDictionary<long, SortedSet<long>> inVarToVarNodes;
-    private TConsistPairSetBuilderFactTRS tConsistPairSetBuilder;
-    private EliminateOverlappingCommsFactTRS eliminateOverlapping;
-    private NestedCommsGraphBuilderFactTRS nestedCommsGraphBuilder;
-    private PathFinderFactTRS pathFinder;
 
     private void CreateTASGBuilder()
     {
@@ -146,8 +143,8 @@ namespace ExistsAcceptingPath
 
     private void ComputeDUPairs()
     {
-      tConsistPairSetBuilder = new TConsistPairSetBuilderFactTRS(meapContext);
-      tConsistPairSetBuilder.Init();
+      TConsistPairSetBuilderFactTRS tConsistPairSetBuilder = new TConsistPairSetBuilderFactTRS(meapContext);
+      tConsistPairSetBuilder.Setup();
 
       inVarToVarNodes = new SortedDictionary<long, SortedSet<long>>();
       ProcessNode_s();

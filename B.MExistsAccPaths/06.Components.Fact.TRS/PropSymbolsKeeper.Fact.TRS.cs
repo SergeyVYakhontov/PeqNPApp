@@ -51,12 +51,10 @@ namespace ExistsAcceptingPath
       ComputationStep fromCompStep,
       ComputationStep toCompStep)
     {
-      if (fromCompStep.m == TMDirection.S)
+      if ((fromCompStep.m == TMDirection.S) &&
+          (fromCompStep.sNext != toCompStep.s))
       {
-        if (fromCompStep.sNext != toCompStep.s)
-        {
-          return false;
-        }
+        return false;
       }
 
       SortedSet<PropSymbol> procSymPrev = AppHelper.TakeValueByKey(
