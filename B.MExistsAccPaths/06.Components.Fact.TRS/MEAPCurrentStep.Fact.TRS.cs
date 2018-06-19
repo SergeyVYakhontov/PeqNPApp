@@ -54,11 +54,6 @@ namespace ExistsAcceptingPath
 
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
 
-      if (!debugOptions.RunRDA)
-      {
-        return;
-      }
-
       ComputeDUPairs();
 
       meapContext.CommoditiesBuilder = new CommoditiesBuilderFactTRS(meapContext);
@@ -66,13 +61,15 @@ namespace ExistsAcceptingPath
       meapContext.Commodities = meapContext.CommoditiesBuilder.CreateCommodities();
       meapContext.CommoditiesBuilder = null;
 
-      EliminateOverlappingCommsFactTRS eliminateOverlapping = new EliminateOverlappingCommsFactTRS(meapContext);
-      eliminateOverlapping.Run();
-      eliminateOverlapping = null;
-
       meapContext.UnusedNodes = new SortedSet<long>();
 
-      NestedCommsGraphBuilderFactTRS nestedCommsGraphBuilder = new NestedCommsGraphBuilderFactTRS(meapContext);
+      if (!debugOptions.RunRDA)
+      {
+        return;
+      }
+
+      NestedCommsGraphBuilderFactTRS nestedCommsGraphBuilder =
+        new NestedCommsGraphBuilderFactTRS(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder.Trace();

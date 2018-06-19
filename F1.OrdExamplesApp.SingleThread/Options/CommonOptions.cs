@@ -19,9 +19,9 @@ namespace OrdinaryExamplesAppSingleThread
 {
   public class CommonOptions : ICommonOptions
   {
-    public bool CheckDataStructures => true;
-    public ulong RDASlotMaxSize => 512;
-    public float LinProgEpsilon => 0.0001F;
+    public bool CheckDataStructures { get => true; }
+    public ulong RDASlotMaxSize { get => 512; }
+    public float LinProgEpsilon { get => 0.0001F; }
   }
 }
 

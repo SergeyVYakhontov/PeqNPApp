@@ -11,7 +11,7 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class PropSymbol
+  public readonly struct PropSymbol
   {
     #region Ctors
 

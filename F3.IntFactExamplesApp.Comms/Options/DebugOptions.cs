@@ -13,11 +13,11 @@ namespace IntegerFactExamplesAppComms
 {
   public class DebugOptions : IDebugOptions
   {
-    public ulong muStart => 1;
-    public bool RunRDA => true;
-    public bool ComputeCommoditiesExplicitely => true;
-    public bool IntFactTestRules => false;
-    public uint FactTRS_muUpperBound => throw new NotImplementedException();
+    public ulong muStart { get => 1; }
+    public bool RunRDA { get => true; }
+    public bool ComputeCommoditiesExplicitely { get => true; }
+    public bool IntFactTestRules { get => false; }
+    public uint FactTRS_muUpperBound { get => throw new NotImplementedException(); }
   }
 }
 

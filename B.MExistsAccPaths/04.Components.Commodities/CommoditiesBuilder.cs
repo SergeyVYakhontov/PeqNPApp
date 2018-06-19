@@ -140,7 +140,7 @@ namespace ExistsAcceptingPath
       new SortedDictionary<long, Commodity>();
     protected List<long> excludedDefs = new List<long>();
 
-    private static Object objectToLock = new Object();
+    private static readonly Object objectToLock = new Object();
 
     #endregion
   }

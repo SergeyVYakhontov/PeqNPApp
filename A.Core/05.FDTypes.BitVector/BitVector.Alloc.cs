@@ -46,7 +46,7 @@ namespace Core
     public void SetItem(ulong Index, byte To)
     {
       Ensure.That((To == 0) || (To == 1)).IsTrue();
-      Ensure.That((Index < 0) || (Index > Size - 1)).IsFalse();
+      Ensure.That(Index <= (Size - 1)).IsTrue();
 
       ulong w_i = WordIndex(Index);
       byte b_i = BitIndex(Index);

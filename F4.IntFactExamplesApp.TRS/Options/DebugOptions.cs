@@ -13,11 +13,11 @@ namespace IntegerFactExamplesAppTRS
 {
   public class DebugOptions : IDebugOptions
   {
-    public ulong muStart => 1;
-    public bool RunRDA => false;
-    public bool ComputeCommoditiesExplicitely => true;
-    public bool IntFactTestRules => false;
-    public uint FactTRS_muUpperBound => 100;
+    public ulong muStart { get => 1; }
+    public bool RunRDA { get => false; }
+    public bool ComputeCommoditiesExplicitely { get => true; }
+    public bool IntFactTestRules { get => false; }
+    public uint FactTRS_muUpperBound { get => 150; }
   }
 }
 

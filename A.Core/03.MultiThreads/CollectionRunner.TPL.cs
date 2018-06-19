@@ -72,7 +72,7 @@ namespace Core
 
         CurrentItem = packetProcessProc(itemsToRun);
 
-        if (CurrentItem != null)
+        if (!EqualityComparer<ItemType>.Default.Equals(CurrentItem, default))
         {
           Done = true;
 

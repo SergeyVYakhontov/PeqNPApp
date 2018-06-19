@@ -19,9 +19,9 @@ namespace IntegerFactExamplesAppTRS
 {
   public class CommonOptions : ICommonOptions
   {
-    public bool CheckDataStructures => false;
-    public ulong RDASlotMaxSize => 256;
-    public float LinProgEpsilon => 0.0001F;
+    public bool CheckDataStructures { get => false; }
+    public ulong RDASlotMaxSize { get => 256; }
+    public float LinProgEpsilon { get => 0.0001F; }
   }
 }
 

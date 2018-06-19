@@ -40,8 +40,7 @@ namespace ExistsAcceptingPath
     {
       compStepNodePairEnum.ForEach(p =>
         {
-          log.InfoFormat("Comp step: {0} {1} {2}",
-              p.Value.Variable, p.Value.uNode, p.Value.vNode);
+          log.DebugFormat($"Comp step: {p.Value.Variable}, {p.Value.uNode}, {p.Value.vNode}");
         });
 
       log.Info("Building commodities");
@@ -51,7 +50,6 @@ namespace ExistsAcceptingPath
 
       foreach (KeyValuePair<long, CompStepNodePair> compStepNodePairPair in compStepNodePairEnum)
       {
-        long pairId = compStepNodePairPair.Key;
         CompStepNodePair compStepNodePair = compStepNodePairPair.Value;
 
         DAGNode sNode = nodeEnumeration[compStepNodePair.uNode];
@@ -79,7 +77,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
