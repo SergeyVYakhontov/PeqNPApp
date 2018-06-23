@@ -16,11 +16,7 @@ namespace ExistsAcceptingPath
     #region Ctors
 
     public CommoditiesBuilderOrd(MEAPContext meapContext)
-      :base(meapContext)
-    {
-      sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
-      tNodeId = meapContext.TArbSeqCFG.GetSinkNodeId();
-    }
+      :base(meapContext) {}
 
     #endregion
 
@@ -28,8 +24,6 @@ namespace ExistsAcceptingPath
 
     public override void EnumeratePairs()
     {
-      long pairCount = 0;
-
       foreach (CompStepNodePair compStepNodePair in meapContext.TConsistPairSet)
       {
         compStepNodePairEnum[pairCount] = compStepNodePair;
@@ -43,9 +37,8 @@ namespace ExistsAcceptingPath
         "Build commodities: {0}",
         meapContext.TConsistPairSet.Count);
 
-      commodities = new SortedDictionary<long, Commodity>();
       long i = 0;
-      SortedDictionary<long, DAGNode> nodeEnumeration = meapContext.TArbSeqCFG.NodeEnumeration;
+      IReadOnlyDictionary<long, DAGNode> nodeEnumeration = meapContext.TArbSeqCFG.NodeEnumeration;
 
       foreach (KeyValuePair<long, CompStepNodePair> compStepNodePairPair in compStepNodePairEnum)
       {

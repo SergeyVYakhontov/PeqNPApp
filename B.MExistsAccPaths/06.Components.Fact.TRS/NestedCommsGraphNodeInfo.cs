@@ -14,11 +14,9 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class NestedCommsGraphNodeInfo : IObjectWithId
+  public readonly struct NestedCommsGraphNodeInfo : IObjectWithId
   {
     #region Ctors
-
-    public NestedCommsGraphNodeInfo() { }
 
     public NestedCommsGraphNodeInfo(long id)
     {

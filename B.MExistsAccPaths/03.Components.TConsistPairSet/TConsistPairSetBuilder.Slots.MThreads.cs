@@ -84,12 +84,13 @@ namespace ExistsAcceptingPath
 
           if (consistent)
           {
-            meapContext.TConsistPairSet.Add(new CompStepNodePair()
-            {
-              Variable = defUsePair.Variable,
-              uNode = defUsePair.DefNode,
-              vNode = defUsePair.UseNode
-            });
+            meapContext.TConsistPairSet.Add(
+              new CompStepNodePair
+              (
+                variable: defUsePair.Variable,
+                uNode: defUsePair.DefNode,
+                vNode: defUsePair.UseNode
+              ));
 
             meapContext.TConsistPairCount++;
           }

@@ -17,11 +17,7 @@ namespace ExistsAcceptingPath
     #region Ctors
 
     public CommoditiesBuilderSlotsMThreads(MEAPContext meapContext)
-      :base(meapContext)
-    {
-      sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
-      tNodeId = meapContext.TArbSeqCFG.GetSinkNodeId();
-    }
+      :base(meapContext) {}
 
     #endregion
 

@@ -161,8 +161,8 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
-    private long nodeId = 0;
-    private long edgeId = 0;
+    private long nodeId;
+    private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration =
       new SortedDictionary<long, DAGNode>();
     private readonly SortedDictionary<ComputationStep, long> compStepToNode =
@@ -173,7 +173,7 @@ namespace ExistsAcceptingPath
     private readonly List<DAGNode> endNodes = new List<DAGNode>();
     private readonly List<long> endNodeIds = new List<long>();
     private readonly List<DAGNode> acceptingNodes = new List<DAGNode>();
-    private long treesCut = 0;
+    private long treesCut;
     private readonly SortedSet<long> processedMu = new SortedSet<long>();
 
     private readonly SortedDictionary<long, DAGNode> newNodeEnumeration =
@@ -218,7 +218,6 @@ namespace ExistsAcceptingPath
       toCompStep.Shift = p.Shift;
 
       bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
-        sNodeId,
         fromNode,
         fromCompStep,
         toCompStep);
@@ -261,7 +260,7 @@ namespace ExistsAcceptingPath
       DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
       G.AddEdge(e);
 
-      propSymbolsKeeper.PropagateSymbol(sNodeId, fromNode, toNode, fromCompStep, toCompStep);
+      propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
     }
 
     private void TraverseMNPTree(long sNodeId)
@@ -293,11 +292,8 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>> deltaElements =
-          GetDeltaElements(fromCompStep.qNext);
-
         foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in
-          deltaElements)
+                   GetDeltaElements(fromCompStep.qNext))
         {
           StateSymbolPair from = to.Key;
 

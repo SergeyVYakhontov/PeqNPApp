@@ -15,42 +15,39 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public int Compare(CompStepNodePair s1, CompStepNodePair s2)
+    public int Compare(CompStepNodePair x, CompStepNodePair y)
     {
-      if (s1.Variable < s2.Variable)
+      if (x.Variable < y.Variable)
       {
         return -1;
       }
-      else if (s1.Variable == s2.Variable)
+
+      if (x.Variable == y.Variable)
       {
-        if (s1.uNode < s2.uNode)
+        if (x.uNode < y.uNode)
         {
           return -1;
         }
-        else if (s1.uNode == s2.uNode)
+
+        if (x.uNode == y.uNode)
         {
-          if (s1.vNode < s2.vNode)
+          if (x.vNode < y.vNode)
           {
             return -1;
           }
-          else if (s1.vNode == s2.vNode)
+
+          if (x.vNode == y.vNode)
           {
             return 0;
           }
-          else
-          {
-            return 1;
-          }
-        }
-        else
-        {
+
           return 1;
         }
-      }
-      else
-      {
+
         return 1;
       }
+
+      return 1;
 
       #endregion
     }

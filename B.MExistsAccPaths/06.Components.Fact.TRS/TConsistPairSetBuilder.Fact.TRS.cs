@@ -94,12 +94,12 @@ namespace ExistsAcceptingPath
           }
 
           CompStepNodePair compStepNodePair =
-            new CompStepNodePair()
-            {
-              Variable = defUsePair.Variable,
-              uNode = defUsePair.DefNode,
-              vNode = defUsePair.UseNode
-            };
+            new CompStepNodePair
+            (
+              variable: defUsePair.Variable,
+              uNode: defUsePair.DefNode,
+              vNode: defUsePair.UseNode
+            );
 
           if (consistent)
           {

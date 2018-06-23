@@ -73,11 +73,9 @@ namespace ExistsAcceptingPath
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder.Trace();
-      nestedCommsGraphBuilder = null;
 
       PathFinderFactTRS pathFinder = new PathFinderFactTRS(meapContext);
       pathFinder.Run();
-      pathFinder = null;
     }
 
     #endregion

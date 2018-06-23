@@ -5,33 +5,86 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using EnsureThat;
 using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ExistsAcceptingPath
 {
-  public class CompStepNodePair : IComparable<CompStepNodePair>
+  public readonly struct CompStepNodePair :
+    IEquatable<CompStepNodePair>,
+    IComparable<CompStepNodePair>
   {
     #region Ctors
 
-    public int CompareTo(CompStepNodePair s)
+    public CompStepNodePair(long variable, long uNode, long vNode)
     {
-      return compStepNodePairComparer.Compare(this, s);
+      this.Variable = variable;
+      this.uNode = uNode;
+      this.vNode = vNode;
     }
 
     #endregion
 
     #region public members
 
-    public long Variable { get; set; }
+    public long Variable { get; }
 
-    public long uNode { get; set; }
-    public long vNode { get; set; }
+    public long uNode { get; }
+    public long vNode { get; }
 
-    public override string ToString()
+    public override bool Equals(object obj)
     {
-      return $"({Variable}, {uNode}, {vNode})";
+      Ensure.That(obj).IsNotNull();
+
+      CompStepNodePair other = (CompStepNodePair)obj;
+
+      return this == other;
+    }
+
+    public override int GetHashCode() => (int)Variable;
+
+    public override string ToString() => $"({Variable}, {uNode}, {vNode})";
+
+    public bool Equals(CompStepNodePair other) => this == other;
+
+    public int CompareTo(CompStepNodePair other)
+    {
+      return compStepNodePairComparer.Compare(this, other);
+    }
+
+    public static bool operator ==(CompStepNodePair left, CompStepNodePair right)
+    {
+      return
+        (left.Variable == right.Variable) &&
+        (left.uNode == right.uNode) &&
+        (left.vNode == right.vNode);
+    }
+
+    public static bool operator !=(CompStepNodePair left, CompStepNodePair right)
+    {
+      return !(left == right);
+    }
+
+    public static bool operator <(CompStepNodePair left, CompStepNodePair right)
+    {
+      return left.CompareTo(right) < 0;
+    }
+
+    public static bool operator <=(CompStepNodePair left, CompStepNodePair right)
+    {
+      return left.CompareTo(right) <= 0;
+    }
+
+    public static bool operator >(CompStepNodePair left, CompStepNodePair right)
+    {
+      return left.CompareTo(right) > 0;
+    }
+
+    public static bool operator >=(CompStepNodePair left, CompStepNodePair right)
+    {
+      return left.CompareTo(right) >= 0;
     }
 
     #endregion

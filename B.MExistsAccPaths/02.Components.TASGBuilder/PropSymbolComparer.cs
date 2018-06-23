@@ -15,31 +15,29 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public int Compare(PropSymbol k1, PropSymbol k2)
+    public int Compare(PropSymbol x, PropSymbol y)
     {
-      if (k1.Variable < k2.Variable)
+      if (x.Variable < y.Variable)
       {
         return -1;
       }
-      else if (k1.Variable == k2.Variable)
+
+      if (x.Variable == y.Variable)
       {
-        if (k1.Symbol < k2.Symbol)
+        if (x.Symbol < y.Symbol)
         {
           return -1;
         }
-        else if (k1.Symbol == k2.Symbol)
+
+        if (x.Symbol == y.Symbol)
         {
           return 0;
         }
-        else
-        {
-          return 1;
-        }
-      }
-      else
-      {
+
         return 1;
       }
+
+      return 1;
     }
 
     #endregion

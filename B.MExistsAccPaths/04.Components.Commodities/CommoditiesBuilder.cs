@@ -19,13 +19,16 @@ namespace ExistsAcceptingPath
     protected CommoditiesBuilder(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
+
+      this.sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
+      this.tNodeId = meapContext.TArbSeqCFG.GetSinkNodeId();
     }
 
     #endregion
 
     #region public members
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
     public abstract void EnumeratePairs();
     public abstract SortedDictionary<long, Commodity> CreateCommodities();
@@ -126,21 +129,20 @@ namespace ExistsAcceptingPath
     private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private static readonly Object objectToLock = new Object();
 
     protected readonly MEAPContext meapContext;
 
-    protected long sNodeId;
-    protected long tNodeId;
+    protected readonly long sNodeId;
+    protected readonly long tNodeId;
 
-    protected long pairCount = 0;
-    protected SortedDictionary<long, CompStepNodePair> compStepNodePairEnum =
+    protected long pairCount;
+    protected readonly SortedDictionary<long, CompStepNodePair> compStepNodePairEnum =
       new SortedDictionary<long, CompStepNodePair>();
 
-    protected SortedDictionary<long, Commodity> commodities =
+    protected readonly SortedDictionary<long, Commodity> commodities =
       new SortedDictionary<long, Commodity>();
-    protected List<long> excludedDefs = new List<long>();
-
-    private static readonly Object objectToLock = new Object();
+    protected readonly List<long> excludedDefs = new List<long>();
 
     #endregion
   }

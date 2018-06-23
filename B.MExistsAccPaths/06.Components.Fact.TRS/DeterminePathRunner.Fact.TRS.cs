@@ -56,20 +56,6 @@ namespace ExistsAcceptingPath
         Done = true;
       }
 
-      if ((!Done) && (!meapContext.MEAPSharedContext.MNP.AcceptingPathAlwaysExists))
-      {
-        currentStep.Run(meapContext.MEAPSharedContext.MNP.QAny);
-        bool gammaAny = meapContext.PathExists;
-
-        if (!gammaAny)
-        {
-          Result = false;
-          Output = Array.Empty<int>();
-
-          Done = true;
-        }
-      }
-
       if (Done)
       {
         lock (meapContext.MEAPSharedContext)
@@ -79,10 +65,6 @@ namespace ExistsAcceptingPath
         }
       }
     }
-
-    #endregion
-
-    #region private members
 
     #endregion
   }
