@@ -16,19 +16,19 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public int Compare(TapeSegRunner r1, TapeSegRunner r2)
+    public int Compare(TapeSegRunner x, TapeSegRunner y)
     {
-      if (r1.TapeSegRunnerState < r2.TapeSegRunnerState)
+      if (x.TapeSegRunnerState < y.TapeSegRunnerState)
       {
         return -1;
       }
-      else if (r1.TapeSegRunnerState == r2.TapeSegRunnerState)
+      else if (x.TapeSegRunnerState == y.TapeSegRunnerState)
       {
-        if (r1.Id < r2.Id)
+        if (x.Id < y.Id)
         {
           return -1;
         }
-        else if (r1.Id == r2.Id)
+        else if (x.Id == y.Id)
         {
           return 0;
         }

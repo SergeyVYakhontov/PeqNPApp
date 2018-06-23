@@ -84,7 +84,7 @@ namespace Core
       {
         p = r.p;
         q = r.q;
-        
+
         return;
       }
 
@@ -109,7 +109,7 @@ namespace Core
         return;
       }
 
-      p = p * r.q - q * r.p;
+      p = (p * r.q) - (q * r.p);
       q = q * r.q;
 
       Normalize();
@@ -121,7 +121,7 @@ namespace Core
       {
         p = 0;
         q = 1;
-        
+
         return;
       }
 

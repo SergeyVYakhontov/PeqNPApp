@@ -40,11 +40,9 @@ namespace ExistsAcceptingPath
           return commoditiesToCheck.ToArray();
         }
 
-        Commodity commodity = SelectCommodity(tapeSegContext.KSetZetaSubset, commoditiesToCheck);
-        if (commodity == null)
-        {
-          commodity = SelectAnyCommodity(tapeSegContext.KSetZetaSubset);
-        }
+        Commodity commodity =
+          SelectCommodity(tapeSegContext.KSetZetaSubset, commoditiesToCheck) ??
+          SelectAnyCommodity(tapeSegContext.KSetZetaSubset);
 
         if (commodity == null)
         {

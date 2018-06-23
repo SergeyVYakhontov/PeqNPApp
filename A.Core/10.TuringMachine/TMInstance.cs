@@ -89,29 +89,19 @@ namespace Core
     {
       if (CurrentSymbol == OneTapeTuringMachine.b)
       {
-        return new int[] { };
+        return Array.Empty<int>();
       }
-      
+
       long leftIndex = 1;
       long rightIndex = 1;
 
-      while(true)
+      while (tape[leftIndex - 1] != OneTapeTuringMachine.b)
       {
-        if (tape[leftIndex - 1] == OneTapeTuringMachine.b)
-        {
-          break;
-        }
-
         leftIndex--;
       }
 
-      while(true)
+      while (tape[rightIndex + 1] != OneTapeTuringMachine.b)
       {
-        if (tape[rightIndex + 1] == OneTapeTuringMachine.b)
-        {
-          break;
-        }
-
         rightIndex++;
       }
 
@@ -125,7 +115,7 @@ namespace Core
 
     public TapeArray GetTape()
     {
-      return tape; ;
+      return tape;
     }
 
     public int[] GetTapeSubstr(long leftIndex, long rightIndex)
@@ -152,7 +142,7 @@ namespace Core
           break;
         case TMDirection.R:
           instance.CurrentSymbol = to.Symbol;
-          instance.cellIndex += to.Shift;;
+          instance.cellIndex += to.Shift;
           break;
         case TMDirection.S:
           instance.CurrentSymbol = to.Symbol;

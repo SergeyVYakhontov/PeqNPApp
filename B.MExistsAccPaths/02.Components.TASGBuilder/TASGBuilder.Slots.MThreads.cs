@@ -154,9 +154,7 @@ namespace ExistsAcceptingPath
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
-      long nodeId;
-
-      if (!compStepToNode.TryGetValue(compStep, out nodeId))
+      if (!compStepToNode.TryGetValue(compStep, out long nodeId))
       {
         return null;
       }

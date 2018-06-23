@@ -16,7 +16,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public CommoditiesBuilder(MEAPContext meapContext)
+    protected CommoditiesBuilder(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
     }

@@ -15,7 +15,7 @@ namespace Core
   {
     #region Ctors
 
-    public OneTapeNDTM(string name)
+    protected OneTapeNDTM(string name)
       : base(name) { }
 
     #endregion

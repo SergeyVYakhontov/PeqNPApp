@@ -42,7 +42,7 @@ namespace ExistsAcceptingPath
       }
 
       CreateCommIsEqualToCFGEqsSet();
-      
+
       Trace();
       linEquationContext.TCPELinProgEqsSet = tcpeLinProgEqsSet;
 
@@ -202,8 +202,11 @@ namespace ExistsAcceptingPath
         {
           long uNodeVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[uNodeId];
 
-          SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
-          coeffs[uNodeVar] = RationalNumber.Const_1;
+          SortedDictionary<long, RationalNumber> coeffs =
+            new SortedDictionary<long, RationalNumber>
+              {
+                [uNodeVar] = RationalNumber.Const_1
+              };
 
           long equation = linEquationContext.TCPELinProgMatrix.AddEquation(coeffs, EquationKind.Equal, RationalNumber.Const_0);
           tcpeLinProgEqsSet.AddEquation(equation);

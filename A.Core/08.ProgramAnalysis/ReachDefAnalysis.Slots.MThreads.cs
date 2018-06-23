@@ -78,7 +78,7 @@ namespace Core
         long nextVarIndex = 0;
 
         for (long i = varToVarNodesProcessed + varsToProcess; i < varToVarNodesPairs.Length; i++)
-        { 
+        {
           if (varToVarNodesPairs[i].Key != firstVar)
           {
             break;

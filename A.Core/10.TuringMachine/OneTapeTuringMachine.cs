@@ -15,7 +15,7 @@ namespace Core
   {
     #region Ctors
 
-    public OneTapeTuringMachine(string name)
+    protected OneTapeTuringMachine(string name)
     {
       this.Name = name;
     }

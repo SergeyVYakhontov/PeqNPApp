@@ -31,7 +31,7 @@ namespace ExistsAcceptingPath
 
     public override string ToString()
     {
-      return String.Format("({0}, {1}, {2})", Variable, uNode, vNode);
+      return $"({Variable}, {uNode}, {vNode})";
     }
 
     #endregion

@@ -16,7 +16,7 @@ namespace Core
 
     public BitVectorAsSet() { }
 
-    public BitVectorAsSet(ulong Size) { }
+    public BitVectorAsSet(ulong size) { }
 
     public BitVectorAsSet(BitVectorAsSet s)
     {
@@ -67,9 +67,9 @@ namespace Core
       return !bits.Any();
     }
 
-    public override bool Equals(Object other)
+    public override bool Equals(Object obj)
     {
-      BitVectorAsSet v = (BitVectorAsSet)other;
+      BitVectorAsSet v = obj as BitVectorAsSet;
 
       return bits.SetEquals(v.bits);
     }

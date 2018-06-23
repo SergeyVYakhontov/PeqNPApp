@@ -33,6 +33,25 @@ namespace ExistsAcceptingPath
       return "(" + Variable + "," + Symbol + ")";
     }
 
+    public override bool Equals(object obj)
+    {
+      return
+        Variable == ((PropSymbol)obj).Variable &&
+        Symbol == ((PropSymbol)obj).Symbol;
+    }
+
+    public override int GetHashCode() => Symbol;
+
+    public static bool operator ==(PropSymbol left, PropSymbol right)
+    {
+      return
+        left.Variable == right.Variable &&
+        left.Symbol == right.Symbol;
+    }
+
+    public static bool operator !=(PropSymbol left, PropSymbol right)
+      => !(left == right);
+
     #endregion
   }
 }

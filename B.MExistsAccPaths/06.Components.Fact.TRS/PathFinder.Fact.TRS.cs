@@ -49,7 +49,7 @@ namespace ExistsAcceptingPath
     private bool pathExists = false;
     private bool pathFound = false;
     private List<long> tConsistPath = new List<long>();
-    private int[] output = new int[0];
+    private int[] output = Array.Empty<int>();
 
     private void ExtractTConsistSeq()
     {
@@ -60,7 +60,7 @@ namespace ExistsAcceptingPath
         log.InfoFormat("node = {0}", s.ToString());
       });
 
-      long prevNode = tConsistPath.First();
+      long prevNode = tConsistPath[0];
 
       foreach (long currentNode in tConsistPath.Skip(1))
       {

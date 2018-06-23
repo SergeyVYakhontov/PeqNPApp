@@ -123,57 +123,63 @@ namespace Core
           unsafe
           {
             fixed (long* Mk_p_fptr = A_p[k])
-            fixed (long* Mk_q_fptr = A_q[k])
-            fixed (long* Mi_p_fptr = A_p[i])
-            fixed (long* Mi_q_fptr = A_q[i])
             {
-              long* Mk_p_ptr = Mk_p_fptr + (p + 1);
-              long* Mk_q_ptr = Mk_q_fptr + (p + 1);
-
-              long* Mi_p_ptr = Mi_p_fptr + (p + 1);
-              long* Mi_q_ptr = Mi_q_fptr + (p + 1);
-
-              for (long j = p + 1; j < n + 1; j++)
+              fixed (long* Mk_q_fptr = A_q[k])
               {
-                long Mkj_p = *Mk_p_ptr;
-                long Mkj_q = *Mk_q_ptr;
-
-                long Mij_p = *Mi_p_ptr;
-                long Mij_q = *Mi_q_ptr;
-
-                if (Mkj_p == 0)
+                fixed (long* Mi_p_fptr = A_p[i])
                 {
-                  Mk_p_ptr++;
-                  Mk_q_ptr++;
+                  fixed (long* Mi_q_fptr = A_q[i])
+                  {
+                    long* Mk_p_ptr = Mk_p_fptr + (p + 1);
+                    long* Mk_q_ptr = Mk_q_fptr + (p + 1);
 
-                  Mi_p_ptr++;
-                  Mi_q_ptr++;
+                    long* Mi_p_ptr = Mi_p_fptr + (p + 1);
+                    long* Mi_q_ptr = Mi_q_fptr + (p + 1);
 
-                  continue;
+                    for (long j = p + 1; j < n + 1; j++)
+                    {
+                      long Mkj_p = *Mk_p_ptr;
+                      long Mkj_q = *Mk_q_ptr;
+
+                      long Mij_p = *Mi_p_ptr;
+                      long Mij_q = *Mi_q_ptr;
+
+                      if (Mkj_p == 0)
+                      {
+                        Mk_p_ptr++;
+                        Mk_q_ptr++;
+
+                        Mi_p_ptr++;
+                        Mi_q_ptr++;
+
+                        continue;
+                      }
+
+                      long t_p = Mip_p;
+                      long t_q = Mip_q;
+
+                      t_p = t_p * Mkp_q;
+                      t_q = t_q * Mkp_p;
+
+                      t_p = t_p * Mkj_p;
+                      t_q = t_q * Mkj_q;
+
+                      t_p = t_p * Mij_q - Mij_p * t_q;
+                      t_q = Mij_q * t_q;
+
+                      RationalNumber.Normalize(ref t_p, ref t_q);
+
+                      *Mi_p_ptr = t_p;
+                      *Mi_q_ptr = t_q;
+
+                      Mk_p_ptr++;
+                      Mk_q_ptr++;
+
+                      Mi_p_ptr++;
+                      Mi_q_ptr++;
+                    }
+                  }
                 }
-
-                long t_p = Mip_p;
-                long t_q = Mip_q;
-
-                t_p = t_p * Mkp_q;
-                t_q = t_q * Mkp_p;
-
-                t_p = t_p * Mkj_p;
-                t_q = t_q * Mkj_q;
-
-                t_p = t_p * Mij_q - Mij_p * t_q;
-                t_q = Mij_q * t_q;
-
-                RationalNumber.Normalize(ref t_p, ref t_q);
-
-                *Mi_p_ptr = t_p;
-                *Mi_q_ptr = t_q;
-
-                Mk_p_ptr++;
-                Mk_q_ptr++;
-
-                Mi_p_ptr++;
-                Mi_q_ptr++;
               }
             }
           }

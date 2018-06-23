@@ -34,10 +34,10 @@ namespace Core
 
     #region public members
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
-    public List<DAGNode> Nodes { get; private set; }
-    public List<DAGEdge> Edges { get; private set; }
+    public List<DAGNode> Nodes { get; }
+    public List<DAGEdge> Edges { get; }
 
     public DAGNode s { get; private set; }
     public DAGNode t { get; private set; }

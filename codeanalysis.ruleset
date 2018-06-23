@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Default" ToolsVersion="15.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1819" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">
+    <Rule Id="RCS1029" Action="None" />
+    <Rule Id="RCS1032" Action="None" />
+    <Rule Id="RCS1080" Action="None" />
+    <Rule Id="RCS1057" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="RefctoringEssentials" RuleNamespace="RefctoringEssentials">
+    <Rule Id="RECS0145" Action="None" />
+  </Rules>
+</RuleSet>

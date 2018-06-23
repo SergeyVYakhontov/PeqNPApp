@@ -19,7 +19,7 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public class MEAPTests : IDisposable
+  public sealed class MEAPTests : IDisposable
   {
     #region Ctors
 

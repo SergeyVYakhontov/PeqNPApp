@@ -84,7 +84,7 @@ namespace VerifyResults
         {
           GC.Collect();
 
-          IRunnable currentRunnable = runnables.First();
+          IRunnable currentRunnable = runnables[0];
           runnables.RemoveAt(0);
 
           log.InfoFormat("Runnable decide start: {0}", currentRunnable.Kind);
@@ -109,7 +109,7 @@ namespace VerifyResults
 
           GC.Collect();
 
-          int[] currComputeOutput = new int[] { };
+          int[] currComputeOutput = Array.Empty<int>();
 
           if (currDecideOutput)
           {
@@ -156,9 +156,10 @@ namespace VerifyResults
 
           computeOutputs.Add(currComputeOutput);
 
-          if (!Enumerable.SequenceEqual(currComputeOutput, computeOutputs[0]))
+          if (!currComputeOutput.SequenceEqual(computeOutputs[0]))
           {
             errorFound = true;
+
             log.Info("[ERROR]: Outputs are different");
           }
         }

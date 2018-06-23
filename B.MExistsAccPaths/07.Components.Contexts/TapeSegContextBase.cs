@@ -15,7 +15,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public TapeSegContextBase(
+    protected TapeSegContextBase(
       MEAPContext meapContext,
       TapeSegContext tapeSegContext)
     {

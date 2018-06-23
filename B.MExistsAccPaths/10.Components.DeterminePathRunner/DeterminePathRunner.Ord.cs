@@ -65,7 +65,7 @@ namespace ExistsAcceptingPath
         if (!gammaAny)
         {
           Result = false;
-          Output = new int[] { };
+          Output = Array.Empty<int>();
 
           Done = true;
         }

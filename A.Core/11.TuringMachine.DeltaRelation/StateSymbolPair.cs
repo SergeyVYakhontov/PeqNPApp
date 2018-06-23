@@ -44,6 +44,16 @@ namespace Core
       return (State == other.State) && (Symbol == other.Symbol);
     }
 
+    public static bool operator == (StateSymbolPair x, StateSymbolPair y)
+    {
+      return x.Equals(y);
+    }
+
+    public static bool operator !=(StateSymbolPair x, StateSymbolPair y)
+    {
+      return !x.Equals(y);
+    }
+
     #endregion
   }
 }

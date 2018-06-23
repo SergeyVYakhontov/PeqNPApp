@@ -15,6 +15,23 @@ namespace ExistsAcceptingPath
 {
   public abstract class CommodityChecker : TapeSegContextBase, ITPLCollectionItem
   {
+    #region Ctors
+
+    protected CommodityChecker(
+      MEAPContext meapContext,
+      TapeSegContext tapeSegContext,
+      Commodity commodity,
+      SortedSet<long> tConsistPathComms,
+      SortedSet<long> tInconsistPathComms)
+      : base(meapContext, tapeSegContext)
+    {
+      this.commodity = commodity;
+      this.tConsistPathComms = tConsistPathComms;
+      this.tInconsistPathComms = tInconsistPathComms;
+    }
+
+    #endregion
+
     #region public members
 
     public bool Done { get; protected set; }
@@ -39,23 +56,6 @@ namespace ExistsAcceptingPath
 
     #endregion
 
-    #region Ctors
-
-    public CommodityChecker(
-      MEAPContext meapContext,
-      TapeSegContext tapeSegContext,
-      Commodity commodity,
-      SortedSet<long> tConsistPathComms,
-      SortedSet<long> tInconsistPathComms)
-      :base(meapContext, tapeSegContext)
-    {
-      this.commodity = commodity;
-      this.tConsistPathComms = tConsistPathComms;
-      this.tInconsistPathComms = tInconsistPathComms;
-    }
-
-    #endregion
-
     #region private members
 
     protected static readonly IKernel configuration = Core.AppContext.Configuration;
@@ -65,7 +65,7 @@ namespace ExistsAcceptingPath
     private readonly SortedSet<long> tConsistPathComms;
     private readonly SortedSet<long> tInconsistPathComms;
 
-    protected const String linEqSetStr = "LinearSolve";
+    protected const string linEqSetStr = "LinearSolve";
 
     protected void AddCommodityCheckEquation()
     {

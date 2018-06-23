@@ -49,8 +49,7 @@ namespace ExistsAcceptingPath
       tcpeLinProgBuilder.CreateTCPEPLinProgEqsSet();
       AddCommodityCheckEquation();
 
-      SparseMatrix A;
-      linEquationContext.TCPELinProgMatrix.GetLinEqSetSparseMatrix(out A);
+      linEquationContext.TCPELinProgMatrix.GetLinEqSetSparseMatrix(out SparseMatrix A);
 
       LinEqSetSolverSparseMThreads linEqSetSolver = new LinEqSetSolverSparseMThreads(A);
 

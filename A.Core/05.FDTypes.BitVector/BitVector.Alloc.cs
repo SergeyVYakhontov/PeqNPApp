@@ -49,7 +49,7 @@ namespace Core
       Ensure.That(Index <= (Size - 1)).IsTrue();
 
       ulong w_i = WordIndex(Index);
-      byte b_i = BitIndex(Index);
+      byte b_i = BitVectorAlloc.BitIndex(Index);
 
       if (To == 0)
       {
@@ -80,7 +80,7 @@ namespace Core
       }
 
       ulong w_i = WordIndex(Index);
-      byte b_i = BitIndex(Index);
+      byte b_i = BitVectorAlloc.BitIndex(Index);
 
       UInt64 w = items[w_i];
 
@@ -130,9 +130,9 @@ namespace Core
       return items.All(p => p == 0);
     }
 
-    public override bool Equals(Object other)
+    public override bool Equals(Object obj)
     {
-      BitVectorAlloc v = (BitVectorAlloc)other;
+      BitVectorAlloc v = (BitVectorAlloc)obj;
 
       Ensure.That(Size).Is(v.Size);
 
@@ -151,7 +151,7 @@ namespace Core
         return items.All(p => p == 0);
       }
 
-      return Enumerable.SequenceEqual(items, v.items);
+      return items.SequenceEqual(v.items);
     }
 
     public override int GetHashCode()
@@ -213,12 +213,9 @@ namespace Core
       allocated = false;
     }
 
-    private ulong WordIndex(ulong Index)
-    {
-      return (Index / wordSize);
-    }
+    private static ulong WordIndex(ulong Index) => (Index / wordSize);
 
-    private byte BitIndex(ulong Index)
+    private static byte BitIndex(ulong Index)
     {
       return (byte)(Index % wordSize);
     }

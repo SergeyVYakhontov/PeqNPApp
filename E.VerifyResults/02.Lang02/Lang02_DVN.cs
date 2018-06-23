@@ -39,7 +39,7 @@ namespace VerifyResults
 
     public int[] Compute(int[] input)
     {
-      return new int[] {};
+      return Array.Empty<int>();
     }
 
     #endregion

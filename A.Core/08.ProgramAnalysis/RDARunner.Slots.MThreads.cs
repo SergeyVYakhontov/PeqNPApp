@@ -57,7 +57,7 @@ namespace Core
         return;
       }
 
-      log.InfoFormat("Slot bits {0}", slotBitSet.Count());
+      log.InfoFormat($"Slot bits {slotBitSet.Count}");
 
       CreateVectors();
       InitVectors();
@@ -80,8 +80,8 @@ namespace Core
 
     public void Trace()
     {
-      log.DebugFormat("NodesCount = {0}", rdaContext.CFG.Nodes.Count());
-      log.DebugFormat("EdgesCount = {0}", rdaContext.CFG.Edges.Count());
+      log.DebugFormat("NodesCount = {0}", rdaContext.CFG.Nodes.Count);
+      log.DebugFormat("EdgesCount = {0}", rdaContext.CFG.Edges.Count);
 
       log.Debug("nodeToGENVectorMap");
       nodeToGENVectorMap.Values.ForEach(r => log.Debug(r.ToString()));
@@ -146,12 +146,12 @@ namespace Core
     {
       foreach (long nodeId in varNodes)
       {
-        List<long> defs;
-        rdaContext.NodeToDefsSet.TryGetValue(nodeId, out defs);
+        rdaContext.NodeToDefsSet.TryGetValue(nodeId, out List<long> defs);
 
         foreach (long def in defs)
         {
           long variable = rdaContext.DefToVarMap[def];
+
           if (!vars.Contains(variable))
           {
             continue;

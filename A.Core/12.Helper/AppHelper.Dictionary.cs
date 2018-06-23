@@ -19,9 +19,7 @@ namespace Core
       KeyType key,
       Func<ItemType> itemFunc)
     {
-      ItemType item;
-
-      if (dictionary.TryGetValue(key, out item))
+      if (dictionary.TryGetValue(key, out ItemType item))
       {
         return;
       }
@@ -35,9 +33,7 @@ namespace Core
       KeyType key,
       Func<ItemType> itemFunc)
     {
-      ItemType item;
-
-      if (dictionary.TryGetValue(key, out item))
+      if (dictionary.TryGetValue(key, out ItemType item))
       {
         return item;
       }
@@ -69,9 +65,7 @@ namespace Core
 
       with.ToList().ForEach(e =>
         {
-          List<T2> value;
-
-          if (d.TryGetValue(e.Key, out value))
+          if (d.TryGetValue(e.Key, out List<T2> value))
           {
             d[e.Key].AddRange(e.Value);
 

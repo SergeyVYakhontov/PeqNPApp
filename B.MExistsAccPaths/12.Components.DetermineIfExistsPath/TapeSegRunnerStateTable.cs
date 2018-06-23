@@ -32,11 +32,11 @@ namespace ExistsAcceptingPath
 
     public void MoveToNextState()
     {
-      (TapeSegRunnerState from, TapeSegRunnerState to) nextStatePair =
+      (TapeSegRunnerState from, TapeSegRunnerState to) =
         stateTable.Where(t => (allowedStates.Contains(t.from) && allowedStates.Contains(t.to)))
           .First(t => (t.from == CurrentState));
 
-      CurrentState = nextStatePair.to;
+      CurrentState = to;
     }
 
     public void MoveToDoneState()

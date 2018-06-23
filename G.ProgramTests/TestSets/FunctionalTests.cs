@@ -20,7 +20,7 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public class FunctionalTests : IDisposable
+  public sealed class FunctionalTests : IDisposable
   {
     #region public members
 

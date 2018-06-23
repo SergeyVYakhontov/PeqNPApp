@@ -34,10 +34,11 @@ namespace ExistsAcceptingPath
         (e, level) => { }
         );
 
-      SortedSet<long> backEdges;
-      SortedSet<long> crossEdges;
-
-      DAG.ClassifyDAGEdges(dag, VLevelSets, out backEdges, out crossEdges);
+      DAG.ClassifyDAGEdges(
+        dag,
+        VLevelSets,
+        out SortedSet<long> backEdges,
+        out SortedSet<long> crossEdges);
 
       Ensure.That(backEdges.Any()).IsFalse();
       Ensure.That(crossEdges.Any()).IsFalse();

@@ -177,9 +177,7 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        long stNodesCount;
-
-        if ((!nodesCoverageKeeper.CommoditiesAt_stNodes.TryGetValue(uNodeId, out stNodesCount)) ||
+        if ((!nodesCoverageKeeper.CommoditiesAt_stNodes.TryGetValue(uNodeId, out long stNodesCount)) ||
             (stNodesCount == 0))
         {
           tapeSegContext.TArbSeqCFGUnusedNodes.Add(uNodeId);

@@ -17,7 +17,7 @@ namespace ExistsAcceptingPath
   {
     #region ctors
 
-    public MEAPCurrentStep(MEAPContext meapContext)
+    protected MEAPCurrentStep(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
     }

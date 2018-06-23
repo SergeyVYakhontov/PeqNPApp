@@ -39,7 +39,7 @@ namespace ExistsAcceptingPath
     public override long AddVarForNode(long nodeId)
     {
       Ensure.That(NodeToVar.ContainsKey(nodeId)).IsFalse();
-      
+
       long var = LinProgMatrix.AddVariable();
       FVars.Add(var);
       NodeToVar[nodeId] = var;
@@ -65,7 +65,7 @@ namespace ExistsAcceptingPath
       SortedSet<long> unusedNodes)
     {
       DAGLinEquationsSet eqsSet = new DAGLinEquationsSet(linProgMatrix, graph);
-      
+
       SortedDictionary<long, long> nodeToVar = eqsSet.NodeToVar;
       SortedDictionary<long, long> edgeToVar = eqsSet.EdgeToVar;
 
@@ -101,9 +101,12 @@ namespace ExistsAcceptingPath
         }
 
         long uNodeVar = nodeToVar[uNodeId];
-        
-        SortedDictionary<long, RationalNumber> coeffsIn = new SortedDictionary<long, RationalNumber>();
-        coeffsIn[uNodeVar] = RationalNumber.Const_1;
+
+        SortedDictionary<long, RationalNumber> coeffsIn =
+          new SortedDictionary<long, RationalNumber>
+        {
+          [uNodeVar] = RationalNumber.Const_1
+        };
 
         if (u.InEdges.Any())
         {
@@ -130,8 +133,11 @@ namespace ExistsAcceptingPath
           eqsSet.AddEquation(equationIn);
         }
 
-        SortedDictionary<long, RationalNumber> coeffsOut = new SortedDictionary<long, RationalNumber>();
-        coeffsOut[uNodeVar] = RationalNumber.Const_1;
+        SortedDictionary<long, RationalNumber> coeffsOut =
+          new SortedDictionary<long, RationalNumber>
+          {
+            [uNodeVar] = RationalNumber.Const_1
+          };
 
         if (u.OutEdges.Any())
         {

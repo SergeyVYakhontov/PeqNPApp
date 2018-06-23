@@ -42,9 +42,7 @@ namespace VerifyResults
 
     public override List<IExample> GetLargeExamples()
     {
-      return new List<IExample>()
-        {
-        };
+      return new List<IExample>();
     }
 
     public override List<IExample> GetRandomExamples(

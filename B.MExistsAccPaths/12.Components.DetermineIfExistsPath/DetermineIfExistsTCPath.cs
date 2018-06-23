@@ -34,7 +34,7 @@ namespace ExistsAcceptingPath
       meapContext.PathExists = false;
       meapContext.PathFound = false;
       meapContext.TConsistPath = new List<long>();
-      meapContext.Output = new int[] { };
+      meapContext.Output = Array.Empty<int>();
 
       if (!meapContext.Commodities.Any())
       {
@@ -69,7 +69,7 @@ namespace ExistsAcceptingPath
       meapContext.PathExists = false;
       meapContext.PathFound = false;
       meapContext.TConsistPath = new List<long>();
-      meapContext.Output = new int[] { };
+      meapContext.Output = Array.Empty<int>();
 
       if (!meapContext.Commodities.Any())
       {

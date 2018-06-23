@@ -15,7 +15,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public LinEqsSetBuilder(
+    protected LinEqsSetBuilder(
       MEAPContext meapContext,
       TapeSegContext tapeSegContext,
       LinEquationContext linEquationContext)

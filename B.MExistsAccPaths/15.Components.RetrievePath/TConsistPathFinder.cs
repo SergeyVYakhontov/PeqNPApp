@@ -15,7 +15,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public TConsistPathFinder(
+    protected TConsistPathFinder(
       MEAPContext meapContext,
       TapeSegContext tapeSegContext,
       LinEquationContext linEquationContext)

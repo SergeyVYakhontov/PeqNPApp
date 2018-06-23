@@ -48,7 +48,6 @@ namespace VerifyResults
       {
         Console.ReadKey();
       }
-
     }
 
     #endregion

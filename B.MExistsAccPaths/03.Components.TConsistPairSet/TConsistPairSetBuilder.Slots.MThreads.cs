@@ -25,7 +25,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public string Name { get; private set; }
+    public string Name { get; }
 
     public void Init()
     {
@@ -163,8 +163,8 @@ namespace ExistsAcceptingPath
         }
         else
         {
-          meapContext.Assignments[nodeId] = new SortedSet<long>() { };
-          meapContext.Usages[nodeId] = new SortedSet<long>() { };
+          meapContext.Assignments[nodeId] = new SortedSet<long>();
+          meapContext.Usages[nodeId] = new SortedSet<long>();
         }
       }
 

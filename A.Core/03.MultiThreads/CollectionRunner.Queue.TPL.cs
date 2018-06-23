@@ -108,7 +108,7 @@ namespace Core
     {
       if (collectionToRun.Any())
       {
-        uint countToTake = Math.Min((uint)collectionToRun.Count(), packetItemsCount);
+        uint countToTake = Math.Min((uint)collectionToRun.Count, packetItemsCount);
         ItemType[] selectedItems = collectionToRun.Take((int)countToTake).ToArray();
 
         collectionToRun.RemoveRange(0, (int)countToTake);
@@ -117,7 +117,7 @@ namespace Core
       }
       else
       {
-        uint countToTake = Math.Min((uint)itemsQueue.Count(), packetItemsCount);
+        uint countToTake = Math.Min((uint)itemsQueue.Count, packetItemsCount);
         ItemType[] selectedItems = itemsQueue.Take((int)countToTake).ToArray();
 
         itemsQueue.RemoveRange(0, (int)countToTake);

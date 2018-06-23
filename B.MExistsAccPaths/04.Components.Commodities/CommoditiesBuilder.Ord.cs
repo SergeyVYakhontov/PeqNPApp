@@ -46,7 +46,7 @@ namespace ExistsAcceptingPath
       commodities = new SortedDictionary<long, Commodity>();
       long i = 0;
       SortedDictionary<long, DAGNode> nodeEnumeration = meapContext.TArbSeqCFG.NodeEnumeration;
-       
+
       foreach (KeyValuePair<long, CompStepNodePair> compStepNodePairPair in compStepNodePairEnum)
       {
         CompStepNodePair compStepNodePair = compStepNodePairPair.Value;

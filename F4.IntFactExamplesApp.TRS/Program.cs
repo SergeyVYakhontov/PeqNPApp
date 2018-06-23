@@ -17,7 +17,7 @@ using VerifyResults;
 
 namespace IntegerFactExamplesAppTRS
 {
-  public class Program
+  public static class Program
   {
     #region public members
 

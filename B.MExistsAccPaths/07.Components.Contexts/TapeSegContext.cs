@@ -46,7 +46,7 @@ namespace ExistsAcceptingPath
     public TapeSegContext()
     {
       TapeSegTConsistPath = new List<long>();
-      TapeSegOutput = new int[] { };
+      TapeSegOutput = Array.Empty<int>();
     }
 
     public TapeSegContext(TapeSegContext tapeSegContext)

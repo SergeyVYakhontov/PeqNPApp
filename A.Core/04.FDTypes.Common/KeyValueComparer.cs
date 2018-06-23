@@ -14,19 +14,19 @@ namespace Core
   {
     #region public members
 
-    public int Compare(KeyValuePair<long, long> k1, KeyValuePair<long, long> k2)
+    public int Compare(KeyValuePair<long, long> x, KeyValuePair<long, long> y)
     {
-      if (k1.Key < k2.Key)
+      if (x.Key < y.Key)
       {
         return -1;
       }
-      else if (k1.Key == k2.Key)
+      else if (x.Key == y.Key)
       {
-        if (k1.Value < k2.Value)
+        if (x.Value < y.Value)
         {
           return -1;
         }
-        else if (k1.Value == k2.Value)
+        else if (x.Value == y.Value)
         {
           return 0;
         }

@@ -42,24 +42,28 @@ namespace Core
       unsafe
       {
         fixed (UInt64* r_items_ptr = result.items)
-        fixed (UInt64* v1_items_ptr = v1.items)
-        fixed (UInt64* v2_items_ptr = v2.items)
         {
-          UInt64* r_items_last = r_items_ptr + result.items.Length;
-          UInt64* v1_items_last = v1_items_ptr + v1.items.Length;
-          UInt64* v2_items_last = v2_items_ptr + v2.items.Length;
-
-          UInt64* r_ptr = r_items_ptr;
-          UInt64* v1_ptr = v1_items_ptr;
-          UInt64* v2_ptr = v2_items_ptr;
-
-          for (; v1_ptr < v1_items_last;)
+          fixed (UInt64* v1_items_ptr = v1.items)
           {
-            (*r_ptr) = (*v1_ptr) & (~(*v2_ptr));
+            fixed (UInt64* v2_items_ptr = v2.items)
+            {
+              UInt64* r_items_last = r_items_ptr + result.items.Length;
+              UInt64* v1_items_last = v1_items_ptr + v1.items.Length;
+              UInt64* v2_items_last = v2_items_ptr + v2.items.Length;
 
-            r_ptr++;
-            v1_ptr++;
-            v2_ptr++;
+              UInt64* r_ptr = r_items_ptr;
+              UInt64* v1_ptr = v1_items_ptr;
+              UInt64* v2_ptr = v2_items_ptr;
+
+              for (; v1_ptr < v1_items_last;)
+              {
+                (*r_ptr) = (*v1_ptr) & (~(*v2_ptr));
+
+                r_ptr++;
+                v1_ptr++;
+                v2_ptr++;
+              }
+            }
           }
         }
       }
@@ -101,24 +105,28 @@ namespace Core
       unsafe
       {
         fixed (UInt64* r_items_ptr = result.items)
-        fixed (UInt64* v1_items_ptr = v1.items)
-        fixed (UInt64* v2_items_ptr = v2.items)
         {
-          UInt64* r_items_last = r_items_ptr + result.items.Length;
-          UInt64* v1_items_last = v1_items_ptr + v1.items.Length;
-          UInt64* v2_items_last = v2_items_ptr + v2.items.Length;
-
-          UInt64* r_ptr = r_items_ptr;
-          UInt64* v1_ptr = v1_items_ptr;
-          UInt64* v2_ptr = v2_items_ptr;
-
-          for (; v1_ptr < v1_items_last;)
+          fixed (UInt64* v1_items_ptr = v1.items)
           {
-            (*r_ptr) = (*v1_ptr) & (*v2_ptr);
+            fixed (UInt64* v2_items_ptr = v2.items)
+            {
+              UInt64* r_items_last = r_items_ptr + result.items.Length;
+              UInt64* v1_items_last = v1_items_ptr + v1.items.Length;
+              UInt64* v2_items_last = v2_items_ptr + v2.items.Length;
 
-            r_ptr++;
-            v1_ptr++;
-            v2_ptr++;
+              UInt64* r_ptr = r_items_ptr;
+              UInt64* v1_ptr = v1_items_ptr;
+              UInt64* v2_ptr = v2_items_ptr;
+
+              for (; v1_ptr < v1_items_last;)
+              {
+                (*r_ptr) = (*v1_ptr) & (*v2_ptr);
+
+                r_ptr++;
+                v1_ptr++;
+                v2_ptr++;
+              }
+            }
           }
         }
       }
@@ -159,24 +167,28 @@ namespace Core
       unsafe
       {
         fixed (UInt64* r_items_ptr = result.items)
-        fixed (UInt64* v1_items_ptr = v1.items)
-        fixed (UInt64* v2_items_ptr = v2.items)
         {
-          UInt64* r_items_last = r_items_ptr + result.items.Length;
-          UInt64* v1_items_last = v1_items_ptr + v1.items.Length;
-          UInt64* v2_items_last = v2_items_ptr + v2.items.Length;
-
-          UInt64* r_ptr = r_items_ptr;
-          UInt64* v1_ptr = v1_items_ptr;
-          UInt64* v2_ptr = v2_items_ptr;
-
-          for (; v1_ptr < v1_items_last;)
+          fixed (UInt64* v1_items_ptr = v1.items)
           {
-            (*r_ptr) = (*v1_ptr) | (*v2_ptr);
+            fixed (UInt64* v2_items_ptr = v2.items)
+            {
+              UInt64* r_items_last = r_items_ptr + result.items.Length;
+              UInt64* v1_items_last = v1_items_ptr + v1.items.Length;
+              UInt64* v2_items_last = v2_items_ptr + v2.items.Length;
 
-            r_ptr++;
-            v1_ptr++;
-            v2_ptr++;
+              UInt64* r_ptr = r_items_ptr;
+              UInt64* v1_ptr = v1_items_ptr;
+              UInt64* v2_ptr = v2_items_ptr;
+
+              for (; v1_ptr < v1_items_last;)
+              {
+                (*r_ptr) = (*v1_ptr) | (*v2_ptr);
+
+                r_ptr++;
+                v1_ptr++;
+                v2_ptr++;
+              }
+            }
           }
         }
       }

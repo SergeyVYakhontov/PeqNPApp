@@ -86,7 +86,7 @@ namespace ExistsAcceptingPath
     {
       long m = EquationsCount;
       long n = VarsCount;
-      
+
       A = AppHelper.CreateAmnMatrix<RationalNumber>(m, n + 1);
       RationalNumber[][] A_local = A;
 
@@ -185,7 +185,7 @@ namespace ExistsAcceptingPath
       String equationsStr = String.Join(",", equationsArray);
 
       String[] bVectorArray = AppHelper.SortedDictionaryToArray(VectorB, EquationsCount).Select(e =>
-        "{" + e.Value.ToString() + "," + GetEquationKindRepr(e.Key) + "}").ToArray();
+        "{" + e.Value + "," + GetEquationKindRepr(e.Key) + "}").ToArray();
       String bVectorStr = String.Join(",", bVectorArray);
 
       return minimizeStr + ",{" + equationsStr + "}" + ",{" + bVectorStr + "}";

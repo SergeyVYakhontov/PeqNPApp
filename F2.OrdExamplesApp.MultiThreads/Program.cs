@@ -17,7 +17,7 @@ using VerifyResults;
 
 namespace OrdinaryExamplesAppSlotsMThreads
 {
-  public class Program
+  public static class Program
   {
     #region public members
 

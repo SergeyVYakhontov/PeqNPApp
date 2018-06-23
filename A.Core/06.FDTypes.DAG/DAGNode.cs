@@ -27,10 +27,10 @@ namespace Core
 
     #region public members
 
-    public long Id { get; private set; }
+    public long Id { get; }
 
-    public List<DAGEdge> InEdges { get; private set; }
-    public List<DAGEdge> OutEdges { get; private set; }
+    public List<DAGEdge> InEdges { get; }
+    public List<DAGEdge> OutEdges { get; }
 
     #endregion
   }

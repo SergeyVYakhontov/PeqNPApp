@@ -17,14 +17,14 @@ namespace MTExtDefinitions
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)SubprogStates.MultReady,
                 Symbol = delimiter
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = acceptingState,
                     Symbol = delimiter,

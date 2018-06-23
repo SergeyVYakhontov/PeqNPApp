@@ -232,7 +232,6 @@ namespace MTDefinitions
     public override bool AllPathsFinite => false;
 
     public override long GetLTapeBound(long mu, long n) => 1;
-    public override long GetRTapeBound(long mu, long n) => base.GetRTapeBound(mu, n);
 
     #endregion
   }

@@ -39,25 +39,27 @@ namespace Core
       unsafe
       {
         fixed (UInt64* items_ptr = items)
-        fixed (UInt64* v_items_ptr = v.items)
         {
-          UInt64* items_last = items_ptr + items.Length;
-          UInt64* v2items_last = v_items_ptr + v.items.Length;
-
-          UInt64* ptr = items_ptr;
-          UInt64* v_ptr = v_items_ptr;
-
-          for (; ptr < items_last; )
+          fixed (UInt64* v_items_ptr = v.items)
           {
-            (*ptr) = (*ptr) & (~(*v_ptr));
+            UInt64* items_last = items_ptr + items.Length;
+            UInt64* v2items_last = v_items_ptr + v.items.Length;
 
-            if ((*ptr) != 0)
+            UInt64* ptr = items_ptr;
+            UInt64* v_ptr = v_items_ptr;
+
+            for (; ptr < items_last;)
             {
-              isEmpty = false;
-            }
+              (*ptr) = (*ptr) & (~(*v_ptr));
 
-            ptr++;
-            v_ptr++;
+              if ((*ptr) != 0)
+              {
+                isEmpty = false;
+              }
+
+              ptr++;
+              v_ptr++;
+            }
           }
         }
       }
@@ -95,25 +97,27 @@ namespace Core
       unsafe
       {
         fixed (UInt64* items_ptr = items)
-        fixed (UInt64* v_items_ptr = v.items)
         {
-          UInt64* items_last = items_ptr + items.Length;
-          UInt64* v2items_last = v_items_ptr + v.items.Length;
-
-          UInt64* ptr = items_ptr;
-          UInt64* v_ptr = v_items_ptr;
-
-          for (; ptr < items_last; )
+          fixed (UInt64* v_items_ptr = v.items)
           {
-            (*ptr) &= (*v_ptr);
+            UInt64* items_last = items_ptr + items.Length;
+            UInt64* v2items_last = v_items_ptr + v.items.Length;
 
-            if ((*ptr) != 0)
+            UInt64* ptr = items_ptr;
+            UInt64* v_ptr = v_items_ptr;
+
+            for (; ptr < items_last;)
             {
-              isEmpty = false;
-            }
+              (*ptr) &= (*v_ptr);
 
-            ptr++;
-            v_ptr++;
+              if ((*ptr) != 0)
+              {
+                isEmpty = false;
+              }
+
+              ptr++;
+              v_ptr++;
+            }
           }
         }
       }
@@ -149,25 +153,27 @@ namespace Core
       unsafe
       {
         fixed (UInt64* items_ptr = items)
-        fixed (UInt64* v_items_ptr = v.items)
         {
-          UInt64* items_last = items_ptr + items.Length;
-          UInt64* v2items_last = v_items_ptr + v.items.Length;
-
-          UInt64* ptr = items_ptr;
-          UInt64* v_ptr = v_items_ptr;
-
-          for (; ptr < items_last; )
+          fixed (UInt64* v_items_ptr = v.items)
           {
-            (*ptr) |= (*v_ptr);
+            UInt64* items_last = items_ptr + items.Length;
+            UInt64* v2items_last = v_items_ptr + v.items.Length;
 
-            if ((*ptr) != 0)
+            UInt64* ptr = items_ptr;
+            UInt64* v_ptr = v_items_ptr;
+
+            for (; ptr < items_last;)
             {
-              isEmpty = false;
-            }
+              (*ptr) |= (*v_ptr);
 
-            ptr++;
-            v_ptr++;
+              if ((*ptr) != 0)
+              {
+                isEmpty = false;
+              }
+
+              ptr++;
+              v_ptr++;
+            }
           }
         }
       }

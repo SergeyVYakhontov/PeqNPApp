@@ -15,7 +15,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public DAGEquationsSet(DAG graph)
+    protected DAGEquationsSet(DAG graph)
     {
       this.Graph = graph;
 

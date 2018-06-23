@@ -46,7 +46,7 @@ namespace ExistsAcceptingPath
       tapeSegContext.TapeSegPathExists = false;
       tapeSegContext.TapeSegPathFound = false;
       tapeSegContext.TapeSegTConsistPath = new List<long>();
-      tapeSegContext.TapeSegOutput = new int[] { };
+      tapeSegContext.TapeSegOutput = Array.Empty<int>();
       tapeSegContext.TCPELinProgSolution = null;
 
       ILinEqsAlgorithmProvider linEqsAlgorithmProvider = configuration.Get<ILinEqsAlgorithmProvider>();

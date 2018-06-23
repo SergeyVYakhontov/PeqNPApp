@@ -123,7 +123,7 @@ namespace Core
           {
             continue;
           }
-            
+
           bool edgeActionStatus = edgeAction(e);
           status = status || edgeActionStatus;
 

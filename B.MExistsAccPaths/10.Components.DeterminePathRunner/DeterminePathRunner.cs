@@ -18,7 +18,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public DeterminePathRunner(DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs)
+    protected DeterminePathRunner(DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs)
     {
       this.MEAPSharedContext = determinePathRunnerCtorArgs.MEAPSharedContext;
 

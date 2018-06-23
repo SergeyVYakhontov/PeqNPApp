@@ -68,6 +68,7 @@ namespace Core
       for (long k = 0; k < m; k++)
       {
         long i_max = -1;
+
         while (true)
         {
           if (k + s == n)
@@ -77,7 +78,7 @@ namespace Core
 
           for (long i = k; i < m; i++)
           {
-            if (!(A[i][k + s].IsEqualsTo0()))
+            if (!A[i][k + s].IsEqualsTo0())
             {
               i_max = i;
             }
@@ -114,6 +115,7 @@ namespace Core
           for (long j = p + 1; j < n + 1; j++)
           {
             RationalNumber Mkj = Mk[j];
+
             if (Mkj.IsEqualsTo0())
             {
               continue;

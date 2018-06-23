@@ -17,7 +17,7 @@ using VerifyResults;
 
 namespace IntegerFactExamplesAppComms
 {
-  public class Program
+  public static class Program
   {
     #region public members
 

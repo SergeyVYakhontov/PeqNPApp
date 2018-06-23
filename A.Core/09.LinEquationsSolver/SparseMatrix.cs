@@ -53,9 +53,8 @@ namespace Core
     public RationalNumber Get(long i, long j)
     {
       SortedDictionary<long, RationalNumber> row = cells[i];
-      RationalNumber v;
 
-      if (!row.TryGetValue(j, out v))
+      if (!row.TryGetValue(j, out RationalNumber v))
       {
         return new RationalNumber(0, 1);
       }
@@ -65,9 +64,7 @@ namespace Core
 
     public static RationalNumber Get(SortedDictionary<long, RationalNumber> row, long j)
     {
-      RationalNumber v;
-
-      if (!row.TryGetValue(j, out v))
+      if (!row.TryGetValue(j, out RationalNumber v))
       {
         return new RationalNumber(0, 1);
       }

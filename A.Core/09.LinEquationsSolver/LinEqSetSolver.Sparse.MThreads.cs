@@ -138,13 +138,12 @@ namespace Core
 
         while (true)
         {
-          long rowsToSubtractCount;
           SelectRows(
             rowsToProcess,
             from,
             gaussElimRunnersCount,
             rowsToSubtract,
-            out rowsToSubtractCount);
+            out long rowsToSubtractCount);
 
           if (rowsToSubtractCount == 0)
           {

@@ -85,7 +85,7 @@ namespace ExistsAcceptingPath
 
       tcpepOptimizer = new TCPEPOptimizer(meapContext, tapeSegContext);
       tcpepOptimizer.Init();
-      
+
       tcpepOptimizer.Step1();
 
       if (tcpepOptimizer.ThereIsNoTConsistPath)
@@ -181,9 +181,11 @@ namespace ExistsAcceptingPath
       foreach (long uNodeId in tapeSegContext.PartialTConsistPath)
       {
         long pathVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[uNodeId];
-        SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
 
-        coeffs[pathVar] = RationalNumber.Const_1;
+        SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>
+        {
+          [pathVar] = RationalNumber.Const_1
+        };
 
         long equation = linEquationContext.TCPELinProgMatrix.AddEquation(
           coeffs, EquationKind.Equal, RationalNumber.Const_1);
@@ -194,9 +196,12 @@ namespace ExistsAcceptingPath
     private void CreateObjVarsEqsSet()
     {
       long objectiveVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[meapContext.TArbSeqCFG.GetSourceNodeId()];
-      SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
 
-      coeffs[objectiveVar] = RationalNumber.Const_1;
+      SortedDictionary<long, RationalNumber> coeffs =
+        new SortedDictionary<long, RationalNumber>
+          {
+            [objectiveVar] = RationalNumber.Const_1
+          };
 
       long equation = linEquationContext.TCPELinProgMatrix.AddEquation(
         coeffs, EquationKind.Equal, RationalNumber.Const_1);
@@ -264,7 +269,7 @@ namespace ExistsAcceptingPath
       tapeSegContext.TapeSegPathExists = false;
       tapeSegContext.TapeSegPathFound = false;
       tapeSegContext.TapeSegTConsistPath = new List<long>();
-      tapeSegContext.TapeSegOutput = new int[] { };
+      tapeSegContext.TapeSegOutput = Array.Empty<int>();
 
       StrongConnCommsBuilder strongConnCommsBuilder = new StrongConnCommsBuilder(meapContext, tapeSegContext);
       strongConnCommsBuilder.Run();

@@ -15,7 +15,7 @@ namespace Core
   {
     #region Ctors
 
-    public OneTapeDTM(String name)
+    protected OneTapeDTM(String name)
       : base(name) { }
 
     #endregion

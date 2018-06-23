@@ -163,13 +163,13 @@ namespace ExistsAcceptingPath
         {
           meapContext.Vars.Add(variable);
 
-          meapContext.Assignments[nodeId] = new SortedSet<long>() { variable };
-          meapContext.Usages[nodeId] = new SortedSet<long>() { variable };
+          meapContext.Assignments[nodeId] = new SortedSet<long> { variable };
+          meapContext.Usages[nodeId] = new SortedSet<long> { variable };
         }
         else
         {
-          meapContext.Assignments[nodeId] = new SortedSet<long>() { };
-          meapContext.Usages[nodeId] = new SortedSet<long>() { };
+          meapContext.Assignments[nodeId] = new SortedSet<long>();
+          meapContext.Usages[nodeId] = new SortedSet<long>();
         }
       }
 

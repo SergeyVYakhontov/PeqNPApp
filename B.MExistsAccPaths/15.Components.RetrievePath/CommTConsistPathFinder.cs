@@ -45,14 +45,10 @@ namespace ExistsAcceptingPath
       }
 
       List<long> partialTConsistPath = tapeSegContext.PartialTConsistPath;
-      List<long> tConsistPath;
-      bool KPathFound;
 
       while (true)
       {
-        long initNodeId;
-
-        if (!SelectNode(partialTConsistPath, out initNodeId))
+        if (!SelectNode(partialTConsistPath, out long initNodeId))
         {
           return;
         }
@@ -69,7 +65,7 @@ namespace ExistsAcceptingPath
           d => NodeInChain(d.ToNode),
           u => { processedNodes.Add(u.Id); },
           e => { },
-          out tConsistPath, out KPathFound);
+          out List<long> tConsistPath, out bool KPathFound);
 
         if (KPathFound)
         {
@@ -99,9 +95,6 @@ namespace ExistsAcceptingPath
       GraphTConZetaBuilder gtczBuilder = new GraphTConZetaBuilder(meapContext);
       TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = gtczBuilder.Run(tapeSegContext.KSetZetaSubset.First().Value);
 
-      List<long> tConsistPath;
-      bool KPathFound;
-
       DAG.FindPath_Greedy(
         gtcz,
         gtcz.s,
@@ -111,7 +104,7 @@ namespace ExistsAcceptingPath
         d => true,
         u => { },
         e => { },
-        out tConsistPath, out KPathFound);
+        out List<long> tConsistPath, out bool KPathFound);
 
       tapeSegContext.TapeSegTConsistPath = new List<long>(tConsistPath);
       tapeSegContext.TapeSegPathFound = KPathFound;
@@ -182,12 +175,7 @@ namespace ExistsAcceptingPath
       SortedDictionary<long, DAGNode> nodeEnumeration = meapContext.TArbSeqCFG.NodeEnumeration;
       DAGNode uNode = nodeEnumeration[uNodeId];
 
-      if ((InNodesCount(uNode) == 1) && (OutNodesCount(uNode) == 1))
-      {
-        return true;
-      }
-
-      return false;
+      return (InNodesCount(uNode) == 1) && (OutNodesCount(uNode) == 1);
     }
 
     #endregion

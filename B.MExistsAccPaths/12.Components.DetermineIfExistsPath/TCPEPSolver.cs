@@ -13,7 +13,7 @@ namespace ExistsAcceptingPath
   {
     #region Ctors
 
-    public TCPEPSolver(MEAPContext meapContext, TapeSegContext tapeSegContext)
+    protected TCPEPSolver(MEAPContext meapContext, TapeSegContext tapeSegContext)
       : base(meapContext, tapeSegContext) { }
 
     #endregion

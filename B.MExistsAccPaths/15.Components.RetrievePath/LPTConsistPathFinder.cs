@@ -45,7 +45,7 @@ namespace ExistsAcceptingPath
         meapContext.TArbSeqCFG.NodeEnumeration[headNodeId],
         meapContext.TArbSeqCFG.t,
         GraphDirection.Forward,
-        u => IsIntegralFlowNode(u),
+        IsIntegralFlowNode,
         d => true,
         u => { },
         e => { },

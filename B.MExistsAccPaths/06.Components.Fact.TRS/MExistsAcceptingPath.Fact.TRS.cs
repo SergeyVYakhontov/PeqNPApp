@@ -87,7 +87,7 @@ namespace ExistsAcceptingPath
             determinePathRunners,
             determinePathRunnersCount,
             WaitMethod.WaitAll,
-            itemsArray => itemsArray.FirstOrDefault(s => s.Done));
+            itemsArray => Array.Find(itemsArray, s => s.Done));
 
         determinePathRunnerSet.Run();
 
@@ -101,7 +101,7 @@ namespace ExistsAcceptingPath
       }
 
       result = true;
-      output = new int[0];
+      output = Array.Empty<int>();
     }
 
     #endregion

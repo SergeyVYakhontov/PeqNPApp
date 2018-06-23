@@ -99,13 +99,13 @@ namespace Core
       throw new NotImplementedException();
     }
 
-    public override bool Equals(Object other)
+    public override bool Equals(Object obj)
     {
-      BitVector v = (BitVector)other;
+      BitVector v = obj as BitVector;
 
       Ensure.That(Size).Is(v.Size);
 
-      return Enumerable.SequenceEqual(items, v.items);
+      return items.SequenceEqual(v.items);
     }
 
     public override int GetHashCode()

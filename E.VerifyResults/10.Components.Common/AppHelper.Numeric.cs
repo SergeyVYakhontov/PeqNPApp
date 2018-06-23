@@ -18,7 +18,7 @@ namespace VerifyResults
 
     public static BigInteger BitArrayToBigInteger(byte[] bitArray)
     {
-      byte[] numberBytes = new byte[bitArray.Length / 8 + 1];
+      byte[] numberBytes = new byte[(bitArray.Length / 8) + 1];
 
       for(long i = 0; i < bitArray.Length; i++)
       {
