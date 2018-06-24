@@ -72,7 +72,7 @@ namespace ExistsAcceptingPath
       List<KeyValuePair<long, ComputationStep>> pathCompSteps =
         tConsistPath.Select(uId =>
           new KeyValuePair<long, ComputationStep>(
-            uId, meapContext.TArbitrarySeqGraph.IdToInfoMap[uId].CompStep))
+            uId, meapContext.TArbitrarySeqGraph.IdToNodeInfoMap[uId].CompStep))
               .ToList();
 
       pathCompSteps.ForEach(s =>
@@ -93,7 +93,7 @@ namespace ExistsAcceptingPath
       {
         ComputationStep compStep = compStepP.Value;
 
-        int currentTapeSym = tmInstance.TapeSymbol(meapContext.MEAPSharedContext.Input, (int)compStep.kappaTape);
+        int currentTapeSym = tmInstance.TapeSymbol((int)compStep.kappaTape);
 
         Ensure.That(currentTapeSym).Is(compStep.s);
 

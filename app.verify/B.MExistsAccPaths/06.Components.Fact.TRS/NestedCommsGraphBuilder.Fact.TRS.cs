@@ -111,7 +111,6 @@ namespace ExistsAcceptingPath
 
     private bool ProcessNode(DAGNode node)
     {
-      long nodeId = node.Id;
       long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
 
       return true;
@@ -124,7 +123,6 @@ namespace ExistsAcceptingPath
 
       DAG.BFS_VLevels(
         meapContext.TArbSeqCFG,
-        meapContext.TArbSeqCFG.s,
         GraphDirection.Forward,
         meapContext.NodeVLevels,
         DAG.Level0,

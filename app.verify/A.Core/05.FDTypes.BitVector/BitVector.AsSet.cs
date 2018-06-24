@@ -34,21 +34,21 @@ namespace Core
 
     public ulong Size => (ulong)bits.Count;
 
-    public void SetItem(ulong Index, byte To)
+    public void SetItem(ulong index, byte to)
     {
-      if(To == 0)
+      if(to == 0)
       {
-        bits.Remove(Index);
+        bits.Remove(index);
       }
       else
       {
-        bits.Add(Index);
+        bits.Add(index);
       }
     }
 
-    public byte GetItem(ulong Index)
+    public byte GetItem(ulong index)
     {
-      return (bits.Contains(Index) ? (byte)1 : (byte)0);
+      return (bits.Contains(index) ? (byte)1 : (byte)0);
     }
 
     public byte this[ulong i]

@@ -28,7 +28,7 @@ namespace Core
 
     public int[] Q { get; protected set; }
     public int[] Gamma { get; protected set; }
-    public const int b = -1;
+    public const int blankSymbol = -1;
     public int[] Sigma { get; protected set; }
     public Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta { get; protected set; }
     public int qStart { get; protected set; }
@@ -46,8 +46,8 @@ namespace Core
     public abstract bool AcceptingPathAlwaysExists { get; }
     public abstract bool AllPathsFinite { get; }
 
-    public virtual long GetLTapeBound(long mu, long n) => (1 - mu);
-    public virtual long GetRTapeBound(long mu, long n) => (1 + mu);
+    public virtual long GetLTapeBound(long mu, long n) => 1 - mu;
+    public virtual long GetRTapeBound(long mu, long n) => 1 + mu;
     public virtual long ExpectedPathLength(long n) => n;
 
     public const long InstancesCountLimit = 1024 * 1024;
@@ -79,14 +79,11 @@ namespace Core
           return;
         }
 
-        if (Accepted)
+        if (Accepted && !AllPathsFinite)
         {
-          if (!AllPathsFinite)
-          {
-            ComputationFinished = true;
+          ComputationFinished = true;
 
-            break;
-          }
+          break;
         }
       }
 

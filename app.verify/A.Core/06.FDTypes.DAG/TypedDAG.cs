@@ -21,18 +21,19 @@ namespace Core
 
     #region public members
 
-    public SortedDictionary<long, NodeType> IdToInfoMap { get; private set; }
+    public SortedDictionary<long, NodeType> IdToNodeInfoMap { get; private set; }
+    public SortedDictionary<long, EdgeType> IdToEdgeInfoMap { get; }
 
-    public void CreateIdToInfoMap()
+    public void CreateIdToNodeInfoMap()
     {
-      IdToInfoMap = new SortedDictionary<long, NodeType>();
+      IdToNodeInfoMap = new SortedDictionary<long, NodeType>();
 
-      Nodes.ForEach(u => { IdToInfoMap[u.Id] = new NodeType(); });
+      Nodes.ForEach(u => { IdToNodeInfoMap[u.Id] = new NodeType(); });
     }
 
-    public void CopyIdToInfoMap(SortedDictionary<long, NodeType> from)
+    public void CopyIdToNodeInfoMap(SortedDictionary<long, NodeType> from)
     {
-      IdToInfoMap = new SortedDictionary<long, NodeType>(from);
+      IdToNodeInfoMap = new SortedDictionary<long, NodeType>(from);
     }
 
     #endregion

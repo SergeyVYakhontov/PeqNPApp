@@ -57,7 +57,6 @@ namespace ExistsAcceptingPath
         processedNodes.Add(initNodeId);
 
         DAG.FindPath_Greedy(
-          meapContext.TArbSeqCFG,
           initNode,
           meapContext.TArbSeqCFG.t,
           GraphDirection.Forward,
@@ -96,8 +95,7 @@ namespace ExistsAcceptingPath
       TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = gtczBuilder.Run(tapeSegContext.KSetZetaSubset.First().Value);
 
       DAG.FindPath_Greedy(
-        gtcz,
-        gtcz.s,
+         gtcz.s,
         gtcz.t,
         GraphDirection.Forward,
         u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id),

@@ -58,7 +58,7 @@ namespace MTExtDefinitions
       };
     }
 
-    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog1Std(int frameLength)
+    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog1Std()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
@@ -107,14 +107,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)InitStates.StopInit,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)SubprogStates.GenNumber1Ready,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -162,14 +162,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.StopMultiplying,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)SubprogStates.CompareReady,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }

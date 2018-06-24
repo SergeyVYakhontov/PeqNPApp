@@ -14,31 +14,31 @@ namespace Core
   {
     #region public members
 
-    public int Compare(StateSymbolDirectionTriple k1, StateSymbolDirectionTriple k2)
+    public int Compare(StateSymbolDirectionTriple x, StateSymbolDirectionTriple y)
     {
-      if (k1.State < k2.State)
+      if (x.State < y.State)
       {
         return -1;
       }
-      else if (k1.State == k2.State)
+      else if (x.State == y.State)
       {
-        if (k1.Symbol < k2.Symbol)
+        if (x.Symbol < y.Symbol)
         {
           return -1;
         }
-        else if (k1.Symbol == k2.Symbol)
+        else if (x.Symbol == y.Symbol)
         {
-          if (k1.Direction < k2.Direction)
+          if (x.Direction < y.Direction)
           {
             return -1;
           }
-          else if (k1.Direction == k2.Direction)
+          else if (x.Direction == y.Direction)
           {
-            if (k1.Shift < k2.Shift)
+            if (x.Shift < y.Shift)
             {
               return -1;
             }
-            else if (k1.Shift == k2.Shift)
+            else if (x.Shift == y.Shift)
             {
               return 0;
             }

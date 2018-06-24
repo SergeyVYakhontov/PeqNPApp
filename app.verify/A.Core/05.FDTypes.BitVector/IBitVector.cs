@@ -14,21 +14,21 @@ namespace Core
   {
     ulong Size { get; }
 
-    void SetItem(ulong Index, byte To);
-    byte GetItem(ulong Index);
+    void SetItem(ulong index, byte to);
+    byte GetItem(ulong index);
 
     byte this[ulong i] { get; set; }
 
     ulong ItemCount();
     bool IsEmpty();
 
-    IBitVector BitwiseSubtract(IBitVector v1, IBitVector v2);
-    IBitVector BitwiseAnd(IBitVector v1, IBitVector v2);
-    IBitVector BitwiseOr(IBitVector v1, IBitVector v2);
+    IBitVector BitwiseSubtract(IBitVector x, IBitVector y);
+    IBitVector BitwiseAnd(IBitVector x, IBitVector y);
+    IBitVector BitwiseOr(IBitVector x, IBitVector y);
 
-    void BitwiseSubtract(IBitVector v);
-    void BitwiseAnd(IBitVector v);
-    void BitwiseOr(IBitVector v);
+    void BitwiseSubtract(IBitVector u);
+    void BitwiseAnd(IBitVector u);
+    void BitwiseOr(IBitVector u);
 
     IEnumerable<ulong> GetBit1List();
   }

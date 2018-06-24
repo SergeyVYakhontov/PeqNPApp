@@ -46,8 +46,7 @@ namespace ExistsAcceptingPath
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(
-          meapContext, meapContext.TArbSeqCFG);
+        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
       }
 
       log.DebugFormat("states = {0}", AppHelper.ArrayToString(states));
@@ -160,7 +159,6 @@ namespace ExistsAcceptingPath
 
       DAG.BFS_VLevels(
         meapContext.TArbSeqCFG,
-        meapContext.TArbSeqCFG.s,
         GraphDirection.Forward,
         meapContext.NodeVLevels,
         DAG.Level0,

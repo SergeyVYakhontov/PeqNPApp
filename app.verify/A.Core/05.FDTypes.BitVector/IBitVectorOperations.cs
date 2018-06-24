@@ -12,9 +12,9 @@ namespace Core
 {
   public interface IBitVectorOperations
   {
-    IBitVector BitwiseSubtract(IBitVector v1, IBitVector v2);
-    IBitVector BitwiseAnd(IBitVector v1, IBitVector v2);
-    IBitVector BitwiseOr(IBitVector v1, IBitVector v2);
+    IBitVector BitwiseSubtract(IBitVector x, IBitVector y);
+    IBitVector BitwiseAnd(IBitVector x, IBitVector y);
+    IBitVector BitwiseOr(IBitVector x, IBitVector y);
   }
 }
 

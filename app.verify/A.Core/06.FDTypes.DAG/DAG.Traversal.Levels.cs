@@ -14,7 +14,6 @@ namespace Core
 
     public static void BFS_VLevels(
       DAG dag,
-      DAGNode s,
       GraphDirection dir,
       SortedDictionary<long, SortedSet<long>> nodeVLevels,
       long currentLevel,

@@ -47,7 +47,7 @@ namespace MTDefinitions
       qList.Add(preAcceptingState);
       Q = qList.ToArray();
 
-      List<int> gammaList = new List<int>() { OneTapeTuringMachine.b };
+      List<int> gammaList = new List<int>() { OneTapeTuringMachine.blankSymbol };
 
       new IntSegment(variousSymbolsStart, variousSymbolsEnd)
         .ForEach(g => gammaList.Add((int)g));
@@ -56,7 +56,7 @@ namespace MTDefinitions
       gammaList.Add(acceptingSymbolReplace);
       Gamma = gammaList.ToArray();
 
-      List<int> sigmaList = new List<int>() { OneTapeTuringMachine.b, };
+      List<int> sigmaList = new List<int>() { OneTapeTuringMachine.blankSymbol, };
 
       new IntSegment(variousSymbolsStart, variousSymbolsEnd)
         .ForEach(g => sigmaList.Add((int)g));
@@ -92,7 +92,7 @@ namespace MTDefinitions
               if ((qNext == qStart) ||
                   (qNext == preAcceptingState) ||
                   (qNext == acceptingState) ||
-                  (sNext == OneTapeTuringMachine.b) ||
+                  (sNext == OneTapeTuringMachine.blankSymbol) ||
                   (sNext == acceptingSymbol))
               {
                 continue;
@@ -122,7 +122,7 @@ namespace MTDefinitions
 
       foreach (int s in Gamma)
       {
-        if ((s == OneTapeTuringMachine.b) ||
+        if ((s == OneTapeTuringMachine.blankSymbol) ||
             (s == acceptingSymbol))
         {
           continue;
@@ -146,7 +146,7 @@ namespace MTDefinitions
 
       foreach (int s in Gamma)
       {
-        if ((s == OneTapeTuringMachine.b) ||
+        if ((s == OneTapeTuringMachine.blankSymbol) ||
             (s == acceptingSymbol))
         {
           continue;

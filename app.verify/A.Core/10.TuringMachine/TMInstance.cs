@@ -21,7 +21,7 @@ namespace Core
       this.owner = owner;
       Level = 0;
 
-      tape = new TapeArray(owner);
+      tape = new TapeArray();
       cellIndex = 1;
       state = owner.qStart;
 
@@ -87,7 +87,7 @@ namespace Core
 
     public int[] GetOutput()
     {
-      if (CurrentSymbol == OneTapeTuringMachine.b)
+      if (CurrentSymbol == OneTapeTuringMachine.blankSymbol)
       {
         return Array.Empty<int>();
       }
@@ -95,12 +95,12 @@ namespace Core
       long leftIndex = 1;
       long rightIndex = 1;
 
-      while (tape[leftIndex - 1] != OneTapeTuringMachine.b)
+      while (tape[leftIndex - 1] != OneTapeTuringMachine.blankSymbol)
       {
         leftIndex--;
       }
 
-      while (tape[rightIndex + 1] != OneTapeTuringMachine.b)
+      while (tape[rightIndex + 1] != OneTapeTuringMachine.blankSymbol)
       {
         rightIndex++;
       }
@@ -123,10 +123,7 @@ namespace Core
       return tape.GetSubArray(leftIndex, rightIndex);
     }
 
-    public int TapeSymbol(int[] input, int tapeIndex)
-    {
-      return tape.GetValue(tapeIndex);
-    }
+    public int TapeSymbol(int tapeIndex) => tape.GetValue(tapeIndex);
 
     public static int MoveToNextConfiguration(
       StateSymbolDirectionTriple to,
@@ -188,9 +185,9 @@ namespace Core
       }
     }
 
-    private bool IsFinalState(int state)
+    private bool IsFinalState(int s)
     {
-      return owner.F.Contains(state);
+      return owner.F.Contains(s);
     }
 
     #endregion

@@ -47,8 +47,7 @@ namespace ExistsAcceptingPath
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(
-          meapContext, meapContext.TArbSeqCFG);
+        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
       }
 
       meapContext.DUPairCount = 0;

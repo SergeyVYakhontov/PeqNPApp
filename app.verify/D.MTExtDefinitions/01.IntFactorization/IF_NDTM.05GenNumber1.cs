@@ -16,7 +16,7 @@ namespace MTExtDefinitions
   {
     #region private members
 
-    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaGenNumber1(int frameLength)
+    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaGenNumber1()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
@@ -25,14 +25,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)SubprogStates.GenNumber1Ready,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)GenNumber1States.GenBit0,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -43,7 +43,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)GenNumber1States.GenBit0,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
@@ -67,7 +67,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)GenNumber1States.GenBit1,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
@@ -97,7 +97,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)GenNumber1States.GenBit,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
@@ -127,14 +127,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)GenNumber1States.MoveToDelimiter,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)GenNumber1States.MoveToDelimiter,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.R
                   }
               }

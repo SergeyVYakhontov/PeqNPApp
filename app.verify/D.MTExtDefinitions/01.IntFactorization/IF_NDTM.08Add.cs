@@ -16,7 +16,7 @@ namespace MTExtDefinitions
   {
     #region private members
 
-    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaAdd(int frameLength)
+    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaAdd()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
@@ -191,7 +191,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)AddStates.AddBitC0,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
@@ -207,7 +207,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)AddStates.AddBitC1,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {

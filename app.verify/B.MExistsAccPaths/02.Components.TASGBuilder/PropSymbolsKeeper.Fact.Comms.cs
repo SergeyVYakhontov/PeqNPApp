@@ -39,13 +39,12 @@ namespace ExistsAcceptingPath
 
       for (long i = L; i <= R; i++)
       {
-        int tapeSymbol = MEAPSharedContext.InitInstance.TapeSymbol(MEAPSharedContext.Input, (int)i);
+        int tapeSymbol = MEAPSharedContext.InitInstance.TapeSymbol((int)i);
         nodeProcSym.Add(new PropSymbol(i, tapeSymbol));
       }
     }
 
     public bool IfThereIsFlowFrom(
-      long sNodeId,
       DAGNode fromNode,
       ComputationStep fromCompStep,
       ComputationStep toCompStep)
@@ -82,10 +81,8 @@ namespace ExistsAcceptingPath
     }
 
     public void PropagateSymbol(
-      long sNodeId,
       DAGNode fromNode,
       DAGNode toNode,
-      ComputationStep fromCompStep,
       ComputationStep toCompStep)
     {
       SortedSet<PropSymbol> procSymPrev = AppHelper.TakeValueByKey(

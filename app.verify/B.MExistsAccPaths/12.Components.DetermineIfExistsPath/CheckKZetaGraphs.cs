@@ -44,7 +44,7 @@ namespace ExistsAcceptingPath
     public void Run()
     {
       ComputeUnusedNodes();
-      CheckIfPathExists("KZeta");
+      CheckIfPathExists();
     }
 
     #endregion
@@ -119,14 +119,12 @@ namespace ExistsAcceptingPath
 
     private bool IsTArbSeqCFGConnected()
     {
-      bool isTArbSeqCFGConnected = DAG.IsConnected(
+      return DAG.IsConnected(
         meapContext.TArbSeqCFG,
         u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id));
-
-      return isTArbSeqCFGConnected;
     }
 
-    private void CheckIfPathExists(string stepName)
+    private void CheckIfPathExists()
     {
       if (!IsKZetaGraphComplete())
       {

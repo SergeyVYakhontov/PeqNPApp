@@ -25,14 +25,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)SubprogStates.CompareReady,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)CompareStates.StartComparing,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -41,14 +41,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.StartComparing,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)CompareStates.MoveLeftToA,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.L,
                     Shift = frameLength
                   }
@@ -90,14 +90,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.MoveLeftToA,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)CompareStates.MoveLeftToA,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.L
                   }
               }
@@ -140,14 +140,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.MoveToStartA,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)CompareStates.BitLoopStart,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.R
                   }
               }
@@ -362,14 +362,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.BitLoopStart_f,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = acceptingState,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.R
                   }
               }
@@ -380,14 +380,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.BitLoopD0,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = rejectingState,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -396,14 +396,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.BitLoopD1,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = rejectingState,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -412,14 +412,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)CompareStates.BitLoopStart,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = acceptingState,
-                     Symbol = OneTapeTuringMachine.b,
+                     Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.R
                   }
               }

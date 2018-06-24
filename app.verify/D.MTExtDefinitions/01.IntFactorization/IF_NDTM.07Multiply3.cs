@@ -45,7 +45,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.AddC1f_D,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {

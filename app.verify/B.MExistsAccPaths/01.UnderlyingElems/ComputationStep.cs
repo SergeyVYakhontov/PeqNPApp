@@ -45,9 +45,9 @@ namespace ExistsAcceptingPath
     public long kappaTape { get; set; }
     public long kappaStep { get; set; }
 
-    public override bool Equals(Object other)
+    public override bool Equals(Object obj)
     {
-      ComputationStep compStep = (ComputationStep)other;
+      ComputationStep compStep = (ComputationStep)obj;
 
       return
         (q == compStep.q) &&

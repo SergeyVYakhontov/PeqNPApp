@@ -13,10 +13,10 @@ namespace Core
 {
   public partial class BitVectorAlloc
   {
-    public IBitVector BitwiseSubtract(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseSubtract(IBitVector x, IBitVector y)
     {
-      BitVectorAlloc v1 = u1 as BitVectorAlloc;
-      BitVectorAlloc v2 = u2 as BitVectorAlloc;
+      BitVectorAlloc v1 = x as BitVectorAlloc;
+      BitVectorAlloc v2 = y as BitVectorAlloc;
 
       Ensure.That(v1.Size).Is(v2.Size);
 
@@ -76,10 +76,10 @@ namespace Core
       return result;
     }
 
-    public IBitVector BitwiseAnd(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseAnd(IBitVector x, IBitVector y)
     {
-      BitVectorAlloc v1 = u1 as BitVectorAlloc;
-      BitVectorAlloc v2 = u2 as BitVectorAlloc;
+      BitVectorAlloc v1 = x as BitVectorAlloc;
+      BitVectorAlloc v2 = y as BitVectorAlloc;
 
       Ensure.That(v1.Size).Is(v2.Size);
 
@@ -139,10 +139,10 @@ namespace Core
       return result;
     }
 
-    public IBitVector BitwiseOr(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseOr(IBitVector x, IBitVector y)
     {
-      BitVectorAlloc v1 = u1 as BitVectorAlloc;
-      BitVectorAlloc v2 = u2 as BitVectorAlloc;
+      BitVectorAlloc v1 = x as BitVectorAlloc;
+      BitVectorAlloc v2 = y as BitVectorAlloc;
 
       Ensure.That(v1.Size).Is(v2.Size);
 

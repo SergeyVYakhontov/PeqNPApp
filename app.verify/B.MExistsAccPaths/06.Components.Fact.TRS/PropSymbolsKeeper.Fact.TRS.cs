@@ -39,7 +39,7 @@ namespace ExistsAcceptingPath
 
       for (long i = L; i <= R; i++)
       {
-        int tapeSymbol = MEAPSharedContext.InitInstance.TapeSymbol(MEAPSharedContext.Input, (int)i);
+        int tapeSymbol = MEAPSharedContext.InitInstance.TapeSymbol((int)i);
 
         nodeProcSym.Add(new PropSymbol(i, tapeSymbol));
       }

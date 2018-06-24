@@ -58,7 +58,7 @@ namespace ExistsAcceptingPath
       log.Info("Building TArbitrarySeqGraph");
 
       log.Info("Traverse MNP tree");
-      TraverseMNPTree(0);
+      TraverseMNPTree();
 
       newNodeEnumeration.ForEach(t => nodeEnumeration[t.Key] = t.Value);
       newCompStepToNode.ForEach(t => compStepToNode[t.Key] = t.Value);
@@ -70,7 +70,7 @@ namespace ExistsAcceptingPath
       endNodes.ForEach(e => endNodeIds.Add(e.Id));
 
       CreateSinkNode();
-      G.CopyIdToInfoMap(idToInfoMap);
+      G.CopyIdToNodeInfoMap(idToInfoMap);
 
       meapContext.TArbitrarySeqGraph = G;
       long newMu = processedMu.Last();
@@ -97,7 +97,7 @@ namespace ExistsAcceptingPath
       log.Info("Create TArbSeqGraph copy");
       TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("CFG");
       DAG.CreateCopy(G, cfg);
-      cfg.CopyIdToInfoMap(idToInfoMap);
+      cfg.CopyIdToNodeInfoMap(idToInfoMap);
 
       log.Info("Create sink node");
       CreateSinkNode();
@@ -112,12 +112,12 @@ namespace ExistsAcceptingPath
       DAG.CutChains(cfg, meapContext.TArbSeqCFG);
 
       log.Info("Create CFG idToInfoMap");
-      meapContext.TArbSeqCFG.CopyIdToInfoMap(idToInfoMap);
+      meapContext.TArbSeqCFG.CopyIdToNodeInfoMap(idToInfoMap);
 
       log.InfoFormat(
         "idToInfoMap: {0} {1}",
         idToInfoMap.Count,
-        meapContext.TArbSeqCFG.IdToInfoMap.Count);
+        meapContext.TArbSeqCFG.IdToNodeInfoMap.Count);
 
       Trace_TArbSeqCFG();
     }
@@ -159,15 +159,15 @@ namespace ExistsAcceptingPath
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
     private readonly SortedDictionary<ComputationStep, long> compStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
-    private SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
+    private readonly SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
 
-    private List<DAGNode> endNodes = new List<DAGNode>();
-    private List<long> endNodeIds = new List<long>();
-    private List<DAGNode> acceptingNodes = new List<DAGNode>();
-    private long treesCut = 0;
-    private SortedSet<long> processedMu = new SortedSet<long>();
+    private readonly List<DAGNode> endNodes = new List<DAGNode>();
+    private readonly List<long> endNodeIds = new List<long>();
+    private readonly List<DAGNode> acceptingNodes = new List<DAGNode>();
+    private long treesCut;
+    private readonly SortedSet<long> processedMu = new SortedSet<long>();
 
-    private SortedDictionary<long, DAGNode> newNodeEnumeration = new SortedDictionary<long, DAGNode>();
+    private readonly SortedDictionary<long, DAGNode> newNodeEnumeration = new SortedDictionary<long, DAGNode>();
     private SortedDictionary<ComputationStep, long> newCompStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
 
@@ -192,7 +192,6 @@ namespace ExistsAcceptingPath
 
     private void CreateDAGNode(
       Queue<DAGNode> nodeQueue,
-      long sNodeId,
       DAGNode fromNode,
       ComputationStep fromCompStep,
       StateSymbolPair from,
@@ -208,7 +207,6 @@ namespace ExistsAcceptingPath
       toCompStep.Shift = p.Shift;
 
       bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
-        sNodeId,
         fromNode,
         fromCompStep,
         toCompStep);
@@ -244,10 +242,13 @@ namespace ExistsAcceptingPath
       DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
       G.AddEdge(e);
 
-      propSymbolsKeeper.PropagateSymbol(sNodeId, fromNode, toNode, fromCompStep, toCompStep);
+      propSymbolsKeeper.PropagateSymbol(
+        fromNode,
+        toNode,
+        toCompStep);
     }
 
-    private void TraverseMNPTree(long sNodeId)
+    private void TraverseMNPTree()
     {
       Queue<DAGNode> nodeQueue = new Queue<DAGNode>();
 
@@ -287,7 +288,6 @@ namespace ExistsAcceptingPath
           {
             CreateDAGNode(
               nodeQueue,
-              sNodeId,
               fromNode,
               fromCompStep,
               from,
@@ -319,7 +319,7 @@ namespace ExistsAcceptingPath
 
       foreach (long uNodeId in endNodeIds)
       {
-        ComputationStep compStep = cfg.IdToInfoMap[uNodeId].CompStep;
+        ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
 
         if (states.Contains(compStep.qNext))
         {

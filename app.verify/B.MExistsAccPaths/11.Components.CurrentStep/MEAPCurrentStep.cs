@@ -79,7 +79,6 @@ namespace ExistsAcceptingPath
       meapContext.EdgeToLevel = new SortedDictionary<long, long>();
 
       DAG.DFS(
-        dag,
         dag.s,
         GraphDirection.Forward,
         (u, level) =>

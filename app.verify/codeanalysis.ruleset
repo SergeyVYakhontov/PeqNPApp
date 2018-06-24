@@ -11,5 +11,6 @@
   </Rules>
   <Rules AnalyzerId="RefctoringEssentials" RuleNamespace="RefctoringEssentials">
     <Rule Id="RECS0145" Action="None" />
+    <Rule Id="RECS0070" Action="None" />
   </Rules>
 </RuleSet>

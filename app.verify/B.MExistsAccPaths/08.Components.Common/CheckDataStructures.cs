@@ -16,14 +16,13 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public static void CheckTASGHasNoBackAndCrossEdges(MEAPContext meapContext, DAG dag)
+    public static void CheckTASGHasNoBackAndCrossEdges(DAG dag)
     {
       log.Info("CheckTASGHasNoBackAndCrossEdges");
       SortedDictionary<long, SortedSet<long>> VLevelSets =
         new SortedDictionary<long,SortedSet<long>>();
 
       DAG.DFS(
-        dag,
         dag.s,
         GraphDirection.Forward,
         (u, level) =>
@@ -31,7 +30,7 @@ namespace ExistsAcceptingPath
           AppHelper.TakeValueByKey(VLevelSets, level,
             () => new SortedSet<long>()).Add(u.Id);
         },
-        (e, level) => { }
+        (e, l) => { }
         );
 
       DAG.ClassifyDAGEdges(

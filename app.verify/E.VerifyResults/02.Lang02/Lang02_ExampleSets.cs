@@ -21,24 +21,24 @@ namespace VerifyResults
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new Lang2_Example()
+          new Lang2_Example
             {
               Name = "E1",
               Input = new int[] {1, 0, 0, 1, 1}
             },
-          new Lang2_Example()
+          new Lang2_Example
             {
               Name = "E2",
               Input = new int[] {1, 0, 1}
             },
-          new Lang2_Example()
+          new Lang2_Example
             {
               Name = "E3",
               Input = new int[] {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
             },
-          new Lang2_Example()
+          new Lang2_Example
              {
                Name = "E4",
                Input = new int[]
@@ -48,7 +48,7 @@ namespace VerifyResults
                  1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1
                }
              },
-          new Lang2_Example()
+          new Lang2_Example
              {
                Name = "E5",
                Input = new int[]
@@ -59,7 +59,7 @@ namespace VerifyResults
                  1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0
                }
              },
-          new Lang2_Example()
+          new Lang2_Example
              {
                Name = "E6",
                Input = new int[]
@@ -75,9 +75,9 @@ namespace VerifyResults
 
     public override List<IExample> GetLargeExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new Lang2_Example()
+          new Lang2_Example
              {
                Name = "E7",
                Input = new int[]
@@ -100,7 +100,7 @@ namespace VerifyResults
 
       for (int i = 0; i < count; i++)
       {
-        IExample example = new Lang2_Example()
+        IExample example = new Lang2_Example
           {
             Name = "RE" + i,
             Input = AppHelper.ProduceRandomBinArray(inputLength)

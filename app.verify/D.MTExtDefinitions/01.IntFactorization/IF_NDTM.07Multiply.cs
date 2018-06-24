@@ -12,7 +12,7 @@ namespace MTExtDefinitions
   {
     #region private members
 
-    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaMultiply(int frameLength)
+    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaMultiply()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {

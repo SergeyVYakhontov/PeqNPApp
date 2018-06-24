@@ -14,7 +14,7 @@ namespace Core
   {
     #region Ctors
 
-    public TapeArray(OneTapeTuringMachine tm)
+    public TapeArray()
     {
       tape = new int[tapeInitSize + 1];
       indexBase = 1;
@@ -98,7 +98,7 @@ namespace Core
     {
       for (long i = fromCellIndex; i <= toCellIndex; i++)
       {
-        tape[GetCellArrayIndex(i)] = OneTapeTuringMachine.b;
+        tape[GetCellArrayIndex(i)] = OneTapeTuringMachine.blankSymbol;
       }
     }
 
@@ -109,7 +109,7 @@ namespace Core
       {
         int[] newTape = new int[tape.Length + tapeIncreaseSize];
 
-        AppHelper.FillArray(newTape, OneTapeTuringMachine.b);
+        AppHelper.FillArray(newTape, OneTapeTuringMachine.blankSymbol);
 
         tape.CopyTo(newTape, tapeIncreaseSize);
         tape = newTape;
@@ -123,7 +123,7 @@ namespace Core
         long newTapeSize = Math.Max(cellArrayIndex + 1, tape.Length + tapeIncreaseSize);
 
         int[] newTape = new int[newTapeSize];
-        AppHelper.FillArray(newTape, OneTapeTuringMachine.b);
+        AppHelper.FillArray(newTape, OneTapeTuringMachine.blankSymbol);
 
         tape.CopyTo(newTape, 0);
         tape = newTape;

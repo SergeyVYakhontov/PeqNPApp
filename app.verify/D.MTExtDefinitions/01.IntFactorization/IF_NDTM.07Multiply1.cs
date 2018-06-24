@@ -57,14 +57,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)SubprogStates.MultReady,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.StartLoopInC,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -91,14 +91,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.StartLoopInC,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.StopMultiplying,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -162,7 +162,7 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.Process1f_D,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
@@ -216,14 +216,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.MoveToCRight,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.R
                   }
               }
@@ -314,14 +314,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = OneTapeTuringMachine.b
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = OneTapeTuringMachine.b,
+                    Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.L
                   }
               }

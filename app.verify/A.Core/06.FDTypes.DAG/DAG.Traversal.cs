@@ -73,7 +73,6 @@ namespace Core
     }
 
     public static void DFS(
-      DAG dag,
       DAGNode s,
       GraphDirection direction,
       Action<DAGNode, long> nodeAction,
@@ -138,7 +137,6 @@ namespace Core
     }
 
     public static void FindPath_Greedy(
-      DAG dag,
       DAGNode s,
       DAGNode t,
       GraphDirection direction,

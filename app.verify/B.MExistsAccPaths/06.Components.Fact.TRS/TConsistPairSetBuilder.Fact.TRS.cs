@@ -60,7 +60,7 @@ namespace ExistsAcceptingPath
       long currentLevel)
     {
       defUsePairSet = RunReachDefAnalysis(varToVarNodes, currentLevel);
-      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToInfoMap;
+      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToNodeInfoMap;
 
       log.Info("Collecting TConsist/TInconsist pairs");
 
@@ -85,7 +85,6 @@ namespace ExistsAcceptingPath
             consistent =
               (useCompStep.s ==
                 meapContext.MEAPSharedContext.InitInstance.TapeSymbol(
-                  meapContext.MEAPSharedContext.Input,
                   (int)useCompStep.kappaTape));
           }
           else
@@ -123,7 +122,7 @@ namespace ExistsAcceptingPath
     {
       log.Debug("DefUsePairSet:");
 
-      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToInfoMap;
+      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToNodeInfoMap;
 
       long i = 0;
 
@@ -171,7 +170,7 @@ namespace ExistsAcceptingPath
         long nodeId = p.Key;
         DAGNode node = p.Value;
 
-        ComputationStep compStep = meapContext.TArbSeqCFG.IdToInfoMap[nodeId].CompStep;
+        ComputationStep compStep = meapContext.TArbSeqCFG.IdToNodeInfoMap[nodeId].CompStep;
         long variable = compStep.kappaTape;
 
         if ((!meapContext.TArbSeqCFG.IsSourceNode(node.Id)) &&

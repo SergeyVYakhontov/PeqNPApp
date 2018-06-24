@@ -54,7 +54,6 @@ namespace Core
 
         DAG.BFS_VLevels(
           rdaContext.CFG,
-          rdaContext.CFG.s,
           GraphDirection.Forward,
           nodeVLevels,
           DAG.Level0,

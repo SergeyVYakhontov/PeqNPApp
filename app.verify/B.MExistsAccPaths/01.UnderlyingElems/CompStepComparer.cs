@@ -15,55 +15,55 @@ namespace ExistsAcceptingPath
   {
     #region public methods
 
-    public int Compare(ComputationStep s1, ComputationStep s2)
+    public int Compare(ComputationStep x, ComputationStep y)
     {
-      if (s1.q < s2.q)
+      if (x.q < y.q)
       {
         return -1;
       }
-      else if (s1.q == s2.q)
+      else if (x.q == y.q)
       {
-        if (s1.s < s2.s)
+        if (x.s < y.s)
         {
           return -1;
         }
-        else if (s1.s == s2.s)
+        else if (x.s == y.s)
         {
-          if (s1.qNext < s2.qNext)
+          if (x.qNext < y.qNext)
           {
             return -1;
           }
-          else if (s1.qNext == s2.qNext)
+          else if (x.qNext == y.qNext)
           {
-            if (s1.sNext < s2.sNext)
+            if (x.sNext < y.sNext)
             {
               return -1;
             }
-            else if (s1.sNext == s2.sNext)
+            else if (x.sNext == y.sNext)
             {
-              if (s1.m < s2.m)
+              if (x.m < y.m)
               {
                 return -1;
               }
-              else if (s1.m == s2.m)
+              else if (x.m == y.m)
               {
-                if (s1.Shift < s2.Shift)
+                if (x.Shift < y.Shift)
                 {
                   return -1;
                 }
-                else if (s1.Shift == s2.Shift)
+                else if (x.Shift == y.Shift)
                 {
-                  if (s1.kappaTape < s2.kappaTape)
+                  if (x.kappaTape < y.kappaTape)
                   {
                     return -1;
                   }
-                  else if (s1.kappaTape == s2.kappaTape)
+                  else if (x.kappaTape == y.kappaTape)
                   {
-                    if (s1.kappaStep < s2.kappaStep)
+                    if (x.kappaStep < y.kappaStep)
                     {
                       return -1;
                     }
-                    else if (s1.kappaStep == s2.kappaStep)
+                    else if (x.kappaStep == y.kappaStep)
                     {
                       return 0;
                     }

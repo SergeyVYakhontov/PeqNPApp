@@ -13,10 +13,10 @@ namespace Core
 {
   public partial class BitVector
   {
-    public IBitVector BitwiseSubtract(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseSubtract(IBitVector x, IBitVector y)
     {
-      BitVector v1 = u1 as BitVector;
-      BitVector v2 = u2 as BitVector;
+      BitVector v1 = x as BitVector;
+      BitVector v2 = y as BitVector;
 
       Ensure.That(v1.Size).Is(v2.Size);
 
@@ -30,12 +30,12 @@ namespace Core
       return result;
     }
 
-    public IBitVector BitwiseAnd(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseAnd(IBitVector x, IBitVector y)
     {
-      BitVector v1 = u1 as BitVector;
-      BitVector v2 = u2 as BitVector;
+      BitVector v1 = x as BitVector;
+      BitVector v2 = y as BitVector;
 
-      Ensure.That(u1.Size).Is(v2.Size);
+      Ensure.That(x.Size).Is(v2.Size);
 
       BitVector result = new BitVector(v1.Size);
 
@@ -47,10 +47,10 @@ namespace Core
       return result;
     }
 
-    public IBitVector BitwiseOr(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseOr(IBitVector x, IBitVector y)
     {
-      BitVector v1 = u1 as BitVector;
-      BitVector v2 = u2 as BitVector;
+      BitVector v1 = x as BitVector;
+      BitVector v2 = y as BitVector;
 
       Ensure.That(v1.Size).Is(v2.Size);
 

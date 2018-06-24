@@ -56,7 +56,7 @@ namespace ExistsAcceptingPath
       log.Info("Building TArbitrarySeqGraph");
 
       log.Info("Traverse MNP tree");
-      TraverseMNPTree(0);
+      TraverseMNPTree();
 
       endNodeIds.Clear();
       endNodes.ForEach(e => endNodeIds.Add(e.Id));
@@ -65,7 +65,7 @@ namespace ExistsAcceptingPath
 
       log.Info("Create sink node");
       CreateSinkNode();
-      G.CopyIdToInfoMap(idToInfoMap);
+      G.CopyIdToNodeInfoMap(idToInfoMap);
 
       meapContext.TArbitrarySeqGraph = G;
       long newMu = processedMu.Last();
@@ -85,7 +85,7 @@ namespace ExistsAcceptingPath
       log.Info("Create TArbSeqGraph copy");
       TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("CFG");
       DAG.CreateCopy(G, cfg);
-      cfg.CopyIdToInfoMap(idToInfoMap);
+      cfg.CopyIdToNodeInfoMap(idToInfoMap);
 
       log.Info("Connect bottomNodes with sink node");
       ConnectBottomNodesWithSinkNode(cfg, states);
@@ -95,12 +95,12 @@ namespace ExistsAcceptingPath
       DAG.CutChains_t(cfg, meapContext.TArbSeqCFG);
 
       log.Info("Create CFG idToInfoMap");
-      meapContext.TArbSeqCFG.CopyIdToInfoMap(idToInfoMap);
+      meapContext.TArbSeqCFG.CopyIdToNodeInfoMap(idToInfoMap);
 
       log.InfoFormat(
         "idToInfoMap: {0} {1}",
         idToInfoMap.Count,
-        meapContext.TArbSeqCFG.IdToInfoMap.Count);
+        meapContext.TArbSeqCFG.IdToNodeInfoMap.Count);
 
       Trace_TArbSeqCFG();
 
@@ -171,7 +171,6 @@ namespace ExistsAcceptingPath
 
     private void CreateDAGNode(
       Queue<DAGNode> nodeQueue,
-      long sNodeId,
       DAGNode fromNode,
       ComputationStep fromCompStep,
       StateSymbolPair from,
@@ -213,9 +212,10 @@ namespace ExistsAcceptingPath
       G.AddEdge(e);
     }
 
-    private void TraverseMNPTree(long sNodeId)
+    private void TraverseMNPTree()
     {
       Queue<DAGNode> nodeQueue = new Queue<DAGNode>();
+
       endNodeIds.ForEach(p =>
           {
             DAGNode u = nodeEnumeration[p];
@@ -252,7 +252,6 @@ namespace ExistsAcceptingPath
           {
             CreateDAGNode(
               nodeQueue,
-              sNodeId,
               fromNode,
               fromCompStep,
               from,
@@ -283,7 +282,7 @@ namespace ExistsAcceptingPath
       ComputationStep tStep = idToInfoMap[cfg.GetSinkNodeId()].CompStep;
       foreach (long uNodeId in endNodeIds)
       {
-        ComputationStep compStep = cfg.IdToInfoMap[uNodeId].CompStep;
+        ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
         if (states.Contains(compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];

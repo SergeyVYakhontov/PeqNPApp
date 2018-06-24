@@ -12,34 +12,34 @@ namespace Core
 {
   public partial class BitVectorAsSet
   {
-    public IBitVector BitwiseSubtract(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseSubtract(IBitVector x, IBitVector y)
     {
-      BitVectorAsSet v1 = u1 as BitVectorAsSet;
-      BitVectorAsSet v2 = u2 as BitVectorAsSet;
+      BitVectorAsSet v1 = x as BitVectorAsSet;
+      BitVectorAsSet v2 = y as BitVectorAsSet;
 
-      SortedSet<ulong> bits = new SortedSet<ulong>(v1.bits.Except(v2.bits));
+      SortedSet<ulong> zBits = new SortedSet<ulong>(v1.bits.Except(v2.bits));
 
-      return new BitVectorAsSet(bits);
+      return new BitVectorAsSet(zBits);
     }
 
-    public IBitVector BitwiseAnd(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseAnd(IBitVector x, IBitVector y)
     {
-      BitVectorAsSet v1 = u1 as BitVectorAsSet;
-      BitVectorAsSet v2 = u2 as BitVectorAsSet;
+      BitVectorAsSet v1 = x as BitVectorAsSet;
+      BitVectorAsSet v2 = y as BitVectorAsSet;
 
-      SortedSet<ulong> bits = new SortedSet<ulong>(v1.bits.Intersect(v2.bits));
+      SortedSet<ulong> zBits = new SortedSet<ulong>(v1.bits.Intersect(v2.bits));
 
-      return new BitVectorAsSet(bits);
+      return new BitVectorAsSet(zBits);
     }
 
-    public IBitVector BitwiseOr(IBitVector u1, IBitVector u2)
+    public IBitVector BitwiseOr(IBitVector x, IBitVector y)
     {
-      BitVectorAsSet v1 = u1 as BitVectorAsSet;
-      BitVectorAsSet v2 = u2 as BitVectorAsSet;
+      BitVectorAsSet v1 = x as BitVectorAsSet;
+      BitVectorAsSet v2 = y as BitVectorAsSet;
 
-      SortedSet<ulong> bits = new SortedSet<ulong>(v1.bits.Union(v2.bits));
+      SortedSet<ulong> zBits = new SortedSet<ulong>(v1.bits.Union(v2.bits));
 
-      return new BitVectorAsSet(bits);
+      return new BitVectorAsSet(zBits);
     }
   }
 }

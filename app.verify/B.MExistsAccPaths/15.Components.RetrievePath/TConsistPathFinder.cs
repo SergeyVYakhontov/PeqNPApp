@@ -40,7 +40,7 @@ namespace ExistsAcceptingPath
 
       List<KeyValuePair<long, ComputationStep>> pathCompSteps =
         tapeSegContext.TapeSegTConsistPath.Select(uId =>
-        new KeyValuePair<long, ComputationStep>(uId, meapContext.TArbSeqCFG.IdToInfoMap[uId].CompStep))
+        new KeyValuePair<long, ComputationStep>(uId, meapContext.TArbSeqCFG.IdToNodeInfoMap[uId].CompStep))
           .ToList();
 
       pathCompSteps.ForEach(s =>

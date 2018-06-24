@@ -43,15 +43,15 @@ namespace Core
 
     public ulong Size { get; }
 
-    public void SetItem(ulong Index, byte To)
+    public void SetItem(ulong index, byte to)
     {
-      Ensure.That((To == 0) || (To == 1)).IsTrue();
-      Ensure.That(Index <= (Size - 1)).IsTrue();
+      Ensure.That((to == 0) || (to == 1)).IsTrue();
+      Ensure.That(index <= (Size - 1)).IsTrue();
 
-      ulong w_i = WordIndex(Index);
-      byte b_i = BitVectorAlloc.BitIndex(Index);
+      ulong w_i = WordIndex(index);
+      byte b_i = BitVectorAlloc.BitIndex(index);
 
-      if (To == 0)
+      if (to == 0)
       {
         if(!allocated)
         {
@@ -67,9 +67,9 @@ namespace Core
       }
     }
 
-    public byte GetItem(ulong Index)
+    public byte GetItem(ulong index)
     {
-      if ((Index < 0) || (Index > Size - 1))
+      if (index > Size - 1)
       {
         return 0;
       }
@@ -79,8 +79,8 @@ namespace Core
         return 0;
       }
 
-      ulong w_i = WordIndex(Index);
-      byte b_i = BitVectorAlloc.BitIndex(Index);
+      ulong w_i = WordIndex(index);
+      byte b_i = BitVectorAlloc.BitIndex(index);
 
       UInt64 w = items[w_i];
 

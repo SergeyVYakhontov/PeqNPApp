@@ -37,7 +37,7 @@ namespace ExistsAcceptingPath
       meapContext.TConsistPairSet = new SortedSet<CompStepNodePair>(
         new CompStepNodePairComparer());
       SortedDictionary<long, DAGNode> nodeEnumeration = meapContext.TArbSeqCFG.NodeEnumeration;
-      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToInfoMap;
+      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToNodeInfoMap;
 
       foreach (DefUsePair defUsePair in defUsePairSet)
       {
@@ -55,8 +55,9 @@ namespace ExistsAcceptingPath
         }
         else if (meapContext.TArbSeqCFG.IsSourceNode(defNodeId))
         {
-          consistent = (useCompStep.s == meapContext.MEAPSharedContext.InitInstance.TapeSymbol(
-            meapContext.MEAPSharedContext.Input, (int)useCompStep.kappaTape));
+          consistent = (useCompStep.s ==
+            meapContext.MEAPSharedContext.InitInstance.TapeSymbol(
+              (int)useCompStep.kappaTape));
         }
         else
         {
@@ -86,7 +87,7 @@ namespace ExistsAcceptingPath
     {
       log.Debug("DefUsePairSet:");
 
-      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToInfoMap;
+      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToNodeInfoMap;
 
       long i = 0;
 
@@ -133,7 +134,7 @@ namespace ExistsAcceptingPath
         long nodeId = p.Key;
         DAGNode node = p.Value;
 
-        ComputationStep compStep = meapContext.TArbSeqCFG.IdToInfoMap[nodeId].CompStep;
+        ComputationStep compStep = meapContext.TArbSeqCFG.IdToNodeInfoMap[nodeId].CompStep;
         long variable = compStep.kappaTape;
 
         if ((!meapContext.TArbSeqCFG.IsSourceNode(node.Id)) && (!meapContext.TArbSeqCFG.IsSinkNode(node.Id)))

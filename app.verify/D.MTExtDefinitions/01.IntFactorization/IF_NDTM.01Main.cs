@@ -97,7 +97,7 @@ namespace MTExtDefinitions
 
       Gamma = new int[]
       {
-        OneTapeTuringMachine.b,
+        OneTapeTuringMachine.blankSymbol,
         0,
         1,
         delimiter,
@@ -113,7 +113,7 @@ namespace MTExtDefinitions
 
       Sigma = new int[]
       {
-        OneTapeTuringMachine.b,
+        OneTapeTuringMachine.blankSymbol,
         0,
         1,
         delimiter
@@ -130,17 +130,17 @@ namespace MTExtDefinitions
       }
       else
       {
-        delta = deltaSubprog1Std(frameLength);
+        delta = deltaSubprog1Std();
       }
 
       AppHelper.MergeDictionaryWith(delta, deltaSubprog2(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaInit(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaGenNumber1(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaGenNumber2(frameLength));
+      AppHelper.MergeDictionaryWith(delta, deltaGenNumber1());
+      AppHelper.MergeDictionaryWith(delta, deltaGenNumber2());
       AppHelper.MergeDictionaryWith(delta, deltaMultiply1(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaMultiply2(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaMultiply3(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaAdd(frameLength));
+      AppHelper.MergeDictionaryWith(delta, deltaAdd());
       AppHelper.MergeDictionaryWith(delta, deltaCompare(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaBkwd(frameLength));
 

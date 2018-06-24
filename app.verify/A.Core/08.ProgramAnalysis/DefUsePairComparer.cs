@@ -15,25 +15,25 @@ namespace Core
   {
     #region public members
 
-    public int Compare(DefUsePair k1, DefUsePair k2)
+    public int Compare(DefUsePair x, DefUsePair y)
     {
-      if (k1.Variable < k2.Variable)
+      if (x.Variable < y.Variable)
       {
         return -1;
       }
-      else if (k1.Variable == k2.Variable)
+      else if (x.Variable == y.Variable)
       {
-        if (k1.DefNode < k2.DefNode)
+        if (x.DefNode < y.DefNode)
         {
           return -1;
         }
-        else if (k1.DefNode == k2.DefNode)
+        else if (x.DefNode == y.DefNode)
         {
-          if (k1.UseNode < k2.UseNode)
+          if (x.UseNode < y.UseNode)
           {
             return -1;
           }
-          else if (k1.UseNode == k2.UseNode)
+          else if (x.UseNode == y.UseNode)
           {
             return 0;
           }

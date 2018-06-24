@@ -28,8 +28,8 @@ namespace MTDefinitions
     public override void Setup()
     {
       Q = new int[] { 0, 1, 2, acceptingState, rejectingState };
-      Gamma = new int[] { OneTapeTuringMachine.b, 0, 1 };
-      Sigma = new int[] { OneTapeTuringMachine.b, 0, 1 };
+      Gamma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
+      Sigma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
 
       Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>()
         {
@@ -80,23 +80,23 @@ namespace MTDefinitions
             },
 
           // right blank reached => read last symbol
-          [new StateSymbolPair(state: 1, symbol: OneTapeTuringMachine.b)]=
+          [new StateSymbolPair(state: 1, symbol: OneTapeTuringMachine.blankSymbol)]=
           new List<StateSymbolDirectionTriple>
             {
               new StateSymbolDirectionTriple()
                 {
                   State = 2,
-                  Symbol = OneTapeTuringMachine.b,
+                  Symbol = OneTapeTuringMachine.blankSymbol,
                   Direction = TMDirection.S
                 }
             },
-          [new StateSymbolPair(state: 2, symbol: OneTapeTuringMachine.b)] =
+          [new StateSymbolPair(state: 2, symbol: OneTapeTuringMachine.blankSymbol)] =
           new List<StateSymbolDirectionTriple>
             {
               new StateSymbolDirectionTriple()
                 {
                   State = 2,
-                  Symbol = OneTapeTuringMachine.b,
+                  Symbol = OneTapeTuringMachine.blankSymbol,
                   Direction = TMDirection.L
                 }
             },

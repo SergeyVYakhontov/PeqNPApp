@@ -41,7 +41,6 @@ namespace ExistsAcceptingPath
       long headNodeId = partialTConsistPath.Last();
       
       DAG.FindPath_Greedy(
-        meapContext.TArbSeqCFG,
         meapContext.TArbSeqCFG.NodeEnumeration[headNodeId],
         meapContext.TArbSeqCFG.t,
         GraphDirection.Forward,
