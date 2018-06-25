@@ -19,8 +19,7 @@ namespace MTExtDefinitions
   {
     #region Ctors
 
-    public IF_NDTM(int inputLength)
-      : base("NDTM")
+    public IF_NDTM(int inputLength) : base("NDTM")
     {
       this.inputLength = inputLength;
     }
@@ -31,65 +30,62 @@ namespace MTExtDefinitions
 
     public override void Setup()
     {
-      Q = new int[]
+      Q = new uint[]
         {
           qStart,
 
-          (int)SubprogStates.InitReady,
-          (int)SubprogStates.GenNumber1Ready,
-          (int)SubprogStates.GenNumber2Ready,
-          (int)SubprogStates.MultReady,
-          (int)SubprogStates.CompareReady,
+          (uint)SubprogStates.InitReady,
+          (uint)SubprogStates.GenNumber1Ready,
+          (uint)SubprogStates.GenNumber2Ready,
+          (uint)SubprogStates.MultReady,
+          (uint)SubprogStates.CompareReady,
 
-          (int)InitStates.SetLeftDelim,
-          (int)InitStates.InitB,
-          (int)InitStates.InitC,
-          (int)InitStates.InitD,
-          (int)InitStates.StopInit,
+          (uint)InitStates.MoveToRightDelim,
+          (uint)InitStates.StopInit,
 
-          (int)GenNumber1States.GenBit0,
-          (int)GenNumber1States.GenBit1,
-          (int)GenNumber1States.GenBit,
-          (int)GenNumber1States.MoveToDelimiter,
-          (int)GenNumber1States.StopGenNumber,
+          (uint)GenNumber1States.GenBit0,
+          (uint)GenNumber1States.GenBit1,
+          (uint)GenNumber1States.GenBit,
+          (uint)GenNumber1States.MoveToDelimiter,
+          (uint)GenNumber1States.StopGenNumber,
 
-          (int)GenNumber2States.GenBit0,
-          (int)GenNumber2States.GenBit1,
-          (int)GenNumber2States.GenBit,
-          (int)GenNumber2States.MoveToDelimiter,
-          (int)GenNumber2States.StopGenNumber,
+          (uint)GenNumber2States.GenBit0,
+          (uint)GenNumber2States.GenBit1,
+          (uint)GenNumber2States.GenBit,
+          (uint)GenNumber2States.MoveToDelimiter,
+          (uint)GenNumber2States.StopGenNumber,
 
-          (int)MultiplyStates.StartLoopInC,
-          (int)MultiplyStates.Process1f_D,
-          (int)MultiplyStates.MoveToCRight,
-          (int)MultiplyStates.EraseMarkInC,
-          (int)MultiplyStates.StartAddC,
-          (int)MultiplyStates.AddC0f_D,
-          (int)MultiplyStates.AddC0f_sm_D,
-          (int)MultiplyStates.MoveToCLeft,
-          (int)MultiplyStates.SetMarkInC,
-          (int)MultiplyStates.MoveToMarkInB,
-          (int)MultiplyStates.MoveToMarkInB_inB,
-          (int)MultiplyStates.AddC1f_D,
-          (int)MultiplyStates.AddC1f_sm_D,
-          (int)MultiplyStates.MoveToMarkInD_L,
-          (int)MultiplyStates.MoveToMarkInD_R,
-          (int)MultiplyStates.MoveMarkInD,
-          (int)MultiplyStates.StopMultiplying,
+          (uint)MultiplyStates.StartLoopInC,
+          (uint)MultiplyStates.Process1f_D,
+          (uint)MultiplyStates.MoveToCRight,
+          (uint)MultiplyStates.EraseMarkInC,
+          (uint)MultiplyStates.StartAddC,
+          (uint)MultiplyStates.AddC0f_D,
+          (uint)MultiplyStates.AddC0f_sm_D,
+          (uint)MultiplyStates.MoveToCLeft,
+          (uint)MultiplyStates.SetMarkInC,
+          (uint)MultiplyStates.MoveToMarkInB,
+          (uint)MultiplyStates.MoveToMarkInB_inB,
+          (uint)MultiplyStates.AddC1f_D,
+          (uint)MultiplyStates.AddC1f_sm_D,
+          (uint)MultiplyStates.MoveToMarkInD_L,
+          (uint)MultiplyStates.MoveToMarkInD_R,
+          (uint)MultiplyStates.MoveMarkInD,
+          (uint)MultiplyStates.StopMultiplying,
 
-          (int)AddStates.StartAdding,
-          (int)AddStates.AddBitC0,
-          (int)AddStates.AddBitC1,
+          (uint)AddStates.StartAdding,
+          (uint)AddStates.AddBitC0,
+          (uint)AddStates.AddBitC1,
 
-          (int)CompareStates.StartComparing,
-          (int)CompareStates.MoveLeftToA,
-          (int)CompareStates.MoveToStartA,
-          (int)CompareStates.BitLoopStart,
-          (int)CompareStates.BitLoopStart_f,
-          (int)CompareStates.BitLoopD0,
-          (int)CompareStates.BitLoopD1,
+          (uint)CompareStates.StartComparing,
+          (uint)CompareStates.MoveLeftToA,
+          (uint)CompareStates.MoveToStartA,
+          (uint)CompareStates.BitLoopStart,
+          (uint)CompareStates.BitLoopStart_f,
+          (uint)CompareStates.BitLoopD0,
+          (uint)CompareStates.BitLoopD1,
 
-          (int)BkwdStates.Bkwd1,
+          (uint)BkwdStates.Bkwd1,
 
           acceptingState,
           rejectingState
@@ -97,7 +93,7 @@ namespace MTExtDefinitions
 
       Gamma = new int[]
       {
-        OneTapeTuringMachine.blankSymbol,
+        blankSymbol,
         0,
         1,
         delimiter,
@@ -113,7 +109,7 @@ namespace MTExtDefinitions
 
       Sigma = new int[]
       {
-        OneTapeTuringMachine.blankSymbol,
+        blankSymbol,
         0,
         1,
         delimiter
@@ -123,18 +119,15 @@ namespace MTExtDefinitions
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
 
       int frameLength = FrameLength(inputLength);
+      delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
       if (debugOptions.IntFactTestRules)
       {
-        delta = deltaSubprog1Test(frameLength);
-      }
-      else
-      {
-        delta = deltaSubprog1Std();
+        AppHelper.MergeDictionaryWith(delta, deltaSubprog1Test(frameLength));
       }
 
       AppHelper.MergeDictionaryWith(delta, deltaSubprog2(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaInit(frameLength));
+      AppHelper.MergeDictionaryWith(delta, deltaInit());
       AppHelper.MergeDictionaryWith(delta, deltaGenNumber1());
       AppHelper.MergeDictionaryWith(delta, deltaGenNumber2());
       AppHelper.MergeDictionaryWith(delta, deltaMultiply1(frameLength));
@@ -147,7 +140,7 @@ namespace MTExtDefinitions
       Delta = delta;
 
       qStart = qStartState;
-      F = new int[1] { acceptingState };
+      F = new uint[] { acceptingState };
 
       CheckDeltaRelation();
     }
@@ -162,12 +155,12 @@ namespace MTExtDefinitions
 
     public override long GetRTapeBound(long mu, long n)
     {
-      return (5 + (FrameLength((int)n) * 4));
+      return 5 + (FrameLength((int)n) * 4);
     }
 
     public override long ExpectedPathLength(long n)
     {
-      return (5 * (n * n));
+      return 5 * (n * n);
     }
 
     public override int[] GetOutput(TMInstance tmInstance, long mu, long n)
@@ -184,7 +177,7 @@ namespace MTExtDefinitions
     private static readonly IKernel configuration = Core.AppContext.Configuration;
 
     private readonly int inputLength;
-    private static int FrameLength(int inputLength) => (inputLength + 2);
+    private static int FrameLength(int inputLength) => inputLength + 2;
 
     #endregion
   }

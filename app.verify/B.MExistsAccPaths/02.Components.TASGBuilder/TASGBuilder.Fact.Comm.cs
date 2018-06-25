@@ -31,7 +31,7 @@ namespace ExistsAcceptingPath
       {
         q = MEAPSharedContext.MNP.qStart,
         s = MEAPSharedContext.Input[0],
-        qNext = MEAPSharedContext.MNP.qStart,
+        qNext = (int)MEAPSharedContext.MNP.qStart,
         sNext = MEAPSharedContext.Input[0],
         m = TMDirection.S,
         Shift = 1,
@@ -90,7 +90,7 @@ namespace ExistsAcceptingPath
       acceptingNodes.Clear();
     }
 
-    public override void CreateTArbSeqCFG(int[] states)
+    public override void CreateTArbSeqCFG(uint[] states)
     {
       log.Info("Building TArbSeqCFG");
 
@@ -269,7 +269,7 @@ namespace ExistsAcceptingPath
         if (fromCompStep.kappaStep == meapContext.mu)
         {
           endNodes.Add(fromNode);
-          if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
+          if (meapContext.MEAPSharedContext.MNP.F.Contains((uint)fromCompStep.qNext))
           {
             acceptingNodes.Add(fromNode);
           }
@@ -313,7 +313,7 @@ namespace ExistsAcceptingPath
 
     private void ConnectBottomNodesWithSinkNode(
       TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg,
-      int[] states)
+      uint[] states)
     {
       ComputationStep tStep = idToInfoMap[cfg.GetSinkNodeId()].CompStep;
 
@@ -321,7 +321,7 @@ namespace ExistsAcceptingPath
       {
         ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
 
-        if (states.Contains(compStep.qNext))
+        if (states.Contains((uint)compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];
           DAGEdge e = new DAGEdge(edgeId++, v, cfg.t);

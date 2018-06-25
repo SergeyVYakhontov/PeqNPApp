@@ -129,7 +129,7 @@ namespace Core
       StateSymbolDirectionTriple to,
       TMInstance instance)
     {
-      instance.state = to.State;
+      instance.state = (uint)to.State;
 
       switch (to.Direction)
       {
@@ -170,7 +170,7 @@ namespace Core
 
     private readonly TapeArray tape;
     private long cellIndex;
-    private int state;
+    private uint state;
 
     private int CurrentSymbol
     {
@@ -185,7 +185,7 @@ namespace Core
       }
     }
 
-    private bool IsFinalState(int s)
+    private bool IsFinalState(uint s)
     {
       return owner.F.Contains(s);
     }

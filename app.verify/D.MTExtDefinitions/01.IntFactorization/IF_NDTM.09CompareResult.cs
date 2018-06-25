@@ -217,7 +217,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = 1,
                     Direction = TMDirection.S
                   }
@@ -233,7 +233,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = 0,
                     Direction = TMDirection.S
                   }
@@ -285,7 +285,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = 1,
                     Direction = TMDirection.S
                   }
@@ -301,7 +301,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = 0,
                     Direction = TMDirection.S
                   }
@@ -368,7 +368,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = acceptingState,
+                    State = (int)acceptingState,
                     Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.R
                   }
@@ -386,7 +386,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
@@ -402,24 +402,24 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = OneTapeTuringMachine.blankSymbol,
                     Direction = TMDirection.S
                   }
               }
           },
             {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)CompareStates.BitLoopStart,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
-                    State = acceptingState,
-                     Symbol = OneTapeTuringMachine.blankSymbol,
+                    State = (int)acceptingState,
+                     Symbol = blankSymbol,
                     Direction = TMDirection.R
                   }
               }

@@ -25,7 +25,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public override void Run(int[] states)
+    public override void Run(uint[] states)
     {
       log.InfoFormat("mu: {0}", meapContext.mu);
 

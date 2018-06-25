@@ -27,9 +27,9 @@ namespace MTDefinitions
 
     public override void Setup()
     {
-      Q = new int[] { 0, 1, 2, acceptingState, rejectingState };
-      Gamma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
-      Sigma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
+      Q = new uint[] { 0, 1, 2, acceptingState, rejectingState };
+      Gamma = new int[] { blankSymbol, 0, 1 };
+      Sigma = new int[] { blankSymbol, 0, 1 };
 
       Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>()
         {
@@ -105,9 +105,9 @@ namespace MTDefinitions
           [new StateSymbolPair(state: 2, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
+              new StateSymbolDirectionTriple
                 {
-                  State = acceptingState,
+                  State = (int)acceptingState,
                   Symbol = 1,
                   Direction = TMDirection.S
                 }
@@ -119,7 +119,7 @@ namespace MTDefinitions
             {
               new StateSymbolDirectionTriple()
                 {
-                  State = rejectingState,
+                  State = (int)rejectingState,
                   Symbol = 0,
                   Direction = TMDirection.S
                 }
@@ -127,7 +127,7 @@ namespace MTDefinitions
         };
 
       qStart = 0;
-      F = new int[] { acceptingState };
+      F = new uint[] { acceptingState };
 
       CheckDeltaRelation();
     }
@@ -144,8 +144,8 @@ namespace MTDefinitions
 
     #region private members
 
-    private const int acceptingState = 3;
-    private const int rejectingState = 4;
+    private const uint acceptingState = 3;
+    private const uint rejectingState = 4;
 
     #endregion
   }

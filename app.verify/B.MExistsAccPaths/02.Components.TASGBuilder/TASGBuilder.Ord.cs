@@ -38,7 +38,7 @@ namespace ExistsAcceptingPath
       Trace_TArbitrarySeqGraph();
     }
 
-    public override void CreateTArbSeqCFG(int[] states)
+    public override void CreateTArbSeqCFG(uint[] states)
     {
       log.Info("Building TArbSeqCFG");
 
@@ -145,7 +145,7 @@ namespace ExistsAcceptingPath
       {
         q = meapContext.MEAPSharedContext.MNP.qStart,
         s = meapContext.MEAPSharedContext.Input[0],
-        qNext = meapContext.MEAPSharedContext.MNP.qStart,
+        qNext = (int)meapContext.MEAPSharedContext.MNP.qStart,
         sNext = meapContext.MEAPSharedContext.Input[0],
         m = TMDirection.S,
         kappaTape = 1,
@@ -219,7 +219,7 @@ namespace ExistsAcceptingPath
         {
           endNodes.Add(fromNode);
 
-          if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
+          if (meapContext.MEAPSharedContext.MNP.F.Contains((uint)fromCompStep.qNext))
           {
             acceptingNodes.Add(fromNode);
           }
@@ -261,13 +261,13 @@ namespace ExistsAcceptingPath
 
     private void ConnectBottomNodesWithSinkNode(
       TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg,
-      int[] states)
+      uint[] states)
     {
       foreach (long uNodeId in endNodeIds)
       {
         ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
 
-        if (states.Contains(compStep.qNext))
+        if (states.Contains((uint)compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];
 

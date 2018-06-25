@@ -17,7 +17,7 @@ namespace ExistsAcceptingPath
     long TapeRBound { get; }
 
     void CreateTArbitrarySeqGraph();
-    void CreateTArbSeqCFG(int[] states);
+    void CreateTArbSeqCFG(uint[] states);
   }
 }
 

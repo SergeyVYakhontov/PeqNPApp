@@ -28,7 +28,7 @@ namespace MTDefinitions
 
     public override void Setup()
     {
-      Q = new int[] { qStart, 1, 2, acceptingState, rejectingState };
+      Q = new uint[] { qStart, 1, 2, acceptingState, rejectingState };
       Gamma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
       Sigma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
 
@@ -148,13 +148,13 @@ namespace MTDefinitions
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = 2,
                     Symbol = 1,
                     Direction = TMDirection.R
                   },
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = 2,
                     Symbol = 1,
@@ -165,17 +165,17 @@ namespace MTDefinitions
 
           // accepts
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = 1,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
-                    State = acceptingState,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
+                    State = (int)acceptingState,
+                    Symbol = blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -186,14 +186,14 @@ namespace MTDefinitions
             new StateSymbolPair()
               {
                 State = 2,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
-                    State = rejectingState,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
+                    State = (int)rejectingState,
+                    Symbol = blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -201,7 +201,7 @@ namespace MTDefinitions
         };
 
       qStart = 0;
-      F = new int[1] { acceptingState };
+      F = new uint[] { acceptingState };
 
       CheckDeltaRelation();
     }
@@ -218,8 +218,8 @@ namespace MTDefinitions
 
     #region private members
 
-    private const int acceptingState = 3;
-    private const int rejectingState = 4;
+    private const uint acceptingState = 3;
+    private const uint rejectingState = 4;
 
     #endregion
   }

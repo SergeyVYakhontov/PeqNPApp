@@ -14,7 +14,7 @@ namespace Core
   {
     #region Ctors
 
-    public StateSymbolPair(int state, int symbol)
+    public StateSymbolPair(uint state, int symbol)
     {
       this.State = state;
       this.Symbol = symbol;
@@ -24,34 +24,31 @@ namespace Core
 
     #region public members
 
-    public int State { get; set; }
+    public uint State { get; set; }
     public int Symbol { get; set; }
 
     public override bool Equals(object obj)
     {
       StateSymbolPair toCompare = (StateSymbolPair)obj;
 
-      return (State == toCompare.State) && (Symbol == toCompare.Symbol);
+      return this == toCompare;
     }
 
-    public override int GetHashCode()
-    {
-      return State;
-    }
+    public override int GetHashCode() => (int)State;
 
     public bool Equals(StateSymbolPair other)
     {
-      return (State == other.State) && (Symbol == other.Symbol);
+      return this == other;
     }
 
     public static bool operator == (StateSymbolPair x, StateSymbolPair y)
     {
-      return x.Equals(y);
+      return (x.State == y.State) && (x.Symbol == y.Symbol);
     }
 
     public static bool operator !=(StateSymbolPair x, StateSymbolPair y)
     {
-      return !x.Equals(y);
+      return !(x == y);
     }
 
     #endregion

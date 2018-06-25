@@ -9,6 +9,8 @@ using Core;
 using Ninject;
 using ExistsAcceptingPath;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace MTExtDefinitions
 {
   public partial class IF_NDTM : OneTapeNDTM
@@ -60,7 +62,7 @@ namespace MTExtDefinitions
       int frameLength = FrameLength(inputLength);
 
       long i1 = 1 + frameLength + 1;
-      long j1 = Array.IndexOf(factorsString, OneTapeTuringMachine.blankSymbol, (int)i1);
+      long j1 = Array.IndexOf(factorsString, blankSymbol, (int)i1);
 
       factorX = AppHelper.CreateSubArray(factorsString, i1, j1 - i1);
       AppHelper.ReplaceInArray(factorX, markB0, 0, (int a, int b) => (a == b));
@@ -68,7 +70,7 @@ namespace MTExtDefinitions
       AppHelper.ReplaceInArray(factorX, markB1, 1, (int a, int b) => (a == b));
 
       long i2 = 1 + 2 * frameLength + 1;
-      long j2 = Array.IndexOf(factorsString, OneTapeTuringMachine.blankSymbol, (int)i2);
+      long j2 = Array.IndexOf(factorsString, blankSymbol, (int)i2);
 
       factorY = AppHelper.CreateSubArray(factorsString, i2, j2 - i2);
 

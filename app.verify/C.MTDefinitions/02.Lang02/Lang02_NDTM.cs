@@ -26,12 +26,12 @@ namespace MTDefinitions
 
     public override void Setup()
     {
-      Q = new int[] { qStart, 1, 2, 3, 4, 5, 6, 7, 8, 9, acceptingState, rejectingState };
+      Q = new uint[] { qStart, 1, 2, 3, 4, 5, 6, 7, 8, 9, acceptingState, rejectingState };
       Gamma = new int[] { blankSymbol, 0, 1, 2 };
       Sigma = new int[] { blankSymbol, 0, 1 };
 
       qStart = 0;
-      F = new int[] { acceptingState };
+      F = new uint[] { acceptingState };
 
       Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
@@ -179,7 +179,7 @@ namespace MTDefinitions
               {
                 new StateSymbolDirectionTriple
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = blankSymbol,
                     Direction = TMDirection.S
                   }
@@ -265,7 +265,7 @@ namespace MTDefinitions
               {
                 new StateSymbolDirectionTriple
                   {
-                    State = acceptingState,
+                    State = (int)acceptingState,
                     Symbol = 0,
                     Direction = TMDirection.S
                   }
@@ -281,7 +281,7 @@ namespace MTDefinitions
               {
                 new StateSymbolDirectionTriple
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = 1,
                     Direction = TMDirection.S
                   }
@@ -297,7 +297,7 @@ namespace MTDefinitions
               {
                 new StateSymbolDirectionTriple
                   {
-                    State = acceptingState,
+                    State = (int)acceptingState,
                     Symbol = 2,
                     Direction = TMDirection.S
                   }
@@ -313,7 +313,7 @@ namespace MTDefinitions
               {
                 new StateSymbolDirectionTriple
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = 0,
                     Direction = TMDirection.S
                   }
@@ -337,8 +337,8 @@ namespace MTDefinitions
 
     #region private members
 
-    private const int acceptingState = 10;
-    private const int rejectingState = 11;
+    private const uint acceptingState = 10;
+    private const uint rejectingState = 11;
 
     #endregion
   }

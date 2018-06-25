@@ -26,7 +26,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public abstract void Run(int[] states);
+    public abstract void Run(uint[] states);
 
     public void RetrievePath()
     {

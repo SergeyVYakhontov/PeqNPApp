@@ -27,9 +27,9 @@ namespace MTDefinitions
 
     public override void Setup()
     {
-      Q = new int[] { qStart, 1, 2, acceptingState, rejectingState };
-      Gamma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
-      Sigma = new int[] { OneTapeTuringMachine.blankSymbol, 0, 1 };
+      Q = new uint[] { qStart, 1, 2, acceptingState, rejectingState };
+      Gamma = new int[] { blankSymbol, 0, 1 };
+      Sigma = new int[] { blankSymbol, 0, 1 };
 
       Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>()
         {
@@ -166,13 +166,13 @@ namespace MTDefinitions
             new StateSymbolPair()
               {
                 State = 1,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = acceptingState,
+                    State = (int)acceptingState,
                     Symbol = 1,
                     Direction = TMDirection.S
                   }
@@ -183,13 +183,13 @@ namespace MTDefinitions
             new StateSymbolPair()
               {
                 State = 2,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = acceptingState,
+                    State = (int)acceptingState,
                     Symbol = 1,
                     Direction = TMDirection.S
                   }
@@ -198,7 +198,7 @@ namespace MTDefinitions
         };
 
       qStart = 0;
-      F = new int[1] { acceptingState };
+      F = new uint[] { acceptingState };
 
       CheckDeltaRelation();
     }
@@ -216,8 +216,8 @@ namespace MTDefinitions
 
     #region private members
 
-    private const int acceptingState = 3;
-    private const int rejectingState = 4;
+    private const uint acceptingState = 3;
+    private const uint rejectingState = 4;
 
     #endregion
   }

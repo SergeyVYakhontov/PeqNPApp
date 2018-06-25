@@ -25,7 +25,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public override void Run(int[] states)
+    public override void Run(uint[] states)
     {
       log.InfoFormat("mu: {0}", meapContext.mu);
 
@@ -149,7 +149,7 @@ namespace ExistsAcceptingPath
         meapContext.NodeVLevels,
         DAG.Level0,
         ProcessNode,
-        (level) => { return true; });
+        (level) => true);
 
       tConsistPairSetBuilder.Run(inVarToVarNodes, DAG.Level0);
       tConsistPairSetBuilder.Trace();

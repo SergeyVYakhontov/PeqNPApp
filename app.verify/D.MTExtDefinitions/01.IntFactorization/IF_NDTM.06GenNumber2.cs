@@ -151,7 +151,7 @@ namespace MTExtDefinitions
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = rejectingState,
+                    State = (int)rejectingState,
                     Symbol = delimiter,
                     Direction = TMDirection.S
                   }

@@ -15,7 +15,7 @@ namespace ExistsAcceptingPath
 {
   public interface IMeapCurrentStep
   {
-    void Run(int[] states);
+    void Run(uint[] states);
     void RetrievePath();
   }
 }

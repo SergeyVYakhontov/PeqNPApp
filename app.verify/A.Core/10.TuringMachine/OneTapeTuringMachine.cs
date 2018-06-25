@@ -26,17 +26,17 @@ namespace Core
 
     public string Name { get; }
 
-    public int[] Q { get; protected set; }
+    public uint[] Q { get; protected set; }
     public int[] Gamma { get; protected set; }
     public const int blankSymbol = -1;
     public int[] Sigma { get; protected set; }
     public Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta { get; protected set; }
-    public int qStart { get; protected set; }
-    public int[] F { get; protected set; }
+    public uint qStart { get; protected set; }
+    public uint[] F { get; protected set; }
 
     public bool Accepted { get; private set; }
 
-    public int[] QAny => Q.Except(new int[] { qStart }).ToArray();
+    public uint[] QAny => Q.Except(new uint[] { qStart }).ToArray();
 
     public abstract void Setup();
 
@@ -186,7 +186,7 @@ namespace Core
         p.Value.ForEach(v =>
         {
           Ensure.That(Gamma.Contains(v.Symbol)).IsTrue();
-          Ensure.That(Q.Contains(v.State)).IsTrue();
+          Ensure.That(Q.Contains((uint)v.State)).IsTrue();
         }
         );
       });

@@ -27,11 +27,12 @@ namespace MTDefinitions
 
     public override void Setup()
     {
-      const int acceptingState = 1;
-      const int rejectingState = 2;
+      const uint acceptingState = 1;
+      const uint rejectingState = 2;
 
       const int preAcceptingState = 3;
       const int variousStatesStart = 4;
+
       const int variousStatesEnd = 5;
       const int variousSymbolsStart = 0;
       const int variousSymbolsEnd = 3;
@@ -39,10 +40,10 @@ namespace MTDefinitions
       const int acceptingSymbol = variousSymbolsEnd + 1;
       const int acceptingSymbolReplace = acceptingSymbol + 1;
 
-      List<int> qList = new List<int>() { qStart, acceptingState, rejectingState };
+      List<uint> qList = new List<uint> { qStart, acceptingState, rejectingState };
 
       new IntSegment(variousStatesStart, variousStatesEnd)
-        .ForEach(q => qList.Add((int)q));
+        .ForEach(q => qList.Add((uint)q));
 
       qList.Add(preAcceptingState);
       Q = qList.ToArray();
@@ -67,7 +68,7 @@ namespace MTDefinitions
       Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> delta =
         new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
-      foreach (int q in Q)
+      foreach (uint q in Q)
       {
         foreach (int s in Gamma)
         {
@@ -78,7 +79,7 @@ namespace MTDefinitions
           }
 
           StateSymbolPair deltaPairKey =
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = q,
                 Symbol = s
@@ -92,7 +93,7 @@ namespace MTDefinitions
               if ((qNext == qStart) ||
                   (qNext == preAcceptingState) ||
                   (qNext == acceptingState) ||
-                  (sNext == OneTapeTuringMachine.blankSymbol) ||
+                  (sNext == blankSymbol) ||
                   (sNext == acceptingSymbol))
               {
                 continue;
@@ -184,9 +185,9 @@ namespace MTDefinitions
         List<StateSymbolDirectionTriple> acceptingDeltaPairValueList =
           new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolDirectionTriple()
+            new StateSymbolDirectionTriple
             {
-              State = acceptingState,
+              State = (int)acceptingState,
               Symbol = acceptingSymbolReplace,
               Direction = TMDirection.S
             }
@@ -198,7 +199,7 @@ namespace MTDefinitions
       Delta = delta;
 
       qStart = 0;
-      F = new int[1] { acceptingState };
+      F = new uint[] { acceptingState };
 
       CheckDeltaRelation();
     }

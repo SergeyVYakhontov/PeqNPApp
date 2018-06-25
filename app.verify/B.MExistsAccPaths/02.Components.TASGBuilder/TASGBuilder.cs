@@ -21,7 +21,7 @@ namespace ExistsAcceptingPath
     public long TapeRBound { get; protected set; }
 
     public abstract void CreateTArbitrarySeqGraph();
-    public abstract void CreateTArbSeqCFG(int[] states);
+    public abstract void CreateTArbSeqCFG(uint[] states);
 
     public abstract void Trace();
 

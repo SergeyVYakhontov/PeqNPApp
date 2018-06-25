@@ -16,9 +16,9 @@ namespace MTExtDefinitions
   {
     #region private members
 
-    private const int qStartState = 0;
-    private const int acceptingState = 127;
-    private const int rejectingState = 128;
+    private const uint qStartState = 0;
+    private const uint acceptingState = 127;
+    private const uint rejectingState = 128;
 
     private const int delimiter = 2;
     private const int markB0 = 3;
@@ -30,7 +30,7 @@ namespace MTExtDefinitions
     private const int bkwd1 = 9;
     private const int bkwd2 = 10;
 
-    private enum SubprogStates : byte
+    private enum SubprogStates : uint
     {
       SubprogStatesBase = qStartState + 1, // 1
       InitReady = SubprogStatesBase, // 1
@@ -40,17 +40,14 @@ namespace MTExtDefinitions
       CompareReady = MultReady + 1 // 5
     }
 
-    private enum InitStates : byte
+    private enum InitStates : uint
     {
       InitBase = SubprogStates.CompareReady + 1, // 6
-      SetLeftDelim = InitBase, // 6
-      InitB = SetLeftDelim + 1, // 7
-      InitC = InitB + 1, // 8
-      InitD = InitC + 1, // 9
-      StopInit = InitD + 1 // 10
+      MoveToRightDelim = InitBase, // 6
+      StopInit = MoveToRightDelim + 1 // 10
     }
 
-    private enum GenNumber1States : byte
+    private enum GenNumber1States : uint
     {
       GenNumber1Base = InitStates.StopInit + 1, // 11
       GenBit0 = GenNumber1Base, // 11
@@ -60,7 +57,7 @@ namespace MTExtDefinitions
       StopGenNumber = MoveToDelimiter + 1 // 15
     }
 
-    private enum GenNumber2States : byte
+    private enum GenNumber2States : uint
     {
       GenNumber2Base = GenNumber1States.StopGenNumber + 1, // 16
       GenBit0 = GenNumber2Base, // 16
@@ -70,7 +67,7 @@ namespace MTExtDefinitions
       StopGenNumber = MoveToDelimiter + 1 // 20
     }
 
-    private enum MultiplyStates : byte
+    private enum MultiplyStates : uint
     {
       MultiplyBase = GenNumber2States.StopGenNumber + 1, // 21
       StartLoopInC = MultiplyBase, // 21
@@ -92,7 +89,7 @@ namespace MTExtDefinitions
       StopMultiplying = MoveMarkInD + 1 // 37
     }
 
-    private enum AddStates : byte
+    private enum AddStates : uint
     {
       AddBase = MultiplyStates.StopMultiplying + 1, // 38
       StartAdding = AddBase, // 38
@@ -100,7 +97,7 @@ namespace MTExtDefinitions
       AddBitC1 = AddBitC0 + 1 // 40
     }
 
-    private enum CompareStates : byte
+    private enum CompareStates : uint
     {
       CompareBase = AddStates.AddBitC1 + 1, // 41
       StartComparing = CompareBase, // 41
@@ -112,7 +109,7 @@ namespace MTExtDefinitions
       BitLoopD1 = BitLoopD0 + 1 // 47
     }
 
-    private enum BkwdStates : byte
+    private enum BkwdStates : uint
     {
       BkwdStatesBase = CompareStates.BitLoopD1 + 1, // 48
       Bkwd1 = BkwdStatesBase, // 48

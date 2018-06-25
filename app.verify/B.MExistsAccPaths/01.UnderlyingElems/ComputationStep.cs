@@ -33,7 +33,7 @@ namespace ExistsAcceptingPath
 
     #region public methods
 
-    public int q { get; set; }
+    public uint q { get; set; }
     public int s { get; set; }
 
     public int qNext { get; set; }
