@@ -50,18 +50,6 @@ namespace MTExtDefinitions
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
-        // start generating number1
-        [new StateSymbolPair(state: (uint)InitStates.StopInit, symbol: blankSymbol)] =
-          new List<StateSymbolDirectionTriple>
-          {
-            new StateSymbolDirectionTriple
-            {
-              State = (int)SubprogStates.GenNumber1Ready,
-              Symbol = blankSymbol,
-              Direction = TMDirection.S
-            }
-          },
-
         // start generating number2
         [new StateSymbolPair(state: (uint)GenNumber1States.StopGenNumber, symbol: delimiter)] =
           new List<StateSymbolDirectionTriple>

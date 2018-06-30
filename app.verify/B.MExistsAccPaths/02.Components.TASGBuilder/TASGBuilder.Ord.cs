@@ -124,7 +124,7 @@ namespace ExistsAcceptingPath
     }
 
     private List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>>
-      GetDeltaElements(int state)
+      GetDeltaElements(uint state)
     {
       return meapContext.MEAPSharedContext.MNP.Delta.Where(
         d => (d.Key.State == state)).ToList();
@@ -145,7 +145,7 @@ namespace ExistsAcceptingPath
       {
         q = meapContext.MEAPSharedContext.MNP.qStart,
         s = meapContext.MEAPSharedContext.Input[0],
-        qNext = (int)meapContext.MEAPSharedContext.MNP.qStart,
+        qNext = meapContext.MEAPSharedContext.MNP.qStart,
         sNext = meapContext.MEAPSharedContext.Input[0],
         m = TMDirection.S,
         kappaTape = 1,

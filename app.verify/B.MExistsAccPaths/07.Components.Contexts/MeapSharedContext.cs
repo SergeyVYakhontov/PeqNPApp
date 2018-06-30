@@ -23,7 +23,7 @@ namespace ExistsAcceptingPath
 
     public ITASGBuilder TASGBuilder { get; set; }
 
-    public long DeterminePathRunnerDoneMu { get; set; }
+    public ulong DeterminePathRunnerDoneMu { get; set; }
     public CancellationTokenSource CancellationTokenSource { get; set; }
     public CancellationToken CancellationToken { get; set; }
 

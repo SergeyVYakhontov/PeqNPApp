@@ -49,7 +49,7 @@ namespace ExistsAcceptingPath
       uint determinePathRunnersCount = tplOptions.DeterminePathRunnersCount;
 
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
-      long currentMu = (long)debugOptions.muStart;
+      ulong currentMu = debugOptions.muStart;
 
       TASGBuilderSlotsMThreads tasgBuilder = new TASGBuilderSlotsMThreads();
 
@@ -61,7 +61,7 @@ namespace ExistsAcceptingPath
       while (true)
       {
         List<DeterminePathRunner> determinePathRunners = new List<DeterminePathRunner>();
-        long baseMu = currentMu;
+        ulong baseMu = currentMu;
 
         for (long i = 0; i < determinePathRunnersCount; i++)
         {

@@ -151,19 +151,19 @@ namespace MTExtDefinitions
     public override bool AcceptingPathAlwaysExists => true;
     public override bool AllPathsFinite => false;
 
-    public override long GetLTapeBound(long mu, long n) => 0;
+    public override long GetLTapeBound(ulong mu, ulong n) => 0;
 
-    public override long GetRTapeBound(long mu, long n)
+    public override long GetRTapeBound(ulong mu, ulong n)
     {
       return 5 + (FrameLength((int)n) * 4);
     }
 
-    public override long ExpectedPathLength(long n)
+    public override ulong ExpectedPathLength(ulong n)
     {
       return 5 * (n * n);
     }
 
-    public override int[] GetOutput(TMInstance tmInstance, long mu, long n)
+    public override int[] GetOutput(TMInstance tmInstance, ulong mu, ulong n)
     {
       return tmInstance.GetTapeSubstr(GetLTapeBound(mu, n), GetRTapeBound(mu, n));
     }

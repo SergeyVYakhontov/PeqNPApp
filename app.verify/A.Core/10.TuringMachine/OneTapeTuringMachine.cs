@@ -30,7 +30,8 @@ namespace Core
     public int[] Gamma { get; protected set; }
     public const int blankSymbol = -1;
     public int[] Sigma { get; protected set; }
-    public Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta { get; protected set; }
+    public Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta
+      { get; protected set; }
     public uint qStart { get; protected set; }
     public uint[] F { get; protected set; }
 
@@ -46,9 +47,9 @@ namespace Core
     public abstract bool AcceptingPathAlwaysExists { get; }
     public abstract bool AllPathsFinite { get; }
 
-    public virtual long GetLTapeBound(long mu, long n) => 1 - mu;
-    public virtual long GetRTapeBound(long mu, long n) => 1 + mu;
-    public virtual long ExpectedPathLength(long n) => n;
+    public virtual long GetLTapeBound(ulong mu, ulong n) => 1 - (long)mu;
+    public virtual long GetRTapeBound(ulong mu, ulong n) => 1 + (long)mu;
+    public virtual ulong ExpectedPathLength(ulong n) => n;
 
     public const long InstancesCountLimit = 1024 * 1024;
 
@@ -102,7 +103,7 @@ namespace Core
       return acceptingInstance.GetOutput();
     }
 
-    public virtual int[] GetOutput(TMInstance tmInstance, long mu, long n)
+    public virtual int[] GetOutput(TMInstance tmInstance, ulong mu, ulong n)
     {
       return tmInstance.GetOutput();
     }

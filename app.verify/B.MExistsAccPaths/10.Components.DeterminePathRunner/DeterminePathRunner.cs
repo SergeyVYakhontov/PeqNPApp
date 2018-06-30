@@ -48,7 +48,7 @@ namespace ExistsAcceptingPath
     protected readonly MEAPSharedContext MEAPSharedContext;
     protected readonly OneTapeTuringMachine tMachine;
     protected readonly int[] input;
-    protected readonly long currentMu;
+    protected readonly ulong currentMu;
 
     protected MEAPContext meapContext;
     protected long baseMu;

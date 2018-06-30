@@ -32,7 +32,7 @@ namespace ExistsAcceptingPath
       {
         q = MEAPSharedContext.MNP.qStart,
         s = MEAPSharedContext.Input[0],
-        qNext = (int)MEAPSharedContext.MNP.qStart,
+        qNext = MEAPSharedContext.MNP.qStart,
         sNext = MEAPSharedContext.Input[0],
         m = TMDirection.S,
         Shift = 1,
@@ -52,7 +52,7 @@ namespace ExistsAcceptingPath
 
     public override void CreateTArbitrarySeqGraph()
     {
-      long initMu = (processedMu.Any() ? processedMu.Last() : -1);
+      ulong initMu = (processedMu.Any() ? processedMu.Last() : 0);
       log.Info("Building TArbitrarySeqGraph");
 
       log.Info("Traverse MNP tree");
@@ -68,7 +68,7 @@ namespace ExistsAcceptingPath
       G.CopyIdToNodeInfoMap(idToInfoMap);
 
       meapContext.TArbitrarySeqGraph = G;
-      long newMu = processedMu.Last();
+      ulong newMu = processedMu.Last();
 
       log.InfoFormat(
         "TArbitrarySeqGraph, mu: {0} {1}",
@@ -149,8 +149,8 @@ namespace ExistsAcceptingPath
     private List<DAGNode> endNodes = new List<DAGNode>();
     private List<long> endNodeIds = new List<long>();
     private List<DAGNode> acceptingNodes = new List<DAGNode>();
-    private long treesCut = 0;
-    private SortedSet<long> processedMu = new SortedSet<long>();
+    private long treesCut;
+    private SortedSet<ulong> processedMu = new SortedSet<ulong>();
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
@@ -163,7 +163,7 @@ namespace ExistsAcceptingPath
     }
 
     private List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>>
-      GetDeltaElements(int state)
+      GetDeltaElements(uint state)
     {
       return meapContext.MEAPSharedContext.MNP.Delta.Where(
         d => (d.Key.State == state)).ToList();
@@ -241,11 +241,8 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>> deltaElements =
-          GetDeltaElements(fromCompStep.qNext);
-
         foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in
-          deltaElements)
+                    GetDeltaElements(fromCompStep.qNext))
         {
           StateSymbolPair from = to.Key;
           foreach (StateSymbolDirectionTriple p in to.Value)

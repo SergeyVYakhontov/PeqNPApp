@@ -231,7 +231,7 @@ namespace MTDefinitions
     public override bool AcceptingPathAlwaysExists => false;
     public override bool AllPathsFinite => false;
 
-    public override long GetLTapeBound(long mu, long n) => 1;
+    public override long GetLTapeBound(ulong mu, ulong n) => 1;
 
     #endregion
   }

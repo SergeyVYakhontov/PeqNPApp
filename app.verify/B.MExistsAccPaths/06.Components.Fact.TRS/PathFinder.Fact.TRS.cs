@@ -114,7 +114,9 @@ namespace ExistsAcceptingPath
       }
 
       output = meapContext.MEAPSharedContext.MNP.GetOutput(
-        tmInstance, meapContext.mu, meapContext.MEAPSharedContext.Input.Length);
+        tmInstance,
+        meapContext.mu,
+        (uint)meapContext.MEAPSharedContext.Input.Length);
     }
 
     private void CopyResult()

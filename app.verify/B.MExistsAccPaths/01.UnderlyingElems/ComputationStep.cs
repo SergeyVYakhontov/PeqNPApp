@@ -11,7 +11,9 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class ComputationStep
+  public class ComputationStep :
+    IEquatable<ComputationStep>,
+    IComparable<ComputationStep>
   {
     #region Ctors
 
@@ -36,41 +38,80 @@ namespace ExistsAcceptingPath
     public uint q { get; set; }
     public int s { get; set; }
 
-    public int qNext { get; set; }
+    public uint qNext { get; set; }
     public int sNext { get; set; }
 
     public TMDirection m { get; set; }
     public long Shift { get; set; }
 
     public long kappaTape { get; set; }
-    public long kappaStep { get; set; }
+    public ulong kappaStep { get; set; }
 
     public override bool Equals(Object obj)
     {
-      ComputationStep compStep = (ComputationStep)obj;
+      ComputationStep other = (ComputationStep)obj;
 
+      return this == other;
+    }
+
+    public override int GetHashCode() => (int)kappaStep;
+
+    public override String ToString() =>
+      $"(q={q}, s={s}, q'={qNext}, s'={sNext}, m={m}, sh={Shift}, tp={kappaTape}, st={kappaStep})";
+
+    public bool Equals(ComputationStep other)
+    {
+      return this == other;
+    }
+
+    public int CompareTo(ComputationStep other)
+    {
+      return compStepComparer.Compare(this, other);
+    }
+
+    public static bool operator ==(ComputationStep left, ComputationStep right)
+    {
       return
-        (q == compStep.q) &&
-        (s == compStep.s) &&
-        (qNext == compStep.qNext) &&
-        (sNext == compStep.sNext) &&
-        (m == compStep.m) &&
-        (Shift == compStep.Shift) &&
-        (kappaTape == compStep.kappaTape) &&
-        (kappaStep == compStep.kappaStep);
+        (left.q == right.q) &&
+        (left.s == right.s) &&
+        (left.qNext == right.qNext) &&
+        (left.sNext == right.sNext) &&
+        (left.m == right.m) &&
+        (left.Shift == right.Shift) &&
+        (left.kappaTape == right.kappaTape) &&
+        (left.kappaStep == right.kappaStep);
     }
 
-    public override int GetHashCode()
+    public static bool operator !=(ComputationStep left, ComputationStep right)
     {
-      return (int)kappaStep;
+      return !(left == right);
     }
 
-    public override String ToString()
+    public static bool operator <(ComputationStep left, ComputationStep right)
     {
-      return String.Format
-        ("(q={0}, s={1}, q'={2}, s'={3}, m={4}, sh={5}, tp={6}, st={7})",
-        q, s, qNext, sNext, m, Shift, kappaTape, kappaStep);
+      return left.CompareTo(right) < 0;
     }
+
+    public static bool operator <=(ComputationStep left, ComputationStep right)
+    {
+      return left.CompareTo(right) <= 0;
+    }
+
+    public static bool operator >(ComputationStep left, ComputationStep right)
+    {
+      return left.CompareTo(right) > 0;
+    }
+
+    public static bool operator >=(ComputationStep left, ComputationStep right)
+    {
+      return left.CompareTo(right) >= 0;
+    }
+
+    #endregion
+
+    #region private members
+
+    private static readonly CompStepComparer compStepComparer = new CompStepComparer();
 
     #endregion
   }

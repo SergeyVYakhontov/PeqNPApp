@@ -19,159 +19,107 @@ namespace MTExtDefinitions
     private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaGenNumber1()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
-        {
-          // start generating bit
+      {
+        // start generating bit
+        // generate bit 0 or 1
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit0, symbol: blankSymbol)] =
+          new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolPair()
-              {
-                State = (int)SubprogStates.GenNumber1Ready,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit0,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
+            new StateSymbolDirectionTriple
+            (
+             state: (uint)GenNumber1States.GenBit1,
+             symbol: 0,
+             direction: TMDirection.R
+            ),
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBit1,
+              symbol: 1,
+              direction: TMDirection.R
+            )
           },
 
-          // generate bit 0 or 1
+        // generate bit 0 or 1
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit1, symbol: blankSymbol)] =
+          new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolPair()
-              {
-                State = (int)GenNumber1States.GenBit0,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit1,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  },
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit1,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBit,
+              symbol: 0,
+              direction: TMDirection.R
+            ),
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBit,
+              symbol: 1,
+              direction: TMDirection.R
+            ),
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.MoveToDelimiter,
+              symbol: 1,
+              direction: TMDirection.R
+            )
           },
 
-          // generate bit 0 or 1
+        // generate bit 0 or 1
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit, symbol: blankSymbol)] =
+          new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolPair()
-              {
-                State = (int)GenNumber1States.GenBit1,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  },
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  },
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.MoveToDelimiter,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBit,
+              symbol: 0,
+              direction: TMDirection.R
+            ),
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBit,
+              symbol: 1,
+              direction: TMDirection.R
+            ),
+            new StateSymbolDirectionTriple
+            (
+              state: (int)GenNumber1States.MoveToDelimiter,
+              symbol: 1,
+              direction: TMDirection.R
+            )
           },
 
-          // generate bit 0 or 1
+        // move to delimiter
+        [new StateSymbolPair(state: (uint)GenNumber1States.MoveToDelimiter, symbol: blankSymbol)] =
+          new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolPair()
-              {
-                State = (int)GenNumber1States.GenBit,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  },
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.GenBit,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  },
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.MoveToDelimiter,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.MoveToDelimiter,
+              symbol: blankSymbol,
+              direction: TMDirection.R
+            )
           },
 
-          // move to delimiter
+        // delimiter reached
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit, symbol: delimiter)] =
+          new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolPair()
-              {
-                State = (int)GenNumber1States.MoveToDelimiter,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.MoveToDelimiter,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
+            new StateSymbolDirectionTriple
+            (
+              state: rejectingState,
+              symbol: delimiter,
+              direction: TMDirection.S
+            )
           },
 
-          // delimiter reached
+        [new StateSymbolPair(state: (uint)GenNumber1States.MoveToDelimiter, symbol: delimiter)] =
+          new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolPair()
-              {
-                State = (int)GenNumber1States.GenBit,
-                Symbol = delimiter
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = delimiter,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)GenNumber1States.MoveToDelimiter,
-                Symbol = delimiter
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)GenNumber1States.StopGenNumber,
-                    Symbol = delimiter,
-                    Direction = TMDirection.S
-                  }
-              }
+            new StateSymbolDirectionTriple
+            (
+              state: (int)GenNumber1States.StopGenNumber,
+              symbol: delimiter,
+              direction: TMDirection.S
+            )
           }
         };
     }

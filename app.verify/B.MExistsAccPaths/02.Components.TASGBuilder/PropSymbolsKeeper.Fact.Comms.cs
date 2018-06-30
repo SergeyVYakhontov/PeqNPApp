@@ -32,7 +32,7 @@ namespace ExistsAcceptingPath
         propagatedSymbols, sNodeId,
         () => new SortedSet<PropSymbol>(new PropSymbolComparer()));
 
-      int inputLength = MEAPSharedContext.Input.Length;
+      uint inputLength = (uint)MEAPSharedContext.Input.Length;
 
       long L = MEAPSharedContext.MNP.GetLTapeBound(0, inputLength);
       long R = MEAPSharedContext.MNP.GetRTapeBound(0, inputLength);
@@ -49,7 +49,7 @@ namespace ExistsAcceptingPath
       ComputationStep fromCompStep,
       ComputationStep toCompStep)
     {
-      int inputLength = MEAPSharedContext.Input.Length;
+      uint inputLength = (uint)MEAPSharedContext.Input.Length;
 
       long L = MEAPSharedContext.MNP.GetLTapeBound(0, inputLength);
       long R = MEAPSharedContext.MNP.GetRTapeBound(0, inputLength);

@@ -50,7 +50,7 @@ namespace ProgramTests
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
       Assert.False(appStatistics.ThereWereErrors);
     }
-
+    
     [Fact]
     public void T04_IntegerFactExamplesAppTRSTest()
     {

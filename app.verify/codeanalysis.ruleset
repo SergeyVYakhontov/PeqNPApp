@@ -9,7 +9,7 @@
     <Rule Id="RCS1080" Action="None" />
     <Rule Id="RCS1057" Action="None" />
   </Rules>
-  <Rules AnalyzerId="RefctoringEssentials" RuleNamespace="RefctoringEssentials">
+  <Rules AnalyzerId="RefactoringEssentials" RuleNamespace="RefactoringEssentials">
     <Rule Id="RECS0145" Action="None" />
     <Rule Id="RECS0070" Action="None" />
   </Rules>

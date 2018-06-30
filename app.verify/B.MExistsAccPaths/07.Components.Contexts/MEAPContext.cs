@@ -24,7 +24,7 @@ namespace ExistsAcceptingPath
     public int[] Output { get; set; }
 
     // TArbSeqCFG construction
-    public long mu { get; set; }
+    public ulong mu { get; set; }
 
     public ITASGBuilder TASGBuilder { get; set; }
     public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbitrarySeqGraph { get; set; }

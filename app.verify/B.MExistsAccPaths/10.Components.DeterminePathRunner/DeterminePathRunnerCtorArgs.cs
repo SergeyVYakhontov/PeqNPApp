@@ -22,7 +22,7 @@ namespace ExistsAcceptingPath
 
     public OneTapeTuringMachine tMachine { get; set; }
     public int[] input { get; set; }
-    public long currentMu { get; set; }
+    public ulong currentMu { get; set; }
 
     #endregion
   }

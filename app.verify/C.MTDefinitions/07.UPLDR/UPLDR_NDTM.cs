@@ -86,7 +86,8 @@ namespace MTDefinitions
               };
 
           List<StateSymbolDirectionTriple> deltaPairValueList = new List<StateSymbolDirectionTriple>();
-          foreach (int qNext in Q)
+
+          foreach (uint qNext in Q)
           {
             foreach (int sNext in Gamma)
             {
@@ -210,8 +211,8 @@ namespace MTDefinitions
     public override bool AcceptingPathAlwaysExists => true;
     public override bool AllPathsFinite => false;
 
-    public override long GetLTapeBound(long mu, long n) => 0;
-    public override long GetRTapeBound(long mu, long n) => (n * n);
+    public override long GetLTapeBound(ulong mu, ulong n) => 0;
+    public override long GetRTapeBound(ulong mu, ulong n) => (long)(n * n);
 
     #endregion
   }

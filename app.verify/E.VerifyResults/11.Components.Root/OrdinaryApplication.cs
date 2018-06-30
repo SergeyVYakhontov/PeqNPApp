@@ -43,11 +43,6 @@ namespace VerifyResults
         appStatistics.ThereWereErrors = true;
         log.Error(exception.Message);
       }
-
-      if (!args.Contains("test"))
-      {
-        Console.ReadKey();
-      }
     }
 
     #endregion

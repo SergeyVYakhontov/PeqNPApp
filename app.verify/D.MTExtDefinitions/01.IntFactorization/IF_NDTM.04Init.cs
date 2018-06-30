@@ -24,62 +24,62 @@ namespace MTExtDefinitions
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-              {
-                State = (int)InitStates.MoveToRightDelim,
-                Symbol = 0,
-                Direction = TMDirection.R
-               }
-            },
+            (
+              state: (uint)InitStates.MoveToRightDelim,
+              symbol: 0,
+              direction: TMDirection.R
+            )
+          },
         [new StateSymbolPair(state: qStartState, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-            {
-              State = (int)InitStates.MoveToRightDelim,
-              Symbol = 1,
-              Direction = TMDirection.R
-            }
+            (
+              state: (uint)InitStates.MoveToRightDelim,
+              symbol: 1,
+              direction: TMDirection.R
+            )
           },
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-              {
-                State = (int)InitStates.MoveToRightDelim,
-                Symbol = blankSymbol,
-                Direction = TMDirection.R
-              }
-            },
+            (
+              state: (int)InitStates.MoveToRightDelim,
+              symbol: blankSymbol,
+              direction: TMDirection.R
+             )
+          },
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: 0)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-              {
-                State = (int)InitStates.MoveToRightDelim,
-                Symbol = 0,
-                Direction = TMDirection.R
-              }
-            },
+            (
+              state: (uint)InitStates.MoveToRightDelim,
+              symbol: 0,
+              direction: TMDirection.R
+            )
+          },
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-              {
-                State = (int)InitStates.MoveToRightDelim,
-                Symbol = 1,
-                Direction = TMDirection.R
-              }
-            },
+            (
+              state: (uint)InitStates.MoveToRightDelim,
+              symbol: 1,
+              direction: TMDirection.R
+            )
+          },
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: delimiter)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-              {
-                State = (int)InitStates.StopInit,
-                Symbol = delimiter,
-                Direction = TMDirection.R
-              }
-            }
+            (
+              state: (uint)GenNumber1States.GenBit0,
+              symbol: delimiter,
+              direction: TMDirection.R
+             )
+          }
       };
     }
 

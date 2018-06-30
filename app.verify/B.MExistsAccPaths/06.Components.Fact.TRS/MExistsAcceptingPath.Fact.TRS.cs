@@ -50,7 +50,7 @@ namespace ExistsAcceptingPath
       uint determinePathRunnersCount = tplOptions.DeterminePathRunnersCount;
 
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
-      long currentMu = (long)debugOptions.muStart;
+      ulong currentMu = debugOptions.muStart;
 
       TASGBuilderFactTRS tasgBuilder = new TASGBuilderFactTRS();
       MEAPSharedContext.TASGBuilder = tasgBuilder;

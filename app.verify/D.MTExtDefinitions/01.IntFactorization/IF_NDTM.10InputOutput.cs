@@ -49,8 +49,8 @@ namespace MTExtDefinitions
     public override int[] GetAcceptingInstanceOutput(int[] input)
     {
       return acceptingInstance.GetTapeSubstr(
-        GetLTapeBound(-1, input.Length),
-        GetRTapeBound(-1, input.Length));
+        GetLTapeBound(0, (uint)input.Length),
+        GetRTapeBound(0, (uint)input.Length));
     }
 
     public static void RetrieveFactors(
