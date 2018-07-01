@@ -22,14 +22,14 @@ namespace MTExtDefinitions
         {
           // start adding
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.StartAdding,
                 Symbol = markD0
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)AddStates.AddBitC0,
                     Symbol = markD1,
@@ -38,14 +38,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.StartAdding,
                 Symbol = markD1
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)AddStates.AddBitC1,
                     Symbol = markD0,
@@ -56,14 +56,14 @@ namespace MTExtDefinitions
 
           // add bit with carry = 0
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC0,
                 Symbol = 0
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 0,
@@ -72,14 +72,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC0,
                 Symbol = 1
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 1,
@@ -88,14 +88,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC0,
                 Symbol = markD0
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = markD0,
@@ -104,14 +104,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC0,
                 Symbol = markD1
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = markD1,
@@ -122,14 +122,14 @@ namespace MTExtDefinitions
 
           // add bit with carry = 1
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC1,
                 Symbol = 0
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 1,
@@ -138,14 +138,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC1,
                 Symbol = 1
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)AddStates.AddBitC1,
                     Symbol = 0,
@@ -154,14 +154,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC1,
                 Symbol = markD0
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = markD1,
@@ -170,14 +170,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC1,
                 Symbol = markD1
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)AddStates.AddBitC1,
                     Symbol = markD0,
@@ -188,14 +188,14 @@ namespace MTExtDefinitions
 
           // blank reached
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC0,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 0,
@@ -204,14 +204,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC1,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 1,
@@ -220,14 +220,14 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC0,
-                Symbol = delimiter
+                Symbol = delimiter4
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 0,
@@ -236,15 +236,15 @@ namespace MTExtDefinitions
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)AddStates.AddBitC1,
-                Symbol = delimiter
+                Symbol = delimiter4
 
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_L,
                     Symbol = 1,

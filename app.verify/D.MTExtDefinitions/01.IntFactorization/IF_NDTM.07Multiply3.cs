@@ -194,14 +194,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.MoveToMarkInD_L,
-                Symbol = delimiter
+                Symbol = delimiter3
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.MoveToMarkInD_R,
-                    Symbol = delimiter,
+                    Symbol = delimiter3,
                     Direction = TMDirection.R
                   }
               }

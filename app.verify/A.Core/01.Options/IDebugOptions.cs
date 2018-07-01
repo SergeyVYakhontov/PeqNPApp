@@ -16,6 +16,7 @@ namespace Core
     bool RunRDA { get; }
     bool ComputeCommoditiesExplicitely { get; }
     bool IntFactTestRules { get; }
+    bool IntFact_RunCheckAlgorithm { get; }
     uint FactTRS_muUpperBound { get; }
   }
 }

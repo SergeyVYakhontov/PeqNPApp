@@ -73,14 +73,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)SubprogStates.MultReady,
-                Symbol = delimiter
+                Symbol = delimiter3
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.StartLoopInC,
-                    Symbol = delimiter,
+                    Symbol = delimiter3,
                     Direction = TMDirection.S
                   }
               }
@@ -107,14 +107,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.StartLoopInC,
-                Symbol = delimiter
+                Symbol = delimiter3
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.StopMultiplying,
-                    Symbol = delimiter,
+                    Symbol = delimiter3,
                     Direction = TMDirection.S
                   }
               }
@@ -296,14 +296,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.MoveToCRight,
-                Symbol = delimiter
+                Symbol = delimiter3
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = delimiter,
+                    Symbol = delimiter3,
                     Direction = TMDirection.L
                   }
               }
@@ -394,14 +394,14 @@ namespace MTExtDefinitions
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = delimiter
+                Symbol = delimiter2
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
                     State = (int)MultiplyStates.StartAddC,
-                    Symbol = delimiter,
+                    Symbol = delimiter2,
                     Direction = TMDirection.R
                   }
               }

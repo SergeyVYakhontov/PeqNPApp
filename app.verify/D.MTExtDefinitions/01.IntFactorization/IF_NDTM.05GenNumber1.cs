@@ -20,74 +20,71 @@ namespace MTExtDefinitions
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
-        // start generating bit
+        // start generating bits
         // generate bit 0 or 1
-        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit0, symbol: blankSymbol)] =
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBitA, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-             state: (uint)GenNumber1States.GenBit1,
-             symbol: 0,
-             direction: TMDirection.R
-            ),
-            new StateSymbolDirectionTriple
-            (
-              state: (uint)GenNumber1States.GenBit1,
-              symbol: 1,
-              direction: TMDirection.R
-            )
-          },
-
-        // generate bit 0 or 1
-        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit1, symbol: blankSymbol)] =
-          new List<StateSymbolDirectionTriple>
-          {
-            new StateSymbolDirectionTriple
-            (
-              state: (uint)GenNumber1States.GenBit,
+              state: (uint)GenNumber1States.GenBitA,
               symbol: 0,
               direction: TMDirection.R
             ),
             new StateSymbolDirectionTriple
             (
-              state: (uint)GenNumber1States.GenBit,
+              state: (uint)GenNumber1States.GenBitB,
+              symbol: 1,
+              direction: TMDirection.R
+            )
+          },
+
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBitB, symbol: blankSymbol)] =
+          new List<StateSymbolDirectionTriple>
+          {
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBitB,
+              symbol: 0,
+              direction: TMDirection.R
+            ),
+            new StateSymbolDirectionTriple
+            (
+              state: (uint)GenNumber1States.GenBitB,
               symbol: 1,
               direction: TMDirection.R
             ),
             new StateSymbolDirectionTriple
             (
               state: (uint)GenNumber1States.MoveToDelimiter,
-              symbol: 1,
+              symbol: blankSymbol,
               direction: TMDirection.R
             )
           },
 
-        // generate bit 0 or 1
-        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit, symbol: blankSymbol)] =
+        // delimiter reached
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBitA, symbol: delimiter2)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)GenNumber1States.GenBit,
-              symbol: 0,
-              direction: TMDirection.R
-            ),
-            new StateSymbolDirectionTriple
-            (
-              state: (uint)GenNumber1States.GenBit,
-              symbol: 1,
-              direction: TMDirection.R
-            ),
-            new StateSymbolDirectionTriple
-            (
-              state: (int)GenNumber1States.MoveToDelimiter,
-              symbol: 1,
-              direction: TMDirection.R
+              state: rejectingState,
+              symbol: delimiter2,
+              direction: TMDirection.S
             )
           },
 
-        // move to delimiter
+        [new StateSymbolPair(state: (uint)GenNumber1States.GenBitB, symbol: delimiter2)] =
+          new List<StateSymbolDirectionTriple>
+          {
+            new StateSymbolDirectionTriple
+            (
+              state: rejectingState,
+              symbol: delimiter2,
+              direction: TMDirection.S
+            )
+          },
+
         [new StateSymbolPair(state: (uint)GenNumber1States.MoveToDelimiter, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
@@ -98,30 +95,17 @@ namespace MTExtDefinitions
               direction: TMDirection.R
             )
           },
-
-        // delimiter reached
-        [new StateSymbolPair(state: (uint)GenNumber1States.GenBit, symbol: delimiter)] =
+        [new StateSymbolPair(state: (uint)GenNumber1States.MoveToDelimiter, symbol: delimiter2)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: rejectingState,
-              symbol: delimiter,
-              direction: TMDirection.S
-            )
-          },
-
-        [new StateSymbolPair(state: (uint)GenNumber1States.MoveToDelimiter, symbol: delimiter)] =
-          new List<StateSymbolDirectionTriple>
-          {
-            new StateSymbolDirectionTriple
-            (
-              state: (int)GenNumber1States.StopGenNumber,
-              symbol: delimiter,
-              direction: TMDirection.S
+              state: (int)GenNumber2States.GenBitA,
+              symbol: delimiter2,
+              direction: TMDirection.R
             )
           }
-        };
+      };
     }
 
     #endregion

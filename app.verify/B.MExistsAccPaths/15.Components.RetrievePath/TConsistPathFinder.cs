@@ -47,12 +47,16 @@ namespace ExistsAcceptingPath
         {
           log.InfoFormat(
             "id = {0}, comp.step = {1}",
-            s.Key.ToString(), s.Value.ToString());
+            s.Key.ToString(), s.Value);
         });
 
       TMInstance tmInstance = new TMInstance(
         meapContext.MEAPSharedContext.MNP,
         meapContext.MEAPSharedContext.Input);
+
+      meapContext.MEAPSharedContext.MNP.PrepareTapeFwd(
+        meapContext.MEAPSharedContext.Input,
+        tmInstance);
 
       foreach (KeyValuePair<long, ComputationStep> compStepP in pathCompSteps)
       {

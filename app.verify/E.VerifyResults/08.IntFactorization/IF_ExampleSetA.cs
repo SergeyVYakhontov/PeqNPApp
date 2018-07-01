@@ -19,14 +19,14 @@ namespace VerifyResults
     public override List<IExample> GetSmallExamples()
     {
       List<IExample> smallExamples =
-        new List<IExample>()
+        new List<IExample>
         {
           new IF_Example()
           {
             Name = "E01",
             Input = new int[] {1, 0, 0}.Reverse().ToArray() // 4 = 2 * 2
           },
-          new IF_Example()
+          new IF_Example
           {
             Name = "E02",
             Input = new int[] {1, 1, 0}.Reverse().ToArray() // 6 = 3 * 2

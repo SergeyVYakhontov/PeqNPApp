@@ -50,26 +50,14 @@ namespace MTExtDefinitions
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
-        // start generating number2
-        [new StateSymbolPair(state: (uint)GenNumber1States.StopGenNumber, symbol: delimiter)] =
-          new List<StateSymbolDirectionTriple>
-          {
-            new StateSymbolDirectionTriple
-            {
-              State = (int)SubprogStates.GenNumber2Ready,
-              Symbol = delimiter,
-              Direction = TMDirection.R
-            }
-          },
-
         // start multiplying
-        [new StateSymbolPair(state: (uint)GenNumber2States.StopGenNumber, symbol: delimiter)] =
+        [new StateSymbolPair(state: (uint)GenNumber2States.StopGenNumber, symbol: delimiter3)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             {
               State = (int)SubprogStates.MultReady,
-              Symbol = delimiter,
+              Symbol = delimiter3,
               Direction = TMDirection.L,
               Shift = frameLength * 2 - 1
             }
@@ -86,13 +74,14 @@ namespace MTExtDefinitions
               Direction = TMDirection.S
             }
           },
-        [new StateSymbolPair(state: (uint)MultiplyStates.StopMultiplying, symbol: delimiter)] =
+
+        [new StateSymbolPair(state: (uint)MultiplyStates.StopMultiplying, symbol: delimiter3)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             {
               State = (int)rejectingState,
-              Symbol = delimiter,
+              Symbol = delimiter3,
               Direction = TMDirection.S
             }
           }

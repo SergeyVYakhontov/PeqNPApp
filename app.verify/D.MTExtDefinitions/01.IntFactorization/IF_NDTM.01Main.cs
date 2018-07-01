@@ -34,24 +34,19 @@ namespace MTExtDefinitions
         {
           qStart,
 
-          (uint)SubprogStates.InitReady,
-          (uint)SubprogStates.GenNumber1Ready,
           (uint)SubprogStates.GenNumber2Ready,
           (uint)SubprogStates.MultReady,
           (uint)SubprogStates.CompareReady,
 
           (uint)InitStates.MoveToRightDelim,
-          (uint)InitStates.StopInit,
 
-          (uint)GenNumber1States.GenBit0,
-          (uint)GenNumber1States.GenBit1,
-          (uint)GenNumber1States.GenBit,
+          (uint)GenNumber1States.GenBitA,
+          (uint)GenNumber1States.GenBitB,
           (uint)GenNumber1States.MoveToDelimiter,
           (uint)GenNumber1States.StopGenNumber,
 
-          (uint)GenNumber2States.GenBit0,
-          (uint)GenNumber2States.GenBit1,
-          (uint)GenNumber2States.GenBit,
+          (uint)GenNumber2States.GenBitA,
+          (uint)GenNumber2States.GenBitB,
           (uint)GenNumber2States.MoveToDelimiter,
           (uint)GenNumber2States.StopGenNumber,
 
@@ -96,7 +91,11 @@ namespace MTExtDefinitions
         blankSymbol,
         0,
         1,
-        delimiter,
+        delimiter0,
+        delimiter1,
+        delimiter2,
+        delimiter3,
+        delimiter4,
         markB0,
         markB1,
         markC0,
@@ -112,7 +111,11 @@ namespace MTExtDefinitions
         blankSymbol,
         0,
         1,
-        delimiter
+        delimiter0,
+        delimiter1,
+        delimiter2,
+        delimiter3,
+        delimiter4
       };
 
       Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> delta;
@@ -167,8 +170,6 @@ namespace MTExtDefinitions
     {
       return tmInstance.GetTapeSubstr(GetLTapeBound(mu, n), GetRTapeBound(mu, n));
     }
-
-    public static int FactorDelimiter => delimiter;
 
     #endregion
 

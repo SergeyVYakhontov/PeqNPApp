@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using EnsureThat;
 using Core;
 using ExistsAcceptingPath;
 using MTExtDefinitions;
@@ -41,14 +42,13 @@ namespace VerifyResults
 
       bool result = (xMultYNumber == inputNumber);
 
-      if (result)
-      {
-        log.InfoFormat(
-          "{0} mult by {1} = {2}",
-          factorXNumber.ToString(),
-          factorYNumber.ToString(),
-          xMultYNumber.ToString());
-      }
+      Ensure.That(result).IsTrue();
+
+      log.InfoFormat(
+        "{0} mult by {1} = {2}",
+        factorXNumber.ToString(),
+        factorYNumber.ToString(),
+        xMultYNumber.ToString());
 
       return result;
     }

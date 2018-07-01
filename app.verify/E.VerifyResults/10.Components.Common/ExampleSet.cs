@@ -167,7 +167,7 @@ namespace VerifyResults
         GC.Collect();
       }
 
-      return (!errorFound);
+      return !errorFound;
     }
 
     public abstract string Name { get; set; }

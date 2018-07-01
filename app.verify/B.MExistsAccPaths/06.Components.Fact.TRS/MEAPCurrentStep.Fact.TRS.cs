@@ -28,10 +28,18 @@ namespace ExistsAcceptingPath
     public override void Run(uint[] states)
     {
       log.InfoFormat("mu: {0}", meapContext.mu);
+      log.DebugFormat("states = {0}", AppHelper.ArrayToString(states));
 
       CreateTASGBuilder();
 
       tasgBuilder.CreateTArbitrarySeqGraph();
+      IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
+
+      if (!debugOptions.RunRDA)
+      {
+        return;
+      }
+
       tasgBuilder.CreateTArbSeqCFG(states);
 
       CopyResultFromTapeSegContext();
@@ -49,10 +57,6 @@ namespace ExistsAcceptingPath
         CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
       }
 
-      log.DebugFormat("states = {0}", AppHelper.ArrayToString(states));
-
-      IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
-
       ComputeDUPairs();
 
       meapContext.CommoditiesBuilder = new CommoditiesBuilderFactTRS(meapContext);
@@ -61,11 +65,6 @@ namespace ExistsAcceptingPath
       meapContext.CommoditiesBuilder = null;
 
       meapContext.UnusedNodes = new SortedSet<long>();
-
-      if (!debugOptions.RunRDA)
-      {
-        return;
-      }
 
       NestedCommsGraphBuilderFactTRS nestedCommsGraphBuilder =
         new NestedCommsGraphBuilderFactTRS(meapContext);

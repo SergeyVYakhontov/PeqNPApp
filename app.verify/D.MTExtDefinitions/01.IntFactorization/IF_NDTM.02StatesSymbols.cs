@@ -20,22 +20,25 @@ namespace MTExtDefinitions
     private const uint acceptingState = 127;
     private const uint rejectingState = 128;
 
-    private const int delimiter = 2;
-    private const int markB0 = 3;
-    private const int markB1 = 4;
-    private const int markC0 = 5;
-    private const int markC1 = 6;
-    private const int markD0 = 7;
-    private const int markD1 = 8;
-    private const int bkwd1 = 9;
-    private const int bkwd2 = 10;
+    private const int delimiter0 = 2;
+    private const int delimiter1 = 4;
+    private const int delimiter2 = 5;
+    private const int delimiter3 = 6;
+    private const int delimiter4 = 7;
+
+    private const int markB0 = 8;
+    private const int markB1 = 9;
+    private const int markC0 = 10;
+    private const int markC1 = 11;
+    private const int markD0 = 12;
+    private const int markD1 = 13;
+    private const int bkwd1 = 14;
+    private const int bkwd2 = 15;
 
     private enum SubprogStates : uint
     {
       SubprogStatesBase = qStartState + 1, // 1
-      InitReady = SubprogStatesBase, // 1
-      GenNumber1Ready = InitReady + 1, // 2
-      GenNumber2Ready = GenNumber1Ready + 1, // 3
+      GenNumber2Ready = SubprogStatesBase + 1, // 3
       MultReady = GenNumber2Ready + 1, // 4
       CompareReady = MultReady + 1 // 5
     }
@@ -44,27 +47,24 @@ namespace MTExtDefinitions
     {
       InitBase = SubprogStates.CompareReady + 1, // 6
       MoveToRightDelim = InitBase, // 6
-      StopInit = MoveToRightDelim + 1 // 10
     }
 
     private enum GenNumber1States : uint
     {
-      GenNumber1Base = InitStates.StopInit + 1, // 11
-      GenBit0 = GenNumber1Base, // 11
-      GenBit1 = GenBit0 + 1, // 12
-      GenBit = GenBit1 + 1, // 13
-      MoveToDelimiter = GenBit + 1, // 14
+      GenNumber1Base = InitStates.MoveToRightDelim + 1, // 11
+      GenBitA = GenNumber1Base + 1, // 13
+      GenBitB = GenBitA + 1, // 13
+      MoveToDelimiter = GenBitB + 1,
       StopGenNumber = MoveToDelimiter + 1 // 15
     }
 
     private enum GenNumber2States : uint
     {
       GenNumber2Base = GenNumber1States.StopGenNumber + 1, // 16
-      GenBit0 = GenNumber2Base, // 16
-      GenBit1 = GenBit0 + 1, // 17
-      GenBit = GenBit1 + 1, // 18
-      MoveToDelimiter = GenBit + 1, // 19
-      StopGenNumber = MoveToDelimiter + 1 // 20
+      GenBitA = GenNumber2Base + 1, // 13
+      GenBitB = GenBitA + 1, // 13
+      MoveToDelimiter = GenBitB + 1,
+      StopGenNumber = MoveToDelimiter + 1 // 15
     }
 
     private enum MultiplyStates : uint

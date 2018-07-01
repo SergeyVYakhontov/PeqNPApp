@@ -30,6 +30,7 @@ namespace MTExtDefinitions
               direction: TMDirection.R
             )
           },
+
         [new StateSymbolPair(state: qStartState, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
           {
@@ -40,6 +41,7 @@ namespace MTExtDefinitions
               direction: TMDirection.R
             )
           },
+
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
@@ -50,6 +52,7 @@ namespace MTExtDefinitions
               direction: TMDirection.R
              )
           },
+
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: 0)] =
           new List<StateSymbolDirectionTriple>
           {
@@ -60,6 +63,7 @@ namespace MTExtDefinitions
               direction: TMDirection.R
             )
           },
+
         [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
           {
@@ -70,13 +74,14 @@ namespace MTExtDefinitions
               direction: TMDirection.R
             )
           },
-        [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: delimiter)] =
+
+        [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: delimiter1)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)GenNumber1States.GenBit0,
-              symbol: delimiter,
+              state: (uint)GenNumber1States.GenBitA,
+              symbol: delimiter1,
               direction: TMDirection.R
              )
           }

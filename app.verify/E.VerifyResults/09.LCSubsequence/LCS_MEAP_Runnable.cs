@@ -32,6 +32,7 @@ namespace VerifyResults
       return meap.Compute(input);
     }
 
+    public override bool RunCheckAlgorithm => false;
     public override bool CompareOutputs => true;
     public override bool ComputationFinished => true;
 

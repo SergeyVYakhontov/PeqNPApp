@@ -18,7 +18,7 @@ namespace VerifyResults
 
     public string Kind => "MEAP";
 
-    public virtual bool RunCheckAlgorithm => false;
+    public abstract bool RunCheckAlgorithm { get; }
     public abstract bool ComputationFinished { get; }
     public abstract bool CompareOutputs { get; }
 
