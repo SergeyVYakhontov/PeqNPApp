@@ -15,11 +15,11 @@ using ExistsAcceptingPath;
 
 namespace MTExtDefinitions
 {
-  public partial class IF_NDTM : OneTapeNDTM
+  public partial class IF_NDTM_A : OneTapeNDTM
   {
     #region Ctors
 
-    public IF_NDTM(int inputLength) : base("NDTM")
+    public IF_NDTM_A(int inputLength) : base("NDTM")
     {
       this.inputLength = inputLength;
     }

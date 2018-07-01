@@ -20,7 +20,7 @@ namespace VerifyResults
 
     public override bool Decide(int[] input)
     {
-      tm = new IF_NDTM(input.Length);
+      tm = new IF_NDTM_A(input.Length);
       tm.Setup();
 
       meap = new IF_MEAP(tm);

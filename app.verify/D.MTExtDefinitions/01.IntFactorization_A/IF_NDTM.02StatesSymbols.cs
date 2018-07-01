@@ -12,7 +12,7 @@ using ExistsAcceptingPath;
 
 namespace MTExtDefinitions
 {
-  public partial class IF_NDTM
+  public partial class IF_NDTM_A
   {
     #region private members
 
