@@ -48,8 +48,12 @@ namespace VerifyResults
       => new UPLDR_ExampleSets() { Name = "07_UPLDR_ES1" };
 
     // Factoring Integers
-    public ExampleSet IF_ExampleSetA
-      => new IF_ExampleSetA() { Name = "08_IF_ES1" };
+    public ExampleSet v1_IF_ExampleSetA
+      => new v1.IF_ExampleSetA { Name = "08_IF_ES1" };
+
+    // Factoring Integers
+    public ExampleSet v2_IF_ExampleSetA
+      => new v2.IF_ExampleSetA { Name = "08_IF_ES1" };
 
     // Longest Common Subsequence
     public ExampleSet LCS_ExampleSet

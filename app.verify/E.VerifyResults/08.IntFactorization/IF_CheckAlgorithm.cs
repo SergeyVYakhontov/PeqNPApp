@@ -8,11 +8,11 @@ using System.Text;
 using EnsureThat;
 using Core;
 using ExistsAcceptingPath;
-using MTExtDefinitions;
+using MTExtDefinitions.v1;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace VerifyResults
+namespace VerifyResults.v1
 {
   public class IF_CheckAlgorithm : ICheckAlgorithm
   {
@@ -30,7 +30,7 @@ namespace VerifyResults
 
       int[] factorsByteString = Core.AppHelper.CreateArrayCopy<int, int>(output, t => t);
 
-      IF_NDTM_A.RetrieveFactors(input.Length, factorsByteString, out int[] factorXBits, out int[] factorYBits);
+      IF_NDTM.RetrieveFactors(input.Length, factorsByteString, out int[] factorXBits, out int[] factorYBits);
 
       byte[] factorXBits_b = Core.AppHelper.CreateArrayCopy<int, byte>(factorXBits, t => (byte)t);
       byte[] factorYBits_b = Core.AppHelper.CreateArrayCopy<int, byte>(factorYBits, t => (byte)t);

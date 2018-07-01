@@ -8,11 +8,11 @@ using System.Text;
 using Ninject;
 using Core;
 using ExistsAcceptingPath;
-using MTExtDefinitions;
+using MTExtDefinitions.v1;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace VerifyResults
+namespace VerifyResults.v1
 {
   public class IF_MEAP_Runnable : MEAP_Runnable
   {
@@ -20,7 +20,7 @@ namespace VerifyResults
 
     public override bool Decide(int[] input)
     {
-      tm = new IF_NDTM_A(input.Length);
+      tm = new IF_NDTM(input.Length);
       tm.Setup();
 
       meap = new IF_MEAP(tm);

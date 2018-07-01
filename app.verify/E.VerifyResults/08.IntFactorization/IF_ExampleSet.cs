@@ -14,7 +14,7 @@ using MTExtDefinitions;
 // bit numbers in examples are written from left to right
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace VerifyResults
+namespace VerifyResults.v1
 {
   public abstract class IF_ExampleSets : ExampleSet
   {

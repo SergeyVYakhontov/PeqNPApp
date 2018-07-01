@@ -11,7 +11,7 @@ using MTExtDefinitions;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace VerifyResults
+namespace VerifyResults.v1
 {
   public class IF_DVN_Runnable: VN_Runnable
   {

@@ -10,7 +10,7 @@ using ExistsAcceptingPath;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace VerifyResults
+namespace VerifyResults.v1
 {
   public class IF_ExampleSetA : IF_ExampleSets
   {

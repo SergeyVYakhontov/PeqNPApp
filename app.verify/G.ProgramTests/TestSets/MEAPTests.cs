@@ -156,7 +156,7 @@ namespace ProgramTests
       configuration.Load<IntegerFactExamplesAppComms.AppNinjectModule>();
 
       ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
-      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
+      exampleSetProvider.ExampleSets.Add(exampleSetProvider.v1_IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
       application.Run(new string[] { "test" });
@@ -172,7 +172,7 @@ namespace ProgramTests
       configuration.Load<IntegerFactExamplesAppTRS.AppNinjectModule>();
 
       ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
-      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
+      exampleSetProvider.ExampleSets.Add(exampleSetProvider.v2_IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
       application.Run(new string[] { "test" });
