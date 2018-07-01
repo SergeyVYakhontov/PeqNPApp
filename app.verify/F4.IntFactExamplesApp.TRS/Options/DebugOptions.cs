@@ -17,8 +17,7 @@ namespace IntegerFactExamplesAppTRS
     public bool RunRDA { get => false; }
     public bool ComputeCommoditiesExplicitely { get => true; }
     public bool IntFactTestRules { get => false; }
-    public bool IntFact_RunCheckAlgorithm { get => false; }
-    public uint FactTRS_muUpperBound { get => 1000; }
+    public uint FactTRS_muUpperBound { get => 300; }
   }
 }
 

@@ -17,7 +17,6 @@ namespace OrdinaryExamplesAppSingleThread
     public bool RunRDA { get => true; }
     public bool ComputeCommoditiesExplicitely { get => true; }
     public bool IntFactTestRules { get => false; }
-    public bool IntFact_RunCheckAlgorithm { get => false; }
     public uint FactTRS_muUpperBound { get => throw new NotImplementedException(); }
   }
 }

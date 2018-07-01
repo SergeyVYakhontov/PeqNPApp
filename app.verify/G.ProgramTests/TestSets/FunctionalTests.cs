@@ -24,6 +24,11 @@ namespace ProgramTests
   {
     #region public members
 
+    public void Dispose()
+    {
+      ResetNinjectKernel();
+    }
+
     [Fact]
     public void T01_OrdinaryExamplesAppSlotsMThreadsTest()
     {
@@ -58,11 +63,6 @@ namespace ProgramTests
 
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
       Assert.False(appStatistics.ThereWereErrors);
-    }
-
-    public void Dispose()
-    {
-      ResetNinjectKernel();
     }
 
     #endregion
