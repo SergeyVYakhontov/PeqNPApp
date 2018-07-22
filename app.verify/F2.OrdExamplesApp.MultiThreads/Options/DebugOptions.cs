@@ -16,7 +16,6 @@ namespace OrdinaryExamplesAppSlotsMThreads
     public ulong muStart { get => 1; }
     public bool RunRDA { get => true; }
     public bool ComputeCommoditiesExplicitely { get => true; }
-    public bool IntFactTestRules { get => false; }
     public uint FactTRS_muUpperBound { get => throw new NotImplementedException(); }
   }
 }

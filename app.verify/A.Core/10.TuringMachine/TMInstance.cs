@@ -129,7 +129,7 @@ namespace Core
       StateSymbolDirectionTriple to,
       TMInstance instance)
     {
-      instance.state = (uint)to.State;
+      instance.state = to.State;
 
       switch (to.Direction)
       {

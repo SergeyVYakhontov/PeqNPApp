@@ -34,7 +34,6 @@ namespace MTExtDefinitions.v1
         {
           qStart,
 
-          (uint)SubprogStates.GenNumber2Ready,
           (uint)SubprogStates.MultReady,
           (uint)SubprogStates.CompareReady,
 
@@ -124,21 +123,14 @@ namespace MTExtDefinitions.v1
       int frameLength = FrameLength(inputLength);
       delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
-      if (debugOptions.IntFactTestRules)
-      {
-        AppHelper.MergeDictionaryWith(delta, deltaSubprog1Test(frameLength));
-      }
-
-      AppHelper.MergeDictionaryWith(delta, deltaSubprog2(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaInit());
       AppHelper.MergeDictionaryWith(delta, deltaGenNumber1());
-      AppHelper.MergeDictionaryWith(delta, deltaGenNumber2());
+      AppHelper.MergeDictionaryWith(delta, deltaGenNumber2(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaMultiply1(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaMultiply2(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaMultiply3(frameLength));
       AppHelper.MergeDictionaryWith(delta, deltaAdd());
       AppHelper.MergeDictionaryWith(delta, deltaCompare(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaBkwd(frameLength));
 
       Delta = delta;
 

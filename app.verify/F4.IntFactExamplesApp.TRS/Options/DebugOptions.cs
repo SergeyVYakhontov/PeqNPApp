@@ -16,7 +16,6 @@ namespace IntegerFactExamplesAppTRS
     public ulong muStart { get => 1; }
     public bool RunRDA { get => false; }
     public bool ComputeCommoditiesExplicitely { get => true; }
-    public bool IntFactTestRules { get => false; }
     public uint FactTRS_muUpperBound { get => 300; }
   }
 }

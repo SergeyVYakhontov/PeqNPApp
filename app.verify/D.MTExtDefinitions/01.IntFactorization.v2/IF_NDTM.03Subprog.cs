@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v2
   {
     #region private members
 
-    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog1Test(int frameLength)
+    /* private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog1Test(int frameLength)
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
@@ -44,7 +44,7 @@ namespace MTExtDefinitions.v2
             }
           }
       };
-    }
+    } */
 
     private static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog2 =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>

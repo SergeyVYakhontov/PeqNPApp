@@ -88,32 +88,32 @@ namespace MTExtDefinitions.v1
 
           // start compare
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
-                State = (int)MultiplyStates.StartLoopInC,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                State = (uint)MultiplyStates.StartLoopInC,
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
-                    State = (int)MultiplyStates.StopMultiplying,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
+                    State = (uint)SubprogStates.CompareReady,
+                    Symbol = blankSymbol,
                     Direction = TMDirection.S
                   }
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
                 State = (int)MultiplyStates.StartLoopInC,
                 Symbol = delimiter3
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
-                    State = (int)MultiplyStates.StopMultiplying,
+                    State = rejectingState,
                     Symbol = delimiter3,
                     Direction = TMDirection.S
                   }

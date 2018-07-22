@@ -58,19 +58,19 @@ namespace ExistsAcceptingPath
         meapContext.MEAPSharedContext.Input,
         tmInstance);
 
-      foreach (KeyValuePair<long, ComputationStep> compStepP in pathCompSteps)
+      foreach (KeyValuePair<long, ComputationStep> compStepPair in pathCompSteps)
       {
-        ComputationStep compStep = compStepP.Value;
+        ComputationStep compStep = compStepPair.Value;
 
          TMInstance.MoveToNextConfiguration(
-          new StateSymbolDirectionTriple()
-          {
-            State = compStep.qNext,
-            Symbol = compStep.sNext,
-            Direction = compStep.m,
-            Shift = compStep.Shift
-          },
-          tmInstance);
+           new StateSymbolDirectionTriple
+           {
+             State = compStep.qNext,
+             Symbol = compStep.sNext,
+             Direction = compStep.m,
+             Shift = compStep.Shift
+           },
+           tmInstance);
 
         if (tmInstance.IsInFinalState())
         {

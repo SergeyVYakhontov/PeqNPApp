@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v1
   {
     #region private members
 
-    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaGenNumber2()
+    private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaGenNumber2(int frameLength)
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
@@ -100,9 +100,10 @@ namespace MTExtDefinitions.v1
           {
             new StateSymbolDirectionTriple
             (
-              state: (int)GenNumber2States.StopGenNumber,
+              state: (uint)SubprogStates.MultReady,
               symbol: delimiter3,
-              direction: TMDirection.S
+              direction: TMDirection.L,
+              shift: frameLength * 2 - 1
             )
           }
         };

@@ -38,8 +38,7 @@ namespace MTExtDefinitions.v1
     private enum SubprogStates : uint
     {
       SubprogStatesBase = qStartState + 1, // 1
-      GenNumber2Ready = SubprogStatesBase + 1, // 3
-      MultReady = GenNumber2Ready + 1, // 4
+      MultReady = SubprogStatesBase + 1, // 4
       CompareReady = MultReady + 1 // 5
     }
 

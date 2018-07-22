@@ -15,7 +15,6 @@ namespace Core
     ulong muStart { get; }
     bool RunRDA { get; }
     bool ComputeCommoditiesExplicitely { get; }
-    bool IntFactTestRules { get; }
     uint FactTRS_muUpperBound { get; }
   }
 }

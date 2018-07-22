@@ -34,7 +34,7 @@ namespace MTExtDefinitions.v2
 
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
 
-      if (debugOptions.IntFactTestRules)
+      /* if (debugOptions.IntFactTestRules)
       {
         instance.SetTapeSymbol(frameStart2 + 1, 1);
         instance.SetTapeSymbol(frameStart2 + 2, 1);
@@ -44,7 +44,7 @@ namespace MTExtDefinitions.v2
         instance.SetTapeSymbol(frameStart3 + 3, 0);
         instance.SetTapeSymbol(frameStart3 + 4, 1);
         instance.SetTapeSymbol(frameStart3 + 5, 1);
-      }
+      } */
     }
 
     public override int[] GetAcceptingInstanceOutput(int[] input)
