@@ -22,11 +22,10 @@ namespace MTExtDefinitions.v1
       int frameLength = FrameLength(input.Length);
 
       long frameStart1 = 1 + frameLength;
-      long frameStart2 = 1 + 2 * frameLength;
-      long frameStart3 = 1 + 3 * frameLength;
-      long frameEnd4 = 1 + 4 * frameLength;
+      long frameStart2 = 1 + (2 * frameLength);
+      long frameStart3 = 1 + (3 * frameLength);
+      long frameEnd4 = 1 + (4 * frameLength);
 
-      //instance.SetTapeSymbol(0, delimiter0);
       instance.SetTapeSymbol(frameStart1, delimiter1);
       instance.SetTapeSymbol(frameStart2, delimiter2);
       instance.SetTapeSymbol(frameStart3, delimiter3);

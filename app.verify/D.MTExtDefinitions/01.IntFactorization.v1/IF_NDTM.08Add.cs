@@ -21,237 +21,152 @@ namespace MTExtDefinitions.v1
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           // start adding
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.StartAdding,
-                Symbol = markD0
-              },
+          [new StateSymbolPair(state: (uint)AddStates.StartAdding, symbol: markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)AddStates.AddBitC0,
-                    Symbol = markD1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.StartAdding,
-                Symbol = markD1
+                  (
+                    state: (uint)AddStates.AddBitC0,
+                    symbol: markD1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.StartAdding, symbol: markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)AddStates.AddBitC1,
-                    Symbol = markD0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)AddStates.AddBitC1,
+                    symbol: markD0,
+                    direction: TMDirection.R
+                  )
+              },
 
           // add bit with carry = 0
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC0,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC0, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC0,
-                Symbol = 1
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC0, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC0,
-                Symbol = markD0
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC0, symbol: markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = markD0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC0,
-                Symbol = markD1
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: markD0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC0, symbol: markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = markD1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: markD1,
+                    direction: TMDirection.S
+                  )
+              },
 
           // add bit with carry = 1
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC1,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC1, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC1,
-                Symbol = 1
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC1, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)AddStates.AddBitC1,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC1,
-                Symbol = markD0
+                  (
+                    state: (uint)AddStates.AddBitC1,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC1, symbol: markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = markD1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC1,
-                Symbol = markD1
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: markD1,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC1, symbol: markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)AddStates.AddBitC1,
-                    Symbol = markD0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)AddStates.AddBitC1,
+                    symbol: markD0,
+                    direction: TMDirection.R
+                  )
+              },
 
           // blank reached
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC0,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC0, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC1,
-                Symbol = blankSymbol
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC1, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC0,
-                Symbol = delimiter4
+                  (
+                    state: (int)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC0, symbol: delimiter4)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)AddStates.AddBitC1,
-                Symbol = delimiter4
-
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)AddStates.AddBitC1, symbol: delimiter4)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
+                  (
+                    state: (uint)MultiplyStates.MoveToMarkInD_L,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
               }
-          }
         };
     }
 

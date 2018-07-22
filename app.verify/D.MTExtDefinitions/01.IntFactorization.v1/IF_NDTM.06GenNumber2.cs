@@ -56,7 +56,7 @@ namespace MTExtDefinitions.v1
             ),
             new StateSymbolDirectionTriple
             (
-              state: (uint)GenNumber2States.MoveToDelimiter,
+              state: (uint)GenNumber2States.MoveRightToDelim3,
               symbol: blankSymbol,
               direction: TMDirection.R
             )
@@ -85,25 +85,25 @@ namespace MTExtDefinitions.v1
             )
           },
 
-        [new StateSymbolPair(state: (uint)GenNumber2States.MoveToDelimiter, symbol: blankSymbol)] =
+        [new StateSymbolPair(state: (uint)GenNumber2States.MoveRightToDelim3, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)GenNumber2States.MoveToDelimiter,
+              state: (uint)GenNumber2States.MoveRightToDelim3,
               symbol: blankSymbol,
               direction: TMDirection.R
             )
           },
-        [new StateSymbolPair(state: (uint)GenNumber2States.MoveToDelimiter, symbol: delimiter3)] =
+        [new StateSymbolPair(state: (uint)GenNumber2States.MoveRightToDelim3, symbol: delimiter3)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)SubprogStates.MultReady,
+              state: (uint)MultiplyStates.MultReady,
               symbol: delimiter3,
               direction: TMDirection.L,
-              shift: frameLength * 2 - 1
+              shift: (frameLength * 2) - 1
             )
           }
         };

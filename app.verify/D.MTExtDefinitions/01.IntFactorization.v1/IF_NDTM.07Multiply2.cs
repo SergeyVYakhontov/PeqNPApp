@@ -477,16 +477,16 @@ namespace MTExtDefinitions.v1
               }
           },
           {
-            new StateSymbolPair()
+            new StateSymbolPair
               {
-                State = (int)MultiplyStates.MoveToMarkInB_inB,
+                State = (uint)MultiplyStates.MoveToMarkInB_inB,
                 Symbol = markB0
               },
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
+                new StateSymbolDirectionTriple
                   {
-                    State = (int)SubprogStates.MultReady,
+                    State = (uint)MultiplyStates.MultReady,
                     Symbol = markB0,
                     Direction = TMDirection.R
                   }
@@ -502,7 +502,7 @@ namespace MTExtDefinitions.v1
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = (int)SubprogStates.MultReady,
+                    State = (uint)MultiplyStates.MultReady,
                     Symbol = markB1,
                     Direction = TMDirection.R
                   }

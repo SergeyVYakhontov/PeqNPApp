@@ -25,7 +25,7 @@ namespace MTExtDefinitions.v1
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)InitStates.MoveToRightDelim,
+              state: (uint)InitStates.MoveRightToDelim1,
               symbol: 0,
               direction: TMDirection.R
             )
@@ -36,46 +36,46 @@ namespace MTExtDefinitions.v1
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)InitStates.MoveToRightDelim,
+              state: (uint)InitStates.MoveRightToDelim1,
               symbol: 1,
               direction: TMDirection.R
             )
           },
 
-        [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: blankSymbol)] =
+        [new StateSymbolPair(state: (uint)InitStates.MoveRightToDelim1, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (int)InitStates.MoveToRightDelim,
+              state: (int)InitStates.MoveRightToDelim1,
               symbol: blankSymbol,
               direction: TMDirection.R
              )
           },
 
-        [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: 0)] =
+        [new StateSymbolPair(state: (uint)InitStates.MoveRightToDelim1, symbol: 0)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)InitStates.MoveToRightDelim,
+              state: (uint)InitStates.MoveRightToDelim1,
               symbol: 0,
               direction: TMDirection.R
             )
           },
 
-        [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: 1)] =
+        [new StateSymbolPair(state: (uint)InitStates.MoveRightToDelim1, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)InitStates.MoveToRightDelim,
+              state: (uint)InitStates.MoveRightToDelim1,
               symbol: 1,
               direction: TMDirection.R
             )
           },
 
-        [new StateSymbolPair(state: (uint)InitStates.MoveToRightDelim, symbol: delimiter1)] =
+        [new StateSymbolPair(state: (uint)InitStates.MoveRightToDelim1, symbol: delimiter1)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple

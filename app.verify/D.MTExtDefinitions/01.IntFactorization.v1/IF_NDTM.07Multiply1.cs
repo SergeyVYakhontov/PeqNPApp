@@ -20,392 +20,254 @@ namespace MTExtDefinitions.v1
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
-          // set mark
-          {
-            new StateSymbolPair()
-              {
-                State = (int)SubprogStates.MultReady,
-                Symbol = 0
-              },
+          // set mark B*
+          [new StateSymbolPair(state: (uint)MultiplyStates.MultReady, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.StartLoopInC,
-                    Symbol = markB0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)SubprogStates.MultReady,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.StartLoopInC,
+                    symbol: markB0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MultReady, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.StartLoopInC,
-                    Symbol = markB1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)SubprogStates.MultReady,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.StartLoopInC,
+                    symbol: markB1,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MultReady, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.StartLoopInC,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)SubprogStates.MultReady,
-                Symbol = delimiter3
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.StartLoopInC,
+                    symbol: blankSymbol,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MultReady, symbol: delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.StartLoopInC,
-                    Symbol = delimiter3,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.StartLoopInC,
+                    symbol: delimiter3,
+                    direction: TMDirection.S
+                  )
+              },
 
           // start compare
-          {
-            new StateSymbolPair
-              {
-                State = (uint)MultiplyStates.StartLoopInC,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)MultiplyStates.StartLoopInC, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)SubprogStates.CompareReady,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (int)MultiplyStates.StartLoopInC,
-                Symbol = delimiter3
+                  (
+                    state: (uint)CompareStates.CompareReady,
+                    symbol: blankSymbol,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.StartLoopInC, symbol: delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = rejectingState,
-                    Symbol = delimiter3,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-
-          // process 0
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.StartLoopInC,
-                Symbol = markB0
+                  (
+                    state: rejectingState,
+                    symbol: delimiter3,
+                    direction: TMDirection.S
+                  )
               },
+
+          // process bit 0
+          [new StateSymbolPair(state: (uint)MultiplyStates.StartLoopInC, symbol: markB0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)SubprogStates.MultReady,
-                    Symbol = markB0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-
-          // process 1
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.StartLoopInC,
-                Symbol = markB1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MultReady,
+                    symbol: markB0,
+                    direction: TMDirection.R
+                  )
               },
+
+          // process bit 1
+          [new StateSymbolPair(state: (uint)MultiplyStates.StartLoopInC, symbol: markB1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.Process1f_D,
-                    Symbol = markB1,
-                    Direction = TMDirection.R,
-                    Shift = frameLength * 2
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.Process1f_D,
+                    symbol: markB1,
+                    direction: TMDirection.R,
+                    shift: frameLength * 2
+                  )
+              },
 
           // set mark
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.Process1f_D,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)MultiplyStates.Process1f_D, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = markD0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.Process1f_D,
-                Symbol = 0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: markD0,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.Process1f_D, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = markD0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.Process1f_D,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: markD0,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.Process1f_D, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = markD1,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: markD1,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
+              },
 
           // restore C
           // move to right delimiter
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.MoveToCRight,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MoveToCRight, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.MoveToCRight,
-                Symbol = 0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MoveToCRight, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.MoveToCRight,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MoveToCRight, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.MoveToCRight,
-                Symbol = markC0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MoveToCRight, symbol: markC0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = markC0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.MoveToCRight,
-                Symbol = markC1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: markC0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MoveToCRight, symbol: markC1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.MoveToCRight,
-                    Symbol = markC1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.MoveToCRight,
-                Symbol = delimiter3
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.MoveToCRight,
+                    symbol: markC1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.MoveToCRight, symbol: delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = delimiter3,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.EraseMarkInC,
+                    symbol: delimiter3,
+                    direction: TMDirection.L
+                  )
+              },
 
           // erase marks in C
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)MultiplyStates.EraseMarkInC, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = 0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.EraseMarkInC,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.EraseMarkInC, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.EraseMarkInC,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.EraseMarkInC, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = markC0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.EraseMarkInC,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.EraseMarkInC, symbol: markC0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = markC1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.EraseMarkInC,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.EraseMarkInC, symbol: markC1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.EraseMarkInC,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)MultiplyStates.EraseMarkInC,
-                Symbol = delimiter2
+                new StateSymbolDirectionTriple
+                  (
+                    state: (int)MultiplyStates.EraseMarkInC,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)MultiplyStates.EraseMarkInC, symbol: delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)MultiplyStates.StartAddC,
-                    Symbol = delimiter2,
-                    Direction = TMDirection.R
-                  }
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)MultiplyStates.StartAddC,
+                    symbol: delimiter2,
+                    direction: TMDirection.R
+                  )
               }
-          }
         };
     }
 

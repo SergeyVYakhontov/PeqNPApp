@@ -34,21 +34,19 @@ namespace MTExtDefinitions.v1
         {
           qStart,
 
-          (uint)SubprogStates.MultReady,
-          (uint)SubprogStates.CompareReady,
-
-          (uint)InitStates.MoveToRightDelim,
+          (uint)InitStates.MoveRightToDelim1,
 
           (uint)GenNumber1States.GenBitA,
           (uint)GenNumber1States.GenBitB,
-          (uint)GenNumber1States.MoveToDelimiter,
+          (uint)GenNumber1States.MoveRightToDelim2,
           (uint)GenNumber1States.StopGenNumber,
 
           (uint)GenNumber2States.GenBitA,
           (uint)GenNumber2States.GenBitB,
-          (uint)GenNumber2States.MoveToDelimiter,
+          (uint)GenNumber2States.MoveRightToDelim3,
           (uint)GenNumber2States.StopGenNumber,
 
+          (uint)MultiplyStates.MultReady,
           (uint)MultiplyStates.StartLoopInC,
           (uint)MultiplyStates.Process1f_D,
           (uint)MultiplyStates.MoveToCRight,
@@ -71,6 +69,7 @@ namespace MTExtDefinitions.v1
           (uint)AddStates.AddBitC0,
           (uint)AddStates.AddBitC1,
 
+          (uint)CompareStates.CompareReady,
           (uint)CompareStates.StartComparing,
           (uint)CompareStates.MoveLeftToA,
           (uint)CompareStates.MoveToStartA,
@@ -78,8 +77,6 @@ namespace MTExtDefinitions.v1
           (uint)CompareStates.BitLoopStart_f,
           (uint)CompareStates.BitLoopD0,
           (uint)CompareStates.BitLoopD1,
-
-          (uint)BkwdStates.Bkwd1,
 
           acceptingState,
           rejectingState
@@ -100,9 +97,7 @@ namespace MTExtDefinitions.v1
         markC0,
         markC1,
         markD0,
-        markD1,
-        bkwd1,
-        bkwd2
+        markD1
       };
 
       Sigma = new int[]

@@ -21,409 +21,265 @@ namespace MTExtDefinitions.v1
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           // start comparing
-          {
-            new StateSymbolPair()
-              {
-                State = (int)SubprogStates.CompareReady,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.StartComparing,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.StartComparing,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.MoveLeftToA,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.MoveLeftToA,
-                Symbol = 0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.MoveToStartA,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.MoveLeftToA,
-                Symbol = 1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.MoveToStartA,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.MoveLeftToA,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.MoveLeftToA,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-
-          // move to start A
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.MoveToStartA,
-                Symbol = 0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.MoveToStartA,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.MoveToStartA,
-                Symbol = 1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.MoveToStartA,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.MoveToStartA,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-
-          // shift to D
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopStart,
-                Symbol = 0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopD0,
-                    Symbol = 0,
-                    Direction = TMDirection.R,
-                    Shift = frameLength * 3 + 1
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopStart,
-                Symbol = 1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopD1,
-                    Symbol = 1,
-                    Direction = TMDirection.R,
-                    Shift = frameLength * 3 + 1
-                  }
-              }
-          },
-
-          // compare bit
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD0,
-                Symbol = 0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart_f,
-                    Symbol = 0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength * 3 + 1
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD0,
-                Symbol = 1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD1,
-                Symbol = 0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD1,
-                Symbol = 1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart_f,
-                    Symbol = 1,
-                    Direction = TMDirection.L,
-                    Shift = frameLength * 3 + 1
-                  }
-              }
-          },
-
-          // D0, D1
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD0,
-                Symbol = markD0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart_f,
-                    Symbol = 0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength * 3 + 1
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD0,
-                Symbol = markD1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD1,
-                Symbol = markD0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD1,
-                Symbol = markD1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart_f,
-                    Symbol = 1,
-                    Direction = TMDirection.L,
-                    Shift = frameLength * 3 + 1
-                  }
-              }
-          },
-
-          // move to next bit
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopStart_f,
-                Symbol = 0
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopStart_f,
-                Symbol = 1
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)CompareStates.BitLoopStart,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopStart_f,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)acceptingState,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-
-          // blank symbol
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD0,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)CompareStates.BitLoopD1,
-                Symbol = blankSymbol
-              },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)rejectingState,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-            {
-            new StateSymbolPair
-              {
-                State = (int)CompareStates.BitLoopStart,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.CompareReady, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)acceptingState,
-                     Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
+                  (
+                    state: (uint)CompareStates.StartComparing,
+                    symbol: blankSymbol,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.StartComparing, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.MoveLeftToA,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveLeftToA, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveLeftToA, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveLeftToA, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.MoveLeftToA,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L
+                  )
+              },
+
+          // move to start A
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
+              },
+
+          // shift to D
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopD0,
+                    symbol: 0,
+                    direction: TMDirection.R,
+                    shift: (frameLength * 3) + 1
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopD1,
+                    symbol: 1,
+                    direction: TMDirection.R,
+                    shift: (frameLength * 3) + 1
+                  )
+              },
+
+          // compare bit
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD0, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart_f,
+                    symbol: 0,
+                    direction: TMDirection.L,
+                    shift: (frameLength * 3) + 1
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD0, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: rejectingState,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD1, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: rejectingState,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD1, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart_f,
+                    symbol: 1,
+                    direction: TMDirection.L,
+                    shift: (frameLength * 3) + 1
+                  )
+              },
+
+          // D0, D1
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD0, symbol: markD0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart_f,
+                    symbol: 0,
+                    direction: TMDirection.L,
+                    shift: (frameLength * 3) + 1
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD0, symbol: markD1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: rejectingState,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD1, symbol: markD0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: rejectingState,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD1, symbol: markD1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart_f,
+                    symbol: 1,
+                    direction: TMDirection.L,
+                    shift: (frameLength * 3) + 1
+                  )
+              },
+
+          // move to next bit
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart_f, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart_f, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)CompareStates.BitLoopStart,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart_f, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: acceptingState,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
+              },
+
+          // blank symbol
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD0, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: rejectingState,
+                    symbol: blankSymbol,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopD1, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: rejectingState,
+                    symbol: blankSymbol,
+                    direction: TMDirection.S
+                  )
+              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart, symbol: blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: acceptingState,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
               }
-          }
       };
     }
 
