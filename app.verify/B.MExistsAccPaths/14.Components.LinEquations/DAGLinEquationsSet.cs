@@ -26,7 +26,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public LinEquationsMatrix LinProgMatrix { get; private set; }
+    public LinEquationsMatrix LinProgMatrix { get; }
 
     public override long AddVar()
     {

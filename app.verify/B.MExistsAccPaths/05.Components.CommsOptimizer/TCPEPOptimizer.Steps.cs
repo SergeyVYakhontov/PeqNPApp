@@ -135,7 +135,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private SortedDictionary<long, Commodity> commoditiesSubset;
-    private SortedSet<long> totalExcludedComms = new SortedSet<long>();
+    private readonly SortedSet<long> totalExcludedComms = new SortedSet<long>();
     private long totalCommoditiesCount;
 
     private NodesCoverageKeeper nodesCoverageKeeper;

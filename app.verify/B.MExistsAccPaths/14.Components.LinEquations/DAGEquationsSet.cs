@@ -31,17 +31,17 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public DAG Graph { get; private set; }
+    public DAG Graph { get; }
 
-    public List<long> FVars { get; private set; }
-    public List<long> HVars { get; private set; }
-    public List<long> Equations { get; private set; }
+    public List<long> FVars { get; }
+    public List<long> HVars { get; }
+    public List<long> Equations { get; }
 
     public long sVar { get; set; }
     public long tVar { get; set; }
 
-    public SortedDictionary<long, long> NodeToVar { get; private set; }
-    public SortedDictionary<long, long> EdgeToVar { get; private set; }
+    public SortedDictionary<long, long> NodeToVar { get; }
+    public SortedDictionary<long, long> EdgeToVar { get; }
 
     public abstract long AddVar();
     public abstract long AddVarForNode(long nodeId);

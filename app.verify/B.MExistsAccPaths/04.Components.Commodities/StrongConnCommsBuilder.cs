@@ -115,7 +115,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private bool IsStrongConnectedPair(
+    private static bool IsStrongConnectedPair(
       Commodity commodity_i,
       Commodity commodity_j)
     {

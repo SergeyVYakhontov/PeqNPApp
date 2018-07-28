@@ -58,7 +58,7 @@ namespace Core
           nodeVLevels,
           DAG.Level0,
           ComputeVectors,
-          t => { return true; });
+          t => true);
 
         ComputeDefUsePairSet();
         ClearVectors();
@@ -151,14 +151,10 @@ namespace Core
     {
       List<DAGNode> nodes = rdaContext.CFG.Nodes;
 
-      nodes.ForEach(node =>
-      { nodeToGENVectorMap[node.Id] = CreateBitVector((ulong)slot.Count); });
-      nodes.ForEach(node =>
-      { nodeToKILLVectorMap[node.Id] = CreateBitVector((ulong)slot.Count); });
-      nodes.ForEach(node =>
-      { nodeToREACHinVectorMap[node.Id] = CreateBitVector((ulong)slot.Count); });
-      nodes.ForEach(node =>
-      { nodeToREACHoutVectorMap[node.Id] = CreateBitVector((ulong)slot.Count); });
+      nodes.ForEach(node => nodeToGENVectorMap[node.Id] = CreateBitVector(slot.Count));
+      nodes.ForEach(node => nodeToKILLVectorMap[node.Id] = CreateBitVector(slot.Count));
+      nodes.ForEach(node => nodeToREACHinVectorMap[node.Id] = CreateBitVector(slot.Count));
+      nodes.ForEach(node => nodeToREACHoutVectorMap[node.Id] = CreateBitVector(slot.Count));
     }
 
     private void InitVectors()

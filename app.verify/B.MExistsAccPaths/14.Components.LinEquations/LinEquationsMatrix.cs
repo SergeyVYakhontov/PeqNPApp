@@ -33,10 +33,10 @@ namespace ExistsAcceptingPath
     public long VarsCount { get; private set; }
     public long EquationsCount { get; private set; }
 
-    public SortedDictionary<long, SortedDictionary<long, RationalNumber>> Equations { get; private set; }
-    public SortedDictionary<long, KeyValuePair<EquationKind, RationalNumber>> VectorB { get; private set; }
+    public SortedDictionary<long, SortedDictionary<long, RationalNumber>> Equations { get; }
+    public SortedDictionary<long, KeyValuePair<EquationKind, RationalNumber>> VectorB { get; }
 
-    public SortedSet<long> ObjFuncVars { get; private set; }
+    public SortedSet<long> ObjFuncVars { get; }
 
     public long AddVariable()
     {
@@ -195,7 +195,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private String GetEquationKindRepr(EquationKind equationKind)
+    private static String GetEquationKindRepr(EquationKind equationKind)
     {
       switch (equationKind)
       {

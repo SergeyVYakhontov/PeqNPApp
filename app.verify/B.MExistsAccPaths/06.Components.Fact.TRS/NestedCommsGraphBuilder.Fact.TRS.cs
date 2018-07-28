@@ -78,7 +78,7 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private readonly MEAPContext meapContext;
-    private long nodeId = 0;
+    private long nodeId;
 
     private readonly SortedDictionary<long, DAGNode> commToNodeMap =
       new SortedDictionary<long, DAGNode>();

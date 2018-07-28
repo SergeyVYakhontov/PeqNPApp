@@ -47,7 +47,7 @@ namespace MTExtDefinitions.v1
           {
             new StateSymbolDirectionTriple
             (
-              state: (int)InitStates.MoveRightToDelim1,
+              state: (uint)InitStates.MoveRightToDelim1,
               symbol: blankSymbol,
               direction: TMDirection.R
              )

@@ -26,7 +26,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public String Name { get; private set; }
+    public String Name { get; }
 
     public override bool CreateTCPEPLinProgEqsSet()
     {

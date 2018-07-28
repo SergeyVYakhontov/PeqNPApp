@@ -27,10 +27,10 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public long Id { get; private set; }
-    public string Name { get; private set; }
-    
-    public long Variable { get; private set; }
+    public long Id { get; }
+    public string Name { get; }
+
+    public long Variable { get; }
     public long sNodeId { get; set; }
     public long tNodeId { get; set; }
 

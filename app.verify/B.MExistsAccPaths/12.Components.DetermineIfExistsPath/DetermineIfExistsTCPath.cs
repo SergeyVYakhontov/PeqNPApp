@@ -109,7 +109,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private MEAPContext meapContext;
+    private readonly MEAPContext meapContext;
     private List<TapeSegContext> tapeSegContexts;
 
     private void CreateKZetaSets()

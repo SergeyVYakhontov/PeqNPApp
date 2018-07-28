@@ -101,17 +101,17 @@ namespace ExistsAcceptingPath
     private readonly MEAPContext meapContext;
 
     private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
-    private long nodeId = 0;
-    private long edgeId = 0;
+    private long nodeId;
+    private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
     private SortedDictionary<ComputationStep, long> compStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
     private SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
 
     private List<DAGNode> endNodes = new List<DAGNode>();
-    private List<long> endNodeIds = new List<long>();
+    private readonly List<long> endNodeIds = new List<long>();
     private List<DAGNode> acceptingNodes = new List<DAGNode>();
-    private long treesCut = 0;
+    private long treesCut;
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {

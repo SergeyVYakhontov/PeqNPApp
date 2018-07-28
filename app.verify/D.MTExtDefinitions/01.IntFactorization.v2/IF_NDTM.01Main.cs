@@ -133,11 +133,6 @@ namespace MTExtDefinitions.v2
       int frameLength = FrameLength(inputLength);
       delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
-      //if (debugOptions.IntFactTestRules)
-      //{
-      //  AppHelper.MergeDictionaryWith(delta, deltaSubprog1Test(frameLength));
-      //}
-
       AppHelper.MergeDictionaryWith(delta, deltaSubprog2);
       AppHelper.MergeDictionaryWith(delta, deltaInit);
       AppHelper.MergeDictionaryWith(delta, deltaGenNumber1);

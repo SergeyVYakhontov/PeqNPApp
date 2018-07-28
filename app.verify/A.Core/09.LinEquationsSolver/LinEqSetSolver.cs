@@ -34,7 +34,7 @@ namespace Core
       for (long i = m - 1; i >= 0; i--)
       {
         RationalNumber lastColumnCoeff = A[i][lastColumnIndex];
-        RationalNumber bVectorElem = A[i][bVectorIndex];
+        RationalNumber bVectorElem = A[i][GetbVectorIndex()];
 
         if (!lastColumnCoeff.IsEqualsTo0())
         {
@@ -58,7 +58,8 @@ namespace Core
     private readonly long m, n;
 
     private long lastColumnIndex => n - 1;
-    private long bVectorIndex => n;
+
+    private long GetbVectorIndex() => n;
 
     private void RunGaussElimination()
     {

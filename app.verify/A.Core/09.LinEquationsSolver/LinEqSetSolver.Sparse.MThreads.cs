@@ -37,7 +37,7 @@ namespace Core
       for (long i = m - 1; i >= 0; i--)
       {
         RationalNumber lastColumnCoeff = A.Get(i, lastColumnIndex);
-        RationalNumber bVectorElem = A.Get(i, bVectorIndex);
+        RationalNumber bVectorElem = A.Get(i, bVectorIndex());
 
         if (!lastColumnCoeff.IsEqualsTo0())
         {
@@ -63,9 +63,9 @@ namespace Core
     private readonly long m, n;
 
     private long lastColumnIndex => n - 1;
-    private long bVectorIndex => n;
+    private long bVectorIndex() => n;
 
-    private void SelectRows(
+    private static void SelectRows(
       long[] rowsToProcess,
       long from,
       long count,

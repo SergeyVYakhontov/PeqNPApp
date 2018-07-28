@@ -46,9 +46,9 @@ namespace ExistsAcceptingPath
 
     private readonly MEAPContext meapContext;
 
-    private bool pathExists = false;
-    private bool pathFound = false;
-    private List<long> tConsistPath = new List<long>();
+    private bool pathExist;
+    private bool pathFound;
+    private readonly List<long> tConsistPath = new List<long>();
     private int[] output = Array.Empty<int>();
 
     private void ExtractTConsistSeq()
@@ -121,7 +121,7 @@ namespace ExistsAcceptingPath
 
     private void CopyResult()
     {
-      meapContext.PathExists = pathExists;
+      meapContext.PathExists = pathExist;
       meapContext.PathFound = pathFound;
       meapContext.TConsistPath = new List<long>(tConsistPath);
       meapContext.Output = AppHelper.CreateArrayCopy(output);

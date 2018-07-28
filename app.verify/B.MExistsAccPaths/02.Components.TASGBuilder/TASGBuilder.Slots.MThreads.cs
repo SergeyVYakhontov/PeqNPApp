@@ -139,15 +139,15 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
-    private long nodeId = 0;
-    private long edgeId = 0;
+    private long nodeId;
+    private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
     private SortedDictionary<ComputationStep, long> compStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
-    private SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
+    private readonly SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
 
     private List<DAGNode> endNodes = new List<DAGNode>();
-    private List<long> endNodeIds = new List<long>();
+    private readonly List<long> endNodeIds = new List<long>();
     private List<DAGNode> acceptingNodes = new List<DAGNode>();
     private long treesCut;
     private SortedSet<ulong> processedMu = new SortedSet<ulong>();

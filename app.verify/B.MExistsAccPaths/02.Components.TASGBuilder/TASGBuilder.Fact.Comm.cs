@@ -154,8 +154,8 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
-    private long nodeId = 0;
-    private long edgeId = 0;
+    private long nodeId;
+    private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
     private readonly SortedDictionary<ComputationStep, long> compStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
