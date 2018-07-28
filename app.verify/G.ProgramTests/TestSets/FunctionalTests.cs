@@ -57,9 +57,9 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T04_IntegerFactExamplesAppTRSTest()
+    public void T04_IntegerFactExamplesAppCPLTMTest()
     {
-      IntegerFactExamplesAppTRS.Program.Main(new string[] { "test" });
+      IntegerFactExamplesAppCPLTM.Program.Main(new string[] { "test" });
 
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
       Assert.False(appStatistics.ThereWereErrors);

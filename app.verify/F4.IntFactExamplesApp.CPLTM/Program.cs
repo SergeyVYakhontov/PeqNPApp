@@ -15,7 +15,7 @@ using VerifyResults;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace IntegerFactExamplesAppTRS
+namespace IntegerFactExamplesAppCPLTM
 {
   public static class Program
   {

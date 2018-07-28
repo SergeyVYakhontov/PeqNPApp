@@ -167,9 +167,9 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T09_IF_TRS_Test()
+    public void T09_IF_CPLTM_Test()
     {
-      configuration.Load<IntegerFactExamplesAppTRS.AppNinjectModule>();
+      configuration.Load<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
 
       ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.v2_IF_ExampleSetA);

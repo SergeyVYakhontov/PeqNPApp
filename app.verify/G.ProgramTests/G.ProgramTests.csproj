@@ -39,7 +39,7 @@
     <ProjectReference Include="..\F1.OrdExamplesApp.SingleThread\F1.OrdExamplesApp.SingleThread.csproj" />
     <ProjectReference Include="..\F2.OrdExamplesApp.MultiThreads\F2.OrdExamplesApp.Slots.MThreads.csproj" />
     <ProjectReference Include="..\F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj" />
-    <ProjectReference Include="..\F4.IntFactExamplesApp.TRS\F4.IntFactExamplesApp.TRS.csproj" />
+    <ProjectReference Include="..\F4.IntFactExamplesApp.CPLTM\F4.IntFactExamplesApp.CPLTM.csproj" />
   </ItemGroup>
 
 </Project>

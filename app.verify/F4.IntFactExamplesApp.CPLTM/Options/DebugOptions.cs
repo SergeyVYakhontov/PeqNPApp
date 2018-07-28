@@ -9,7 +9,7 @@ using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace IntegerFactExamplesAppTRS
+namespace IntegerFactExamplesAppCPLTM
 {
   public class DebugOptions : IDebugOptions
   {
