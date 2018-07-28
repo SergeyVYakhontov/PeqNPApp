@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F2.OrdExamplesApp.Slots.MTh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F3.IntFactExamplesApp.Comms", "F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj", "{5C26F53B-D252-4D48-BBE6-800751999CA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F4.IntFactExamplesApp.TRS", "F4.IntFactExamplesApp.TRS\F4.IntFactExamplesApp.TRS.csproj", "{18EF345B-3AD4-40B8-81FF-F0E668791871}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F4.IntFactExamplesApp.TRS", "F4.IntFactExamplesApp.CPLTM\F4.IntFactExamplesApp.CPLTM.csproj", "{18EF345B-3AD4-40B8-81FF-F0E668791871}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "G.ProgramTests", "G.ProgramTests\G.ProgramTests.csproj", "{49831170-313F-4969-9D61-821D5EABB729}"
 EndProject
