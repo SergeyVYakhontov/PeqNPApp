@@ -14,31 +14,31 @@ namespace MTExtDefinitions.v1
 {
   public partial class IF_NDTM
   {
-    #region private members
+    #region public members
 
-    private const uint qStartState = 0;
-    private const uint acceptingState = 127;
-    private const uint rejectingState = 128;
+    public const uint qStartState = 0;
+    public const uint acceptingState = 127;
+    public const uint rejectingState = 128;
 
-    private const int delimiter0 = 2;
-    private const int delimiter1 = 4;
-    private const int delimiter2 = 5;
-    private const int delimiter3 = 6;
-    private const int delimiter4 = 7;
+    public const int delimiter0 = 2;
+    public const int delimiter1 = 4;
+    public const int delimiter2 = 5;
+    public const int delimiter3 = 6;
+    public const int delimiter4 = 7;
 
-    private const int markB0 = 8;
-    private const int markB1 = 9;
-    private const int markC0 = 10;
-    private const int markC1 = 11;
-    private const int markD0 = 12;
-    private const int markD1 = 13;
+    public const int markB0 = 8;
+    public const int markB1 = 9;
+    public const int markC0 = 10;
+    public const int markC1 = 11;
+    public const int markD0 = 12;
+    public const int markD1 = 13;
 
-    private enum InitStates : uint
+    public enum InitStates : uint
     {
       MoveRightToDelim1 = qStartState + 1,
     }
 
-    private enum GenNumber1States : uint
+    public enum GenNumber1States : uint
     {
       GenBitA = InitStates.MoveRightToDelim1 + 1,
       GenBitB,
@@ -46,7 +46,7 @@ namespace MTExtDefinitions.v1
       StopGenNumber
     }
 
-    private enum GenNumber2States : uint
+    public enum GenNumber2States : uint
     {
       GenBitA = GenNumber1States.StopGenNumber + 1,
       GenBitB,
@@ -54,7 +54,7 @@ namespace MTExtDefinitions.v1
       StopGenNumber
     }
 
-    private enum MultiplyStates : uint
+    public enum MultiplyStates : uint
     {
       MultReady = GenNumber2States.StopGenNumber + 1,
       StartLoopInC,
@@ -76,14 +76,14 @@ namespace MTExtDefinitions.v1
       StopMultiplying
     }
 
-    private enum AddStates : uint
+    public enum AddStates : uint
     {
       StartAdding = MultiplyStates.StopMultiplying + 1,
       AddBitC0,
       AddBitC1
     }
 
-    private enum CompareStates : uint
+    public enum CompareStates : uint
     {
       CompareReady = AddStates.AddBitC1 + 1,
       StartComparing,
