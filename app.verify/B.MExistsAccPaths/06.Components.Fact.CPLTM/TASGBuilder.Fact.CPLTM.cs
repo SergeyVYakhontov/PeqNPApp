@@ -11,7 +11,7 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class TASGBuilderFactTRS : TASGBuilder
+  public class TASGBuilderFactCPLTM : TASGBuilder
   {
     #region public members
 
@@ -46,7 +46,7 @@ namespace ExistsAcceptingPath
         CompStep = compStep
       };
 
-      propSymbolsKeeper = new PropSymbolsKeeperFactTRS(MEAPSharedContext);
+      propSymbolsKeeper = new PropSymbolsKeeperFactCPLTM(MEAPSharedContext);
       propSymbolsKeeper.Init(s.Id);
 
       endNodeIds.Add(G.GetSourceNodeId());
@@ -181,7 +181,7 @@ namespace ExistsAcceptingPath
     private readonly SortedDictionary<ComputationStep, long> newCompStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
 
-    private PropSymbolsKeeperFactTRS propSymbolsKeeper;
+    private PropSymbolsKeeperFactCPLTM propSymbolsKeeper;
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {

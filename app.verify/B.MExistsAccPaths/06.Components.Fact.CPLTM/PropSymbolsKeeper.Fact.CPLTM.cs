@@ -11,11 +11,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class PropSymbolsKeeperFactTRS : ITracable
+  public class PropSymbolsKeeperFactCPLTM : ITracable
   {
     #region Ctors
 
-    public PropSymbolsKeeperFactTRS(MEAPSharedContext MEAPSharedContext)
+    public PropSymbolsKeeperFactCPLTM(MEAPSharedContext MEAPSharedContext)
     {
       this.MEAPSharedContext = MEAPSharedContext;
     }

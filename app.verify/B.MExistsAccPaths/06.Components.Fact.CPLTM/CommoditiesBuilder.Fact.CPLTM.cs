@@ -12,11 +12,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class CommoditiesBuilderFactTRS : CommoditiesBuilder
+  public class CommoditiesBuilderFactCPLTM : CommoditiesBuilder
   {
     #region Ctors
 
-    public CommoditiesBuilderFactTRS(MEAPContext meapContext)
+    public CommoditiesBuilderFactCPLTM(MEAPContext meapContext)
       : base(meapContext) {}
 
     #endregion

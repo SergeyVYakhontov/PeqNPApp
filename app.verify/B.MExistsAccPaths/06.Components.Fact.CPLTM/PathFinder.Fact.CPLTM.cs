@@ -14,7 +14,7 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class PathFinderFactTRS
+  public class PathFinderFactCPLTM
   {
     #region public members
 
@@ -32,7 +32,7 @@ namespace ExistsAcceptingPath
 
     #region Ctors
 
-    public PathFinderFactTRS(MEAPContext meapContext)
+    public PathFinderFactCPLTM(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
     }

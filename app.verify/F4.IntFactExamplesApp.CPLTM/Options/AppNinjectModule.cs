@@ -34,12 +34,12 @@ namespace IntegerFactExamplesAppCPLTM
 
       Bind<ILinEqsAlgorithmProvider>().To<LinEqsAlgorithmProvider>()
         .InSingletonScope();
-      Bind<IMeapCurrentStep>().ToConstructor<MEAPCurrentStepFactTRS>(
-        arg => new MEAPCurrentStepFactTRS(arg.Inject<MEAPContext>()));
-      Bind<DeterminePathRunner>().ToConstructor<DeterminePathRunnerFactTRS>(
-        arg => new DeterminePathRunnerFactTRS(arg.Inject<DeterminePathRunnerCtorArgs>()));
-      Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathFactTRS>(
-        arg => new MExistsAcceptingPathFactTRS(arg.Inject<MExistsAcceptingPathCtorArgs>()));
+      Bind<IMeapCurrentStep>().ToConstructor<MEAPCurrentStepFactCPLTM>(
+        arg => new MEAPCurrentStepFactCPLTM(arg.Inject<MEAPContext>()));
+      Bind<DeterminePathRunner>().ToConstructor<DeterminePathRunnerFactCPLTM>(
+        arg => new DeterminePathRunnerFactCPLTM(arg.Inject<DeterminePathRunnerCtorArgs>()));
+      Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathFactCPLTM>(
+        arg => new MExistsAcceptingPathFactCPLTM(arg.Inject<MExistsAcceptingPathCtorArgs>()));
 
       Bind<ExampleSetProvider>().To<ExampleSetProvider>().InSingletonScope();
 

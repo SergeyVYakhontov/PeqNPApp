@@ -486,7 +486,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = (int)SubprogStates.MultReady,
+                    State = (int)MultiplyStates.MultReady,
                     Symbol = markB0,
                     Direction = TMDirection.R
                   }
@@ -502,7 +502,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = (int)SubprogStates.MultReady,
+                    State = (int)MultiplyStates.MultReady,
                     Symbol = markB1,
                     Direction = TMDirection.R
                   }

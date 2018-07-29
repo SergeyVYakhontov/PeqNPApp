@@ -244,7 +244,7 @@ namespace MTExtDefinitions.v2
           {
             new StateSymbolDirectionTriple
             (
-              state: (uint)SubprogStates.MultReady,
+              state: (uint)MultiplyStates.MultReady,
               symbol: delimiter1,
               direction: TMDirection.R
             )

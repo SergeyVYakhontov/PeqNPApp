@@ -46,7 +46,7 @@ namespace MTExtDefinitions.v2
       };
     } */
 
-    private static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog2 =
+    /* private static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog2 =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         // start comparing
@@ -70,8 +70,8 @@ namespace MTExtDefinitions.v2
               Symbol = delimiter3,
               Direction = TMDirection.S
             }
-          }
-      };
+          } */
+      //};
 
     #endregion
   }

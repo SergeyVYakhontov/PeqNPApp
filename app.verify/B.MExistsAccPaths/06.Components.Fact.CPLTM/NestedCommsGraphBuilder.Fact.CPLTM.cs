@@ -14,11 +14,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class NestedCommsGraphBuilderFactTRS
+  public class NestedCommsGraphBuilderFactCPLTM
   {
     #region Ctors
 
-    public NestedCommsGraphBuilderFactTRS(MEAPContext meapContext)
+    public NestedCommsGraphBuilderFactCPLTM(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
     }

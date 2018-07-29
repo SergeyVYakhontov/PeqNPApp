@@ -14,11 +14,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class TConsistPairSetBuilderFactTRS
+  public class TConsistPairSetBuilderFactCPLTM
   {
     #region Ctors
 
-    public TConsistPairSetBuilderFactTRS(MEAPContext meapContext)
+    public TConsistPairSetBuilderFactCPLTM(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
     }

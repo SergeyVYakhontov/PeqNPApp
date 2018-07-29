@@ -14,11 +14,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class MExistsAcceptingPathFactTRS : IMExistsAcceptingPath
+  public class MExistsAcceptingPathFactCPLTM : IMExistsAcceptingPath
   {
     #region Ctors
 
-    public MExistsAcceptingPathFactTRS(MExistsAcceptingPathCtorArgs mExistsAcceptingPathCtorArgs)
+    public MExistsAcceptingPathFactCPLTM(MExistsAcceptingPathCtorArgs mExistsAcceptingPathCtorArgs)
     {
       this.tMachine = mExistsAcceptingPathCtorArgs.tMachine;
     }
@@ -52,7 +52,7 @@ namespace ExistsAcceptingPath
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
       ulong currentMu = debugOptions.muStart;
 
-      TASGBuilderFactTRS tasgBuilder = new TASGBuilderFactTRS();
+      TASGBuilderFactCPLTM tasgBuilder = new TASGBuilderFactCPLTM();
       MEAPSharedContext.TASGBuilder = tasgBuilder;
       tasgBuilder.Init(MEAPSharedContext);
 

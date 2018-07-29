@@ -14,11 +14,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class MEAPCurrentStepFactTRS : MEAPCurrentStep
+  public class MEAPCurrentStepFactCPLTM : MEAPCurrentStep
   {
     #region Ctors
 
-    public MEAPCurrentStepFactTRS(MEAPContext meapContext)
+    public MEAPCurrentStepFactCPLTM(MEAPContext meapContext)
       : base(meapContext) {}
 
     #endregion
@@ -59,20 +59,20 @@ namespace ExistsAcceptingPath
 
       ComputeDUPairs();
 
-      meapContext.CommoditiesBuilder = new CommoditiesBuilderFactTRS(meapContext);
+      meapContext.CommoditiesBuilder = new CommoditiesBuilderFactCPLTM(meapContext);
       meapContext.CommoditiesBuilder.EnumeratePairs();
       meapContext.Commodities = meapContext.CommoditiesBuilder.CreateCommodities();
       meapContext.CommoditiesBuilder = null;
 
       meapContext.UnusedNodes = new SortedSet<long>();
 
-      NestedCommsGraphBuilderFactTRS nestedCommsGraphBuilder =
-        new NestedCommsGraphBuilderFactTRS(meapContext);
+      NestedCommsGraphBuilderFactCPLTM nestedCommsGraphBuilder =
+        new NestedCommsGraphBuilderFactCPLTM(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder.Trace();
 
-      PathFinderFactTRS pathFinder = new PathFinderFactTRS(meapContext);
+      PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();
     }
 
@@ -84,12 +84,12 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private TASGBuilderFactTRS tasgBuilder;
+    private TASGBuilderFactCPLTM tasgBuilder;
     private SortedDictionary<long, SortedSet<long>> inVarToVarNodes;
 
     private void CreateTASGBuilder()
     {
-      tasgBuilder = (TASGBuilderFactTRS)meapContext.MEAPSharedContext.TASGBuilder;
+      tasgBuilder = (TASGBuilderFactCPLTM)meapContext.MEAPSharedContext.TASGBuilder;
 
       meapContext.TASGBuilder = tasgBuilder;
       tasgBuilder.meapContext = meapContext;
@@ -136,7 +136,7 @@ namespace ExistsAcceptingPath
 
     private void ComputeDUPairs()
     {
-      TConsistPairSetBuilderFactTRS tConsistPairSetBuilder = new TConsistPairSetBuilderFactTRS(meapContext);
+      TConsistPairSetBuilderFactCPLTM tConsistPairSetBuilder = new TConsistPairSetBuilderFactCPLTM(meapContext);
       tConsistPairSetBuilder.Setup();
 
       inVarToVarNodes = new SortedDictionary<long, SortedSet<long>>();

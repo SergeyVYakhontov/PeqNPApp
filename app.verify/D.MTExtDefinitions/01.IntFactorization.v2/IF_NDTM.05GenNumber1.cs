@@ -100,7 +100,7 @@ namespace MTExtDefinitions.v2
           {
             new StateSymbolDirectionTriple
             (
-              state: (int)GenNumber2States.GenBitA,
+              state: (uint)GenNumber2States.GenBitA,
               symbol: delimiter2,
               direction: TMDirection.R
             )

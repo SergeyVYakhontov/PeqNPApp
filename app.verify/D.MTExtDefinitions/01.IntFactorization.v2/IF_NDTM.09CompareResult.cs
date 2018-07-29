@@ -20,144 +20,91 @@ namespace MTExtDefinitions.v2
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           // start comparing
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.StartComparing,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.StartComparing, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L
+                  )
+              },
 
           // move to start A
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = 0
-              },
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L
+                  )
+            },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = markB0
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: markB0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = markB0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = markB1
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: markB0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: markB1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = markB1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = delimiter1
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: markB1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: delimiter1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToStartA,
-                    Symbol = delimiter1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToStartA,
-                Symbol = delimiter0
+                  (
+                    state: (uint)CompareStates.MoveToStartA,
+                    symbol: delimiter1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToStartA, symbol: delimiter0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.BitLoopStart,
-                    Symbol = delimiter0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.BitLoopStart,
+                    symbol: delimiter0,
+                    direction: TMDirection.R
+                  )
+              },
 
           // shift to D, bit 0
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.BitLoopStart,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -166,726 +113,456 @@ namespace MTExtDefinitions.v2
                     Symbol = markE0,
                     Direction = TMDirection.R
                   }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = blankSymbol
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = delimiter1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: delimiter1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = delimiter1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = markB0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: delimiter1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: markB0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = markB0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = markB1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: markB0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: markB1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = markB1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = delimiter2
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: markB1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = delimiter2,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = markC0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: delimiter2,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: markC0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = markC0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = markC1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: markC0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: markC1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = markC1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                Symbol = delimiter3
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: markC1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit0, symbol: delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipF_bit0,
-                    Symbol = delimiter3,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.SkipF_bit0,
+                    symbol: delimiter3,
+                    direction: TMDirection.R
+                  )
+              },
 
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit0,
-                Symbol = markF0
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit0, symbol: markF0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipF_bit0,
-                    Symbol = markF0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit0,
-                Symbol = markF1
+                  (
+                    state: (uint)CompareStates.SkipF_bit0,
+                    symbol: markF0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit0, symbol: markF1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipF_bit0,
-                    Symbol = markF1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit0,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.SkipF_bit0,
+                    symbol: markF1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit0, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = markF0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit0,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: markF0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit0, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = rejectingState,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: rejectingState,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
+              },
 
           // shift to D, bit 1
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.BitLoopStart,
-                Symbol = 1
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.BitLoopStart, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = markE1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = blankSymbol
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: markE1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = delimiter1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: delimiter1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = delimiter1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = markB0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: delimiter1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: markB0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = markB0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = markB1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: markB0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: markB1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = markB1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = delimiter2
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: markB1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = delimiter2,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = markC0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: delimiter2,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: markC0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = markC0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = markC1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: markC0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: markC1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = markC1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                Symbol = delimiter3
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: markC1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter3_bit1, symbol: delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipF_bit1,
-                    Symbol = delimiter3,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.SkipF_bit1,
+                    symbol: delimiter3,
+                    direction: TMDirection.R
+                  )
+              },
 
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit1,
-                Symbol = markF0
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit1, symbol: markF0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipF_bit1,
-                    Symbol = markF0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit1,
-                Symbol = markF1
+                  (
+                    state: (uint)CompareStates.SkipF_bit1,
+                    symbol: markF0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit1, symbol: markF1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipF_bit1,
-                    Symbol = markF1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit1,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.SkipF_bit1,
+                    symbol: markF1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit1, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = rejectingState,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipF_bit1,
-                Symbol = 1
+                  (
+                    state: rejectingState,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipF_bit1, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = markF1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: markF1,
+                    direction: TMDirection.R
+                  )
+              },
 
           // move to delimiter 4
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter4,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter4, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter4,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter4, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter4,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter4, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter4,
-                Symbol = markD0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter4, symbol: markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = markD0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter4,
-                Symbol = markD1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: markD0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter4, symbol: markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter4,
-                    Symbol = markD1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter4,
-                Symbol = delimiter4
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter4,
+                    symbol: markD1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter4, symbol: delimiter4)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = delimiter4,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: delimiter4,
+                    direction: TMDirection.L
+                  )
+              },
 
           // move to delimiter 0
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = delimiter1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: delimiter1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = delimiter1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = delimiter2
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: delimiter1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = delimiter2,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = delimiter3
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: delimiter2,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = delimiter3,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markB0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: delimiter3,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markB0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markB0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markB1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markB0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markB1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markB1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markC0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markB1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markC0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markC0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markC1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markC0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markC1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -894,170 +571,109 @@ namespace MTExtDefinitions.v2
                     Symbol = markC1,
                     Direction = TMDirection.L
                   }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markE0
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markE0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markE0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markE1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markE0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markE1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markE1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markF0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markE1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markF0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markF0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = markF1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markF0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: markF1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter0,
-                    Symbol = markF1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.MoveToDelimiter0,
-                Symbol = delimiter0
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter0,
+                    symbol: markF1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.MoveToDelimiter0, symbol: delimiter0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipE,
-                    Symbol = delimiter0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: (uint)CompareStates.SkipE,
+                    symbol: delimiter0,
+                    direction: TMDirection.R
+                  )
+              },
 
           // skip E marks
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipE,
-                Symbol = markE0
-              },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipE, symbol: markE0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipE,
-                    Symbol = markE0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipE,
-                Symbol = markE1
+                  (
+                    state: (uint)CompareStates.SkipE,
+                    symbol: markE0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipE, symbol: markE1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.SkipE,
-                    Symbol = markE1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipE,
-                Symbol = 0
+                  (
+                    state: (uint)CompareStates.SkipE,
+                    symbol: markE1,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipE, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = markE0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipE,
-                Symbol = 1
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit0,
+                    symbol: markE0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipE, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)CompareStates.MoveToDelimiter3_bit1,
-                    Symbol = markE0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = (uint)CompareStates.SkipE,
-                Symbol = blankSymbol
+                  (
+                    state: (uint)CompareStates.MoveToDelimiter3_bit1,
+                    symbol: markE0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)CompareStates.SkipE, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = acceptingState,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
+                  (
+                    state: acceptingState,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
               }
-          }
       };
 
     #endregion

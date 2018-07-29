@@ -14,11 +14,11 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class DeterminePathRunnerFactTRS : DeterminePathRunner
+  public class DeterminePathRunnerFactCPLTM : DeterminePathRunner
   {
     #region Ctors
 
-    public DeterminePathRunnerFactTRS(DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs)
+    public DeterminePathRunnerFactCPLTM(DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs)
       : base(determinePathRunnerCtorArgs) { }
 
     #endregion

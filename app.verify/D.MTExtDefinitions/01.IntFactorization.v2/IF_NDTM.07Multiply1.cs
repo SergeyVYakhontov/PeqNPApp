@@ -24,7 +24,7 @@ namespace MTExtDefinitions.v2
           {
             new StateSymbolPair()
               {
-                State = (int)SubprogStates.MultReady,
+                State = (int)MultiplyStates.MultReady,
                 Symbol = 0
               },
             new List<StateSymbolDirectionTriple>
@@ -40,7 +40,7 @@ namespace MTExtDefinitions.v2
           {
             new StateSymbolPair()
               {
-                State = (int)SubprogStates.MultReady,
+                State = (int)MultiplyStates.MultReady,
                 Symbol = 1
               },
             new List<StateSymbolDirectionTriple>
@@ -56,7 +56,7 @@ namespace MTExtDefinitions.v2
           {
             new StateSymbolPair()
               {
-                State = (int)SubprogStates.MultReady,
+                State = (int)MultiplyStates.MultReady,
                 Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
@@ -72,7 +72,7 @@ namespace MTExtDefinitions.v2
           {
             new StateSymbolPair()
               {
-                State = (int)SubprogStates.MultReady,
+                State = (int)MultiplyStates.MultReady,
                 Symbol = delimiter3
               },
             new List<StateSymbolDirectionTriple>
@@ -91,14 +91,14 @@ namespace MTExtDefinitions.v2
             new StateSymbolPair()
               {
                 State = (int)MultiplyStates.StartLoopInC,
-                Symbol = OneTapeTuringMachine.blankSymbol
+                Symbol = blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = (int)MultiplyStates.StopMultiplying,
-                    Symbol = OneTapeTuringMachine.blankSymbol,
+                    State = (int)CompareStates.StartComparing,
+                    Symbol = blankSymbol,
                     Direction = TMDirection.S
                   }
               }
@@ -113,7 +113,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = (int)MultiplyStates.StopMultiplying,
+                    State = rejectingState,
                     Symbol = delimiter3,
                     Direction = TMDirection.S
                   }
@@ -131,7 +131,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple()
                   {
-                    State = (int)SubprogStates.MultReady,
+                    State = (int)MultiplyStates.MultReady,
                     Symbol = markB0,
                     Direction = TMDirection.R
                   }

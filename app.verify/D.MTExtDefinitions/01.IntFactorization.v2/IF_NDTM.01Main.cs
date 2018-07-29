@@ -34,8 +34,6 @@ namespace MTExtDefinitions.v2
         {
           qStart,
 
-          (uint)SubprogStates.MultReady,
-
           (uint)InitStates.MoveToRightDelim,
 
           (uint)GenNumber1States.GenBitA,
@@ -51,6 +49,7 @@ namespace MTExtDefinitions.v2
           (uint)GenNumber2States.MoveToDelimiter1,
           (uint)GenNumber2States.StopGenNumber,
 
+          (uint)MultiplyStates.MultReady,
           (uint)MultiplyStates.StartLoopInC,
           (uint)MultiplyStates.Process1f_D,
           (uint)MultiplyStates.MoveToCRight,
@@ -133,7 +132,6 @@ namespace MTExtDefinitions.v2
       int frameLength = FrameLength(inputLength);
       delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
-      AppHelper.MergeDictionaryWith(delta, deltaSubprog2);
       AppHelper.MergeDictionaryWith(delta, deltaInit);
       AppHelper.MergeDictionaryWith(delta, deltaGenNumber1);
       AppHelper.MergeDictionaryWith(delta, deltaGenNumber2);
