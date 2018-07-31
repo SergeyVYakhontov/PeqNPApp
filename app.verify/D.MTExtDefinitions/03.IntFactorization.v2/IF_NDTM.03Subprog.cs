@@ -12,11 +12,11 @@ using ExistsAcceptingPath;
 
 namespace MTExtDefinitions.v2
 {
-  public partial class IF_NDTM
+ /* public partial class IF_NDTM
   {
     #region private members
 
-    /* private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog1Test(int frameLength)
+     private Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> deltaSubprog1Test(int frameLength)
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
@@ -70,11 +70,11 @@ namespace MTExtDefinitions.v2
               Symbol = delimiter3,
               Direction = TMDirection.S
             }
-          } */
+          } 
       //};
 
     #endregion
-  }
+  } */
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

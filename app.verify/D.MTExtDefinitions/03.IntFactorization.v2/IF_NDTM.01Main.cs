@@ -132,14 +132,18 @@ namespace MTExtDefinitions.v2
       int frameLength = FrameLength(inputLength);
       delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
-      AppHelper.MergeDictionaryWith(delta, deltaInit);
-      AppHelper.MergeDictionaryWith(delta, deltaGenNumber1);
-      AppHelper.MergeDictionaryWith(delta, deltaGenNumber2);
-      AppHelper.MergeDictionaryWith(delta, deltaMultiply1(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaMultiply2(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaMultiply3(frameLength));
-      AppHelper.MergeDictionaryWith(delta, deltaAdd);
-      AppHelper.MergeDictionaryWith(delta, deltaCompare);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Init.Delta);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta1);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta2);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta1(frameLength));
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta2(frameLength));
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta3(frameLength));
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Add.Delta);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta1);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta2);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta3);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta4);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta5);
 
       Delta = delta;
 

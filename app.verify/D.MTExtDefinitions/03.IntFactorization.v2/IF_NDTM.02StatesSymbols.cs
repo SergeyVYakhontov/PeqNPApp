@@ -14,35 +14,35 @@ namespace MTExtDefinitions.v2
 {
   public partial class IF_NDTM
   {
-    #region private members
+    #region public members
 
-    private const uint qStartState = 0;
-    private const uint acceptingState = 127;
-    private const uint rejectingState = 128;
+    public const uint qStartState = 0;
+    public const uint acceptingState = 127;
+    public const uint rejectingState = 128;
 
-    private const int delimiter0 = 2;
-    private const int delimiter1 = 3;
-    private const int delimiter2 = 4;
-    private const int delimiter3 = 5;
-    private const int delimiter4 = 6;
+    public const int delimiter0 = 2;
+    public const int delimiter1 = 3;
+    public const int delimiter2 = 4;
+    public const int delimiter3 = 5;
+    public const int delimiter4 = 6;
 
-    private const int markB0 = 7;
-    private const int markB1 = 8;
-    private const int markC0 = 9;
-    private const int markC1 = 10;
-    private const int markD0 = 11;
-    private const int markD1 = 12;
-    private const int markE0 = 13;
-    private const int markE1 = 14;
-    private const int markF0 = 15;
-    private const int markF1 = 16;
+    public const int markB0 = 7;
+    public const int markB1 = 8;
+    public const int markC0 = 9;
+    public const int markC1 = 10;
+    public const int markD0 = 11;
+    public const int markD1 = 12;
+    public const int markE0 = 13;
+    public const int markE1 = 14;
+    public const int markF0 = 15;
+    public const int markF1 = 16;
 
-    private enum InitStates : uint
+    public enum InitStates : uint
     {
       MoveToRightDelim = qStartState + 1
     }
 
-    private enum GenNumber1States : uint
+    public enum GenNumber1States : uint
     {
       GenNumber1Base = InitStates.MoveToRightDelim + 1,
       GenBitA,
@@ -51,7 +51,7 @@ namespace MTExtDefinitions.v2
       StopGenNumber,
     }
 
-    private enum GenNumber2States : uint
+    public enum GenNumber2States : uint
     {
       GenBitA = GenNumber1States.StopGenNumber + 1,
       GenBitB,
@@ -62,7 +62,7 @@ namespace MTExtDefinitions.v2
       StopGenNumber,
     }
 
-    private enum MultiplyStates : uint
+    public enum MultiplyStates : uint
     {
       MultReady = GenNumber2States.StopGenNumber + 1,
       StartLoopInC,
@@ -84,14 +84,14 @@ namespace MTExtDefinitions.v2
       StopMultiplying,
     }
 
-    private enum AddStates : uint
+    public enum AddStates : uint
     {
       StartAdding = MultiplyStates.StopMultiplying + 1,
       AddBitC0,
       AddBitC1,
     }
 
-    private enum CompareStates : uint
+    public enum CompareStates : uint
     {
       StartComparing = AddStates.AddBitC1 + 1,
       MoveToStartA,
