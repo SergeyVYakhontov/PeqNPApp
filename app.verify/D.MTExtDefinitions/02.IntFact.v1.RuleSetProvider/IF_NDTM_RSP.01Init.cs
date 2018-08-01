@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v1
   {
     #region public members
 
-    public static Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta()
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
@@ -42,7 +42,9 @@ namespace MTExtDefinitions.v1
             )
           },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.InitStates.MoveRightToDelim1, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.InitStates.MoveRightToDelim1,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
@@ -75,7 +77,9 @@ namespace MTExtDefinitions.v1
             )
           },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.InitStates.MoveRightToDelim1, symbol: IF_NDTM.delimiter1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.InitStates.MoveRightToDelim1,
+            symbol: IF_NDTM.delimiter1)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple

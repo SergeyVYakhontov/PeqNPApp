@@ -16,12 +16,14 @@ namespace MTExtDefinitions.v1
   {
     #region public members
 
-    public static Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta()
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta()
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         // start adding
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.StartAdding, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.StartAdding,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -31,7 +33,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.StartAdding, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.StartAdding,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -63,7 +67,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC0, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC0,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -73,7 +79,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC0, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC0,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -105,7 +113,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC1, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC1,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -115,7 +125,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC1, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC1,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -127,7 +139,9 @@ namespace MTExtDefinitions.v1
               },
 
         // blank reached
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC0, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC0,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -137,7 +151,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC1, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC1,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -147,7 +163,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC0, symbol: IF_NDTM.delimiter4)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC0,
+            symbol: IF_NDTM.delimiter4)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -157,7 +175,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.AddStates.AddBitC1, symbol: IF_NDTM.delimiter4)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.AddStates.AddBitC1,
+            symbol: IF_NDTM.delimiter4)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple

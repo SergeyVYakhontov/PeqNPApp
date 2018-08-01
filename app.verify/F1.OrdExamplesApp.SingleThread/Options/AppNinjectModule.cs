@@ -42,7 +42,7 @@ namespace OrdinaryExamplesAppSingleThread
       Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathOrd>(
         arg => new MExistsAcceptingPathOrd(arg.Inject<MExistsAcceptingPathCtorArgs>()));
 
-      Bind<ExampleSetProvider>().To<ExampleSetProvider>().InSingletonScope();
+      Bind<IExampleSetProvider>().To<VerifyResults.v1.ExampleSetProvider>().InSingletonScope();
 
       Bind<IVerificator>().To<OrdinaryVerificator>();
       Bind<IApplication>().To<OrdinaryApplication>();

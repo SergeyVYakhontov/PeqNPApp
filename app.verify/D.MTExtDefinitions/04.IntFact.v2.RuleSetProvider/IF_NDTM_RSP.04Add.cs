@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta =
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
           // start adding
@@ -190,7 +190,7 @@ namespace MTExtDefinitions.v2
             new StateSymbolPair
               {
                 State = (int)IF_NDTM.AddStates.AddBitC0,
-                Symbol = IF_NDTM.blankSymbol
+                Symbol = OneTapeTuringMachine.blankSymbol
               },
             new List<StateSymbolDirectionTriple>
               {

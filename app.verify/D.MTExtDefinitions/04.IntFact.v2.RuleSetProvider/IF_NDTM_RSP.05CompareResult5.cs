@@ -16,11 +16,13 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta5 =
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta5 { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         // skip E marks
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.SkipE, symbol: IF_NDTM.markE0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.SkipE,
+            symbol: IF_NDTM.markE0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -30,7 +32,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.SkipE, symbol: IF_NDTM.markE1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.SkipE,
+            symbol: IF_NDTM.markE1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -60,7 +64,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.SkipE, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.SkipE,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple

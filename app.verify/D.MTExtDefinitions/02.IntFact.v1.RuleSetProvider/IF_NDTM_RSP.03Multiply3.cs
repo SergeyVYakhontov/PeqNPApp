@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v1
   {
     #region public members
 
-    public static Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta3(int frameLength)
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta3(int frameLength)
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
@@ -35,7 +35,9 @@ namespace MTExtDefinitions.v1
               },
 
         // move in D
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.AddC1f_D, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -67,7 +69,9 @@ namespace MTExtDefinitions.v1
               },
 
         // markD reached
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.AddC1f_D, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -77,7 +81,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.AddC1f_D, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -110,7 +116,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.L
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -120,7 +128,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.L
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -130,7 +140,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.L
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L, symbol: IF_NDTM.delimiter3)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+            symbol: IF_NDTM.delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -164,7 +176,9 @@ namespace MTExtDefinitions.v1
               },
 
         // mark reached
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -174,7 +188,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -208,7 +224,9 @@ namespace MTExtDefinitions.v1
                     shift: frameLength
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -219,7 +237,9 @@ namespace MTExtDefinitions.v1
                     shift: frameLength
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple

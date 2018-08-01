@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta2 =
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta2 { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         // shift to D, bit 0
@@ -30,7 +30,9 @@ namespace MTExtDefinitions.v2
                     Direction = TMDirection.R
                   }
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -60,7 +62,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.delimiter1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.delimiter1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -70,7 +74,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.markB0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.markB0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -80,7 +86,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.markB1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.markB1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -90,7 +98,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.delimiter2)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -100,7 +110,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.markC0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.markC0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -110,7 +122,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.markC1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.markC1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -120,7 +134,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0, symbol: IF_NDTM.delimiter3)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+            symbol: IF_NDTM.delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -131,7 +147,9 @@ namespace MTExtDefinitions.v2
                   )
               },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.SkipF_bit0, symbol: IF_NDTM.markF0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.SkipF_bit0,
+            symbol: IF_NDTM.markF0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -141,7 +159,9 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.SkipF_bit0, symbol: IF_NDTM.markF1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.SkipF_bit0,
+            symbol: IF_NDTM.markF1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple

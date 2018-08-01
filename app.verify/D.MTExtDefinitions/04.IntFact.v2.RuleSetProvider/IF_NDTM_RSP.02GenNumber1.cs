@@ -16,12 +16,14 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta1 =
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta1 { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         // start generating bits
         // generate bit 0 or 1
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber1States.GenBitA, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.GenNumber1States.GenBitA,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
@@ -38,7 +40,9 @@ namespace MTExtDefinitions.v2
             )
           },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber1States.GenBitB, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.GenNumber1States.GenBitB,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
@@ -62,7 +66,9 @@ namespace MTExtDefinitions.v2
           },
 
         // delimiter reached
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber1States.GenBitA, symbol: IF_NDTM.delimiter2)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.GenNumber1States.GenBitA,
+            symbol: IF_NDTM.delimiter2)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
@@ -73,7 +79,9 @@ namespace MTExtDefinitions.v2
             )
           },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber1States.GenBitB, symbol: IF_NDTM.delimiter2)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.GenNumber1States.GenBitB,
+            symbol: IF_NDTM.delimiter2)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
@@ -84,7 +92,9 @@ namespace MTExtDefinitions.v2
             )
           },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber1States.MoveToDelimiter2, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.GenNumber1States.MoveToDelimiter2,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
@@ -95,7 +105,9 @@ namespace MTExtDefinitions.v2
             )
           },
 
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber1States.MoveToDelimiter2, symbol: IF_NDTM.delimiter2)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.GenNumber1States.MoveToDelimiter2,
+            symbol: IF_NDTM.delimiter2)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple

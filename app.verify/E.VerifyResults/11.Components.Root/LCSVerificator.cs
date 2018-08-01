@@ -19,7 +19,7 @@ namespace VerifyResults
 
     public override void Run()
     {
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
 
       foreach (ExampleSet exampleSet in exampleSetProvider.ExampleSets)
       {

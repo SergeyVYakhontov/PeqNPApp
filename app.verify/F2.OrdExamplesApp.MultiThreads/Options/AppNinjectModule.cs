@@ -42,7 +42,7 @@ namespace OrdinaryExamplesAppSlotsMThreads
       Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathSlotsMThreads>(
         arg => new MExistsAcceptingPathSlotsMThreads(arg.Inject<MExistsAcceptingPathCtorArgs>()));
 
-      Bind<ExampleSetProvider>().To<ExampleSetProvider>().InSingletonScope();
+      Bind<IExampleSetProvider>().To<VerifyResults.v1.ExampleSetProvider>().InSingletonScope();
 
       Bind<IVerificator>().To<OrdinaryVerificator>();
       Bind<IApplication>().To<OrdinaryApplication>();

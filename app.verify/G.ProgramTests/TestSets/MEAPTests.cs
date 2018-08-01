@@ -43,7 +43,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang01_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -59,7 +59,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang02_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -75,7 +75,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.SAP_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -91,7 +91,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.LAP_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -107,7 +107,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.UPAPMNE_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -123,7 +123,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.UPAPAE_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -139,7 +139,7 @@ namespace ProgramTests
     {
       configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.UPLDR_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -155,8 +155,8 @@ namespace ProgramTests
     {
       configuration.Load<IntegerFactExamplesAppComms.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
-      exampleSetProvider.ExampleSets.Add(exampleSetProvider.v1_IF_ExampleSetA);
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
       application.Run(new string[] { "test" });
@@ -171,8 +171,8 @@ namespace ProgramTests
     {
       configuration.Load<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
-      exampleSetProvider.ExampleSets.Add(exampleSetProvider.v2_IF_ExampleSetA);
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
       application.Run(new string[] { "test" });

@@ -60,7 +60,7 @@ namespace OrdinaryExamplesAppSlotsMThreads
 
       configuration.Load<AppNinjectModule>();
 
-      ExampleSetProvider exampleSetProvider = configuration.Get<ExampleSetProvider>();
+      IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
 
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang01_ExampleSet);
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang02_ExampleSet);

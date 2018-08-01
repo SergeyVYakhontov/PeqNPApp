@@ -41,7 +41,7 @@ namespace IntegerFactExamplesAppComms
       Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathFactComms>(
         arg => new MExistsAcceptingPathFactComms(arg.Inject<MExistsAcceptingPathCtorArgs>()));
 
-      Bind<ExampleSetProvider>().To<ExampleSetProvider>().InSingletonScope();
+      Bind<IExampleSetProvider>().To<VerifyResults.v1.ExampleSetProvider>().InSingletonScope();
 
       Bind<IVerificator>().To<IntegerFactVerificator>();
       Bind<IApplication>().To<IntegerFactApplication>();

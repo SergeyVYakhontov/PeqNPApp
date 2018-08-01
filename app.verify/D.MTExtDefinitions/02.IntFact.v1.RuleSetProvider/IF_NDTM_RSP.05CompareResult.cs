@@ -16,12 +16,14 @@ namespace MTExtDefinitions.v1
   {
     #region public members
 
-    public static Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta(int frameLength)
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta(int frameLength)
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         // start comparing
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.CompareReady, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.CompareReady,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -31,7 +33,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.StartComparing, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.StartComparing,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -62,7 +66,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.L
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveLeftToA, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveLeftToA,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -94,7 +100,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.L
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToStartA, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToStartA,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -174,7 +182,9 @@ namespace MTExtDefinitions.v1
               },
 
         // D0, D1
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopD0, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopD0,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -185,7 +195,9 @@ namespace MTExtDefinitions.v1
                     shift: (frameLength * 3) + 1
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopD0, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopD0,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -195,7 +207,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopD1, symbol: IF_NDTM.markD0)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopD1,
+            symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -205,7 +219,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopD1, symbol: IF_NDTM.markD1)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopD1,
+            symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -238,7 +254,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.R
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopStart_f, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopStart_f,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -250,7 +268,9 @@ namespace MTExtDefinitions.v1
               },
 
         // blank symbol
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopD0, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopD0,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -260,7 +280,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopD1, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopD1,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
@@ -270,7 +292,9 @@ namespace MTExtDefinitions.v1
                     direction: TMDirection.S
                   )
               },
-        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.BitLoopStart, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.BitLoopStart,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple

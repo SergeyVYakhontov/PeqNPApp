@@ -41,7 +41,7 @@ namespace IntegerFactExamplesAppCPLTM
       Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathFactCPLTM>(
         arg => new MExistsAcceptingPathFactCPLTM(arg.Inject<MExistsAcceptingPathCtorArgs>()));
 
-      Bind<ExampleSetProvider>().To<ExampleSetProvider>().InSingletonScope();
+      Bind<IExampleSetProvider>().To<VerifyResults.v2.ExampleSetProvider>().InSingletonScope();
 
       Bind<IVerificator>().To<IntegerFactVerificator>();
       Bind<IApplication>().To<IntegerFactApplication>();
