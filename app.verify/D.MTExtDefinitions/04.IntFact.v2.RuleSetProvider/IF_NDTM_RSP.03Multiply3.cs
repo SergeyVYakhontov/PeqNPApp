@@ -22,328 +22,234 @@ namespace MTExtDefinitions.v2
         {
           // 1 in C
           // move to D
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.StartAddC,
-                Symbol = 1
-              },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.StartAddC, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                    Symbol = IF_NDTM.markC1,
-                    Direction = TMDirection.R,
-                    Shift = frameLength
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+                    symbol: IF_NDTM.markC1,
+                    direction: TMDirection.R,
+                    shift: frameLength
+                  )
+              },
 
           // move in D
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                Symbol = OneTapeTuringMachine.blankSymbol
-              },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+              symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                Symbol = 0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.AddC1f_D, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.AddC1f_D, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
+              },
 
           // markD reached
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                Symbol = IF_NDTM.markD0
-              },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+              symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.AddStates.StartAdding,
-                    Symbol = IF_NDTM.markD0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.AddC1f_D,
-                Symbol = IF_NDTM.markD1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.AddStates.StartAdding,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.AddC1f_D,
+              symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.AddStates.StartAdding,
-                    Symbol = IF_NDTM.markD1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.AddStates.StartAdding,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.S
+                  )
+              },
 
           // shift mark
           // move to left delimiter
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                Symbol = IF_NDTM.markD0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(
+             state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+             symbol: IF_NDTM.markD0)] =
+           new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.L
+                  )
+              },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+              symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                    Symbol = IF_NDTM.markD0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                Symbol = IF_NDTM.markD1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
+              symbol: IF_NDTM.delimiter3)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                    Symbol = IF_NDTM.markD1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_L,
-                Symbol = IF_NDTM.delimiter3
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+                    symbol: IF_NDTM.delimiter3,
+                    direction: TMDirection.R
+                  )
               },
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                    Symbol = IF_NDTM.delimiter3,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
 
           // move to mark right
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
+              },
 
           // mark reached
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                Symbol = IF_NDTM.markD0
-              },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+              symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveMarkInD,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
-                Symbol = IF_NDTM.markD1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
               },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.MoveToMarkInD_R,
+              symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveMarkInD,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
+              },
 
           // replace with mark
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveMarkInD,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToCLeft,
-                    Symbol = IF_NDTM.markD0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveMarkInD,
-                Symbol = 1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (int)IF_NDTM.MultiplyStates.MoveToCLeft,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
+          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToCLeft,
-                    Symbol = IF_NDTM.markD1,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveMarkInD,
-                Symbol = IF_NDTM.markD0
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToCLeft,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD,
+              symbol: IF_NDTM.markD0)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToCLeft,
-                    Symbol = IF_NDTM.markD0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
-              }
-          },
-          {
-            new StateSymbolPair()
-              {
-                State = (int)IF_NDTM.MultiplyStates.MoveMarkInD,
-                Symbol = IF_NDTM.markD1
+                new StateSymbolDirectionTriple
+                  (
+                    state: (int)IF_NDTM.MultiplyStates.MoveToCLeft,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
+          [new StateSymbolPair(
+              state: (uint)IF_NDTM.MultiplyStates.MoveMarkInD,
+              symbol: IF_NDTM.markD1)] =
             new List<StateSymbolDirectionTriple>
               {
-                new StateSymbolDirectionTriple()
-                  {
-                    State = (int)IF_NDTM.MultiplyStates.MoveToCLeft,
-                    Symbol = IF_NDTM.markD1,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
+                new StateSymbolDirectionTriple
+                  (
+                    state: (int)IF_NDTM.MultiplyStates.MoveToCLeft,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               }
-          }
         };
     }
 

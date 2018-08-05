@@ -29,8 +29,8 @@ namespace Core
 
     public long Id { get; set; }
 
-    public DAGNode FromNode { get; private set; }
-    public DAGNode ToNode { get; private set; }
+    public DAGNode FromNode { get; }
+    public DAGNode ToNode { get; }
 
     public override string ToString()
     {

@@ -57,7 +57,7 @@ namespace MTExtDefinitions.v1
       AppHelper.ReplaceInArray(factorX, markB0, 0, (int a, int b) => (a == b));
       AppHelper.ReplaceInArray(factorX, markB1, 1, (int a, int b) => (a == b));
 
-      long i2 = 1 + 2 * frameLength + 1;
+      long i2 = 1 + (2 * frameLength) + 1;
       long j2 = Array.IndexOf(factorsString, blankSymbol, (int)i2);
 
       factorY = AppHelper.CreateSubArray(factorsString, i2, j2 - i2);

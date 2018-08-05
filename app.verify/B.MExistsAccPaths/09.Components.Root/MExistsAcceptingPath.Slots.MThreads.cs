@@ -106,7 +106,7 @@ namespace ExistsAcceptingPath
 
     private static readonly IKernel configuration = Core.AppContext.Configuration;
 
-    private OneTapeTuringMachine tMachine;
+    private readonly OneTapeTuringMachine tMachine;
 
     #endregion
   }

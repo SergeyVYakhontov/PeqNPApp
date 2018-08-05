@@ -165,7 +165,7 @@ namespace Core
                       t_p = t_p * Mkj_p;
                       t_q = t_q * Mkj_q;
 
-                      t_p = t_p * Mij_q - Mij_p * t_q;
+                      t_p = (t_p * Mij_q) - (Mij_p * t_q);
                       t_q = Mij_q * t_q;
 
                       RationalNumber.Normalize(ref t_p, ref t_q);

@@ -168,7 +168,7 @@ namespace ExistsAcceptingPath
     private readonly SortedSet<ulong> processedMu = new SortedSet<ulong>();
 
     private readonly SortedDictionary<long, DAGNode> newNodeEnumeration = new SortedDictionary<long, DAGNode>();
-    private SortedDictionary<ComputationStep, long> newCompStepToNode =
+    private readonly SortedDictionary<ComputationStep, long> newCompStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
 
     private PropSymbolsKeeperFactComms propSymbolsKeeper;

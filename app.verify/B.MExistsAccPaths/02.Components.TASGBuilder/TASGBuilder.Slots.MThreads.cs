@@ -142,15 +142,15 @@ namespace ExistsAcceptingPath
     private long nodeId;
     private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
-    private SortedDictionary<ComputationStep, long> compStepToNode =
+    private readonly SortedDictionary<ComputationStep, long> compStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
     private readonly SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
 
-    private List<DAGNode> endNodes = new List<DAGNode>();
+    private readonly List<DAGNode> endNodes = new List<DAGNode>();
     private readonly List<long> endNodeIds = new List<long>();
-    private List<DAGNode> acceptingNodes = new List<DAGNode>();
+    private readonly List<DAGNode> acceptingNodes = new List<DAGNode>();
     private long treesCut;
-    private SortedSet<ulong> processedMu = new SortedSet<ulong>();
+    private readonly SortedSet<ulong> processedMu = new SortedSet<ulong>();
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {

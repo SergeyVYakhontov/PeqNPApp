@@ -177,7 +177,6 @@ namespace MTExtDefinitions.v2
             )
           },
 
-
         [new StateSymbolPair(
             state: (uint)IF_NDTM.GenNumber2States.MoveToDelimiter0,
             symbol: IF_NDTM.delimiter3)] =

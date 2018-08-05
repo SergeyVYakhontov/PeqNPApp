@@ -171,7 +171,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private static Object objectToLock = new Object();
+    private static readonly Object objectToLock = new Object();
     private TCPEPOptimizer tcpepOptimizer;
     private CheckKZetaGraphs checkKZetaGraphs;
     private readonly LinEquationContext linEquationContext = new LinEquationContext();

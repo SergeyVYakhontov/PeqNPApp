@@ -88,7 +88,7 @@ namespace Core
         return;
       }
 
-      p = p * r.q + q * r.p;
+      p = (p * r.q) + (q * r.p);
       q = q * r.q;
 
       Normalize();

@@ -69,11 +69,11 @@ namespace ProgramTests
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-    private static readonly log4net.ILog log =
+    private readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly log4net.ILog log =
       log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private static void ResetNinjectKernel()
+    private void ResetNinjectKernel()
     {
       List<Ninject.Modules.INinjectModule> modules = configuration.GetModules().ToList();
       modules.ForEach(m => configuration.Unload(m.Name));

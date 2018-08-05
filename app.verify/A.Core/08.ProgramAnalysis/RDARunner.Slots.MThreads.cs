@@ -25,7 +25,7 @@ namespace Core
     #region public members
 
     public long Id { get; }
-    public string Name { get; private set; }
+    public string Name { get; }
 
     public bool Done { get; private set; }
 
