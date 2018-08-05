@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Core
 {
-  public struct StateSymbolPair : IEquatable<StateSymbolPair>
+  public readonly struct StateSymbolPair : IEquatable<StateSymbolPair>
   {
     #region Ctors
 
@@ -24,8 +24,8 @@ namespace Core
 
     #region public members
 
-    public uint State { get; set; }
-    public int Symbol { get; set; }
+    public uint State { get; }
+    public int Symbol { get; }
 
     public override bool Equals(object obj)
     {

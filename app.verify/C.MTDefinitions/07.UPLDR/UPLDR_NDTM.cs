@@ -48,19 +48,19 @@ namespace MTDefinitions
       qList.Add(preAcceptingState);
       Q = qList.ToArray();
 
-      List<int> gammaList = new List<int>() { OneTapeTuringMachine.blankSymbol };
+      List<int> gammaList = new List<int> { blankSymbol };
 
       new IntSegment(variousSymbolsStart, variousSymbolsEnd)
-        .ForEach(g => gammaList.Add((int)g));
+        .ForEach(g => gammaList.Add(g));
 
       gammaList.Add(acceptingSymbol);
       gammaList.Add(acceptingSymbolReplace);
       Gamma = gammaList.ToArray();
 
-      List<int> sigmaList = new List<int>() { OneTapeTuringMachine.blankSymbol, };
+      List<int> sigmaList = new List<int> { blankSymbol };
 
       new IntSegment(variousSymbolsStart, variousSymbolsEnd)
-        .ForEach(g => sigmaList.Add((int)g));
+        .ForEach(g => sigmaList.Add(g));
 
       sigmaList.Add(acceptingSymbol);
       Sigma = sigmaList.ToArray();
@@ -80,10 +80,10 @@ namespace MTDefinitions
 
           StateSymbolPair deltaPairKey =
             new StateSymbolPair
-              {
-                State = q,
-                Symbol = s
-              };
+              (
+                state: q,
+                symbol: s
+              );
 
           List<StateSymbolDirectionTriple> deltaPairValueList = new List<StateSymbolDirectionTriple>();
 
@@ -101,20 +101,20 @@ namespace MTDefinitions
               }
 
               deltaPairValueList.Add(
-                  new StateSymbolDirectionTriple()
-                    {
-                      State = qNext,
-                      Symbol = sNext,
-                      Direction = TMDirection.L
-                    });
+                  new StateSymbolDirectionTriple
+                    (
+                      state: qNext,
+                      symbol: sNext,
+                      direction: TMDirection.L
+                    ));
 
               deltaPairValueList.Add(
-                  new StateSymbolDirectionTriple()
-                    {
-                      State = qNext,
-                      Symbol = sNext,
-                      Direction = TMDirection.R
-                    });
+                  new StateSymbolDirectionTriple
+                    (
+                      state: qNext,
+                      symbol: sNext,
+                      direction: TMDirection.R
+                    ));
             }
           }
 
@@ -124,52 +124,52 @@ namespace MTDefinitions
 
       foreach (int s in Gamma)
       {
-        if ((s == OneTapeTuringMachine.blankSymbol) ||
+        if ((s == blankSymbol) ||
             (s == acceptingSymbol))
         {
           continue;
         }
 
         StateSymbolPair preAcceptingDeltaPairKey =
-          new StateSymbolPair()
-          {
-            State = qStart,
-            Symbol = s
-          };
+          new StateSymbolPair
+            (
+              state: qStart,
+              symbol: s
+            );
 
         delta[preAcceptingDeltaPairKey].Add(
-          new StateSymbolDirectionTriple()
-            {
-              State = preAcceptingState,
-              Symbol = s,
-              Direction = TMDirection.R
-            });
+          new StateSymbolDirectionTriple
+            (
+              state: preAcceptingState,
+              symbol: s,
+              direction: TMDirection.R
+            ));
       }
 
       foreach (int s in Gamma)
       {
-        if ((s == OneTapeTuringMachine.blankSymbol) ||
+        if ((s == blankSymbol) ||
             (s == acceptingSymbol))
         {
           continue;
         }
 
         StateSymbolPair preAcceptingDeltaPairKey =
-          new StateSymbolPair()
-          {
-            State = preAcceptingState,
-            Symbol = s
-          };
+          new StateSymbolPair
+            (
+              state: preAcceptingState,
+              symbol: s
+            );
 
         List<StateSymbolDirectionTriple> preAcceptingDeltaPairValueList =
           new List<StateSymbolDirectionTriple>
           {
-            new StateSymbolDirectionTriple()
-            {
-              State = preAcceptingState,
-              Symbol = s,
-              Direction = TMDirection.R
-            }
+            new StateSymbolDirectionTriple
+              (
+                state: preAcceptingState,
+                symbol: s,
+                direction: TMDirection.R
+              )
           };
 
         delta.Add(preAcceptingDeltaPairKey, preAcceptingDeltaPairValueList);
@@ -177,21 +177,21 @@ namespace MTDefinitions
 
       {
         StateSymbolPair acceptingDeltaPairKey =
-          new StateSymbolPair()
-          {
-            State = preAcceptingState,
-            Symbol = acceptingSymbol
-          };
+          new StateSymbolPair
+            (
+              state: preAcceptingState,
+              symbol: acceptingSymbol
+            );
 
         List<StateSymbolDirectionTriple> acceptingDeltaPairValueList =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
-            {
-              State = (int)acceptingState,
-              Symbol = acceptingSymbolReplace,
-              Direction = TMDirection.S
-            }
+              (
+                state: acceptingState,
+                symbol: acceptingSymbolReplace,
+                direction: TMDirection.S
+              )
           };
 
         delta.Add(acceptingDeltaPairKey, acceptingDeltaPairValueList);

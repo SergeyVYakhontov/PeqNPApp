@@ -26,7 +26,9 @@ namespace MTDefinitions
 
     public override void Setup()
     {
-      Q = new uint[] { qStart, 1, 2, 3, 4, 5, 6, 7, 8, 9, acceptingState, rejectingState };
+      Q = new uint[] {
+        qStart, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+        acceptingState, rejectingState };
       Gamma = new int[] { blankSymbol, 0, 1, 2 };
       Sigma = new int[] { blankSymbol, 0, 1 };
 
@@ -35,290 +37,194 @@ namespace MTDefinitions
 
       Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
-          {
-            new StateSymbolPair
-              {
-                State = qStart,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: qStart, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 1,
-                    Symbol = 0,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                  (
+                    state: 1,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
+              },
 
-          {
-            new StateSymbolPair
-              {
-                State = qStart,
-                Symbol = 1
-              },
+          [new StateSymbolPair(state: qStart, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 1,
-                    Symbol = 1,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                  (
+                    state: 1,
+                    symbol: 1,
+                    direction: TMDirection.L
+                  )
+              },
 
-          {
-            new StateSymbolPair
-              {
-                State = 1,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: 1, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 2,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                  (
+                    state: 2,
+                    symbol: blankSymbol,
+                    direction: TMDirection.L
+                  )
+              },
 
-          {
-            new StateSymbolPair
-              {
-                State = 2,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: 2, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 3,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: 3,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
+              },
 
-          {
-            new StateSymbolPair
-              {
-                State = 3,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: 3, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 4,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.R
-                  }
-              }
-          },
+                  (
+                    state: 4,
+                    symbol: blankSymbol,
+                    direction: TMDirection.R
+                  )
+              },
 
           // move right or start erasing
-          {
-            new StateSymbolPair
-              {
-                State = 4,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: 4, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 4,
-                    Symbol = 0,
-                    Direction = TMDirection.R
-                  },
+                  (
+                    state: 4,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  ),
                 new StateSymbolDirectionTriple
-                  {
-                    State = 5,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                  (
+                    state: 5,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
+              },
 
           // move right or start erasing
-          {
-            new StateSymbolPair
-              {
-                State = 4,
-                Symbol = 1
-              },
+          [new StateSymbolPair(state: 4, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 4,
-                    Symbol = 1,
-                    Direction = TMDirection.R
-                  },
+                  (
+                    state: 4,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  ),
                 new StateSymbolDirectionTriple
-                  {
-                    State = 5,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                  (
+                    state: 5,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
+              },
 
           // stop if right delimiter reached
-          {
-            new StateSymbolPair
-              {
-                State = 4,
-                Symbol = blankSymbol
-              },
+          [new StateSymbolPair(state: 4, symbol: blankSymbol)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)rejectingState,
-                    Symbol = blankSymbol,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                  (
+                    state: rejectingState,
+                    symbol: blankSymbol,
+                    direction: TMDirection.S
+                  )
+              },
 
           // erasing
-          {
-            new StateSymbolPair
-              {
-                State = 5,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: 5, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 6,
-                    Symbol = 2,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = 5,
-                Symbol = 1
+                  (
+                    state: 6,
+                    symbol: 2,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: 5, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 7,
-                    Symbol = 2,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
+                  (
+                    state: 7,
+                    symbol: 2,
+                    direction: TMDirection.S
+                  )
+              },
 
           // move to left until 0 or 1 reached
-          {
-            new StateSymbolPair
-              {
-                State = 6,
-                Symbol = 2
-              },
+          [new StateSymbolPair(state: 6, symbol: 2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 8,
-                    Symbol = 2,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = 7,
-                Symbol = 2
+                  (
+                    state: 8,
+                    symbol: 2,
+                    direction: TMDirection.L
+                  )
               },
+          [new StateSymbolPair(state: 7, symbol: 2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = 9,
-                    Symbol = 2,
-                    Direction = TMDirection.L
-                  }
-              }
-          },
+                  (
+                    state: 9,
+                    symbol: 2,
+                    direction: TMDirection.L
+                  )
+              },
 
           // left 0 or 1 reached
-          {
-            new StateSymbolPair
-              {
-                State = 8,
-                Symbol = 0
-              },
+          [new StateSymbolPair(state: 8, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)acceptingState,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = 8,
-                Symbol = 1
+                  (
+                    state: acceptingState,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: 8, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)rejectingState,
-                    Symbol = 1,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = 9,
-                Symbol = 1
+                  (
+                    state: rejectingState,
+                    symbol: 1,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: 9, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)acceptingState,
-                    Symbol = 2,
-                    Direction = TMDirection.S
-                  }
-              }
-          },
-          {
-            new StateSymbolPair
-              {
-                State = 9,
-                Symbol = 0
+                  (
+                    state: acceptingState,
+                    symbol: 2,
+                    direction: TMDirection.S
+                  )
               },
+          [new StateSymbolPair(state: 9, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (int)rejectingState,
-                    Symbol = 0,
-                    Direction = TMDirection.S
-                  }
+                  (
+                    state: rejectingState,
+                    symbol: 0,
+                    direction: TMDirection.S
+                  )
               }
-          }
         };
 
       CheckDeltaRelation();

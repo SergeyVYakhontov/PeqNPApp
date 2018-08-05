@@ -31,74 +31,74 @@ namespace MTDefinitions
       Gamma = new int[] { blankSymbol, 0, 1 };
       Sigma = new int[] { blankSymbol, 0, 1 };
 
-      Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>()
+      Delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           // start reading symbols
           [new StateSymbolPair(state: 0, symbol: 0)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = 1,
-                  Symbol = 0,
-                  Direction = TMDirection.R
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: 1,
+                  symbol: 0,
+                  direction: TMDirection.R
+                )
             },
           [new StateSymbolPair(state: 0, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = 1,
-                  Symbol = 1,
-                  Direction = TMDirection.R
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: 1,
+                  symbol: 1,
+                  direction: TMDirection.R
+                )
             },
 
           // move right for symbol 0
           [new StateSymbolPair(state: 1, symbol: 0)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = 1,
-                  Symbol = 0,
-                  Direction = TMDirection.R
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: 1,
+                  symbol: 0,
+                  direction: TMDirection.R
+                )
             },
 
           // move right for symbol 1
           [new StateSymbolPair(state: 1, symbol: 1)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = 1,
-                  Symbol = 1,
-                  Direction = TMDirection.R
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: 1,
+                  symbol: 1,
+                  direction: TMDirection.R
+                )
             },
 
           // right blank reached => read last symbol
-          [new StateSymbolPair(state: 1, symbol: OneTapeTuringMachine.blankSymbol)]=
+          [new StateSymbolPair(state: 1, symbol: blankSymbol)]=
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = 2,
-                  Symbol = OneTapeTuringMachine.blankSymbol,
-                  Direction = TMDirection.S
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: 2,
+                  symbol: blankSymbol,
+                  direction: TMDirection.S
+                )
             },
-          [new StateSymbolPair(state: 2, symbol: OneTapeTuringMachine.blankSymbol)] =
+          [new StateSymbolPair(state: 2, symbol: blankSymbol)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = 2,
-                  Symbol = OneTapeTuringMachine.blankSymbol,
-                  Direction = TMDirection.L
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: 2,
+                  symbol: blankSymbol,
+                  direction: TMDirection.L
+                )
             },
 
           // (if last symbol == 1) => accept
@@ -106,23 +106,23 @@ namespace MTDefinitions
           new List<StateSymbolDirectionTriple>
             {
               new StateSymbolDirectionTriple
-                {
-                  State = (int)acceptingState,
-                  Symbol = 1,
-                  Direction = TMDirection.S
-                }
+                (
+                  state: acceptingState,
+                  symbol: 1,
+                  direction: TMDirection.S
+                )
             },
 
           // (if last symbol == 0) => reject
           [new StateSymbolPair(state: 2, symbol: 0)] =
           new List<StateSymbolDirectionTriple>
             {
-              new StateSymbolDirectionTriple()
-                {
-                  State = (int)rejectingState,
-                  Symbol = 0,
-                  Direction = TMDirection.S
-                }
+              new StateSymbolDirectionTriple
+                (
+                  state: rejectingState,
+                  symbol: 0,
+                  direction: TMDirection.S
+                )
             }
         };
 

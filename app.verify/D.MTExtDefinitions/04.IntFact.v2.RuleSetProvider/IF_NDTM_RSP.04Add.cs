@@ -130,11 +130,11 @@ namespace MTExtDefinitions.v2
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)IF_NDTM.AddStates.AddBitC1,
-                    Symbol = IF_NDTM.markD0,
-                    Direction = TMDirection.R
-                  }
+                  (
+                    state: (uint)IF_NDTM.AddStates.AddBitC1,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.R
+                  )
               },
 
           // blank reached

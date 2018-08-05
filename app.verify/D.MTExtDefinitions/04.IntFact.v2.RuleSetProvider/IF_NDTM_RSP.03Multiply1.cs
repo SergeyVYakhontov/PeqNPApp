@@ -139,23 +139,23 @@ namespace MTExtDefinitions.v2
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)IF_NDTM.MultiplyStates.MoveToCRight,
-                    Symbol = IF_NDTM.markD0,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToCRight,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
           [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.Process1f_D, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)IF_NDTM.MultiplyStates.MoveToCRight,
-                    Symbol = IF_NDTM.markD1,
-                    Direction = TMDirection.L,
-                    Shift = frameLength
-                  }
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToCRight,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.L,
+                    shift: frameLength
+                  )
               },
 
           // restore C

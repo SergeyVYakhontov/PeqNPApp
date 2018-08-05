@@ -98,13 +98,13 @@ namespace ExistsAcceptingPath
         Ensure.That(currentTapeSym).Is(compStep.s);
 
         TMInstance.MoveToNextConfiguration(
-          new StateSymbolDirectionTriple()
-          {
-            State = compStep.qNext,
-            Symbol = compStep.sNext,
-            Direction = compStep.m,
-            Shift = compStep.Shift
-          },
+          new StateSymbolDirectionTriple
+            (
+              state: compStep.qNext,
+              symbol: compStep.sNext,
+              direction: compStep.m,
+              shift: compStep.Shift
+            ),
           tmInstance);
 
         if (tmInstance.IsInFinalState())

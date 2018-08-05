@@ -24,11 +24,11 @@ namespace MTExtDefinitions.v2
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-                    Symbol = IF_NDTM.markE0,
-                    Direction = TMDirection.R
-                  }
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
+                    symbol: IF_NDTM.markE0,
+                    direction: TMDirection.R
+                  )
               },
         [new StateSymbolPair(
             state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,

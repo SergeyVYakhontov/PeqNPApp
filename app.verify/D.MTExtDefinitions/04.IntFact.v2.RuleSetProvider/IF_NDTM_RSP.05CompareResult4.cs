@@ -130,11 +130,11 @@ namespace MTExtDefinitions.v2
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
-                  {
-                    State = (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
-                    Symbol = IF_NDTM.markC1,
-                    Direction = TMDirection.L
-                  }
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
+                    symbol: IF_NDTM.markC1,
+                    direction: TMDirection.L
+                  )
               },
         [new StateSymbolPair(
             state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,

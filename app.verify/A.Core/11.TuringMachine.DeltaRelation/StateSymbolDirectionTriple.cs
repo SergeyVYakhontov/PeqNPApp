@@ -32,10 +32,10 @@ namespace Core
 
     #region public members
 
-    public uint State { get; set; }
-    public int Symbol { get; set; }
-    public TMDirection Direction { get; set; }
-    public long Shift { get; set; } = 1;
+    public uint State { get; }
+    public int Symbol { get; }
+    public TMDirection Direction { get; }
+    public long Shift { get; } = 1;
 
     #endregion
   }
