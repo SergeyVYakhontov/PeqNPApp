@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Default" ToolsVersion="15.0">
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="IDE0003" Action="None" />
     <Rule Id="CA1819" Action="None" />
   </Rules>
   <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">
@@ -12,6 +13,9 @@
   </Rules>
   <Rules AnalyzerId="RefactoringEssentials" RuleNamespace="RefactoringEssentials">
     <Rule Id="RECS0070" Action="None" />
+    <Rule Id="RECS0033" Action="None" />
+    <Rule Id="RECS0093" Action="None" />
     <Rule Id="RECS0145" Action="None" />
+    <Rule Id="RECS0147" Action="None" />
   </Rules>
 </RuleSet>

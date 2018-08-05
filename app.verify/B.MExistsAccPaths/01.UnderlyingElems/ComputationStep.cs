@@ -54,7 +54,7 @@ namespace ExistsAcceptingPath
       return this == other;
     }
 
-    public override int GetHashCode() => (int)kappaStep;
+    public override int GetHashCode() => unchecked((int)kappaStep);
 
     public override String ToString() =>
       $"(q={q}, s={s}, q'={qNext}, s'={sNext}, m={m}, sh={Shift}, tp={kappaTape}, st={kappaStep})";

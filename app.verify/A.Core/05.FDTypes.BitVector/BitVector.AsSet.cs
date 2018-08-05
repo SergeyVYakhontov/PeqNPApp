@@ -48,7 +48,7 @@ namespace Core
 
     public byte GetItem(ulong index)
     {
-      return (bits.Contains(index) ? (byte)1 : (byte)0);
+      return bits.Contains(index) ? (byte)1 : (byte)0;
     }
 
     public byte this[ulong i]
@@ -59,7 +59,7 @@ namespace Core
 
     public ulong ItemCount()
     {
-      throw new NotImplementedException();
+      return (ulong)bits.Count;
     }
 
     public bool IsEmpty()

@@ -28,7 +28,7 @@ namespace ExistsAcceptingPath
       G.AddNode(s);
       G.SetSourceNode(s);
 
-      ComputationStep compStep = new ComputationStep()
+      ComputationStep compStep = new ComputationStep
       {
         q = MEAPSharedContext.MNP.qStart,
         s = MEAPSharedContext.Input[0],
@@ -266,7 +266,7 @@ namespace ExistsAcceptingPath
       G.SetSinkNode(t);
 
       nodeEnumeration[t.Id] = t;
-      idToInfoMap[t.Id] = new TASGNodeInfo()
+      idToInfoMap[t.Id] = new TASGNodeInfo
       {
         CompStep = new ComputationStep()
       };

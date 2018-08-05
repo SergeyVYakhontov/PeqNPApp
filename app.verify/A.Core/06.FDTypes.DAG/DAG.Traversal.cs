@@ -34,14 +34,9 @@ namespace Core
         {
           nodeQueue.Enqueue(uNode);
         }
+
         processedNodes.Add(u);
       });
-
-      Predicate<DAGNode> inFlowComputed =
-        w =>
-          (!w.InEdges.Any() ||
-           initNodes.Contains(w.Id)) ||
-           w.InEdges.All(e => (!filter(e.FromNode) || processedNodes.Contains(e.FromNode.Id)));
 
       while (nodeQueue.Any())
       {
@@ -52,7 +47,7 @@ namespace Core
           continue;
         }
 
-        if (inFlowComputed(v))
+        if (InFlowComputed(initNodes, filter, processedNodes, v))
         {
           processedNodes.Add(v.Id);
 
@@ -273,6 +268,26 @@ namespace Core
     #endregion
 
     #region private members
+
+    private static bool InFlowComputed(
+      SortedSet<long> initNodes,
+      Predicate<DAGNode> filter,
+      SortedSet<long> processedNodes,
+      DAGNode w)
+    {
+      if (!w.InEdges.Any())
+      {
+        return true;
+      }
+
+      if (initNodes.Contains(w.Id))
+      {
+        return true;
+      }
+
+      return w.InEdges.All(e => (!filter(e.FromNode) ||
+        processedNodes.Contains(e.FromNode.Id)));
+    }
 
     private static void DFS(
       DAGNode u,

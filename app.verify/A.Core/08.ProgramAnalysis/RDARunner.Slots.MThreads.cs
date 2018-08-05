@@ -68,7 +68,7 @@ namespace Core
         nodeVLevels,
         currentLevel,
         ComputeVectors,
-        t => { return true; });
+        _ => true);
 
       ComputeDefUsePairSet();
       ClearVectors();

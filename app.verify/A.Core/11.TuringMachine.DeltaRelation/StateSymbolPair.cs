@@ -34,7 +34,7 @@ namespace Core
       return this == toCompare;
     }
 
-    public override int GetHashCode() => (int)State;
+    public override int GetHashCode() => unchecked((int)State);
 
     public bool Equals(StateSymbolPair other)
     {

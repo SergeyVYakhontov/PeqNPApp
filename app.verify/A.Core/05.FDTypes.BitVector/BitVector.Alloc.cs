@@ -49,7 +49,7 @@ namespace Core
       Ensure.That(index <= (Size - 1)).IsTrue();
 
       ulong w_i = WordIndex(index);
-      byte b_i = BitVectorAlloc.BitIndex(index);
+      byte b_i = BitIndex(index);
 
       if (to == 0)
       {
@@ -80,7 +80,7 @@ namespace Core
       }
 
       ulong w_i = WordIndex(index);
-      byte b_i = BitVectorAlloc.BitIndex(index);
+      byte b_i = BitIndex(index);
 
       UInt64 w = items[w_i];
 
@@ -156,7 +156,7 @@ namespace Core
 
     public override int GetHashCode()
     {
-      return (int)Size;
+      return unchecked((int)Size);
     }
 
     public override string ToString()
@@ -177,7 +177,7 @@ namespace Core
 
     private const byte wordSize = sizeof(UInt64);
 
-    private bool allocated = false;
+    private bool allocated;
     private readonly ulong wordCount;
     private UInt64[] items;
 

@@ -74,7 +74,7 @@ namespace ExistsAcceptingPath
 
           determinePathRunners.Add(determinePathRunner);
         }
-          
+
         TPLCollectionRunner<DeterminePathRunner> determinePathRunnerSet =
           new TPLCollectionRunner<DeterminePathRunner>(
             determinePathRunners,

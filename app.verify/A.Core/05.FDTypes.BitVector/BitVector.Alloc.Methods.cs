@@ -50,7 +50,7 @@ namespace Core
 
             for (; ptr < items_last;)
             {
-              (*ptr) = (*ptr) & (~(*v_ptr));
+              *ptr &= (~(*v_ptr));
 
               if ((*ptr) != 0)
               {

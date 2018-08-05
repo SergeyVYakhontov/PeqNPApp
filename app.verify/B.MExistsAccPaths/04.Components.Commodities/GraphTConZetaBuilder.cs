@@ -33,7 +33,7 @@ namespace ExistsAcceptingPath
       foreach (long commodityId in commodities)
       {
         Commodity commodity = meapContext.Commodities[commodityId];
-        
+
         long sNodeId = commodity.sNodeId;
         long tNodeId = commodity.tNodeId;
 

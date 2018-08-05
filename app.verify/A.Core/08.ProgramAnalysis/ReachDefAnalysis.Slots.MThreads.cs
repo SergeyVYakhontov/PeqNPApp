@@ -124,7 +124,7 @@ namespace Core
           rdaRunnersList,
           slotsMThRDAProcessCount,
           WaitMethod.WaitAll,
-          itemsArray => null);
+          _ => null);
       rdaSetRunner.Run();
     }
 

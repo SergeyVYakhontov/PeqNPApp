@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ninject;
+using EnsureThat;
 using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ExistsAcceptingPath
 {
-  public readonly struct NestedCommsGraphNodeInfo : IObjectWithId
+  public readonly struct NestedCommsGraphNodeInfo :
+    IEquatable<NestedCommsGraphNodeInfo>,
+    IObjectWithId
   {
     #region Ctors
 
@@ -28,6 +31,29 @@ namespace ExistsAcceptingPath
     #region public members
 
     public long Id { get; }
+
+    public override bool Equals(object obj)
+    {
+      Ensure.That(obj).IsNotNull();
+
+      NestedCommsGraphNodeInfo other = (NestedCommsGraphNodeInfo)obj;
+
+      return this == other;
+    }
+
+    public override int GetHashCode() => unchecked((int)Id);
+
+    public bool Equals(NestedCommsGraphNodeInfo other) => this == other;
+
+    public static bool operator ==(NestedCommsGraphNodeInfo left, NestedCommsGraphNodeInfo right)
+    {
+      return left.Id == right.Id;
+    }
+
+    public static bool operator !=(NestedCommsGraphNodeInfo left, NestedCommsGraphNodeInfo right)
+    {
+      return !(left == right);
+    }
 
     #endregion
   }

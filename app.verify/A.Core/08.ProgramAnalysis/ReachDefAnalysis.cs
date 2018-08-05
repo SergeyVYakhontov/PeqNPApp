@@ -38,7 +38,7 @@ namespace Core
       DAG.BFS(
         rdaContext.CFG,
         new SortedSet<long> { rdaContext.CFG.GetSourceNodeId() },
-        (u) => { return true; },
+        _ => true,
         ComputeVectors);
 
       ComputeDefUsePairSet();

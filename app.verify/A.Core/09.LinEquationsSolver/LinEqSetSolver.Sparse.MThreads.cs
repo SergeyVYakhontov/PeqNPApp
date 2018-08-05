@@ -174,7 +174,7 @@ namespace Core
               rowSubtractors,
               gaussElimRunnersCount,
               WaitMethod.WaitAll,
-              itemsArray => null);
+              _ => null);
           rowSubtractorsRunner.Run();
 
           from += rowsToSubtract.Length;

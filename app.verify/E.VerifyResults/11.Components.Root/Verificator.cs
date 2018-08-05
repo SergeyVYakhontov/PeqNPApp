@@ -18,9 +18,9 @@ namespace VerifyResults
     #region public members
 
     public abstract void Run();
-    
+
     #endregion
-    
+
     #region private members
 
     protected static readonly IKernel configuration = Core.AppContext.Configuration;

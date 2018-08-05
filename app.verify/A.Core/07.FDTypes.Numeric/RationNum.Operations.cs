@@ -47,8 +47,8 @@ namespace Core
 
       long gcd = AppHelper.GCD(pAbs, q);
 
-      p = p / gcd;
-      q = q / gcd;
+      p /= gcd;
+      q /= gcd;
     }
 
     public void Assign(RationalNumber r)
@@ -89,7 +89,7 @@ namespace Core
       }
 
       p = (p * r.q) + (q * r.p);
-      q = q * r.q;
+      q *= r.q;
 
       Normalize();
     }
@@ -110,7 +110,7 @@ namespace Core
       }
 
       p = (p * r.q) - (q * r.p);
-      q = q * r.q;
+      q *= r.q;
 
       Normalize();
     }
@@ -130,8 +130,8 @@ namespace Core
         return;
       }
 
-      p = p * r.p;
-      q = q * r.q;
+      p *= r.p;
+      q *= r.q;
 
       Normalize();
     }
@@ -145,8 +145,8 @@ namespace Core
         return;
       }
 
-      p = p * r.q;
-      q = q * r.p;
+      p *= r.q;
+      q *= r.p;
 
       Normalize();
     }

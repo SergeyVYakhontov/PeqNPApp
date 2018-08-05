@@ -91,12 +91,22 @@ namespace Core
 
     public ulong ItemCount()
     {
-      throw new NotImplementedException();
+      ulong count = 0;
+
+      for (ulong i = 0; i < Size; i++)
+      {
+        if (GetItem(i) == 1)
+        {
+          count++;
+        }
+      }
+
+      return count;
     }
 
     public bool IsEmpty()
     {
-      throw new NotImplementedException();
+      return items.All(p => p == 0);
     }
 
     public override bool Equals(Object obj)
@@ -110,7 +120,7 @@ namespace Core
 
     public override int GetHashCode()
     {
-      return (int)Size;
+      return unchecked((int)Size);
     }
 
     public override string ToString()

@@ -108,7 +108,7 @@ namespace ExistsAcceptingPath
           commCheckers,
           linEqSetRunnersCount,
           WaitMethod.WaitAll,
-          itemsArray => null);
+          _ => null);
 
       commodityCheckerRunner.Run();
 

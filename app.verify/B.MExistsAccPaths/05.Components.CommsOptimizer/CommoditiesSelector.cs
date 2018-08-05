@@ -110,10 +110,10 @@ namespace ExistsAcceptingPath
             return commodity;
           }
 
-          bool sConnected1 = selectedComms.Any(c => (c != null) && c.Gi.IsSourceNode(sNodeId));
-          bool tConnected1 = selectedComms.Any(c => (c != null) && c.Gi.IsSinkNode(tNodeId));
-          bool sConnected2 = selectedComms.Any(c => (c != null) && c.Gi.IsSourceNode(sNodeId));
-          bool tConnected2 = selectedComms.Any(c => (c != null) && c.Gi.IsSinkNode(tNodeId));
+          bool sConnected1 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSourceNode(sNodeId));
+          bool tConnected1 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSinkNode(tNodeId));
+          bool sConnected2 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSourceNode(sNodeId));
+          bool tConnected2 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSinkNode(tNodeId));
 
           if (!sConnected1 && !tConnected1 && !sConnected2 && !tConnected2)
           {

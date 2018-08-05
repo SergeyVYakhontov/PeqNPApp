@@ -74,9 +74,9 @@ namespace Core
         graph.GetSourceNodeId(),
         GraphDirection.Forward,
         nodeFilter,
-        e => true,
+        _ => true,
         (w) => { labelMap.Add(w.Id); return true; },
-        e => true);
+        _ => true);
 
       return labelMap.Contains(graph.GetSinkNodeId());
     }
@@ -132,19 +132,19 @@ namespace Core
         graph,
         sNodeId,
         GraphDirection.Forward,
-        (v) => true,
-        e => true,
+        (_) => true,
+        _ => true,
         w => { labelAMap.Add(w.Id); return true; },
-        e => true);
+        _ => true);
 
       PropagateProperties(
         graph,
         tNodeId,
         GraphDirection.Backward,
-        (v) => true,
-        e => true,
+        (_) => true,
+        _ => true,
         w => { labelBMap.Add(w.Id); return true; },
-        e => true);
+        _ => true);
 
       labelAMap.IntersectWith(labelBMap);
 
@@ -171,10 +171,10 @@ namespace Core
         graph,
         tNodeId,
         GraphDirection.Backward,
-        (v) => true,
-        e => true,
+        (_) => true,
+        _ => true,
         w => { labelBMap.Add(w.Id); return true; },
-        e => true);
+        _ => true);
 
       labelBMap.Add(sNodeId);
       labelBMap.Add(tNodeId);

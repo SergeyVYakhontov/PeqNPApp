@@ -18,7 +18,7 @@ namespace ExistsAcceptingPath
     public static ComputationStep GetSequentialCompStep(
       ComputationStep compStep)
     {
-      ComputationStep seqCompStep = 
+      ComputationStep seqCompStep =
         new ComputationStep
           {
             kappaTape = compStep.kappaTape,

@@ -159,11 +159,11 @@ namespace Core
                       long t_p = Mip_p;
                       long t_q = Mip_q;
 
-                      t_p = t_p * Mkp_q;
-                      t_q = t_q * Mkp_p;
+                      t_p *= Mkp_q;
+                      t_q *= Mkp_p;
 
-                      t_p = t_p * Mkj_p;
-                      t_q = t_q * Mkj_q;
+                      t_p *= Mkj_p;
+                      t_q *= Mkj_q;
 
                       t_p = (t_p * Mij_q) - (Mij_p * t_q);
                       t_q = Mij_q * t_q;

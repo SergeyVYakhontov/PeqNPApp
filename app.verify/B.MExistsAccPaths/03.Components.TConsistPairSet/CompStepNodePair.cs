@@ -43,7 +43,7 @@ namespace ExistsAcceptingPath
       return this == other;
     }
 
-    public override int GetHashCode() => (int)Variable;
+    public override int GetHashCode() => unchecked((int)Variable);
 
     public override string ToString() => $"({Variable}, {uNode}, {vNode})";
 
