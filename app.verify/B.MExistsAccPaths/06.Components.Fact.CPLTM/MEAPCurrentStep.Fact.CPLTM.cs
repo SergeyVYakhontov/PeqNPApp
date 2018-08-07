@@ -148,7 +148,7 @@ namespace ExistsAcceptingPath
         meapContext.NodeVLevels,
         DAG.Level0,
         ProcessNode,
-        (level) => true);
+        (_) => true);
 
       tConsistPairSetBuilder.Run(inVarToVarNodes, DAG.Level0);
       tConsistPairSetBuilder.Trace();

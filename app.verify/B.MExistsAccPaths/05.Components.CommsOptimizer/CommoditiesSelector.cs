@@ -59,7 +59,6 @@ namespace ExistsAcceptingPath
     #region private members
 
     private static readonly IKernel configuration = Core.AppContext.Configuration;
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private readonly MEAPContext meapContext;
     private readonly TapeSegContext tapeSegContext;
@@ -110,10 +109,12 @@ namespace ExistsAcceptingPath
             return commodity;
           }
 
-          bool sConnected1 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSourceNode(sNodeId));
-          bool tConnected1 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSinkNode(tNodeId));
-          bool sConnected2 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSourceNode(sNodeId));
-          bool tConnected2 = selectedComms.Where(c => c != null).Any(c => c.Gi.IsSinkNode(tNodeId));
+          IList<Commodity> notNullCommodities = selectedComms.Where(c => c != null).ToList();
+
+          bool sConnected1 = notNullCommodities.Any(c => c.Gi.IsSourceNode(sNodeId));
+          bool tConnected1 = notNullCommodities.Any(c => c.Gi.IsSinkNode(tNodeId));
+          bool sConnected2 = notNullCommodities.Any(c => c.Gi.IsSourceNode(sNodeId));
+          bool tConnected2 = notNullCommodities.Any(c => c.Gi.IsSinkNode(tNodeId));
 
           if (!sConnected1 && !tConnected1 && !sConnected2 && !tConnected2)
           {

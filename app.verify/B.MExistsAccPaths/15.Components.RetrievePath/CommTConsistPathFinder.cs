@@ -62,8 +62,8 @@ namespace ExistsAcceptingPath
           GraphDirection.Forward,
           u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id),
           d => NodeInChain(d.ToNode),
-          u => { processedNodes.Add(u.Id); },
-          e => { },
+          u => processedNodes.Add(u.Id),
+          (_) => { },
           out List<long> tConsistPath, out bool KPathFound);
 
         if (KPathFound)
@@ -87,7 +87,6 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private readonly SortedSet<long> processedNodes = new SortedSet<long>();
-    private readonly List<long> tConsistPath = new List<long>();
 
     private bool FindPathInCaseSingleZeta()
     {
@@ -99,9 +98,9 @@ namespace ExistsAcceptingPath
         gtcz.t,
         GraphDirection.Forward,
         u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id),
-        d => true,
-        u => { },
-        e => { },
+        (_) => true,
+        (_) => { },
+        (_) => { },
         out List<long> tConsistPath, out bool KPathFound);
 
       tapeSegContext.TapeSegTConsistPath = new List<long>(tConsistPath);

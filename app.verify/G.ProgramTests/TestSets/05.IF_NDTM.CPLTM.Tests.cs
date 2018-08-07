@@ -59,8 +59,6 @@ namespace ProgramTests
     #region private members
 
     private readonly IKernel configuration = Core.AppContext.Configuration;
-    private readonly log4net.ILog log =
-      log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private void ResetNinjectKernel()
     {

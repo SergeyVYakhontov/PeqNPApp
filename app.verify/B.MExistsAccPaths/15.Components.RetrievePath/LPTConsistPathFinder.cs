@@ -39,15 +39,15 @@ namespace ExistsAcceptingPath
 
       List<long> partialTConsistPath = tapeSegContext.PartialTConsistPath;
       long headNodeId = partialTConsistPath.Last();
-      
+
       DAG.FindPath_Greedy(
         meapContext.TArbSeqCFG.NodeEnumeration[headNodeId],
         meapContext.TArbSeqCFG.t,
         GraphDirection.Forward,
         IsIntegralFlowNode,
-        d => true,
-        u => { },
-        e => { },
+        (_) => true,
+        (_) => { },
+        (_) => { },
         out tConsistPath, out integralKPathFound);
 
       partialTConsistPath.AddRange(tConsistPath.Skip(1));

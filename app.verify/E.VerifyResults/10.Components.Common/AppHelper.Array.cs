@@ -20,8 +20,14 @@ namespace VerifyResults
 
     public static int[] ProduceRandomArray(int alphabetSize, int length)
     {
-      return Enumerable.Repeat(0, length).
-        Select(i => RandNumber.Next(0, alphabetSize)).ToArray();
+      int[] result = new int[length];
+
+      for (int i=0; i<length; i++)
+      {
+        result[i] = RandNumber.Next(0, alphabetSize);
+      }
+
+      return result;
     }
 
     public static int[] ProduceRandomBinArray(int length)

@@ -58,7 +58,7 @@ namespace Core
           nodeVLevels,
           DAG.Level0,
           ComputeVectors,
-          t => true);
+          (_) => true);
 
         ComputeDefUsePairSet();
         ClearVectors();

@@ -30,7 +30,7 @@ namespace ExistsAcceptingPath
           AppHelper.TakeValueByKey(VLevelSets, level,
             () => new SortedSet<long>()).Add(u.Id);
         },
-        (e, l) => { }
+        (_, __) => { }
         );
 
       DAG.ClassifyDAGEdges(

@@ -127,7 +127,7 @@ namespace ExistsAcceptingPath
         meapContext.NodeVLevels,
         DAG.Level0,
         ProcessNode,
-        (level) => { return true; });
+        (_) => true);
     }
 
     #endregion

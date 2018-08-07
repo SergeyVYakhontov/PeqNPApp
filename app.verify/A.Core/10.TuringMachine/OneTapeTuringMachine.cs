@@ -203,7 +203,7 @@ namespace Core
         p.Value.ForEach(e => triples.Add(e));
 
         Ensure.That(triples.Count == p.Value.Count).IsTrue().WithException(
-          param => new InvalidOperationException("TM Delta duplicate elements"));
+          (_) => new InvalidOperationException("TM Delta duplicate elements"));
 
         triples.Clear();
       });

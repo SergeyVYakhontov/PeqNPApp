@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using EnsureThat;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,15 +17,22 @@ namespace Core
 
     public BitVectorAsSet() { }
 
-    public BitVectorAsSet(ulong size) { }
+    public BitVectorAsSet(ulong size)
+    {
+      this.maxSize = size;
+    }
 
     public BitVectorAsSet(BitVectorAsSet s)
     {
+      Ensure.That(s.Size).Is(maxSize);
+
       bits = new SortedSet<ulong>(s.bits);
     }
 
     public BitVectorAsSet(SortedSet<ulong> s)
     {
+      Ensure.That((ulong)s.Count).IsLte(maxSize);
+
       bits = new SortedSet<ulong>(s);
     }
 
@@ -44,6 +52,8 @@ namespace Core
       {
         bits.Add(index);
       }
+
+      Ensure.That(Size).IsLte(maxSize);
     }
 
     public byte GetItem(ulong index)
@@ -96,6 +106,8 @@ namespace Core
     #region private members
 
     private readonly SortedSet<ulong> bits = new SortedSet<ulong>();
+
+    private readonly ulong maxSize;
 
     private string ItemRepr(ulong Index)
     {

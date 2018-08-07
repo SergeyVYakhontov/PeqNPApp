@@ -49,13 +49,13 @@ namespace Core
     public SortedDictionary<long, RationalNumber> Mk { get; set; }
     public RationalNumber Mkp { get; set; }
 
-    public bool Done { get; private set; }
+    public bool Done { get; }
 
     public void Run()
     {
       RationalNumber t = new RationalNumber(0, 1);
-
       RationalNumber Mip = A.Get(rowIndex, p);
+
       if (Mip.IsEqualsTo0())
       {
         return;

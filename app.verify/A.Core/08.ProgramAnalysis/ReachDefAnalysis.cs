@@ -91,32 +91,25 @@ namespace Core
       return bitVectorProvider.CreateVector(size);
     }
 
-    private static IBitVector CreateBitVector(IBitVector v)
-    {
-      IBitVectorProvider bitVectorProvider = configuration.Get<IBitVectorProvider>();
-
-      return bitVectorProvider.CreateVector(v);
-    }
-
     private void CreateVectors()
     {
       List<DAGNode> nodes = rdaContext.CFG.Nodes;
 
       nodes.ForEach(node =>
-      { nodeToGENVectorMap[node.Id] = CreateBitVector((ulong)rdaContext.DefsCount); });
+      { nodeToGENVectorMap[node.Id] = CreateBitVector(rdaContext.DefsCount); });
       nodes.ForEach(node =>
-      { nodeToKILLVectorMap[node.Id] = CreateBitVector((ulong)rdaContext.DefsCount); });
+      { nodeToKILLVectorMap[node.Id] = CreateBitVector(rdaContext.DefsCount); });
       nodes.ForEach(node =>
-      { nodeToREACHinVectorMap[node.Id] = CreateBitVector((ulong)rdaContext.DefsCount); });
+      { nodeToREACHinVectorMap[node.Id] = CreateBitVector(rdaContext.DefsCount); });
       nodes.ForEach(node =>
-      { nodeToREACHoutVectorMap[node.Id] = CreateBitVector((ulong)rdaContext.DefsCount); });
+      { nodeToREACHoutVectorMap[node.Id] = CreateBitVector(rdaContext.DefsCount); });
     }
 
     private void InitVectors()
     {
       foreach (long variable in rdaContext.Vars)
       {
-        IBitVector defsVector = CreateBitVector((ulong)rdaContext.DefsCount);
+        IBitVector defsVector = CreateBitVector(rdaContext.DefsCount);
         varToDEFSVectorMap[variable] = defsVector;
 
         foreach (long def in rdaContext.VarToDefsMap[variable])
@@ -201,16 +194,12 @@ namespace Core
     {
       DefUsePairSet = new List<DefUsePair>();
 
-      SortedDictionary<long, DAGNode> nodeEnumeration = rdaContext.CFG.NodeEnumeration;
-
-      foreach (KeyValuePair<long, DAGNode> nodeNumberPair in nodeEnumeration)
+      foreach (KeyValuePair<long, DAGNode> nodeNumberPair in rdaContext.CFG.NodeEnumeration)
       {
         long useNodeId = nodeNumberPair.Key;
-
         IBitVector inVector = nodeToREACHinVectorMap[useNodeId];
-        IEnumerable<ulong> inDefList = inVector.GetBit1List();
 
-        foreach (ulong inDef in inDefList)
+        foreach (ulong inDef in inVector.GetBit1List())
         {
           long variable = rdaContext.DefToVarMap[(long)inDef];
           long defNodeId = rdaContext.DefToNodeMap[(long)inDef];

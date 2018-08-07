@@ -67,18 +67,18 @@ namespace ExistsAcceptingPath
         meapContext.TArbSeqCFG.GetSourceNodeId(),
         GraphDirection.Forward,
         v => usedNodes.Contains(v.Id),
-        e => true,
+        (_) => true,
         (w) => { labelMapA.Add(w.Id); return true; },
-        e => true);
+        (_) => true);
 
       DAG.PropagateProperties(
         meapContext.TArbSeqCFG,
         meapContext.TArbSeqCFG.GetSinkNodeId(),
         GraphDirection.Backward,
         v => usedNodes.Contains(v.Id),
-        e => true,
+        (_) => true,
         (w) => { labelMapB.Add(w.Id); return true; },
-        e => true);
+        (_) => true);
 
       return new SortedSet<long>(labelMapA.Intersect(labelMapB));
     }

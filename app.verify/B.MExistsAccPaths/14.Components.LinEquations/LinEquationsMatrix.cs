@@ -188,7 +188,7 @@ namespace ExistsAcceptingPath
         "{" + e.Value + "," + GetEquationKindRepr(e.Key) + "}").ToArray();
       String bVectorStr = String.Join(",", bVectorArray);
 
-      return minimizeStr + ",{" + equationsStr + "}" + ",{" + bVectorStr + "}";
+      return minimizeStr + ",{" + equationsStr + "},{" + bVectorStr + "}";
     }
 
     #endregion
