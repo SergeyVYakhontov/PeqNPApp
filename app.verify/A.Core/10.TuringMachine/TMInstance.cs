@@ -74,8 +74,8 @@ namespace Core
         {
           TMInstance newInstance = new TMInstance(this);
 
-          int pathLength = MoveToNextConfiguration(to, newInstance);
-          newInstance.Level = Level + pathLength;
+          MoveToNextConfiguration(to, newInstance);
+          newInstance.Level = Level + 1;
 
           newInstances.Add(newInstance);
           newInstance.Trace();
@@ -125,7 +125,21 @@ namespace Core
 
     public int TapeSymbol(int tapeIndex) => tape.GetValue(tapeIndex);
 
-    public static int MoveToNextConfiguration(
+    public StateSymbolPair CurrentStateSymbolPair
+    {
+      get
+      {
+        return new StateSymbolPair(state, CurrentSymbol);
+      }
+    }
+
+    public void SetupConfiguration(long cellIndex, uint state)
+    {
+      this.cellIndex = cellIndex;
+      this.state = state;
+    }
+
+    public static void MoveToNextConfiguration(
       StateSymbolDirectionTriple to,
       TMInstance instance)
     {
@@ -145,8 +159,6 @@ namespace Core
           instance.CurrentSymbol = to.Symbol;
           break;
       }
-
-      return 1;
     }
 
     public void Trace()
