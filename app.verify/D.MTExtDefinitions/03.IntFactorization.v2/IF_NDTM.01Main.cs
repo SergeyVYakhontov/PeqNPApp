@@ -176,6 +176,13 @@ namespace MTExtDefinitions.v2
       return tmInstance.GetTapeSubstr(GetLTapeBound(mu, n), GetRTapeBound(mu, n));
     }
 
+    public static int FrameLength(int inputLength) => inputLength + 2;
+
+    public static long FrameStart1(int inputLength) => 1 + FrameLength(inputLength);
+    public static long FrameStart2(int inputLength) => 1 + (2 * FrameLength(inputLength));
+    public static long FrameStart3(int inputLength) => 1 + (3 * FrameLength(inputLength));
+    public static long FrameEnd4(int inputLength) => 1 + (4 * FrameLength(inputLength));
+
     #endregion
 
     #region private members
@@ -183,7 +190,6 @@ namespace MTExtDefinitions.v2
     private static readonly IKernel configuration = Core.AppContext.Configuration;
 
     private readonly int inputLength;
-    private static int FrameLength(int inputLength) => inputLength + 2;
 
     #endregion
   }

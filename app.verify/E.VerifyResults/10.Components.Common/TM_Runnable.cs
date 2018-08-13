@@ -26,7 +26,7 @@ namespace VerifyResults
     public abstract int[] Compute(int[] input);
 
     #endregion
-    
+
     #region private members
 
     protected OneTapeTuringMachine tm;

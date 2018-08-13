@@ -75,7 +75,7 @@ namespace ExistsAcceptingPath
           }
           else if (meapContext.TArbSeqCFG.IsSourceNode(defNodeId))
           {
-            consistent = (useCompStep.s == 
+            consistent = (useCompStep.s ==
               meapContext.MEAPSharedContext.InitInstance.TapeSymbol(
                 (int)useCompStep.kappaTape));
           }

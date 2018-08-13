@@ -33,19 +33,9 @@ namespace Core
 
     #region public members
 
-    public void DoStep1()
-    {
-      StateSymbolPair from = tmInstance.CurrentStateSymbolPair;
-      IList<StateSymbolDirectionTriple> to = delta[from];
-
-      Ensure.That(to).SizeIs(1);
-
-      TMInstance.MoveToNextConfiguration(to[0], tmInstance);
-    }
-
     public void DoStepN(int n)
     {
-      (new IntSegment(1, n)).ForEach(_ => DoStep1());
+      (new IntSegment(1, n)).ForEach(DoStep1);
     }
 
     #endregion
@@ -56,6 +46,16 @@ namespace Core
 
     private readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> delta;
     private readonly TMInstance tmInstance;
+
+    private void DoStep1()
+    {
+      StateSymbolPair from = tmInstance.CurrentStateSymbolPair;
+      IList<StateSymbolDirectionTriple> to = delta[from];
+
+      Ensure.That(to).SizeIs(1);
+
+      TMInstance.MoveToNextConfiguration(to[0], tmInstance);
+    }
 
     #endregion
   }

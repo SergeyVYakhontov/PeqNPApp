@@ -49,6 +49,14 @@ namespace Core
       }
     }
 
+    public void ForEach(Action action)
+    {
+      for (int i = Left; i <= Right; i++)
+      {
+        action();
+      }
+    }
+
     public bool Contains(int elem)
     {
       return ((Left <= elem) && (elem <= Right));

@@ -98,9 +98,9 @@ namespace ExistsAcceptingPath
         gtcz.t,
         GraphDirection.Forward,
         u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id),
-        (_) => true,
-        (_) => { },
-        (_) => { },
+        _ => true,
+        _ => { },
+        _ => { },
         out List<long> tConsistPath, out bool KPathFound);
 
       tapeSegContext.TapeSegTConsistPath = new List<long>(tConsistPath);
