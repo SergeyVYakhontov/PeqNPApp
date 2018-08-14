@@ -20,11 +20,11 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class IF_CPLTM_Delta_Tests : IDisposable
+  public sealed class IF_CPLTM_Delta_05CompareResults_Tests : IDisposable
   {
     #region Ctors
 
-    static IF_CPLTM_Delta_Tests()
+    static IF_CPLTM_Delta_05CompareResults_Tests()
     {
       log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
       log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
@@ -40,11 +40,11 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void CompareResults_Test()
+    public void T05_CompareResults1_Test()
     {
       configuration.Load<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
 
-      int[] input = new int[] { 1, 1, 0 }.Reverse().ToArray();
+      int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
 
       MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
       tm.Setup();
@@ -52,16 +52,24 @@ namespace ProgramTests
       TMInstance tmInstance = new TMInstance(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
+      Setup(input.Length);
+
+      tmInstance.SetTapeSymbol(1 + frameLength + 1, 0);
+      tmInstance.SetTapeSymbol(1 + frameLength + 2, 1);
+      tmInstance.SetTapeSymbol(1 + frameLength + 3, MTExtDefinitions.v2.IF_NDTM.markB0);
+      tmInstance.SetTapeSymbol(1 + frameLength + 4, MTExtDefinitions.v2.IF_NDTM.markB1);
+      tmInstance.SetTapeSymbol(1 + frameLength + 5, OneTapeTuringMachine.blankSymbol);
+
       DetermStepsEmulator dse = new DetermStepsEmulator(tm.Delta, tmInstance);
+      dse.SetupConfiguration(
+        1 + frameLength + 5,
+        (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.StartComparing);
 
-      int frameLength = MTExtDefinitions.v2.IF_NDTM.FrameLength(input.Length);
+      dse.DoStepN(12);
 
-      int frameStart1 = (int)MTExtDefinitions.v2.IF_NDTM.FrameStart1(frameLength);
-      int frameStart2 = (int)MTExtDefinitions.v2.IF_NDTM.FrameStart2(frameLength);
-      int frameStart3 = (int)MTExtDefinitions.v2.IF_NDTM.FrameStart3(frameLength);
-      int frameEnd4 = (int)MTExtDefinitions.v2.IF_NDTM.FrameEnd4(frameLength);
-
+      Assert.True(tmInstance.CellIndex() == 0);
       Assert.True(tmInstance.TapeSymbol(0) == MTExtDefinitions.v2.IF_NDTM.delimiter0);
+
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
       Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
@@ -73,6 +81,21 @@ namespace ProgramTests
     #region private members
 
     private readonly IKernel configuration = Core.AppContext.Configuration;
+
+    private int frameLength;
+    private int frameStart1;
+    private int frameStart2;
+    private int frameStart3;
+    private int frameEnd4;
+
+    private void Setup(int inputLength)
+    {
+      frameLength = MTExtDefinitions.v2.IF_NDTM.FrameLength(inputLength);
+      frameStart1 = MTExtDefinitions.v2.IF_NDTM.FrameStart1(inputLength);
+      frameStart2 = MTExtDefinitions.v2.IF_NDTM.FrameStart2(inputLength);
+      frameStart3 = MTExtDefinitions.v2.IF_NDTM.FrameStart3(inputLength);
+      frameEnd4 = MTExtDefinitions.v2.IF_NDTM.FrameEnd4(inputLength);
+    }
 
     private void ResetNinjectKernel()
     {

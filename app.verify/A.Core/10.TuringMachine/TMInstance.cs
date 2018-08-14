@@ -124,6 +124,7 @@ namespace Core
     }
 
     public int TapeSymbol(int tapeIndex) => tape.GetValue(tapeIndex);
+    public long CellIndex() => cellIndex;
 
     public StateSymbolPair CurrentStateSymbolPair
     {

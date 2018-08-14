@@ -19,13 +19,11 @@ namespace MTExtDefinitions.v2
 
     public override void PrepareTapeFwd(int[] input, TMInstance instance)
     {
-      int frameLength = FrameLength(input.Length);
-
       instance.SetTapeSymbol(0, delimiter0);
-      instance.SetTapeSymbol(FrameStart1(frameLength), delimiter1);
-      instance.SetTapeSymbol(FrameStart2(frameLength), delimiter2);
-      instance.SetTapeSymbol(FrameStart3(frameLength), delimiter3);
-      instance.SetTapeSymbol(FrameEnd4(frameLength), delimiter4);
+      instance.SetTapeSymbol(FrameStart1(input.Length), delimiter1);
+      instance.SetTapeSymbol(FrameStart2(input.Length), delimiter2);
+      instance.SetTapeSymbol(FrameStart3(input.Length), delimiter3);
+      instance.SetTapeSymbol(FrameEnd4(input.Length), delimiter4);
     }
 
     public override int[] GetAcceptingInstanceOutput(int[] input)

@@ -178,10 +178,10 @@ namespace MTExtDefinitions.v2
 
     public static int FrameLength(int inputLength) => inputLength + 2;
 
-    public static long FrameStart1(int inputLength) => 1 + FrameLength(inputLength);
-    public static long FrameStart2(int inputLength) => 1 + (2 * FrameLength(inputLength));
-    public static long FrameStart3(int inputLength) => 1 + (3 * FrameLength(inputLength));
-    public static long FrameEnd4(int inputLength) => 1 + (4 * FrameLength(inputLength));
+    public static int FrameStart1(int inputLength) => 1 + FrameLength(inputLength);
+    public static int FrameStart2(int inputLength) => 1 + (2 * FrameLength(inputLength));
+    public static int FrameStart3(int inputLength) => 1 + (3 * FrameLength(inputLength));
+    public static int FrameEnd4(int inputLength) => 1 + (4 * FrameLength(inputLength));
 
     #endregion
 
