@@ -123,8 +123,9 @@ namespace Core
       return tape.GetSubArray(leftIndex, rightIndex);
     }
 
-    public int TapeSymbol(int tapeIndex) => tape.GetValue(tapeIndex);
     public long CellIndex() => cellIndex;
+    public uint State() => state;
+    public int TapeSymbol(int tapeIndex) => tape.GetValue(tapeIndex);
 
     public StateSymbolPair CurrentStateSymbolPair
     {

@@ -20,11 +20,11 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class Delta_05CompareResults_Tests : IDisposable
+  public sealed class Delta_05Init_Tests : IDisposable
   {
     #region Ctors
 
-    static Delta_05CompareResults_Tests()
+    static Delta_05Init_Tests()
     {
       log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
       log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
@@ -40,7 +40,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults1_Test()
+    public void T01_Init_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -51,22 +51,16 @@ namespace ProgramTests
       TMInstance tmInstance = new TMInstance(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      tmInstance.SetTapeSymbol(1 + frameLength + 1, 0);
-      tmInstance.SetTapeSymbol(1 + frameLength + 2, 1);
-      tmInstance.SetTapeSymbol(1 + frameLength + 3, MTExtDefinitions.v2.IF_NDTM.markB0);
-      tmInstance.SetTapeSymbol(1 + frameLength + 4, MTExtDefinitions.v2.IF_NDTM.markB1);
-      tmInstance.SetTapeSymbol(1 + frameLength + 5, OneTapeTuringMachine.blankSymbol);
-
       DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(
-        1 + frameLength + 5,
-        (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.StartComparing);
+        1,
+        MTExtDefinitions.v2.IF_NDTM.qStartState);
 
-      determStepsEmulator.DoStepN(13);
+      determStepsEmulator.DoStepN(7);
 
-      Assert.True(tmInstance.CellIndex() == 1);
-      Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.BitLoopStart);
-      Assert.True(tmInstance.TapeSymbol(1) == 0);
+      Assert.True(tmInstance.CellIndex() == 8);
+      Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.GenNumber1States.GenBitA);
+      Assert.True(tmInstance.TapeSymbol(8) == OneTapeTuringMachine.blankSymbol);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
