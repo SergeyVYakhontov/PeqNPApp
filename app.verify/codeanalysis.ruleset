@@ -3,6 +3,7 @@
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="IDE0002" Action="None" />
     <Rule Id="IDE0003" Action="None" />
+    <Rule Id="IDE0047" Action="None" />
     <Rule Id="CA1819" Action="None" />
   </Rules>
   <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">

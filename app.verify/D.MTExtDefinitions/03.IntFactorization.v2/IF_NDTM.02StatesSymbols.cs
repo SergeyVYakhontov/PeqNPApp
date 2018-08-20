@@ -26,14 +26,19 @@ namespace MTExtDefinitions.v2
     public const int delimiter3 = 5;
     public const int delimiter4 = 6;
 
+    // frame B; adding
     public const int markB0 = 7;
     public const int markB1 = 8;
+    // frame C; adding
     public const int markC0 = 9;
     public const int markC1 = 10;
+    // frame D; multiplying
     public const int markD0 = 11;
     public const int markD1 = 12;
+    // frame A; comparing
     public const int markE0 = 13;
     public const int markE1 = 14;
+    // frame D; comparing
     public const int markF0 = 15;
     public const int markF1 = 16;
 
@@ -96,17 +101,18 @@ namespace MTExtDefinitions.v2
       StartComparing = AddStates.AddBitC1 + 1,
       MoveToStartA,
       BitLoopStart,
-      BitLoopStart_f,
-      BitLoopD0,
-      BitLoopD1,
       MoveToDelimiter3_bit0,
       MoveToDelimiter3_bit1,
       SkipF_bit0,
       SkipF_bit1,
-      MoveToF_bit0,
-      MoveToF_bit1,
       MoveToDelimiter4,
       MoveToDelimiter0,
+
+      BitLoopStart_f,
+      BitLoopD0,
+      BitLoopD1,
+      MoveToF_bit0,
+      MoveToF_bit1,
       SkipE
     }
 

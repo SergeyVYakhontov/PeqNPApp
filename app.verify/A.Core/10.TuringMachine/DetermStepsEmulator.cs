@@ -33,9 +33,9 @@ namespace Core
 
     #region public members
 
-    public void DoStepN(int n)
+    public void DoStepN(uint n)
     {
-      (new IntSegment(1, n)).ForEach(DoStep1);
+      (new IntSegment(1, (int)n)).ForEach(DoStep1);
     }
 
     #endregion

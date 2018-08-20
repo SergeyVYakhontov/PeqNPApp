@@ -190,7 +190,7 @@ namespace MTExtDefinitions.v2
                     symbol: 1,
                     direction: TMDirection.R
                   )
-              },
+              }
       };
 
     #endregion

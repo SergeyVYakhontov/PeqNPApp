@@ -56,11 +56,14 @@ namespace ProgramTests
         1,
         MTExtDefinitions.v2.IF_NDTM.qStartState);
 
-      determStepsEmulator.DoStepN(7);
+      const uint stepsNum = 7;
+      determStepsEmulator.DoStepN(stepsNum);
 
-      Assert.True(tmInstance.CellIndex() == 8);
+      const int expectedCellIndex = (int)stepsNum + 1;
+
+      Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.GenNumber1States.GenBitA);
-      Assert.True(tmInstance.TapeSymbol(8) == OneTapeTuringMachine.blankSymbol);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);

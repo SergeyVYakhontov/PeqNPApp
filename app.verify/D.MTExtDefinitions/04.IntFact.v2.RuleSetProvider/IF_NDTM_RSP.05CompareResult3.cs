@@ -190,7 +190,7 @@ namespace MTExtDefinitions.v2
                     symbol: IF_NDTM.markF1,
                     direction: TMDirection.R
                   )
-              },
+              }
       };
 
     #endregion

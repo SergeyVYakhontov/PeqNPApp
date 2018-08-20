@@ -144,6 +144,7 @@ namespace MTExtDefinitions.v2
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta3);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta4);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta5);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta6);
 
       Delta = delta;
 
@@ -179,9 +180,9 @@ namespace MTExtDefinitions.v2
     public static int FrameLength(int inputLength) => inputLength + 2;
 
     public static int FrameStart1(int inputLength) => 1 + FrameLength(inputLength);
-    public static int FrameStart2(int inputLength) => 1 + (2 * FrameLength(inputLength));
-    public static int FrameStart3(int inputLength) => 1 + (3 * FrameLength(inputLength));
-    public static int FrameEnd4(int inputLength) => 1 + (4 * FrameLength(inputLength));
+    public static int FrameStart2(int inputLength) => 2 + (2 * FrameLength(inputLength));
+    public static int FrameStart3(int inputLength) => 3 + (3 * FrameLength(inputLength));
+    public static int FrameEnd4(int inputLength) => 4 + (4 * FrameLength(inputLength));
 
     #endregion
 
