@@ -161,6 +161,30 @@ namespace MTExtDefinitions.v2
                   )
               },
         [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
+            symbol: IF_NDTM.markD0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
+                    symbol: IF_NDTM.markD0,
+                    direction: TMDirection.L
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
+            symbol: IF_NDTM.markD1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.L
+                  )
+              },
+        [new StateSymbolPair(
            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter0,
            symbol: IF_NDTM.markF0)] =
             new List<StateSymbolDirectionTriple>
@@ -195,7 +219,7 @@ namespace MTExtDefinitions.v2
                     symbol: IF_NDTM.delimiter0,
                     direction: TMDirection.R
                   )
-              },
+              }
       };
 
     #endregion

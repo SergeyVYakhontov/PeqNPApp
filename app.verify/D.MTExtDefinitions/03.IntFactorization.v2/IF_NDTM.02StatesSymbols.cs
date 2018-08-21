@@ -107,12 +107,6 @@ namespace MTExtDefinitions.v2
       SkipF_bit1,
       MoveToDelimiter4,
       MoveToDelimiter0,
-
-      BitLoopStart_f,
-      BitLoopD0,
-      BitLoopD1,
-      MoveToF_bit0,
-      MoveToF_bit1,
       SkipE
     }
 
