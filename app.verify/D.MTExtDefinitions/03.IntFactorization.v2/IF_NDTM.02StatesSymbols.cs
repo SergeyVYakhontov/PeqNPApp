@@ -49,8 +49,7 @@ namespace MTExtDefinitions.v2
 
     public enum GenNumber1States : uint
     {
-      GenNumber1Base = InitStates.MoveToRightDelim + 1,
-      GenBitA,
+      GenBitA = InitStates.MoveToRightDelim + 1,
       GenBitB,
       MoveToDelimiter2,
       StopGenNumber,

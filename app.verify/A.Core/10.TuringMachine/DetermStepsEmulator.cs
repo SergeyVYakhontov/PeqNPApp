@@ -38,9 +38,14 @@ namespace Core
       (new IntSegment(1, (int)n)).ForEach(DoStep1);
     }
 
+    public void DoStepN(uint n, IReadOnlyDictionary<int, byte> indexMap)
+    {
+      (new IntSegment(1, (int)n)).ForEach(i => DoStep1(indexMap[i - 1]));
+    }
+
     #endregion
 
-      #region private members
+    #region private members
 
     private static readonly IKernel configuration = Core.AppContext.Configuration;
 
@@ -55,6 +60,14 @@ namespace Core
       Ensure.That(to).SizeIs(1);
 
       TMInstance.MoveToNextConfiguration(to[0], tmInstance);
+    }
+
+    private void DoStep1(byte itemIndex)
+    {
+      StateSymbolPair from = tmInstance.CurrentStateSymbolPair;
+      IList<StateSymbolDirectionTriple> to = delta[from];
+
+      TMInstance.MoveToNextConfiguration(to[itemIndex], tmInstance);
     }
 
     #endregion

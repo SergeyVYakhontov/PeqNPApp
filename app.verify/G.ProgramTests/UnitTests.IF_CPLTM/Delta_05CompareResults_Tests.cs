@@ -341,7 +341,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults4_Test()
+    public void T01_CompareResults5_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -440,6 +440,49 @@ namespace ProgramTests
       Assert.True(tmInstance.TapeSymbol(1) == MTExtDefinitions.v2.IF_NDTM.markE0);
       Assert.True(tmInstance.TapeSymbol(2) == MTExtDefinitions.v2.IF_NDTM.markE1);
       Assert.True(tmInstance.TapeSymbol(frameStart3 + 3) == MTExtDefinitions.v2.IF_NDTM.markF1);
+
+      Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
+      Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
+      Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
+      Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
+    }
+
+    [Fact]
+    public void T01_CompareResults6_Accept_Test()
+    {
+      int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
+      Setup(input.Length);
+
+      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      tm.Setup();
+
+      TMInstance tmInstance = new TMInstance(tm, input);
+      tm.PrepareTapeFwd(input, tmInstance);
+
+      tmInstance.SetTapeSymbol(1, MTExtDefinitions.v2.IF_NDTM.markE0);
+      tmInstance.SetTapeSymbol(2, MTExtDefinitions.v2.IF_NDTM.markE1);
+      tmInstance.SetTapeSymbol(3, MTExtDefinitions.v2.IF_NDTM.markE0);
+      tmInstance.SetTapeSymbol(4, MTExtDefinitions.v2.IF_NDTM.markE1);
+      tmInstance.SetTapeSymbol(5, OneTapeTuringMachine.blankSymbol);
+
+      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      determStepsEmulator.SetupConfiguration(
+        1,
+        (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.SkipE);
+
+      const uint stepsNum = 5;
+      determStepsEmulator.DoStepN(stepsNum);
+
+      int expectedCellIndex = 6;
+
+      Assert.True(tmInstance.CellIndex() == expectedCellIndex);
+      Assert.True(tmInstance.State() == MTExtDefinitions.v2.IF_NDTM.acceptingState);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
+
+      Assert.True(tmInstance.TapeSymbol(1) == MTExtDefinitions.v2.IF_NDTM.markE0);
+      Assert.True(tmInstance.TapeSymbol(2) == MTExtDefinitions.v2.IF_NDTM.markE1);
+      Assert.True(tmInstance.TapeSymbol(3) == MTExtDefinitions.v2.IF_NDTM.markE0);
+      Assert.True(tmInstance.TapeSymbol(4) == MTExtDefinitions.v2.IF_NDTM.markE1);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);

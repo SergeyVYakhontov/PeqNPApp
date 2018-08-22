@@ -21,7 +21,9 @@ namespace MTExtDefinitions.v2
       {
         // start generating bits
         // generate bit 0 or 1
-        [new StateSymbolPair(state: (uint)IF_NDTM.GenNumber2States.GenBitA, symbol: OneTapeTuringMachine.blankSymbol)] =
+        [new StateSymbolPair(
+          state: (uint)IF_NDTM.GenNumber2States.GenBitA,
+          symbol: OneTapeTuringMachine.blankSymbol)] =
           new List<StateSymbolDirectionTriple>
           {
             new StateSymbolDirectionTriple
