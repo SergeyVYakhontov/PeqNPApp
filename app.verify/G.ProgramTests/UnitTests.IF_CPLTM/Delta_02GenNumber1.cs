@@ -20,11 +20,11 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class Delta_02GenNumbers_Tests : IDisposable
+  public sealed class Delta_02GenNumber1_Tests : IDisposable
   {
     #region Ctors
 
-    static Delta_02GenNumbers_Tests()
+    static Delta_02GenNumber1_Tests()
     {
       log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(
         System.Reflection.Assembly.GetEntryAssembly());
