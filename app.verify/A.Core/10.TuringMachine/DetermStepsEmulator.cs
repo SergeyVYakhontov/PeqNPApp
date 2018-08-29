@@ -35,12 +35,23 @@ namespace Core
 
     public void DoStepN(uint n)
     {
-      (new IntSegment(1, (int)n)).ForEach(DoStep1);
+      IntSegment segment1n = new IntSegment(1, (int)n);
+      segment1n.ForEach(DoStep1);
     }
 
     public void DoStepN(uint n, IReadOnlyDictionary<int, byte> indexMap)
     {
-      (new IntSegment(1, (int)n)).ForEach(i => DoStep1(indexMap[i - 1]));
+      for (int i = 1; i <= n; i++)
+      {
+        if (indexMap.ContainsKey(i - 1))
+        {
+          DoStep1(indexMap[i - 1]);
+        }
+        else
+        {
+          DoStep1(0);
+        }
+      }
     }
 
     #endregion

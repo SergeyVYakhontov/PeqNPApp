@@ -1,4 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;
@@ -16,11 +16,11 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta2(int frameLength)
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta4(int frameLength)
     {
       return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
-        {
-        };
+      {
+      };
     }
 
     #endregion

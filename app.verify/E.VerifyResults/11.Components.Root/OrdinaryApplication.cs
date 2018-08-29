@@ -41,7 +41,7 @@ namespace VerifyResults
       catch (Exception exception)
       {
         appStatistics.ThereWereErrors = true;
-        log.Error(exception.Message);
+        log.Error(exception.ToString());
       }
     }
 

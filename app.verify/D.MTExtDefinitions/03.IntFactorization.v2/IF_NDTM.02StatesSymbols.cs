@@ -52,23 +52,27 @@ namespace MTExtDefinitions.v2
       GenBitA = InitStates.MoveToRightDelim + 1,
       GenBitB,
       MoveToDelimiter2,
-      StopGenNumber,
     }
 
     public enum GenNumber2States : uint
     {
-      GenBitA = GenNumber1States.StopGenNumber + 1,
+      GenBitA = GenNumber1States.MoveToDelimiter2 + 1,
       GenBitB,
       MoveToDelimiter3,
       MoveToDelimiter4,
       MoveToDelimiter0,
       MoveToDelimiter1,
-      StopGenNumber,
     }
 
     public enum MultiplyStates : uint
     {
-      MultReady = GenNumber2States.StopGenNumber + 1,
+      MultReady = GenNumber2States.MoveToDelimiter1 + 1,
+      MoveToDelimeter3,
+      MoveToD0D1,
+      MoveToDelimeter4,
+      MoveToDelimeter0,
+
+
       StartLoopInC,
       Process1f_D,
       MoveToCRight,
