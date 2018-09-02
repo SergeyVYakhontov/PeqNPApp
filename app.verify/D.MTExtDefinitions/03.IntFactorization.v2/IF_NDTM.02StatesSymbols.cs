@@ -35,6 +35,8 @@ namespace MTExtDefinitions.v2
     // frame D; multiplying
     public const int markD0 = 11;
     public const int markD1 = 12;
+    public const int markD2 = 11;
+    public const int markD3 = 12;
     // frame A; comparing
     public const int markE0 = 13;
     public const int markE1 = 14;
@@ -67,34 +69,16 @@ namespace MTExtDefinitions.v2
     public enum MultiplyStates : uint
     {
       MultReady = GenNumber2States.MoveToDelimiter1 + 1,
-      MoveToDelimeter3,
-      MoveToD0D1,
-      MoveToDelimeter4,
-      MoveToDelimeter0,
+      MoveToDelimeter2_0I,
+      MoveTo01InC_0I,
+      Add0_0II,
 
-
-      StartLoopInC,
-      Process1f_D,
-      MoveToCRight,
-      EraseMarkInC,
-      StartAddC,
-      AddC0f_D,
-      AddC0f_sm_D,
-      MoveToCLeft,
-      SetMarkInC,
-      MoveToMarkInB,
-      MoveToMarkInB_inB,
-      AddC1f_D,
-      AddC1f_sm_D,
-      MoveToMarkInD_L,
-      MoveToMarkInD_R,
-      MoveMarkInD,
-      StopMultiplying,
+      MoveToMarkInD_L
     }
 
     public enum AddStates : uint
     {
-      StartAdding = MultiplyStates.StopMultiplying + 1,
+      StartAdding = MultiplyStates.MoveToMarkInD_L + 1,
       AddBitC0,
       AddBitC1,
     }

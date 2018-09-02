@@ -24,7 +24,6 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-
     public void Run()
     {
       log.Debug("Strong connected commodities:");

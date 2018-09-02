@@ -473,7 +473,7 @@ namespace ProgramTests
       const uint stepsNum = 5;
       determStepsEmulator.DoStepN(stepsNum);
 
-      int expectedCellIndex = 6;
+      const int expectedCellIndex = 6;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == MTExtDefinitions.v2.IF_NDTM.acceptingState);

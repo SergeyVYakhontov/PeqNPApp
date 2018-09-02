@@ -48,29 +48,11 @@ namespace MTExtDefinitions.v2
           (uint)GenNumber2States.MoveToDelimiter1,
 
           (uint)MultiplyStates.MultReady,
-          (uint)MultiplyStates.MoveToDelimeter3,
-          (uint)MultiplyStates.MoveToD0D1,
-          (uint)MultiplyStates.MoveToDelimeter4,
-          (uint)MultiplyStates.MoveToDelimeter0,
+          (uint)MultiplyStates.MoveToDelimeter2_0I,
+          (uint)MultiplyStates.MoveTo01InC_0I,
+          (uint)MultiplyStates.Add0_0II,
 
-
-          (uint)MultiplyStates.StartLoopInC,
-          (uint)MultiplyStates.Process1f_D,
-          (uint)MultiplyStates.MoveToCRight,
-          (uint)MultiplyStates.EraseMarkInC,
-          (uint)MultiplyStates.StartAddC,
-          (uint)MultiplyStates.AddC0f_D,
-          (uint)MultiplyStates.AddC0f_sm_D,
-          (uint)MultiplyStates.MoveToCLeft,
-          (uint)MultiplyStates.SetMarkInC,
-          (uint)MultiplyStates.MoveToMarkInB,
-          (uint)MultiplyStates.MoveToMarkInB_inB,
-          (uint)MultiplyStates.AddC1f_D,
-          (uint)MultiplyStates.AddC1f_sm_D,
           (uint)MultiplyStates.MoveToMarkInD_L,
-          (uint)MultiplyStates.MoveToMarkInD_R,
-          (uint)MultiplyStates.MoveMarkInD,
-          (uint)MultiplyStates.StopMultiplying,
 
           (uint)AddStates.StartAdding,
           (uint)AddStates.AddBitC0,
@@ -107,6 +89,8 @@ namespace MTExtDefinitions.v2
         markC1,
         markD0,
         markD1,
+        markD2,
+        markD3,
         markE0,
         markE1,
         markF0,
@@ -135,8 +119,9 @@ namespace MTExtDefinitions.v2
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta1);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta2);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta1);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta2(frameLength));
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta3(frameLength));
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta2);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta3);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta4);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Add.Delta);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta1);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta2);

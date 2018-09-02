@@ -16,12 +16,10 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta3(int frameLength)
-    {
-      return new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta3 { get; } =
+      new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
         };
-    }
 
     #endregion
   }
