@@ -20,19 +20,8 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class U_CPLTM_Delta_02GenNumber2_Tests : IDisposable
+  public sealed class U_CPLTM_Delta_02GenNumber2_Tests : U_CPLTM_Delta_Tests_Base, IDisposable
   {
-    #region Ctors
-
-    static U_CPLTM_Delta_02GenNumber2_Tests()
-    {
-      log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(
-        System.Reflection.Assembly.GetEntryAssembly());
-      log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
-
-    #endregion
-
     #region public members
 
     public void Dispose()
@@ -186,35 +175,6 @@ namespace ProgramTests
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
       Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
       Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
-    }
-
-    #endregion
-
-    #region private members
-
-    private readonly IKernel configuration = Core.AppContext.Configuration;
-
-    private int frameLength;
-    private int frameStart1;
-    private int frameStart2;
-    private int frameStart3;
-    private int frameEnd4;
-
-    private void Setup(int inputLength)
-    {
-      configuration.Load<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
-
-      frameLength = MTExtDefinitions.v2.IF_NDTM.FrameLength(inputLength);
-      frameStart1 = MTExtDefinitions.v2.IF_NDTM.FrameStart1(inputLength);
-      frameStart2 = MTExtDefinitions.v2.IF_NDTM.FrameStart2(inputLength);
-      frameStart3 = MTExtDefinitions.v2.IF_NDTM.FrameStart3(inputLength);
-      frameEnd4 = MTExtDefinitions.v2.IF_NDTM.FrameEnd4(inputLength);
-    }
-
-    private void ResetNinjectKernel()
-    {
-      List<Ninject.Modules.INinjectModule> modules = configuration.GetModules().ToList();
-      modules.ForEach(m => configuration.Unload(m.Name));
     }
 
     #endregion
