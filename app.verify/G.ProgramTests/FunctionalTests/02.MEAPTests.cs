@@ -19,11 +19,11 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class MEAPTests : IDisposable
+  public sealed class F_MEAPTests : IDisposable
   {
     #region Ctors
 
-    static MEAPTests()
+    static F_MEAPTests()
     {
       log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
       log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
