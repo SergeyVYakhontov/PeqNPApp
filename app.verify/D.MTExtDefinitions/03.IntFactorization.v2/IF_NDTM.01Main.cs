@@ -50,7 +50,10 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MultReady,
           (uint)MultiplyStates.MoveToDelimeter2_0I,
           (uint)MultiplyStates.MoveTo01InC_0I,
-          (uint)MultiplyStates.Add0_0II,
+          (uint)MultiplyStates.MoveToDelimeter3_0II,
+          (uint)MultiplyStates.MoveTo01InD_0II,
+          (uint)MultiplyStates.MoveToDelimeter4_0II,
+          (uint)MultiplyStates.MoveToDelimeter0_0II,
 
           (uint)MultiplyStates.MoveToMarkInD_L,
 

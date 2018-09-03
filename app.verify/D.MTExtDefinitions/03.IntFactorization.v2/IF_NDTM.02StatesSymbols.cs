@@ -35,14 +35,14 @@ namespace MTExtDefinitions.v2
     // frame D; multiplying
     public const int markD0 = 11;
     public const int markD1 = 12;
-    public const int markD2 = 11;
-    public const int markD3 = 12;
+    public const int markD2 = 13;
+    public const int markD3 = 14;
     // frame A; comparing
-    public const int markE0 = 13;
-    public const int markE1 = 14;
+    public const int markE0 = 15;
+    public const int markE1 = 16;
     // frame D; comparing
-    public const int markF0 = 15;
-    public const int markF1 = 16;
+    public const int markF0 = 17;
+    public const int markF1 = 18;
 
     public enum InitStates : uint
     {
@@ -71,7 +71,10 @@ namespace MTExtDefinitions.v2
       MultReady = GenNumber2States.MoveToDelimiter1 + 1,
       MoveToDelimeter2_0I,
       MoveTo01InC_0I,
-      Add0_0II,
+      MoveToDelimeter3_0II,
+      MoveTo01InD_0II,
+      MoveToDelimeter4_0II,
+      MoveToDelimeter0_0II,
 
       MoveToMarkInD_L
     }

@@ -104,7 +104,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.Add0_0II,
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter3_0II,
                     symbol: IF_NDTM.markC0,
                     direction: TMDirection.R
                   )
@@ -114,7 +114,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.Add0_0II,
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter3_0II,
                     symbol: IF_NDTM.markC0,
                     direction: TMDirection.R
                   )
@@ -124,7 +124,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.Add0_0II,
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter3_0II,
                     symbol: IF_NDTM.markC1,
                     direction: TMDirection.R
                   )
