@@ -55,6 +55,18 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveToDelimeter4_0II,
           (uint)MultiplyStates.MoveToDelimeter0_0II,
           (uint)MultiplyStates.MoveToDelimeter2_0II,
+          (uint)MultiplyStates.MoveToDelimeter2_1I,
+          (uint)MultiplyStates.MoveTo01InC_1I,
+          (uint)MultiplyStates.MoveToDelimeter3_Bit0_1II,
+          (uint)MultiplyStates.MoveTo01InD_Bit0_Bit0_1II,
+          (uint)MultiplyStates.MoveToDelimeter4_Bit0_1II,
+          (uint)MultiplyStates.MoveToDelimeter0_Bit0_1II,
+          (uint)MultiplyStates.MoveToDelimeter2_Bit0_1II,
+          (uint)MultiplyStates.MoveToDelimeter3_Bit1_1II,
+          (uint)MultiplyStates.MoveTo01InD_Bit0_Bit1_1II,
+          (uint)MultiplyStates.MoveToDelimeter4_Bit1_1II,
+          (uint)MultiplyStates.MoveToDelimeter0_Bit1_1II,
+          (uint)MultiplyStates.MoveToDelimeter2_Bit1_1II,
 
           (uint)MultiplyStates.MoveToMarkInD_L,
 
@@ -120,13 +132,20 @@ namespace MTExtDefinitions.v2
       delta = new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
 
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Init.Delta);
+
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta1);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta2);
+
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta1);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta2);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta3);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta4);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta5);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta6);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta7);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta8);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Add.Delta);
+
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta1);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta2);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta3);

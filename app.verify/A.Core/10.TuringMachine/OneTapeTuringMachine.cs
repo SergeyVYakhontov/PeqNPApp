@@ -179,7 +179,7 @@ namespace Core
 
     protected virtual void CheckDeltaRelation()
     {
-      Delta.ForEach(p =>
+      foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> p in Delta)
       {
         Ensure.That(Gamma.Contains(p.Key.Symbol)).IsTrue();
         Ensure.That(Q.Contains(p.Key.State)).IsTrue();
@@ -187,10 +187,9 @@ namespace Core
         p.Value.ForEach(v =>
         {
           Ensure.That(Gamma.Contains(v.Symbol)).IsTrue();
-          Ensure.That(Q.Contains((uint)v.State)).IsTrue();
-        }
-        );
-      });
+          Ensure.That(Q.Contains(v.State)).IsTrue();
+        });
+      }
 
       SortedSet<StateSymbolDirectionTriple> triples = new SortedSet<StateSymbolDirectionTriple>(
         new StateSymbolDirectionTripleComparer());

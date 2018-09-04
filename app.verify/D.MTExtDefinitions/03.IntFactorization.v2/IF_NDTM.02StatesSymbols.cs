@@ -77,6 +77,19 @@ namespace MTExtDefinitions.v2
       MoveToDelimeter0_0II,
       MoveToDelimeter2_0II,
 
+      MoveToDelimeter2_1I,
+      MoveTo01InC_1I,
+      MoveToDelimeter3_Bit0_1II,
+      MoveTo01InD_Bit0_Bit0_1II,
+      MoveToDelimeter4_Bit0_1II,
+      MoveToDelimeter0_Bit0_1II,
+      MoveToDelimeter2_Bit0_1II,
+      MoveToDelimeter3_Bit1_1II,
+      MoveTo01InD_Bit0_Bit1_1II,
+      MoveToDelimeter4_Bit1_1II,
+      MoveToDelimeter0_Bit1_1II,
+      MoveToDelimeter2_Bit1_1II,
+
       MoveToMarkInD_L
     }
 
