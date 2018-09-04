@@ -57,7 +57,7 @@ namespace ProgramTests
         [6] = 0
       };
 
-      const uint stepsNum = 7;
+      uint stepsNum = (uint)frameLength + 1;
       determStepsEmulator.DoStepN(stepsNum, indexMap);
 
       int expectedCellIndex = frameStart2 + 1;

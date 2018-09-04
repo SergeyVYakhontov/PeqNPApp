@@ -46,10 +46,10 @@ namespace ProgramTests
         1,
         MTExtDefinitions.v2.IF_NDTM.qStartState);
 
-      const uint stepsNum = 7;
+      uint stepsNum = (uint)frameLength + 1;
       determStepsEmulator.DoStepN(stepsNum);
 
-      const int expectedCellIndex = (int)stepsNum + 1;
+      int expectedCellIndex = (int)stepsNum + 1;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.GenNumber1States.GenBitA);

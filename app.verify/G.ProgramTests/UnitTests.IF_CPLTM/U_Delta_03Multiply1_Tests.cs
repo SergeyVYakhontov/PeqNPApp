@@ -55,7 +55,7 @@ namespace ProgramTests
       tmInstance.SetTapeSymbol(frameStart2 + 2, MTExtDefinitions.v2.IF_NDTM.markC1);
       tmInstance.SetTapeSymbol(frameStart2 + 3, 0);
 
-      const uint stepsNum = 10;
+      uint stepsNum = (uint)frameLength + 4;
       determStepsEmulator.DoStepN(stepsNum);
 
       int expectedCellIndex = frameStart2 + 4;
@@ -98,7 +98,7 @@ namespace ProgramTests
       tmInstance.SetTapeSymbol(frameStart2 + 2, MTExtDefinitions.v2.IF_NDTM.markC1);
       tmInstance.SetTapeSymbol(frameStart2 + 3, 1);
 
-      const uint stepsNum = 10;
+      uint stepsNum = (uint)frameLength + 4;
       determStepsEmulator.DoStepN(stepsNum);
 
       int expectedCellIndex = frameStart2 + 4;
@@ -141,7 +141,7 @@ namespace ProgramTests
       tmInstance.SetTapeSymbol(frameStart2 + 2, MTExtDefinitions.v2.IF_NDTM.markC1);
       tmInstance.SetTapeSymbol(frameStart2 + 3, OneTapeTuringMachine.blankSymbol);
 
-      const uint stepsNum = 10;
+      uint stepsNum = (uint)frameLength + 4;
       determStepsEmulator.DoStepN(stepsNum);
 
       int expectedCellIndex = frameStart2 + 4;

@@ -75,6 +75,7 @@ namespace MTExtDefinitions.v2
       MoveTo01InD_0II,
       MoveToDelimeter4_0II,
       MoveToDelimeter0_0II,
+      MoveToDelimeter2_0II,
 
       MoveToMarkInD_L
     }

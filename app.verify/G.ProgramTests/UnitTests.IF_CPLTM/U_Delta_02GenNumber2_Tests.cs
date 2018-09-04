@@ -57,7 +57,7 @@ namespace ProgramTests
         [6] = 0
       };
 
-      const uint stepsNum = 7;
+      uint stepsNum = (uint)frameLength + 1;
       determStepsEmulator.DoStepN(stepsNum, indexMap);
 
       int expectedCellIndex = frameStart3 + 1;
@@ -89,7 +89,7 @@ namespace ProgramTests
         frameStart3 + 1,
         (uint)MTExtDefinitions.v2.IF_NDTM.GenNumber2States.MoveToDelimiter4);
 
-      const uint stepsNum = 7;
+      uint stepsNum = (uint)frameLength + 1;
       determStepsEmulator.DoStepN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 1;
@@ -127,7 +127,7 @@ namespace ProgramTests
         frameEnd4 - 1,
         (uint)MTExtDefinitions.v2.IF_NDTM.GenNumber2States.MoveToDelimiter0);
 
-      const uint stepsNum = 28;
+      uint stepsNum = ((uint)frameLength * 4) + 4;
       determStepsEmulator.DoStepN(stepsNum);
 
       const int expectedCellIndex = 1;
@@ -162,10 +162,10 @@ namespace ProgramTests
         1,
         (uint)MTExtDefinitions.v2.IF_NDTM.GenNumber2States.MoveToDelimiter1);
 
-      const uint stepsNum = 7;
+      uint stepsNum = (uint)frameLength + 1;
       determStepsEmulator.DoStepN(stepsNum);
 
-      const int expectedCellIndex = 8;
+      int expectedCellIndex = frameLength + 2;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MultReady);
