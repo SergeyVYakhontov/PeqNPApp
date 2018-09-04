@@ -58,12 +58,12 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveToDelimeter2_1I,
           (uint)MultiplyStates.MoveTo01InC_1I,
           (uint)MultiplyStates.MoveToDelimeter3_Bit0_1II,
-          (uint)MultiplyStates.MoveTo01InD_Bit0_Bit0_1II,
+          (uint)MultiplyStates.MoveTo01InD_Bit0_1II,
           (uint)MultiplyStates.MoveToDelimeter4_Bit0_1II,
           (uint)MultiplyStates.MoveToDelimeter0_Bit0_1II,
           (uint)MultiplyStates.MoveToDelimeter2_Bit0_1II,
           (uint)MultiplyStates.MoveToDelimeter3_Bit1_1II,
-          (uint)MultiplyStates.MoveTo01InD_Bit0_Bit1_1II,
+          (uint)MultiplyStates.MoveTo01InD_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter4_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter0_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter2_Bit1_1II,
@@ -144,6 +144,9 @@ namespace MTExtDefinitions.v2
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta6);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta7);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta8);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta9);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta10);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta11);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Add.Delta);
 
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta1);
