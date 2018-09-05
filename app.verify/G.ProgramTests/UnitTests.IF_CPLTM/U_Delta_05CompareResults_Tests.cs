@@ -67,7 +67,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults2_Bit0_Success_Test()
+    public void T02_CompareResults2_Bit0_Success_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -118,7 +118,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults2_Bit0_Failure_Test()
+    public void T03_CompareResults2_Bit0_Failure_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -169,7 +169,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults3_Bit1_Success_Test()
+    public void T04_CompareResults3_Bit1_Success_Test()
     {
       int[] input = new int[] { 1, 0, 1, 1 }.Reverse().ToArray();
       Setup(input.Length);
@@ -220,7 +220,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults3_Bit1_Failure_Test()
+    public void T05_CompareResults3_Bit1_Failure_Test()
     {
       int[] input = new int[] { 1, 0, 1, 1 }.Reverse().ToArray();
       Setup(input.Length);
@@ -271,7 +271,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults6_Bit0_SkipE_Test()
+    public void T06_CompareResults6_Bit0_SkipE_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -330,7 +330,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults5_Test()
+    public void T07_CompareResults5_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -378,7 +378,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults6_Bit1_SkipE_Test()
+    public void T08_CompareResults6_Bit1_SkipE_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -437,7 +437,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_CompareResults6_Accept_Test()
+    public void T09_CompareResults6_Accept_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);

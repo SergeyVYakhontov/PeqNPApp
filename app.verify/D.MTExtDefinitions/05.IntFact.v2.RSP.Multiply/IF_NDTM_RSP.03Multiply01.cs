@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta1 { get; } =
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta01 { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MultReady, symbol: 0)] =

@@ -136,15 +136,15 @@ namespace MTExtDefinitions.v2
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta1);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_GenNumber.Delta2);
 
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta1);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta2);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta3);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta4);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta5);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta6);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta7);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta8);
-      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta9);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta01);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta02);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta03);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta04);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta05);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta06);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta07);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta08);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta09);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta10);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta11);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Add.Delta);

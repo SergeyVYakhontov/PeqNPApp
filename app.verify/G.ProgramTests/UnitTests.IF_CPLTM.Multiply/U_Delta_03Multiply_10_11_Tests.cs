@@ -78,7 +78,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_Multiply_10_11_01InC_Test()
+    public void T02_Multiply_10_11_01InC_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);

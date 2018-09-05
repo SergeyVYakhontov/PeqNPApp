@@ -16,7 +16,7 @@ namespace MTExtDefinitions.v2
   {
     #region public members
 
-    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta2 { get; } =
+    public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta02 { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
           [new StateSymbolPair(

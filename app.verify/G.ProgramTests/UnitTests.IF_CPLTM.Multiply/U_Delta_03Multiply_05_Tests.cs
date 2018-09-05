@@ -20,7 +20,7 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class U_CPLTM_Delta_03Multiply5_Tests : U_CPLTM_Delta_Tests_Base, IDisposable
+  public sealed class U_CPLTM_Delta_03Multiply_05_Tests : U_CPLTM_Delta_Tests_Base, IDisposable
   {
     #region public members
 
@@ -30,7 +30,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_Multiply5_Blank_Test()
+    public void T01_Multiply_05_Blank_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -73,7 +73,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_Multiply5_Bit0_Test()
+    public void T02_Multiply_05_Bit0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -116,7 +116,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_Multiply5_Bit1_Test()
+    public void T03_Multiply_05_Bit1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);

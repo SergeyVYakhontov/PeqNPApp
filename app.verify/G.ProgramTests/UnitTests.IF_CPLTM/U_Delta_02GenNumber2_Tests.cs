@@ -73,7 +73,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_GenNumber2_Delimiter4_Test()
+    public void T02_GenNumber2_Delimiter4_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -105,7 +105,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_GenNumber2_Delimiter0_Test()
+    public void T03_GenNumber2_Delimiter0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -143,7 +143,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_GenNumber2_Delimiter1_Test()
+    public void T04_GenNumber2_Delimiter1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
