@@ -20,7 +20,7 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class F_ApplicationTests : IDisposable
+  public sealed class F_01_Application_Tests : IDisposable
   {
     #region public members
 
@@ -30,7 +30,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T01_OrdinaryExamplesAppSlotsMThreadsTest()
+    public void T01_OrdinaryExamplesAppSlotsMThreads_Test()
     {
       OrdinaryExamplesAppSingleThread.Program.Main(new string[] { "test" });
 
@@ -39,7 +39,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T02_OrdinaryExamplesAppSlotsMThreadsTest()
+    public void T02_OrdinaryExamplesAppSlotsMThreads_Test()
     {
       OrdinaryExamplesAppSlotsMThreads.Program.Main(new string[] { "test" });
 
@@ -48,7 +48,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T03_IntegerFactExamplesAppCommsTest()
+    public void T03_IntegerFactExamplesAppComms_Test()
     {
       IntegerFactExamplesAppComms.Program.Main(new string[] { "test" });
 
@@ -57,7 +57,7 @@ namespace ProgramTests
     }
 
     [Fact]
-    public void T04_IntegerFactExamplesAppCPLTMTest()
+    public void T04_IntegerFactExamplesAppCPLTM_Test()
     {
       IntegerFactExamplesAppCPLTM.Program.Main(new string[] { "test" });
 

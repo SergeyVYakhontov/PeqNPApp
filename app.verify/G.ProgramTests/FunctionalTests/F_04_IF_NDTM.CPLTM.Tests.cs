@@ -19,11 +19,11 @@ using VerifyResults;
 namespace ProgramTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class F_IF_NDTM_CPLTM_Tests : IDisposable
+  public sealed class F_04_IF_NDTM_CPLTM_Tests : IDisposable
   {
     #region Ctors
 
-    static F_IF_NDTM_CPLTM_Tests()
+    static F_04_IF_NDTM_CPLTM_Tests()
     {
       log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
       log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
