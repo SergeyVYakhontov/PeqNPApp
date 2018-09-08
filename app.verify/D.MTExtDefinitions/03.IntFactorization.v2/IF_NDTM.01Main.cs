@@ -69,7 +69,7 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveToDelimeter2_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter4_III,
           (uint)MultiplyStates.MoveToDelimeter0_III,
-          (uint)MultiplyStates.MoveToDelimeter2_III,
+          (uint)MultiplyStates.MoveToDelimeter1_III,
           (uint)MultiplyStates.MoveTo01InB_III,
           (uint)MultiplyStates.MoveToDelimeter4_IV,
           (uint)MultiplyStates.MoveToDelimeter0_IV,
@@ -156,6 +156,7 @@ namespace MTExtDefinitions.v2
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta11);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta12);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta13);
+      AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Multiply.Delta14);
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_Add.Delta);
 
       AppHelper.MergeDictionaryWith(delta, IF_NDTM_RSP_CompareResult.Delta1);

@@ -96,7 +96,7 @@ namespace MTExtDefinitions.v2
 
       MoveToDelimeter4_III,
       MoveToDelimeter0_III,
-      MoveToDelimeter2_III,
+      MoveToDelimeter1_III,
       MoveTo01InB_III,
 
       MoveToDelimeter4_IV,
