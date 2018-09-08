@@ -20,7 +20,7 @@ using VerifyResults;
 namespace UnitTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class U_CPLTM_Delta_03Multiply_12_14_Tests : U_CPLTM_Delta_Tests_Base, IDisposable
+  public sealed class U_CPLTM_Delta_03Multiply_12_14_III_Tests : U_CPLTM_Delta_Tests_Base, IDisposable
   {
     #region public members
 
@@ -30,7 +30,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Multiply_10_14_Delimiter4_D2D3_Test()
+    public void T01_Multiply_10_14_III_Delimiter4_D2D3_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -70,7 +70,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Multiply_10_14_Delimiter4_D0D1_Test()
+    public void T01_Multiply_10_14_III_Delimiter4_D0D1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
