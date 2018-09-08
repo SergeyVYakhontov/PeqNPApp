@@ -101,6 +101,7 @@ namespace MTExtDefinitions.v2
 
       MoveToDelimeter4_IV,
       MoveToDelimeter0_IV,
+      MoveToDelimeter1_IV,
       MoveToBlankInB_IV,
 
       MoveToMarkInD_L
