@@ -17,7 +17,7 @@ using VerifyResults;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace ProgramTests
+namespace UnitTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
   public sealed class U_CPLTM_Delta_05CompareResults_Tests : U_CPLTM_Delta_Tests_Base, IDisposable

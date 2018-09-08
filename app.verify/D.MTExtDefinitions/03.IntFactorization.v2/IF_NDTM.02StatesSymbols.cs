@@ -69,8 +69,10 @@ namespace MTExtDefinitions.v2
     public enum MultiplyStates : uint
     {
       MultReady = GenNumber2States.MoveToDelimiter1 + 1,
+
       MoveToDelimeter2_0I,
       MoveTo01InC_0I,
+
       MoveToDelimeter3_0II,
       MoveTo01InD_0II,
       MoveToDelimeter4_0II,
@@ -79,16 +81,27 @@ namespace MTExtDefinitions.v2
 
       MoveToDelimeter2_1I,
       MoveTo01InC_1I,
+
       MoveToDelimeter3_Bit0_1II,
       MoveTo01InD_Bit0_1II,
       MoveToDelimeter4_Bit0_1II,
       MoveToDelimeter0_Bit0_1II,
       MoveToDelimeter2_Bit0_1II,
+
       MoveToDelimeter3_Bit1_1II,
       MoveTo01InD_Bit1_1II,
       MoveToDelimeter4_Bit1_1II,
       MoveToDelimeter0_Bit1_1II,
       MoveToDelimeter2_Bit1_1II,
+
+      MoveToDelimeter4_III,
+      MoveToDelimeter0_III,
+      MoveToDelimeter2_III,
+      MoveTo01InB_III,
+
+      MoveToDelimeter4_IV,
+      MoveToDelimeter0_IV,
+      MoveToBlankInB_IV,
 
       MoveToMarkInD_L
     }

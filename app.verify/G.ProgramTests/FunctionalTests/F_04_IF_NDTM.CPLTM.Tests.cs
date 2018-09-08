@@ -16,7 +16,7 @@ using VerifyResults;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-namespace ProgramTests
+namespace FunctionalTests
 {
   [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
   public sealed class F_04_IF_NDTM_CPLTM_Tests : IDisposable
