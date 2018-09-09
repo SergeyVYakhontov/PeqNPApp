@@ -72,7 +72,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Add_1b_Test()
+    public void T02_Add_1b_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -114,7 +114,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Add_00_Test()
+    public void T03_Add_00_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -157,7 +157,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Add_10_Test()
+    public void T04_Add_10_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -200,7 +200,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Add_01_Test()
+    public void T05_Add_01_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -243,7 +243,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Add_11_Test()
+    public void T06_Add_11_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);

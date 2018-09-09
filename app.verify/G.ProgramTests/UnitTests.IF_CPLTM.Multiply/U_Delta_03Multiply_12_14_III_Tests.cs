@@ -64,7 +64,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Multiply_12_14_III_CProcessed_1I_Test()
+    public void T02_Multiply_12_14_III_CProcessed_1I_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -98,7 +98,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Multiply_12_14_III_Delimiter4_D2D3_Test()
+    public void T03_Multiply_12_14_III_Delimiter4_D2D3_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -138,7 +138,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T02_Multiply_12_14_III_Delimiter4_D0D1_Test()
+    public void T04_Multiply_12_14_III_Delimiter4_D0D1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -178,7 +178,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T03_Multiply_12_14_III_Delimiter0_Test()
+    public void T05_Multiply_12_14_III_Delimiter0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -225,7 +225,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T03_Multiply_12_14_III_C0C1_Test()
+    public void T06_Multiply_12_14_III_C0C1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -275,7 +275,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T04_Multiply_12_14_III_01InB_0_Test()
+    public void T07_Multiply_12_14_III_01InB_0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -312,7 +312,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T05_Multiply_12_14_III_01InB_1_Test()
+    public void T09_Multiply_12_14_III_01InB_1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Default" ToolsVersion="15.0">
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="IDE0001" Action="None" />
     <Rule Id="IDE0002" Action="None" />
     <Rule Id="IDE0003" Action="None" />
     <Rule Id="IDE0047" Action="None" />
@@ -12,10 +13,12 @@
     <Rule Id="RCS1032" Action="None" />
     <Rule Id="RCS1057" Action="None" />
     <Rule Id="RCS1080" Action="None" />
+    <Rule Id="RCS1124" Action="None" />
   </Rules>
   <Rules AnalyzerId="RefactoringEssentials" RuleNamespace="RefactoringEssentials">
     <Rule Id="RECS0070" Action="None" />
     <Rule Id="RECS0033" Action="None" />
+    <Rule Id="RECS0091" Action="None" />
     <Rule Id="RECS0093" Action="None" />
     <Rule Id="RECS0145" Action="None" />
     <Rule Id="RECS0147" Action="None" />

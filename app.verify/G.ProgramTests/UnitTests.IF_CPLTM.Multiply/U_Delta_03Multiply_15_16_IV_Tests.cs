@@ -65,7 +65,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T01_Multiply_15_16_IV_Delimiter4_D0D1_Test()
+    public void T02_Multiply_15_16_IV_Delimiter4_D0D1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -108,7 +108,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T02_Multiply_15_16_IV_Delimiter4_D2D3_Test()
+    public void T03_Multiply_15_16_IV_Delimiter4_D2D3_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -151,7 +151,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T03_Multiply_15_16_IV_Delimiter0_Test()
+    public void T04_Multiply_15_16_IV_Delimiter0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
