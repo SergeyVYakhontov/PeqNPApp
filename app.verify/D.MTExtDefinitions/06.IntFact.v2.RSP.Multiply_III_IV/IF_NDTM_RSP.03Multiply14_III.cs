@@ -87,6 +87,18 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InB_III,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter2_0I,
+                    symbol: IF_NDTM.markB0,
+                    direction: TMDirection.R
+                  )
+              },
         [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveTo01InB_III, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {

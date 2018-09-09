@@ -133,6 +133,18 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InD_Bit1_1II,
+            symbol: IF_NDTM.delimiter4)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_Bit1_1II,
+                    symbol: IF_NDTM.delimiter4,
+                    direction: TMDirection.L
+                  )
+              },
         [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveTo01InD_Bit1_1II, symbol: 1)] =
             new List<StateSymbolDirectionTriple>
               {
