@@ -20,6 +20,30 @@ namespace MTExtDefinitions.v2
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InC_0I,
+            symbol: IF_NDTM.delimiter3)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
+                    symbol: IF_NDTM.delimiter3,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InC_1I,
+            symbol: IF_NDTM.delimiter3)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
+                    symbol: IF_NDTM.delimiter3,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
             state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
             symbol: OneTapeTuringMachine.blankSymbol)] =
             new List<StateSymbolDirectionTriple>

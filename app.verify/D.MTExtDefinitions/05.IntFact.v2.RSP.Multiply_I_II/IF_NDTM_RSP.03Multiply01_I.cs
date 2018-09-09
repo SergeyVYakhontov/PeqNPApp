@@ -19,7 +19,19 @@ namespace MTExtDefinitions.v2
     public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta01 { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
         {
-          [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MultReady, symbol: 0)] =
+          [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MultReady,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter2_0I,
+                    symbol: IF_NDTM.markB0,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MultReady, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
