@@ -66,6 +66,7 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveTo01InD_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter0_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter2_Bit1_1II,
+          (uint)MultiplyStates.MoveToD01InD_III,
           (uint)MultiplyStates.MoveToDelimeter4_III,
           (uint)MultiplyStates.MoveToDelimeter0_III,
           (uint)MultiplyStates.MoveToDelimeter1_III,

@@ -137,25 +137,25 @@ namespace MTExtDefinitions.v2
               },
         [new StateSymbolPair(
             state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_III,
-            symbol: IF_NDTM.markD0)] =
+            symbol: IF_NDTM.markD2)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_III,
-                    symbol: IF_NDTM.markD0,
+                    symbol: IF_NDTM.markD2,
                     direction: TMDirection.L
                   )
               },
         [new StateSymbolPair(
             state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_III,
-            symbol: IF_NDTM.markD1)] =
+            symbol: IF_NDTM.markD3)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_III,
-                    symbol: IF_NDTM.markD1,
+                    symbol: IF_NDTM.markD3,
                     direction: TMDirection.L
                   )
               },

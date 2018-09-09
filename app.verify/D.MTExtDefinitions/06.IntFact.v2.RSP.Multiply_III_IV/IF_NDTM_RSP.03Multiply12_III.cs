@@ -26,7 +26,7 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
                     symbol: IF_NDTM.delimiter3,
                     direction: TMDirection.R
                   )
@@ -38,8 +38,56 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
                     symbol: IF_NDTM.delimiter3,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
+            symbol: IF_NDTM.markD2)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
+                    symbol: IF_NDTM.markD2,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
+            symbol: IF_NDTM.markD3)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
+                    symbol: IF_NDTM.markD3,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
+            symbol: IF_NDTM.markD0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
+                    symbol: IF_NDTM.markD2,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveToD01InD_III,
+            symbol: IF_NDTM.markD1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
+                    symbol: IF_NDTM.markD3,
                     direction: TMDirection.R
                   )
               },
@@ -83,7 +131,7 @@ namespace MTExtDefinitions.v2
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
-                    symbol: IF_NDTM.markD0,
+                    symbol: 0,
                     direction: TMDirection.R
                   )
               },
@@ -95,31 +143,7 @@ namespace MTExtDefinitions.v2
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
-                    symbol: IF_NDTM.markD1,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
-            symbol: IF_NDTM.markD2)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
-                    symbol: IF_NDTM.markD0,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
-            symbol: IF_NDTM.markD3)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_III,
-                    symbol: IF_NDTM.markD1,
+                    symbol: 1,
                     direction: TMDirection.R
                   )
               },

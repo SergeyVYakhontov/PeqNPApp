@@ -46,16 +46,17 @@ namespace UnitTests
         frameStart3,
         (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveTo01InC_0I);
 
-      tmInstance.SetTapeSymbol(frameStart3 + 1, 0);
+      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD2);
+      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD0);
 
-      const uint stepsNum = 1;
+      const uint stepsNum = 3;
       determStepsEmulator.DoStepN(stepsNum);
 
-      int expectedCellIndex = frameStart3 + 1;
+      int expectedCellIndex = frameStart3 + 3;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter4_III);
-      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == 0);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex - 1) == MTExtDefinitions.v2.IF_NDTM.markD2);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
@@ -80,16 +81,17 @@ namespace UnitTests
         frameStart3,
         (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveTo01InC_1I);
 
-      tmInstance.SetTapeSymbol(frameStart3 + 1, 0);
+      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD3);
+      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD1);
 
-      const uint stepsNum = 1;
+      const uint stepsNum = 3;
       determStepsEmulator.DoStepN(stepsNum);
 
-      int expectedCellIndex = frameStart3 + 1;
+      int expectedCellIndex = frameStart3 + 3;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter4_III);
-      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == 0);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex - 1) == MTExtDefinitions.v2.IF_NDTM.markD3);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
@@ -98,87 +100,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T03_Multiply_12_14_III_Delimiter4_D2D3_Test()
-    {
-      int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
-      Setup(input.Length);
-
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
-      tm.Setup();
-
-      TMInstance tmInstance = new TMInstance(tm, input);
-      tm.PrepareTapeFwd(input, tmInstance);
-
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
-      determStepsEmulator.SetupConfiguration(
-        frameStart3 + 1,
-        (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter4_III);
-
-      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD2);
-      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD3);
-      tmInstance.SetTapeSymbol(frameStart3 + 3, 0);
-      tmInstance.SetTapeSymbol(frameStart3 + 4, 1);
-
-      uint stepsNum = (uint)frameLength + 1;
-      determStepsEmulator.DoStepN(stepsNum);
-
-      int expectedCellIndex = frameEnd4 - 1;
-
-      Assert.True(tmInstance.CellIndex() == expectedCellIndex);
-      Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter0_III);
-      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
-
-      Assert.True(tmInstance.TapeSymbol(frameStart3 + 1) == MTExtDefinitions.v2.IF_NDTM.markD0);
-      Assert.True(tmInstance.TapeSymbol(frameStart3 + 2) == MTExtDefinitions.v2.IF_NDTM.markD1);
-
-      Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
-      Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
-      Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
-      Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
-    }
-
-    [Fact]
-    public void T04_Multiply_12_14_III_Delimiter4_D0D1_Test()
-    {
-      int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
-      Setup(input.Length);
-
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
-      tm.Setup();
-
-      TMInstance tmInstance = new TMInstance(tm, input);
-      tm.PrepareTapeFwd(input, tmInstance);
-
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
-      determStepsEmulator.SetupConfiguration(
-        frameStart3 + 1,
-        (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter4_III);
-
-      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD0);
-      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD1);
-      tmInstance.SetTapeSymbol(frameStart3 + 3, 0);
-      tmInstance.SetTapeSymbol(frameStart3 + 4, 1);
-
-      uint stepsNum = (uint)frameLength + 1;
-      determStepsEmulator.DoStepN(stepsNum);
-
-      int expectedCellIndex = frameEnd4 - 1;
-
-      Assert.True(tmInstance.CellIndex() == expectedCellIndex);
-      Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter0_III);
-      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
-
-      Assert.True(tmInstance.TapeSymbol(frameStart3 + 1) == MTExtDefinitions.v2.IF_NDTM.markD0);
-      Assert.True(tmInstance.TapeSymbol(frameStart3 + 2) == MTExtDefinitions.v2.IF_NDTM.markD1);
-
-      Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
-      Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
-      Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
-      Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
-    }
-
-    [Fact]
-    public void T05_Multiply_12_14_III_Delimiter0_Test()
+    public void T03_Multiply_12_14_III_Delimiter0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -204,8 +126,8 @@ namespace UnitTests
       tmInstance.SetTapeSymbol(frameStart2 + 3, 0);
       tmInstance.SetTapeSymbol(frameStart2 + 4, 1);
 
-      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD0);
-      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD1);
+      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD2);
+      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD3);
       tmInstance.SetTapeSymbol(frameStart3 + 3, 0);
       tmInstance.SetTapeSymbol(frameStart3 + 4, 1);
 
@@ -225,7 +147,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T06_Multiply_12_14_III_C0C1_Test()
+    public void T04_Multiply_12_14_III_C0C1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -251,8 +173,8 @@ namespace UnitTests
       tmInstance.SetTapeSymbol(frameStart2 + 3, 0);
       tmInstance.SetTapeSymbol(frameStart2 + 4, 1);
 
-      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD0);
-      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD1);
+      tmInstance.SetTapeSymbol(frameStart3 + 1, MTExtDefinitions.v2.IF_NDTM.markD2);
+      tmInstance.SetTapeSymbol(frameStart3 + 2, MTExtDefinitions.v2.IF_NDTM.markD3);
       tmInstance.SetTapeSymbol(frameStart3 + 3, 0);
       tmInstance.SetTapeSymbol(frameStart3 + 4, 1);
 
@@ -275,7 +197,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T07_Multiply_12_14_III_01InB_0_Test()
+    public void T05_Multiply_12_14_III_01InB_0_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
@@ -312,7 +234,7 @@ namespace UnitTests
     }
 
     [Fact]
-    public void T09_Multiply_12_14_III_01InB_1_Test()
+    public void T06_Multiply_12_14_III_01InB_1_Test()
     {
       int[] input = new int[] { 1, 0, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
