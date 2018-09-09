@@ -111,13 +111,25 @@ namespace MTExtDefinitions.v2
                     direction: TMDirection.R
                   )
               },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InD_Bit1_1II,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.AddStates.AddBit0,
+                    symbol: IF_NDTM.markD1,
+                    direction: TMDirection.R
+                  )
+              },
         [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveTo01InD_Bit1_1II, symbol: 0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-                    symbol: IF_NDTM.markD0,
+                    state: (uint)IF_NDTM.AddStates.AddBit0,
+                    symbol: IF_NDTM.markD1,
                     direction: TMDirection.R
                   )
               },
@@ -126,53 +138,9 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-                    symbol: IF_NDTM.markD1,
+                    state: (uint)IF_NDTM.AddStates.AddBit1,
+                    symbol: IF_NDTM.markD0,
                     direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-            symbol: OneTapeTuringMachine.blankSymbol)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-                    symbol: OneTapeTuringMachine.blankSymbol,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II, symbol: 0)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-                    symbol: 0,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II, symbol: 1)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-                    symbol: 1,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_Bit1_1II,
-            symbol: IF_NDTM.delimiter4)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_Bit1_1II,
-                    symbol: IF_NDTM.delimiter4,
-                    direction: TMDirection.L
                   )
               }
       };

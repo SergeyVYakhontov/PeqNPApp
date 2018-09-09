@@ -90,7 +90,7 @@ namespace MTExtDefinitions.v2
 
       MoveToDelimeter3_Bit1_1II,
       MoveTo01InD_Bit1_1II,
-      MoveToDelimeter4_Bit1_1II,
+      // adding states
       MoveToDelimeter0_Bit1_1II,
       MoveToDelimeter2_Bit1_1II,
 
@@ -107,14 +107,13 @@ namespace MTExtDefinitions.v2
 
     public enum AddStates : uint
     {
-      StartAdding = MultiplyStates.MoveToBlankInB_IV + 1,
-      AddBitC0,
-      AddBitC1,
+      AddBit0 = MultiplyStates.MoveToBlankInB_IV + 1,
+      AddBit1,
     }
 
     public enum CompareStates : uint
     {
-      StartComparing = AddStates.AddBitC1 + 1,
+      StartComparing = AddStates.AddBit1 + 1,
       MoveToStartA,
       BitLoopStart,
       MoveToDelimiter3_bit0,

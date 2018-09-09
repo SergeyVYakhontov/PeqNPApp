@@ -64,7 +64,6 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveToDelimeter2_Bit0_1II,
           (uint)MultiplyStates.MoveToDelimeter3_Bit1_1II,
           (uint)MultiplyStates.MoveTo01InD_Bit1_1II,
-          (uint)MultiplyStates.MoveToDelimeter4_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter0_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter2_Bit1_1II,
           (uint)MultiplyStates.MoveToDelimeter4_III,
@@ -76,9 +75,8 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveToDelimeter1_IV,
           (uint)MultiplyStates.MoveToBlankInB_IV,
 
-          (uint)AddStates.StartAdding,
-          (uint)AddStates.AddBitC0,
-          (uint)AddStates.AddBitC1,
+          (uint)AddStates.AddBit0,
+          (uint)AddStates.AddBit1,
 
           (uint)CompareStates.StartComparing,
           (uint)CompareStates.MoveToStartA,

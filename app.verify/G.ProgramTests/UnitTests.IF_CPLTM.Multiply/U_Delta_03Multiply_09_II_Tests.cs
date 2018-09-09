@@ -71,7 +71,7 @@ namespace UnitTests
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter0_Bit1_1II);
       Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
 
-      Assert.True(tmInstance.TapeSymbol(frameStart3 + 5) == MTExtDefinitions.v2.IF_NDTM.markD0);
+      Assert.True(tmInstance.TapeSymbol(frameStart3 + 5) == MTExtDefinitions.v2.IF_NDTM.markD1);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
@@ -119,9 +119,10 @@ namespace UnitTests
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.MultiplyStates.MoveToDelimeter0_Bit1_1II);
-      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == 1);
 
-      Assert.True(tmInstance.TapeSymbol(frameStart3 + 5) == MTExtDefinitions.v2.IF_NDTM.markD1);
+      Assert.True(tmInstance.TapeSymbol(frameStart3 + 5) == MTExtDefinitions.v2.IF_NDTM.markD0);
+      Assert.True(tmInstance.TapeSymbol(frameStart3 + 6) == 1);
 
       Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
       Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
