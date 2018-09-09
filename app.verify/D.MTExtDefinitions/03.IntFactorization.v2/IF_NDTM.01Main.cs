@@ -76,8 +76,6 @@ namespace MTExtDefinitions.v2
           (uint)MultiplyStates.MoveToDelimeter1_IV,
           (uint)MultiplyStates.MoveToBlankInB_IV,
 
-          (uint)MultiplyStates.MoveToMarkInD_L,
-
           (uint)AddStates.StartAdding,
           (uint)AddStates.AddBitC0,
           (uint)AddStates.AddBitC1,

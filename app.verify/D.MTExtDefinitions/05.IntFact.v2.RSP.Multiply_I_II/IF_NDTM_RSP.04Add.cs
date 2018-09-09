@@ -19,7 +19,7 @@ namespace MTExtDefinitions.v2
     public static IReadOnlyDictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta { get; } =
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
-          // start adding
+       /*   // start adding
           [new StateSymbolPair(
               state: (uint)IF_NDTM.AddStates.StartAdding,
               symbol: IF_NDTM.markD0)] =
@@ -185,7 +185,7 @@ namespace MTExtDefinitions.v2
                     symbol: 1,
                     direction: TMDirection.S
                   )
-              }
+              }*/
         };
 
     #endregion

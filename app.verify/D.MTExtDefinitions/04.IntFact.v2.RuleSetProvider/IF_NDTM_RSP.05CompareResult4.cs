@@ -57,30 +57,6 @@ namespace MTExtDefinitions.v2
               },
         [new StateSymbolPair(
             state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4,
-            symbol: IF_NDTM.markD0)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4,
-                    symbol: IF_NDTM.markD0,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4,
-            symbol: IF_NDTM.markD1)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4,
-                    symbol: IF_NDTM.markD1,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4,
             symbol: IF_NDTM.markF0)] =
             new List<StateSymbolDirectionTriple>
               {

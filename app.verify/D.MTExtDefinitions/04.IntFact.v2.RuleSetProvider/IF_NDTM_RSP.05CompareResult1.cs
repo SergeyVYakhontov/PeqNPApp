@@ -74,7 +74,7 @@ namespace MTExtDefinitions.v2
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.CompareStates.MoveToStartA,
-                    symbol: IF_NDTM.markB0,
+                    symbol: 0,
                     direction: TMDirection.L
                   )
               },
@@ -86,7 +86,7 @@ namespace MTExtDefinitions.v2
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.CompareStates.MoveToStartA,
-                    symbol: IF_NDTM.markB1,
+                    symbol: 1,
                     direction: TMDirection.L
                   )
               },

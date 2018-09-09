@@ -76,30 +76,6 @@ namespace MTExtDefinitions.v2
               },
         [new StateSymbolPair(
             state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-            symbol: IF_NDTM.markB0)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-                    symbol: IF_NDTM.markB0,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-            symbol: IF_NDTM.markB1)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-                    symbol: IF_NDTM.markB1,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
             symbol: IF_NDTM.delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {
@@ -107,30 +83,6 @@ namespace MTExtDefinitions.v2
                   (
                     state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
                     symbol: IF_NDTM.delimiter2,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-            symbol: IF_NDTM.markC0)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-                    symbol: IF_NDTM.markC0,
-                    direction: TMDirection.R
-                  )
-              },
-        [new StateSymbolPair(
-            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-            symbol: IF_NDTM.markC1)] =
-            new List<StateSymbolDirectionTriple>
-              {
-                new StateSymbolDirectionTriple
-                  (
-                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit0,
-                    symbol: IF_NDTM.markC1,
                     direction: TMDirection.R
                   )
               },

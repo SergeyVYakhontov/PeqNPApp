@@ -102,14 +102,12 @@ namespace MTExtDefinitions.v2
       MoveToDelimeter4_IV,
       MoveToDelimeter0_IV,
       MoveToDelimeter1_IV,
-      MoveToBlankInB_IV,
-
-      MoveToMarkInD_L
+      MoveToBlankInB_IV
     }
 
     public enum AddStates : uint
     {
-      StartAdding = MultiplyStates.MoveToMarkInD_L + 1,
+      StartAdding = MultiplyStates.MoveToBlankInB_IV + 1,
       AddBitC0,
       AddBitC1,
     }
