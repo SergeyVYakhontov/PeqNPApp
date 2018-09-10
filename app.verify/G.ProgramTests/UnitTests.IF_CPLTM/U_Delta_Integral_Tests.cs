@@ -119,6 +119,66 @@ namespace UnitTests
       Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
     }
 
+    [Fact]
+    public void T03_Integral_03_MultToCompare_Test()
+    {
+      int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
+      Setup(input.Length);
+
+      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      tm.Setup();
+
+      TMInstance tmInstance = new TMInstance(tm, input);
+      tm.PrepareTapeFwd(input, tmInstance);
+
+      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      determStepsEmulator.SetupConfiguration(1, tm.qStart);
+
+      uint stepsNum = ((uint)frameLength * 304) + 4;
+      determStepsEmulator.DoStepN(stepsNum, indexMap);
+
+      int expectedCellIndex = frameStart2 - 1;
+
+      Assert.True(tmInstance.CellIndex() == expectedCellIndex);
+      Assert.True(tmInstance.State() == (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.StartComparing);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == MTExtDefinitions.v2.IF_NDTM.markB0);
+
+      Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
+      Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
+      Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
+      Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
+    }
+
+    [Fact]
+    public void T04_Integral_03_Accepting_Test()
+    {
+      int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
+      Setup(input.Length);
+
+      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      tm.Setup();
+
+      TMInstance tmInstance = new TMInstance(tm, input);
+      tm.PrepareTapeFwd(input, tmInstance);
+
+      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      determStepsEmulator.SetupConfiguration(1, tm.qStart);
+
+      uint stepsNum = ((uint)frameLength * 336) + 4;
+      determStepsEmulator.DoStepN(stepsNum, indexMap);
+
+      const int expectedCellIndex = 5;
+
+      Assert.True(tmInstance.CellIndex() == expectedCellIndex);
+      Assert.True(tmInstance.State() == MTExtDefinitions.v2.IF_NDTM.acceptingState);
+      Assert.True(tmInstance.TapeSymbol(expectedCellIndex) == OneTapeTuringMachine.blankSymbol);
+
+      Assert.True(tmInstance.TapeSymbol(frameStart1) == MTExtDefinitions.v2.IF_NDTM.delimiter1);
+      Assert.True(tmInstance.TapeSymbol(frameStart2) == MTExtDefinitions.v2.IF_NDTM.delimiter2);
+      Assert.True(tmInstance.TapeSymbol(frameStart3) == MTExtDefinitions.v2.IF_NDTM.delimiter3);
+      Assert.True(tmInstance.TapeSymbol(frameEnd4) == MTExtDefinitions.v2.IF_NDTM.delimiter4);
+    }
+
     #endregion
 
     #region private members

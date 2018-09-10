@@ -22,13 +22,25 @@ namespace MTExtDefinitions.v2
         // start comparing
         [new StateSymbolPair(
             state: (uint)IF_NDTM.CompareStates.StartComparing,
-            symbol: OneTapeTuringMachine.blankSymbol)] =
+            symbol: IF_NDTM.markB0)] =
             new List<StateSymbolDirectionTriple>
               {
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.CompareStates.MoveToStartA,
-                    symbol: OneTapeTuringMachine.blankSymbol,
+                    symbol: 0,
+                    direction: TMDirection.L
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.StartComparing,
+            symbol: IF_NDTM.markB1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToStartA,
+                    symbol: 1,
                     direction: TMDirection.L
                   )
               },

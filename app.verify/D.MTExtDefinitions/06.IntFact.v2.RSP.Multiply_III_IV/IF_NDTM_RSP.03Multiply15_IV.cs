@@ -20,7 +20,7 @@ namespace MTExtDefinitions.v2
       new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>
       {
         [new StateSymbolPair(
-            state: (uint)IF_NDTM.MultiplyStates.MultReady,
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InB_III,
             symbol: IF_NDTM.delimiter2)] =
             new List<StateSymbolDirectionTriple>
               {

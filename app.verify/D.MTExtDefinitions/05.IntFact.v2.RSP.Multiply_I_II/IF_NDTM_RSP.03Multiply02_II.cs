@@ -176,6 +176,18 @@ namespace MTExtDefinitions.v2
                   )
               },
         [new StateSymbolPair(
+            state: (uint)IF_NDTM.MultiplyStates.MoveTo01InD_0II,
+            symbol: IF_NDTM.delimiter4)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter0_0II,
+                    symbol: IF_NDTM.delimiter4,
+                    direction: TMDirection.L
+                  )
+              },
+        [new StateSymbolPair(
             state: (uint)IF_NDTM.MultiplyStates.MoveToDelimeter4_0II,
             symbol: IF_NDTM.delimiter4)] =
             new List<StateSymbolDirectionTriple>

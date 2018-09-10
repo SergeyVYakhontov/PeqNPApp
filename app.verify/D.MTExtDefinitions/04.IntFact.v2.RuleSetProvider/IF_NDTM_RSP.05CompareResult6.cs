@@ -60,7 +60,7 @@ namespace MTExtDefinitions.v2
                 new StateSymbolDirectionTriple
                   (
                     state: (uint)IF_NDTM.CompareStates.MoveToDelimiter3_bit1,
-                    symbol: IF_NDTM.markE0,
+                    symbol: IF_NDTM.markE1,
                     direction: TMDirection.R
                   )
               },

@@ -45,6 +45,8 @@ namespace UnitTests
       tmInstance.SetTapeSymbol(frameStart1 + 2, 1);
       tmInstance.SetTapeSymbol(frameStart1 + 3, MTExtDefinitions.v2.IF_NDTM.markB0);
       tmInstance.SetTapeSymbol(frameStart1 + 4, MTExtDefinitions.v2.IF_NDTM.markB1);
+      tmInstance.SetTapeSymbol(frameStart1 + 5, MTExtDefinitions.v2.IF_NDTM.markB0);
+      tmInstance.SetTapeSymbol(frameStart1 + 6, MTExtDefinitions.v2.IF_NDTM.markB1);
 
       DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(
