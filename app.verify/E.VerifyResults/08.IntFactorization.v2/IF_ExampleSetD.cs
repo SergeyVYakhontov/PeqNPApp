@@ -28,8 +28,48 @@ namespace VerifyResults.v2
         {
           new IF_Example()
           {
-            Name = "E148",
-            Input = new int[] { 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0 }.Reverse().ToArray() // 10 0000
+            Name = "E05",
+            Input = new int[] {1,0,0,0,0,0,0,0,0,0,0}.Reverse().ToArray() // 1024
+          },
+          new IF_Example()
+          {
+            Name = "E06",
+            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0}.Reverse().ToArray() // 40 000
+          },
+          new IF_Example()
+          {
+            Name = "E07",
+            Input = new int[] {1, 0, 0, 1}.Reverse().ToArray() // 9 = 3 * 3
+          },
+          new IF_Example()
+          {
+            Name = "E08",
+            Input = new int[] {1, 1, 0, 0, 1, 0}.Reverse().ToArray() // 50
+          },
+          new IF_Example()
+          {
+            Name = "E09",
+            Input = new int[] {1, 0, 1, 0, 0, 0, 0}.Reverse().ToArray() // 80
+          },
+          new IF_Example()
+          {
+            Name = "E10",
+            Input = new int[] {1, 0, 1, 0, 0, 0, 1}.Reverse().ToArray() // 81
+          },
+          new IF_Example()
+          {
+            Name = "E11",
+            Input = new int[] {1, 1, 1, 0, 0, 0, 0, 1}.Reverse().ToArray() // 225
+          },
+          new IF_Example()
+          {
+            Name = "E12",
+            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0}.Reverse().ToArray() // 10 0000
+          },
+          new IF_Example()
+          {
+            Name = "E13",
+            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0}.Reverse().ToArray() // 40 000
           }
         };
 

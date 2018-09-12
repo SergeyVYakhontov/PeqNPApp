@@ -25,11 +25,6 @@ namespace VerifyResults.v2
           {
             Name = "E01",
             Input = new int[] {1, 0, 0}.Reverse().ToArray() // 4 = 2 * 2
-          },
-          new IF_Example
-          {
-            Name = "E02",
-            Input = new int[] {1, 1, 0}.Reverse().ToArray() // 6 = 3 * 2
           }
         };
 
