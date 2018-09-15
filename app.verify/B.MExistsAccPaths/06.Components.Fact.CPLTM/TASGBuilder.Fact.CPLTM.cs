@@ -20,8 +20,8 @@ namespace ExistsAcceptingPath
     public void Init(MEAPSharedContext MEAPSharedContext)
     {
       G = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("TASG");
-      TapeLBound = 1;
-      TapeRBound = 1;
+      TapeLBound = 0;
+      TapeRBound = 0;
 
       DAGNode s = new DAGNode(nodeId++);
       G.AddNode(s);
@@ -33,15 +33,15 @@ namespace ExistsAcceptingPath
         s = MEAPSharedContext.Input[0],
         qNext = MEAPSharedContext.MNP.qStart,
         sNext = MEAPSharedContext.Input[0],
-        m = TMDirection.S,
+        m = TMDirection.R,
         Shift = 1,
-        kappaTape = 1,
+        kappaTape = 0,
         kappaStep = 0
       };
 
       nodeEnumeration[s.Id] = s;
       compStepToNode[compStep] = s.Id;
-      idToInfoMap[s.Id] = new TASGNodeInfo()
+      idToInfoMap[s.Id] = new TASGNodeInfo
       {
         CompStep = compStep
       };
@@ -283,7 +283,7 @@ namespace ExistsAcceptingPath
         {
           endNodes.Add(fromNode);
 
-          if (meapContext.MEAPSharedContext.MNP.F.Contains((uint)fromCompStep.qNext))
+          if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
           {
             acceptingNodes.Add(fromNode);
           }

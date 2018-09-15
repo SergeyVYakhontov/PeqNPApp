@@ -11,6 +11,7 @@ using System.IO;
 using Ninject;
 using Core;
 using ExistsAcceptingPath;
+using MTExtDefinitions;
 using VerifyResults;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,6 +41,9 @@ namespace IntegerFactExamplesAppCPLTM
         arg => new DeterminePathRunnerFactCPLTM(arg.Inject<DeterminePathRunnerCtorArgs>()));
       Bind<IMExistsAcceptingPath>().ToConstructor<MExistsAcceptingPathFactCPLTM>(
         arg => new MExistsAcceptingPathFactCPLTM(arg.Inject<MExistsAcceptingPathCtorArgs>()));
+
+      Bind<ICPLTMInfo>().ToConstructor<MTExtDefinitions.v2.CPLTMInfo>(
+        arg => new MTExtDefinitions.v2.CPLTMInfo(arg.Inject<int>()));
 
       Bind<IExampleSetProvider>().To<VerifyResults.v2.ExampleSetProvider>().InSingletonScope();
 

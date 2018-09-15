@@ -14,9 +14,8 @@ namespace IntegerFactExamplesAppCPLTM
   public class DebugOptions : IDebugOptions
   {
     public ulong muStart { get => 1; }
-    public bool RunRDA { get => false; }
+    public bool RunRDA { get => true; }
     public bool ComputeCommoditiesExplicitely { get => true; }
-    public uint FactTRS_muUpperBound { get => 300; }
   }
 }
 

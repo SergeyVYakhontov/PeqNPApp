@@ -21,8 +21,9 @@ namespace ExistsAcceptingPath
     public int[] Input { get; set; }
     public TMInstance InitInstance { get; set; }
 
-    public uint MaxMu { get; set; }
     public ITASGBuilder TASGBuilder { get; set; }
+
+    public ICPLTMInfo CPLTMInfo { get; set; }
 
     public ulong DeterminePathRunnerDoneMu { get; set; }
     public CancellationTokenSource CancellationTokenSource { get; set; }

@@ -40,7 +40,9 @@ namespace ExistsAcceptingPath
         return;
       }
 
-      if (meapContext.mu < meapContext.MEAPSharedContext.MaxMu)
+      uint maxMu = meapContext.MEAPSharedContext.CPLTMInfo.PathLength;
+
+      if (meapContext.mu < maxMu)
       {
         return;
       }

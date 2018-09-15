@@ -29,16 +29,24 @@ namespace ExistsAcceptingPath
 
     public void Determine(int[] input, out bool result, out int[] output)
     {
+      int inputLength = input.Length;
+
+      ICPLTMInfo cpltmInfo = configuration.Get<ICPLTMInfo>(
+        new Ninject.Parameters.ConstructorArgument(
+          nameof(inputLength),
+          input.Length));
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
 
-      uint maxMu = debugOptions.FactTRS_muUpperBound;
+      cpltmInfo.ComputeSequences();
+
+      uint maxMu = cpltmInfo.PathLength;
       ulong currentMu = debugOptions.muStart;
 
       MEAPSharedContext MEAPSharedContext = new MEAPSharedContext
       {
         MNP = tMachine,
         Input = input,
-        MaxMu = maxMu
+        CPLTMInfo = cpltmInfo
       };
 
       MEAPSharedContext.InitInstance = new TMInstance(

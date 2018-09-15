@@ -4,6 +4,7 @@
     <Rule Id="IDE0001" Action="None" />
     <Rule Id="IDE0002" Action="None" />
     <Rule Id="IDE0003" Action="None" />
+    <Rule Id="IDE0032" Action="None" />
     <Rule Id="IDE0047" Action="None" />
     <Rule Id="CA1819" Action="None" />
   </Rules>
@@ -13,6 +14,7 @@
     <Rule Id="RCS1032" Action="None" />
     <Rule Id="RCS1057" Action="None" />
     <Rule Id="RCS1080" Action="None" />
+    <Rule Id="RCS1085" Action="None" />
     <Rule Id="RCS1124" Action="None" />
   </Rules>
   <Rules AnalyzerId="RefactoringEssentials" RuleNamespace="RefactoringEssentials">
