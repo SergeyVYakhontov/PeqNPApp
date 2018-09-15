@@ -89,6 +89,7 @@ namespace MTExtDefinitions.v2
           (uint)CompareStates.MoveToDelimiter4,
           (uint)CompareStates.MoveToDelimiter0,
           (uint)CompareStates.SkipE,
+          (uint)CompareStates.MoveToDelimiter4_accept,
 
           acceptingState,
           rejectingState

@@ -40,8 +40,12 @@ namespace ExistsAcceptingPath
         return;
       }
 
-      tasgBuilder.CreateTArbSeqCFG(states);
+      if (meapContext.mu < meapContext.MEAPSharedContext.MaxMu)
+      {
+        return;
+      }
 
+      tasgBuilder.CreateTArbSeqCFG(states);
       CopyResultFromTapeSegContext();
 
       if (meapContext.TArbSeqCFG.IsTrivial())

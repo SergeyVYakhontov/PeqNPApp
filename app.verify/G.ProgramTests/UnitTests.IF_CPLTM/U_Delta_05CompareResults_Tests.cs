@@ -418,10 +418,10 @@ namespace UnitTests
         1,
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.SkipE);
 
-      uint stepsNum = (uint)frameLength - 1;
+      uint stepsNum = ((uint)frameLength * 4) + 4;
       determStepsEmulator.DoStepN(stepsNum);
 
-      int expectedCellIndex = frameLength;
+      int expectedCellIndex = frameEnd4 + 1;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == MTExtDefinitions.v2.IF_NDTM.acceptingState);

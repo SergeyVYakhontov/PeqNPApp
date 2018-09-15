@@ -29,10 +29,16 @@ namespace ExistsAcceptingPath
 
     public void Determine(int[] input, out bool result, out int[] output)
     {
+      IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
+
+      uint maxMu = debugOptions.FactTRS_muUpperBound;
+      ulong currentMu = debugOptions.muStart;
+
       MEAPSharedContext MEAPSharedContext = new MEAPSharedContext
       {
         MNP = tMachine,
-        Input = input
+        Input = input,
+        MaxMu = maxMu
       };
 
       MEAPSharedContext.InitInstance = new TMInstance(
@@ -49,14 +55,11 @@ namespace ExistsAcceptingPath
       ITPLOptions tplOptions = configuration.Get<ITPLOptions>();
       uint determinePathRunnersCount = tplOptions.DeterminePathRunnersCount;
 
-      IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
-      ulong currentMu = debugOptions.muStart;
-
       TASGBuilderFactCPLTM tasgBuilder = new TASGBuilderFactCPLTM();
       MEAPSharedContext.TASGBuilder = tasgBuilder;
       tasgBuilder.Init(MEAPSharedContext);
 
-      while (currentMu <= debugOptions.FactTRS_muUpperBound)
+      while (currentMu <= maxMu)
       {
         List<DeterminePathRunner> determinePathRunners = new List<DeterminePathRunner>();
 

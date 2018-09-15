@@ -123,7 +123,8 @@ namespace MTExtDefinitions.v2
       SkipF_bit1,
       MoveToDelimiter4,
       MoveToDelimiter0,
-      SkipE
+      SkipE,
+      MoveToDelimiter4_accept
     }
 
     #endregion

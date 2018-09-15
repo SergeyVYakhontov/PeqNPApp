@@ -164,10 +164,10 @@ namespace UnitTests
       DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
-      uint stepsNum = ((uint)frameLength * 336) + 4;
+      uint stepsNum = ((uint)frameLength * 340) + 4;
       determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap03);
 
-      const int expectedCellIndex = 5;
+      int expectedCellIndex = frameEnd4 + 1;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == MTExtDefinitions.v2.IF_NDTM.acceptingState);
@@ -224,10 +224,10 @@ namespace UnitTests
       DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
-      uint stepsNum = ((uint)frameLength * 336) + 4;
+      uint stepsNum = ((uint)frameLength * 340) + 4;
       determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap06);
 
-      const int expectedCellIndex = 5;
+      int expectedCellIndex = frameEnd4 + 1;
 
       Assert.True(tmInstance.CellIndex() == expectedCellIndex);
       Assert.True(tmInstance.State() == MTExtDefinitions.v2.IF_NDTM.acceptingState);

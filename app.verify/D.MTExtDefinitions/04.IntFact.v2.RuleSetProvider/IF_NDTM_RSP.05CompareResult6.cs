@@ -71,8 +71,112 @@ namespace MTExtDefinitions.v2
               {
                 new StateSymbolDirectionTriple
                   (
-                    state: IF_NDTM.acceptingState,
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
                     symbol: OneTapeTuringMachine.blankSymbol,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: OneTapeTuringMachine.blankSymbol)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: OneTapeTuringMachine.blankSymbol,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept, symbol: 0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: 0,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept, symbol: 1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: 1,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: IF_NDTM.delimiter1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: IF_NDTM.delimiter1,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: IF_NDTM.delimiter2)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: IF_NDTM.delimiter2,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: IF_NDTM.delimiter3)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: IF_NDTM.delimiter3,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: IF_NDTM.markF0)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: IF_NDTM.markF0,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: IF_NDTM.markF1)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+                    symbol: IF_NDTM.markF1,
+                    direction: TMDirection.R
+                  )
+              },
+        [new StateSymbolPair(
+            state: (uint)IF_NDTM.CompareStates.MoveToDelimiter4_accept,
+            symbol: IF_NDTM.delimiter4)] =
+            new List<StateSymbolDirectionTriple>
+              {
+                new StateSymbolDirectionTriple
+                  (
+                    state: (uint)IF_NDTM.acceptingState,
+                    symbol: IF_NDTM.delimiter4,
                     direction: TMDirection.R
                   )
               }
