@@ -124,7 +124,7 @@ namespace ExistsAcceptingPath
       DAG.BFS_VLevels(
         meapContext.TArbSeqCFG,
         GraphDirection.Forward,
-        meapContext.NodeVLevels,
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels,
         DAG.Level0,
         ProcessNode,
         (_) => true);

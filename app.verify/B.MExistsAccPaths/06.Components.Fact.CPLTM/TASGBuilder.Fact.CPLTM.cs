@@ -16,8 +16,9 @@ namespace ExistsAcceptingPath
     #region public members
 
     public MEAPContext meapContext { get; set; }
+    public MEAPSharedContext MEAPSharedContext { get; set; }
 
-    public void Init(MEAPSharedContext MEAPSharedContext)
+    public void Init()
     {
       G = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("TASG");
       TapeLBound = 0;
@@ -26,6 +27,9 @@ namespace ExistsAcceptingPath
       DAGNode s = new DAGNode(nodeId++);
       G.AddNode(s);
       G.SetSourceNode(s);
+
+      MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(s.Id, 0);
+      processedMu.Add(0);
 
       ComputationStep compStep = new ComputationStep
       {
@@ -54,7 +58,7 @@ namespace ExistsAcceptingPath
 
     public override void CreateTArbitrarySeqGraph()
     {
-      ulong initMu = (processedMu.Any() ? processedMu.Last() : 0);
+      ulong initMu = processedMu.Last();
       log.Info("Building TArbitrarySeqGraph");
 
       log.Info("Traverse MNP tree");
@@ -242,6 +246,7 @@ namespace ExistsAcceptingPath
       {
         toNode = new DAGNode(nodeId++);
         G.AddNode(toNode);
+        MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(toNode.Id, (long)processedMu.Last());
 
         newNodeEnumeration[toNode.Id] = toNode;
         newCompStepToNode[toCompStep] = toNode.Id;
@@ -258,6 +263,7 @@ namespace ExistsAcceptingPath
 
       DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
       G.AddEdge(e);
+      MEAPSharedContext.NodeLevelInfo.AddEdgeAtLevel(e.Id, (long)processedMu.Last());
 
       propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
     }

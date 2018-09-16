@@ -32,8 +32,10 @@ namespace Core
 
         foreach (long vNodeId in currentLevelNodes.Value)
         {
-          DAGNode vNode = nodeEnumeration[vNodeId];
-          nodeAction(vNode);
+          if(nodeEnumeration.TryGetValue(vNodeId, out DAGNode vNode))
+          {
+            nodeAction(vNode);
+          }
         }
 
         levelAction(currentLevelNodes.Key);

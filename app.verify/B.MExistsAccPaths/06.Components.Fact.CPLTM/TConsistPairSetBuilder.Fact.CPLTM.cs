@@ -208,7 +208,11 @@ namespace ExistsAcceptingPath
       long currentLevel)
     {
       ReachDefAnalysisSlotsMThreads reachDefAnalysis = new ReachDefAnalysisSlotsMThreads("RDA", rdaContext);
-      reachDefAnalysis.Run(varToVarNodes, meapContext.NodeVLevels, currentLevel);
+
+      reachDefAnalysis.Run(
+        varToVarNodes,
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels,
+        currentLevel);
 
       return reachDefAnalysis.DefUsePairSet;
     }

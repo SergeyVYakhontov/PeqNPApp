@@ -51,6 +51,10 @@ namespace VerifyResults.v2
     // Factoring Integers
     public ExampleSet IF_ExampleSetA
       => new IF_ExampleSetA { Name = "08_IF_ES1" };
+    public ExampleSet IF_ExampleSetB
+      => new IF_ExampleSetB { Name = "08_IF_ES2" };
+    public ExampleSet IF_ExampleSetC
+      => new IF_ExampleSetC { Name = "08_IF_ES3" };
 
     // Longest Common Subsequence
     public ExampleSet LCS_ExampleSet

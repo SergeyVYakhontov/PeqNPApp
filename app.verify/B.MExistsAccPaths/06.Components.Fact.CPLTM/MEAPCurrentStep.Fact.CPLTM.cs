@@ -55,7 +55,6 @@ namespace ExistsAcceptingPath
         return;
       }
 
-      ComputeNodeVLevels(meapContext.TArbSeqCFG);
       ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
 
       if (commonOptions.CheckDataStructures)
@@ -151,7 +150,7 @@ namespace ExistsAcceptingPath
       DAG.BFS_VLevels(
         meapContext.TArbSeqCFG,
         GraphDirection.Forward,
-        meapContext.NodeVLevels,
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels,
         DAG.Level0,
         ProcessNode,
         (_) => true);

@@ -42,6 +42,8 @@ namespace VerifyResults
 
     // Factoring Integers
     ExampleSet IF_ExampleSetA { get; }
+    ExampleSet IF_ExampleSetB { get; }
+    ExampleSet IF_ExampleSetC { get; }
 
     // Longest Common Subsequence
     ExampleSet LCS_ExampleSet { get; }

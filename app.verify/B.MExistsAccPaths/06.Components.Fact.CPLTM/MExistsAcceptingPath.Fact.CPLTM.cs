@@ -62,12 +62,17 @@ namespace ExistsAcceptingPath
       MEAPSharedContext.CancellationTokenSource = new CancellationTokenSource();
       MEAPSharedContext.CancellationToken = MEAPSharedContext.CancellationTokenSource.Token;
 
-      ITPLOptions tplOptions = configuration.Get<ITPLOptions>();
-      uint determinePathRunnersCount = tplOptions.DeterminePathRunnersCount;
+      MEAPSharedContext.NodeLevelInfo = new NodeLevelInfo();
 
       TASGBuilderFactCPLTM tasgBuilder = new TASGBuilderFactCPLTM();
+
       MEAPSharedContext.TASGBuilder = tasgBuilder;
-      tasgBuilder.Init(MEAPSharedContext);
+      tasgBuilder.MEAPSharedContext = MEAPSharedContext;
+
+      tasgBuilder.Init();
+
+      ITPLOptions tplOptions = configuration.Get<ITPLOptions>();
+      uint determinePathRunnersCount = tplOptions.DeterminePathRunnersCount;
 
       while (currentMu <= maxMu)
       {
