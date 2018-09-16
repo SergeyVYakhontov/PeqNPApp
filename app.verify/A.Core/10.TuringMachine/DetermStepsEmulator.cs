@@ -33,24 +33,47 @@ namespace Core
 
     #region public members
 
-    public void DoStepN(uint n)
+    public void DoStepsN(uint n)
     {
       IntSegment segment1n = new IntSegment(1, (int)n);
       segment1n.ForEach(DoStep1);
     }
 
-    public void DoStepN(uint n, IReadOnlyDictionary<int, byte> indexMap)
+    public void DoStepsN(uint n, IReadOnlyDictionary<int, byte> indexMap)
     {
-      for (int i = 1; i <= n; i++)
+      for (int i = 0; i <= (n - 1); i++)
       {
-        if (indexMap.ContainsKey(i - 1))
+        if (indexMap.ContainsKey(i))
         {
-          DoStep1(indexMap[i - 1]);
+          DoStep1(indexMap[i]);
         }
         else
         {
           DoStep1(0);
         }
+      }
+    }
+
+    public void DoStepsWhile(
+      IReadOnlyDictionary<int, byte> indexMap,
+      Func<bool> condition,
+      Action<int> action)
+    {
+      int stepNumber = 0;
+
+      while(condition())
+      {
+        if (indexMap.ContainsKey(stepNumber))
+        {
+          DoStep1(indexMap[stepNumber]);
+        }
+        else
+        {
+          DoStep1(0);
+        }
+
+        action(stepNumber);
+        stepNumber++;
       }
     }
 

@@ -31,14 +31,12 @@ namespace MTExtDefinitions.v2
       Setup();
 
       ComputeKTapeSequence();
-      VerifyKTapeSequence();
-
       ComputeKTapeLRSubseq();
     }
 
     public uint PathLength => (uint)kTapeSequence.Count;
 
-    public List<int> KTapeLRSubseq() => kTapeLRSubseq;
+    public List<long> KTapeLRSubseq() => kTapeLRSubseq;
 
     #endregion
 
@@ -55,14 +53,18 @@ namespace MTExtDefinitions.v2
 
     private IF_NDTM tm;
     private TMInstance tmInstance;
-    private readonly Dictionary<int, byte> indexMap = new Dictionary<int, byte>();
 
-    private readonly List<int> kTapeSequence = new List<int>();
-    private readonly List<int> kTapeLRSubseq = new List<int>();
+    private readonly Dictionary<int, byte> indexMap = new Dictionary<int, byte>();
+    private DetermStepsEmulator determStepsEmulator;
+
+    private readonly List<long> kTapeSequence = new List<long>();
+    private readonly List<long> kTapeLRSubseq = new List<long>();
+    private readonly SortedDictionary<int, long> cellIndexes = new SortedDictionary<int, long>();
 
     private void Setup()
     {
       input = new int[inputLength];
+      input[0] = 1;
 
       frameLength = IF_NDTM.FrameLength(inputLength);
       frameStart1 = IF_NDTM.FrameStart1(inputLength);
@@ -76,34 +78,80 @@ namespace MTExtDefinitions.v2
       tmInstance = new TMInstance(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
-      determStepsEmulator.SetupConfiguration(0, IF_NDTM.qStartState);
+      determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      determStepsEmulator.SetupConfiguration(1, IF_NDTM.qStartState);
     }
 
-    public void ComputeKTapeSequence()
+    private void ComputeKTapeSequence()
     {
-      for (int i = (frameStart1 + 1); i <= (frameStart2 - 1); i++)
+      indexMap[frameStart1] = 1;
+
+      for (int i = (frameStart1 + 1); i <= (frameStart2 - 3); i++)
       {
         indexMap[i] = 0;
       }
 
-      for (int i = (frameStart2 + 1); i <= (frameStart3 - 1); i++)
+      indexMap[frameStart2 - 2] = 2;
+      indexMap[frameStart2 - 1] = 0;
+
+      indexMap[frameStart2] = 1;
+
+      for (int i = (frameStart2 + 1) ; i <= (frameStart3 - 3); i++)
       {
         indexMap[i] = 0;
       }
 
-      for (int i = 0; i < 500; i++)
+      indexMap[frameStart3 - 2] = 2;
+      indexMap[frameStart3 - 1] = 0;
+
+      determStepsEmulator.DoStepsWhile(
+        indexMap,
+        () => tmInstance.State() != IF_NDTM.acceptingState,
+        (int stepNumber) =>
+        {
+          kTapeSequence.Add(stepNumber);
+          cellIndexes[stepNumber] = tmInstance.CellIndex();
+        });
+    }
+
+    private void ComputeKTapeLRSubseq()
+    {
+      const int leftmostCellIndex = 0;
+      int rightmostCellIndex = frameEnd4;
+
+      bool L = false;
+      bool R = true;
+
+      long currCellIndex = 0;
+      long prevCellIndex = 0;
+
+      foreach (KeyValuePair<int, long> stepCellPair in cellIndexes)
       {
-        kTapeSequence.Add(i);
+        currCellIndex = stepCellPair.Value;
+
+        if (R && (currCellIndex == (prevCellIndex - 1)))
+        {
+          Ensure.That(prevCellIndex).Is(rightmostCellIndex);
+
+          kTapeLRSubseq.Add(stepCellPair.Key + 1);
+
+          L = true;
+          R = false;
+        }
+        else if (L && (currCellIndex == (prevCellIndex + 1)))
+        {
+          Ensure.That(prevCellIndex).Is(leftmostCellIndex);
+
+          kTapeLRSubseq.Add(stepCellPair.Key + 1);
+
+          L = false;
+          R = true;
+        }
+
+        prevCellIndex = currCellIndex;
       }
-    }
 
-    public void ComputeKTapeLRSubseq()
-    {
-    }
-
-    private void VerifyKTapeSequence()
-    {
+      kTapeLRSubseq.Add(PathLength);
     }
 
     #endregion

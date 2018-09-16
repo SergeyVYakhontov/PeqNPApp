@@ -80,10 +80,9 @@ namespace ExistsAcceptingPath
       log.Info("Remove unused prop syms");
       propSymbolsKeeper.RemoveUnusedSymbols(endNodeIds);
 
-      CreateSinkNode();
       G.CopyIdToNodeInfoMap(idToInfoMap);
-
       meapContext.TArbitrarySeqGraph = G;
+
       ulong newMu = processedMu.Last();
 
       log.InfoFormat(
@@ -104,15 +103,16 @@ namespace ExistsAcceptingPath
     {
       log.Info("Building TArbSeqCFG");
 
+      log.Info("Create sink node");
+      CreateSinkNode();
+
+      log.Info("Connect bottomNodes with sink node");
+      ConnectBottomNodesWithSinkNode(G, states);
+
       log.Info("Create TArbSeqGraph copy");
       TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("CFG");
       DAG.CreateCopy(G, cfg);
       cfg.CopyIdToNodeInfoMap(idToInfoMap);
-
-      log.Info("Create sink node");
-      CreateSinkNode();
-      log.Info("Connect bottomNodes with sink node");
-      ConnectBottomNodesWithSinkNode(cfg, states);
 
       log.Info("Cut chains");
       meapContext.TArbSeqCFG = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("CFG");

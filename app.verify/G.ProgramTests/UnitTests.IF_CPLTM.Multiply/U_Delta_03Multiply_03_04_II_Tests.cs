@@ -63,7 +63,7 @@ namespace UnitTests
       tmInstance.SetTapeSymbol(frameStart3 + 5, 0);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       const int expectedCellIndex = 1;
 
@@ -111,7 +111,7 @@ namespace UnitTests
       tmInstance.SetTapeSymbol(frameStart3 + 5, 0);
 
       uint stepsNum = ((uint)frameLength * 2) + 2;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameStart2 + 1;
 

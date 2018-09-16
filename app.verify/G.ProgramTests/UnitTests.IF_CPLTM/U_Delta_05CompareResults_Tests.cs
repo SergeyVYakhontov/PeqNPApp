@@ -54,7 +54,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.StartComparing);
 
       uint stepsNum = ((uint)frameLength * 2) + 2;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       const int expectedCellIndex = 1;
 
@@ -99,7 +99,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.BitLoopStart);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 1;
 
@@ -144,7 +144,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.BitLoopStart);
 
       uint stepsNum = (uint)frameLength * 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 3;
 
@@ -189,7 +189,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.BitLoopStart);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 1;
 
@@ -234,7 +234,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.BitLoopStart);
 
       uint stepsNum = (uint)frameLength * 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 3;
 
@@ -284,7 +284,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.SkipE);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 1;
 
@@ -335,7 +335,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.SkipE);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 - 1;
 
@@ -381,7 +381,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.MoveToDelimiter0);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       const int expectedCellIndex = 1;
 
@@ -419,7 +419,7 @@ namespace UnitTests
         (uint)MTExtDefinitions.v2.IF_NDTM.CompareStates.SkipE);
 
       uint stepsNum = ((uint)frameLength * 4) + 4;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = frameEnd4 + 1;
 

@@ -58,7 +58,7 @@ namespace UnitTests
       };
 
       uint stepsNum = (uint)frameLength + 1;
-      determStepsEmulator.DoStepN(stepsNum, indexMap);
+      determStepsEmulator.DoStepsN(stepsNum, indexMap);
 
       int expectedCellIndex = frameStart2 + 1;
 

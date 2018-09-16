@@ -42,6 +42,8 @@ namespace ExistsAcceptingPath
       uint maxMu = cpltmInfo.PathLength;
       ulong currentMu = debugOptions.muStart;
 
+      log.InfoFormat($"path length: {cpltmInfo.PathLength}");
+
       MEAPSharedContext MEAPSharedContext = new MEAPSharedContext
       {
         MNP = tMachine,
@@ -120,6 +122,8 @@ namespace ExistsAcceptingPath
     #region private members
 
     private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private readonly OneTapeTuringMachine tMachine;
 

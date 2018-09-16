@@ -47,7 +47,7 @@ namespace UnitTests
         MTExtDefinitions.v2.IF_NDTM.qStartState);
 
       uint stepsNum = (uint)frameLength + 1;
-      determStepsEmulator.DoStepN(stepsNum);
+      determStepsEmulator.DoStepsN(stepsNum);
 
       int expectedCellIndex = (int)stepsNum + 1;
 

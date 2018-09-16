@@ -45,7 +45,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 52) + 4;
-      determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap03);
+      determStepsEmulator.DoStepsN(stepsNum, acceptingIndexMap03);
 
       int expectedCellIndex = frameEnd4 - 1;
 
@@ -75,7 +75,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 68) + 4;
-      determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap03);
+      determStepsEmulator.DoStepsN(stepsNum, acceptingIndexMap03);
 
       int expectedCellIndex = frameStart1 + 3;
 
@@ -105,7 +105,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 126) + 3;
-      determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap03);
+      determStepsEmulator.DoStepsN(stepsNum, acceptingIndexMap03);
 
       int expectedCellIndex = frameStart1 + 4;
 
@@ -135,7 +135,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 304) + 4;
-      determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap03);
+      determStepsEmulator.DoStepsN(stepsNum, acceptingIndexMap03);
 
       int expectedCellIndex = frameStart2 - 1;
 
@@ -165,7 +165,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 340) + 4;
-      determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap03);
+      determStepsEmulator.DoStepsN(stepsNum, acceptingIndexMap03);
 
       int expectedCellIndex = frameEnd4 + 1;
 
@@ -195,7 +195,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 320) + 4;
-      determStepsEmulator.DoStepN(stepsNum, rejectingIndexMap03);
+      determStepsEmulator.DoStepsN(stepsNum, rejectingIndexMap03);
 
       int expectedCellIndex = frameStart3 + 3;
 
@@ -225,7 +225,7 @@ namespace UnitTests
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 340) + 4;
-      determStepsEmulator.DoStepN(stepsNum, acceptingIndexMap06);
+      determStepsEmulator.DoStepsN(stepsNum, acceptingIndexMap06);
 
       int expectedCellIndex = frameEnd4 + 1;
 

@@ -17,7 +17,7 @@ namespace Core
 
     uint PathLength { get; }
 
-    List<int> KTapeLRSubseq();
+    List<long> KTapeLRSubseq();
   }
 }
 
