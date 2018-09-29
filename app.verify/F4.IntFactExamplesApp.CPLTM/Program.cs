@@ -61,7 +61,7 @@ namespace IntegerFactExamplesAppCPLTM
       configuration.Load<AppNinjectModule>();
 
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
-      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
+      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetC);
     }
 
     #endregion

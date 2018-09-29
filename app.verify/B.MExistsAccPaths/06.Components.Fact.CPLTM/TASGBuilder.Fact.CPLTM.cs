@@ -84,9 +84,7 @@ namespace ExistsAcceptingPath
       log.Info("Remove unused prop syms");
       propSymbolsKeeper.RemoveUnusedSymbols(endNodeIds);
 
-      G.CopyIdToNodeInfoMap(idToInfoMap);
       meapContext.TArbitrarySeqGraph = G;
-
       ulong newMu = processedMu.Last();
 
       log.InfoFormat(
@@ -263,7 +261,6 @@ namespace ExistsAcceptingPath
 
       DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
       G.AddEdge(e);
-      MEAPSharedContext.NodeLevelInfo.AddEdgeAtLevel(e.Id, (long)processedMu.Last());
 
       propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
     }
@@ -337,9 +334,9 @@ namespace ExistsAcceptingPath
 
       foreach (long uNodeId in endNodeIds)
       {
-        ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
+        ComputationStep compStep = idToInfoMap[uNodeId].CompStep;
 
-        if (states.Contains((uint)compStep.qNext))
+        if (states.Contains(compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];
           DAGEdge e = new DAGEdge(edgeId++, v, cfg.t);
