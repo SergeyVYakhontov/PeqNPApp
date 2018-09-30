@@ -20,6 +20,7 @@ namespace ExistsAcceptingPath
 
     public NestedCommsGraphBuilderFactCPLTM(MEAPContext meapContext)
     {
+      this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
       this.meapContext = meapContext;
     }
 
@@ -31,42 +32,18 @@ namespace ExistsAcceptingPath
 
     public void Setup()
     {
-      meapContext.NestedCommsGraph =
-        new TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>(
-          "CommsGraph");
+      meapContext.muToNestedCommsGraphPair = new SortedDictionary<long, FwdBkwdNCommsGraphPair>();
     }
 
     public void Run()
     {
-      log.Info("Creating commodities graph");
+      log.Info("Creating nested commodities graphs");
 
-      meapContext.NestedCommsGraph =
-        new TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>(
-          "CommsGraph");
-
-      DAGNode sNode = new DAGNode(nodeId++);
-      DAGNode tNode = new DAGNode(nodeId++);
-
-      meapContext.NestedCommsGraph.AddNode(sNode);
-      meapContext.NestedCommsGraph.AddNode(tNode);
-      meapContext.NestedCommsGraph.SetSourceNode(sNode);
-      meapContext.NestedCommsGraph.SetSinkNode(tNode);
-
-      CreateNodes();
-      ConnectSNodeCommodities();
-
-      ConnectOrdinaryCommodities();
+      FilloutNodeToCommoditiesMap();
     }
 
     public void Trace()
     {
-      log.DebugFormat(
-        "CommsGraph total nodes = {0}",
-        meapContext.NestedCommsGraph.Nodes.Count);
-
-      log.DebugFormat(
-        "CommsGraph total edges = {0}",
-        meapContext.NestedCommsGraph.Edges.Count);
     }
 
     #endregion
@@ -77,57 +54,35 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+    private readonly ICPLTMInfo CPLTMInfo;
     private readonly MEAPContext meapContext;
-    private long nodeId;
 
-    private readonly SortedDictionary<long, DAGNode> commToNodeMap =
-      new SortedDictionary<long, DAGNode>();
-    private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap =
+    private readonly SortedDictionary<long, LinkedList<long>> sNodeToCommoditiesMap =
+      new SortedDictionary<long, LinkedList<long>>();
+    private readonly SortedDictionary<long, LinkedList<long>> tNodeToCommoditiesMap =
       new SortedDictionary<long, LinkedList<long>>();
 
-    private readonly SortedDictionary<long, LinkedList<long>> varToCommoditiesMap =
-      new SortedDictionary<long, LinkedList<long>>();
-
-    private void CreateNodes()
+    private void FilloutNodeToCommoditiesMap()
     {
-      foreach (KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
+      foreach(KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
       {
         long commId = idCommPair.Key;
-        Commodity comm = idCommPair.Value;
+        Commodity commodity = idCommPair.Value;
+
+        LinkedList<long> commsAtSNode = AppHelper.TakeValueByKey(
+          sNodeToCommoditiesMap,
+          commodity.sNodeId,
+          () => new LinkedList<long>());
+
+        commsAtSNode.AddLast(commId);
+
+        LinkedList<long> commsAtTNode = AppHelper.TakeValueByKey(
+          tNodeToCommoditiesMap,
+          commodity.tNodeId,
+          () => new LinkedList<long>());
+
+        commsAtTNode.AddLast(commId);
       }
-    }
-
-    private void ConnectSNodeCommodities()
-    {
-      long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
-
-      foreach (KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
-      {
-        long commId = idCommPair.Key;
-        Commodity comm = idCommPair.Value;
-        long commVar = comm.Variable;
-      }
-    }
-
-    private bool ProcessNode(DAGNode node)
-    {
-      long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
-
-      return true;
-    }
-
-    private void ConnectOrdinaryCommodities()
-    {
-      long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
-      long tNodeId = meapContext.TArbSeqCFG.GetSinkNodeId();
-
-      DAG.BFS_VLevels(
-        meapContext.TArbSeqCFG,
-        GraphDirection.Forward,
-        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels,
-        DAG.Level0,
-        ProcessNode,
-        (_) => true);
     }
 
     #endregion

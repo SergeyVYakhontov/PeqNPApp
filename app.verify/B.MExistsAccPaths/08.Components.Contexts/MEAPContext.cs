@@ -58,16 +58,13 @@ namespace ExistsAcceptingPath
     public SortedSet<long> AcceptingNodes { get; set; }
     public SortedSet<long> UnusedNodes { get; set; }
 
-    public TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> NestedCommsGraph { get; set; }
+    public SortedDictionary<long, FwdBkwdNCommsGraphPair> muToNestedCommsGraphPair { get; set; }
 
     public MEAPSharedContext MEAPSharedContext { get; set; }
 
-    public bool InCancelationState()
-    {
-      return
-        ((MEAPSharedContext.DeterminePathRunnerDoneMu < mu) &&
-          MEAPSharedContext.CancellationToken.IsCancellationRequested);
-    }
+    public bool InCancelationState() =>
+      MEAPSharedContext.DeterminePathRunnerDoneMu < mu &&
+      MEAPSharedContext.CancellationToken.IsCancellationRequested;
 
     #endregion
   }
