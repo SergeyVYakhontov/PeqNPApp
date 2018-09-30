@@ -75,7 +75,6 @@ namespace ExistsAcceptingPath
         new NestedCommsGraphBuilderFactCPLTM(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
-      nestedCommsGraphBuilder.Trace();
 
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();

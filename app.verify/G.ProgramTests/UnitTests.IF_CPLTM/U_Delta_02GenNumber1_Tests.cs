@@ -48,13 +48,13 @@ namespace UnitTests
 
       Dictionary<int, byte> indexMap = new Dictionary<int, byte>
       {
-        [0] = 0,
-        [1] = 1,
-        [2] = 0,
-        [3] = 1,
-        [4] = 2,
-        [5] = 0,
-        [6] = 0
+        [1] = 0,
+        [2] = 1,
+        [3] = 0,
+        [4] = 1,
+        [5] = 2,
+        [6] = 0,
+        [7] = 0
       };
 
       uint stepsNum = (uint)frameLength + 1;

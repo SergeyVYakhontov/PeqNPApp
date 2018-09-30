@@ -246,43 +246,43 @@ namespace UnitTests
     private static readonly IReadOnlyDictionary<int, byte> acceptingIndexMap03 =
       new Dictionary<int, byte>
       {
-        [6] = 0,
-        [7] = 1,
-        [8] = 2,
-
-        [11] = 0,
+        [7] = 0,
+        [8] = 1,
+        [9] = 2,
 
         [12] = 0,
-        [13] = 1,
-        [14] = 2
+
+        [13] = 0,
+        [14] = 1,
+        [15] = 2
       };
 
     private static readonly IReadOnlyDictionary<int, byte> rejectingIndexMap03 =
       new Dictionary<int, byte>
       {
-        [6] = 1,
         [7] = 1,
-        [8] = 2,
-
-        [11] = 0,
+        [8] = 1,
+        [9] = 2,
 
         [12] = 0,
-        [13] = 1,
-        [14] = 2
+
+        [13] = 0,
+        [14] = 1,
+        [15] = 2
       };
 
     private static readonly IReadOnlyDictionary<int, byte> acceptingIndexMap06 =
       new Dictionary<int, byte>
       {
-        [6] = 1,
         [7] = 1,
-        [8] = 2,
-
-        [11] = 0,
+        [8] = 1,
+        [9] = 2,
 
         [12] = 0,
-        [13] = 1,
-        [14] = 2
+
+        [13] = 0,
+        [14] = 1,
+        [15] = 2
       };
 
     #endregion

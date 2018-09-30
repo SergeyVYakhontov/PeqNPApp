@@ -28,8 +28,6 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public string Name { get; }
-
     public void Setup()
     {
       meapContext.muToNestedCommsGraphPair = new SortedDictionary<long, FwdBkwdNCommsGraphPair>();
@@ -40,10 +38,14 @@ namespace ExistsAcceptingPath
       log.Info("Creating nested commodities graphs");
 
       FilloutNodeToCommoditiesMap();
-    }
 
-    public void Trace()
-    {
+      foreach(long kStep in CPLTMInfo.KTapeLRSubseq())
+      {
+        FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair = AppHelper.TakeValueByKey(
+          meapContext.muToNestedCommsGraphPair,
+          kStep,
+          () => new FwdBkwdNCommsGraphPair());
+      }
     }
 
     #endregion

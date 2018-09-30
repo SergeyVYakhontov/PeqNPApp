@@ -41,7 +41,7 @@ namespace Core
 
     public void DoStepsN(uint n, IReadOnlyDictionary<int, byte> indexMap)
     {
-      for (int i = 0; i <= (n - 1); i++)
+      for (int i = 1; i <= n; i++)
       {
         if (indexMap.ContainsKey(i))
         {
@@ -59,10 +59,12 @@ namespace Core
       Func<bool> condition,
       Action<int> action)
     {
-      int stepNumber = 0;
+      int stepNumber = 1;
 
       while(condition())
       {
+        action(stepNumber);
+
         if (indexMap.ContainsKey(stepNumber))
         {
           DoStep1(indexMap[stepNumber]);
@@ -72,7 +74,6 @@ namespace Core
           DoStep1(0);
         }
 
-        action(stepNumber);
         stepNumber++;
       }
     }

@@ -84,25 +84,25 @@ namespace MTExtDefinitions.v2
 
     private void ComputeKTapeSequence()
     {
-      indexMap[frameStart1] = 1;
+      indexMap[frameStart1 + 1] = 1;
 
-      for (int i = (frameStart1 + 1); i <= (frameStart2 - 3); i++)
+      for (int i = (frameStart1 + 2); i <= (frameStart2 - 2); i++)
       {
         indexMap[i] = 0;
       }
 
-      indexMap[frameStart2 - 2] = 2;
-      indexMap[frameStart2 - 1] = 0;
+      indexMap[frameStart2 - 1] = 2;
+      indexMap[frameStart2] = 0;
 
-      indexMap[frameStart2] = 1;
+      indexMap[frameStart2 + 1] = 1;
 
-      for (int i = (frameStart2 + 1) ; i <= (frameStart3 - 3); i++)
+      for (int i = (frameStart2 + 2) ; i <= (frameStart3 - 2); i++)
       {
         indexMap[i] = 0;
       }
 
-      indexMap[frameStart3 - 2] = 2;
-      indexMap[frameStart3 - 1] = 0;
+      indexMap[frameStart3 - 1] = 2;
+      indexMap[frameStart3] = 0;
 
       determStepsEmulator.DoStepsWhile(
         indexMap,
