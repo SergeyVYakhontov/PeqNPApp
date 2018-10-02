@@ -35,8 +35,8 @@ namespace MTExtDefinitions.v2
     }
 
     public uint PathLength => (uint)kTapeSequence.Count;
-
     public List<long> KTapeLRSubseq() => kTapeLRSubseq;
+    public int LRSubseqSegLength => frameEnd4;
 
     #endregion
 
@@ -125,6 +125,8 @@ namespace MTExtDefinitions.v2
       long currCellIndex = 0;
       long prevCellIndex = 0;
 
+      kTapeLRSubseq.Add(0);
+
       foreach (KeyValuePair<int, long> stepCellPair in cellIndexes)
       {
         currCellIndex = stepCellPair.Value;
@@ -133,7 +135,7 @@ namespace MTExtDefinitions.v2
         {
           Ensure.That(prevCellIndex).Is(rightmostCellIndex);
 
-          kTapeLRSubseq.Add(stepCellPair.Key + 1);
+          kTapeLRSubseq.Add(stepCellPair.Key - 1);
 
           L = true;
           R = false;
@@ -142,7 +144,7 @@ namespace MTExtDefinitions.v2
         {
           Ensure.That(prevCellIndex).Is(leftmostCellIndex);
 
-          kTapeLRSubseq.Add(stepCellPair.Key + 1);
+          kTapeLRSubseq.Add(stepCellPair.Key - 1);
 
           L = false;
           R = true;

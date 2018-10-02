@@ -27,7 +27,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public String Name { get; }
+    public string Name { get; }
 
     public void Setup()
     {

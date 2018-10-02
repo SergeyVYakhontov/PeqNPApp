@@ -228,8 +228,8 @@ namespace ExistsAcceptingPath
         return;
       }
 
-      TapeLBound = Math.Min(toCompStep.kappaTape - 1, TapeLBound);
-      TapeRBound = Math.Max(toCompStep.kappaTape + 1, TapeRBound);
+      TapeLBound = Math.Min(toCompStep.kappaTape, TapeLBound);
+      TapeRBound = Math.Max(toCompStep.kappaTape, TapeRBound);
 
       toCompStep.q = from.State;
       toCompStep.s = from.Symbol;
@@ -244,7 +244,7 @@ namespace ExistsAcceptingPath
       {
         toNode = new DAGNode(nodeId++);
         G.AddNode(toNode);
-        MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(toNode.Id, (long)processedMu.Last());
+        MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(toNode.Id, (long)processedMu.Last() + 1);
 
         newNodeEnumeration[toNode.Id] = toNode;
         newCompStepToNode[toCompStep] = toNode.Id;
@@ -324,6 +324,8 @@ namespace ExistsAcceptingPath
       {
         CompStep = new ComputationStep()
       };
+
+      MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(t.Id, (long)processedMu.Last() + 1);
     }
 
     private void ConnectBottomNodesWithSinkNode(

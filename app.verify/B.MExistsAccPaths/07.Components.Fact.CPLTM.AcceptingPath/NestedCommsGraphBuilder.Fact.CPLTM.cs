@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Ninject;
 using Core;
+using EnsureThat;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,15 +38,10 @@ namespace ExistsAcceptingPath
     {
       log.Info("Creating nested commodities graphs");
 
-      FilloutNodeToCommoditiesMap();
+      VerifyCommodities();
 
-      foreach(long kStep in CPLTMInfo.KTapeLRSubseq())
-      {
-        FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair = AppHelper.TakeValueByKey(
-          meapContext.muToNestedCommsGraphPair,
-          kStep,
-          () => new FwdBkwdNCommsGraphPair());
-      }
+      FilloutNodeToCommoditiesMap();
+      CreateCommsGraphs();
     }
 
     #endregion
@@ -63,6 +59,22 @@ namespace ExistsAcceptingPath
       new SortedDictionary<long, LinkedList<long>>();
     private readonly SortedDictionary<long, LinkedList<long>> tNodeToCommoditiesMap =
       new SortedDictionary<long, LinkedList<long>>();
+
+    private void VerifyCommodities()
+    {
+      SortedDictionary<long, long> nodeToLevel = meapContext.MEAPSharedContext.NodeLevelInfo.NodeToLevel;
+
+      foreach (KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
+      {
+        long commId = idCommPair.Key;
+        Commodity commodity = idCommPair.Value;
+
+        long sNodeLevel = nodeToLevel[commodity.sNodeId];
+        long tNodeLevel = nodeToLevel[commodity.tNodeId];
+
+        Ensure.That(tNodeLevel - sNodeLevel).IsLte(CPLTMInfo.LRSubseqSegLength * 2);
+      }
+    }
 
     private void FilloutNodeToCommoditiesMap()
     {
@@ -84,6 +96,55 @@ namespace ExistsAcceptingPath
           () => new LinkedList<long>());
 
         commsAtTNode.AddLast(commId);
+      }
+    }
+
+    private void CreateCommsGraphs()
+    {
+      List<long> kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq();
+
+      foreach (long kStep in kTapeLRSubseq.Take(kTapeLRSubseq.Count - 2))
+      {
+        FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair = AppHelper.TakeValueByKey(
+          meapContext.muToNestedCommsGraphPair,
+          kStep,
+          () => new FwdBkwdNCommsGraphPair());
+
+        SortedDictionary<long, SortedSet<long>> nodeVLevels = meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
+
+        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
+
+        for (long level = kStep;
+             level <= (kStep + CPLTMInfo.LRSubseqSegLength - 2);
+             level++)
+        {
+          foreach(long uId in nodeVLevels[level])
+          {
+            if(sNodeToCommoditiesMap.TryGetValue(uId, out var nodeComms))
+            {
+              foreach (long commId in nodeComms)
+              {
+              }
+            }
+          }
+        }
+
+        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
+
+        for (long level = (kStep + CPLTMInfo.LRSubseqSegLength * 2);
+             level >= (kStep + CPLTMInfo.LRSubseqSegLength + 2);
+             level--)
+        {
+          foreach (long uId in nodeVLevels[level])
+          {
+            if (sNodeToCommoditiesMap.TryGetValue(uId, out var nodeComms))
+            {
+              foreach (long commId in nodeComms)
+              {
+              }
+            }
+          }
+        }
       }
     }
 

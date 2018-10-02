@@ -18,6 +18,8 @@ namespace Core
     uint PathLength { get; }
 
     List<long> KTapeLRSubseq();
+
+    int LRSubseqSegLength { get; }
   }
 }
 
