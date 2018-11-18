@@ -29,7 +29,7 @@ namespace ExistsAcceptingPath
       G.SetSourceNode(s);
 
       MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(s.Id, 0);
-      processedMu.Add(0);
+      processedMu = 0;
 
       ComputationStep compStep = new ComputationStep
       {
@@ -44,7 +44,6 @@ namespace ExistsAcceptingPath
       };
 
       nodeEnumeration[s.Id] = s;
-      compStepToNode[compStep] = s.Id;
       idToInfoMap[s.Id] = new TASGNodeInfo
       {
         CompStep = compStep
@@ -58,7 +57,7 @@ namespace ExistsAcceptingPath
 
     public override void CreateTArbitrarySeqGraph()
     {
-      ulong initMu = processedMu.Last();
+      long initMu = processedMu;
       log.Info("Building TArbitrarySeqGraph");
 
       log.Info("Traverse MNP tree");
@@ -69,13 +68,8 @@ namespace ExistsAcceptingPath
         "newNodeEnumeration, nodeEnumeration: {0} {1}",
           newNodeEnumeration.Count,
           nodeEnumeration.Count);
-      newNodeEnumeration.Clear();
 
-      newCompStepToNode.ForEach(t => compStepToNode[t.Key] = t.Value);
-      log.InfoFormat(
-        "newCompStepToNode, compStepToNode: {0} {1}",
-          newCompStepToNode.Count,
-          compStepToNode.Count);
+      newNodeEnumeration.Clear();
       newCompStepToNode.Clear();
 
       endNodeIds.Clear();
@@ -85,7 +79,7 @@ namespace ExistsAcceptingPath
       propSymbolsKeeper.RemoveUnusedSymbols(endNodeIds);
 
       meapContext.TArbitrarySeqGraph = G;
-      ulong newMu = processedMu.Last();
+      long newMu = processedMu;
 
       log.InfoFormat(
        "TArbitrarySeqGrap, mu: {0} {1}",
@@ -176,7 +170,7 @@ namespace ExistsAcceptingPath
     private readonly List<long> endNodeIds = new List<long>();
     private readonly List<DAGNode> acceptingNodes = new List<DAGNode>();
     private long treesCut;
-    private readonly SortedSet<ulong> processedMu = new SortedSet<ulong>();
+    private long processedMu;
 
     private readonly SortedDictionary<long, DAGNode> newNodeEnumeration =
       new SortedDictionary<long, DAGNode>();
@@ -244,7 +238,7 @@ namespace ExistsAcceptingPath
       {
         toNode = new DAGNode(nodeId++);
         G.AddNode(toNode);
-        MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(toNode.Id, (long)processedMu.Last() + 1);
+        MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(toNode.Id, processedMu + 1);
 
         newNodeEnumeration[toNode.Id] = toNode;
         newCompStepToNode[toCompStep] = toNode.Id;
@@ -280,8 +274,6 @@ namespace ExistsAcceptingPath
         DAGNode fromNode = nodeQueue.Dequeue();
         ComputationStep fromCompStep = idToInfoMap[fromNode.Id].CompStep;
 
-        processedMu.Add(fromCompStep.kappaStep);
-
         if (fromCompStep.kappaStep == meapContext.mu)
         {
           endNodes.Add(fromNode);
@@ -310,6 +302,8 @@ namespace ExistsAcceptingPath
           }
         }
       }
+
+      processedMu++;
     }
 
     private void CreateSinkNode()
@@ -325,7 +319,7 @@ namespace ExistsAcceptingPath
         CompStep = new ComputationStep()
       };
 
-      MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(t.Id, (long)processedMu.Last() + 1);
+      MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(t.Id, processedMu + 1);
     }
 
     private void ConnectBottomNodesWithSinkNode(

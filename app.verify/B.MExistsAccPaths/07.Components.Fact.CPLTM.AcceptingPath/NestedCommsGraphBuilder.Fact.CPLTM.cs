@@ -131,8 +131,8 @@ namespace ExistsAcceptingPath
 
         TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
 
-        for (long level = (kStep + CPLTMInfo.LRSubseqSegLength * 2);
-             level >= (kStep + CPLTMInfo.LRSubseqSegLength + 2);
+        for (long level = (kStep + (CPLTMInfo.LRSubseqSegLength * 2));
+             level >= (kStep + (CPLTMInfo.LRSubseqSegLength + 2));
              level--)
         {
           foreach (long uId in nodeVLevels[level])

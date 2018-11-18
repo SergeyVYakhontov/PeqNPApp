@@ -48,7 +48,6 @@ namespace ExistsAcceptingPath
       }
 
       tasgBuilder.CreateTArbSeqCFG(states);
-      CopyResultFromTapeSegContext();
 
       if (meapContext.TArbSeqCFG.IsTrivial())
       {
