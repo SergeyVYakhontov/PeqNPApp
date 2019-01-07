@@ -70,8 +70,8 @@ namespace ExistsAcceptingPath
 
       meapContext.UnusedNodes = new SortedSet<long>();
 
-      NestedCommsGraphBuilderFactCPLTM nestedCommsGraphBuilder =
-        new NestedCommsGraphBuilderFactCPLTM(meapContext);
+      NestedCommsGraphBuilder nestedCommsGraphBuilder =
+        new NestedCommsGraphBuilder(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
 
