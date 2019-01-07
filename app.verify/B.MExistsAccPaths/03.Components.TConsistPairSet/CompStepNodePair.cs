@@ -54,7 +54,7 @@ namespace ExistsAcceptingPath
       return compStepNodePairComparer.Compare(this, other);
     }
 
-    public static bool operator ==(CompStepNodePair left, CompStepNodePair right)
+    public static bool operator ==(in CompStepNodePair left, in CompStepNodePair right)
     {
       return
         (left.Variable == right.Variable) &&
@@ -62,27 +62,27 @@ namespace ExistsAcceptingPath
         (left.vNode == right.vNode);
     }
 
-    public static bool operator !=(CompStepNodePair left, CompStepNodePair right)
+    public static bool operator !=(in CompStepNodePair left, in CompStepNodePair right)
     {
       return !(left == right);
     }
 
-    public static bool operator <(CompStepNodePair left, CompStepNodePair right)
+    public static bool operator <(in CompStepNodePair left, in CompStepNodePair right)
     {
       return left.CompareTo(right) < 0;
     }
 
-    public static bool operator <=(CompStepNodePair left, CompStepNodePair right)
+    public static bool operator <=(in CompStepNodePair left, in CompStepNodePair right)
     {
       return left.CompareTo(right) <= 0;
     }
 
-    public static bool operator >(CompStepNodePair left, CompStepNodePair right)
+    public static bool operator >(in CompStepNodePair left, in CompStepNodePair right)
     {
       return left.CompareTo(right) > 0;
     }
 
-    public static bool operator >=(CompStepNodePair left, CompStepNodePair right)
+    public static bool operator >=(in CompStepNodePair left, in CompStepNodePair right)
     {
       return left.CompareTo(right) >= 0;
     }

@@ -39,8 +39,8 @@ namespace ExistsAcceptingPath
       log.Info("Creating nested commodities graphs");
 
       VerifyCommodities();
-
       FilloutNodeToCommoditiesMap();
+
       CreateCommsGraphs();
     }
 
@@ -48,7 +48,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -105,46 +104,23 @@ namespace ExistsAcceptingPath
 
       foreach (long kStep in kTapeLRSubseq.Take(kTapeLRSubseq.Count - 2))
       {
+        log.InfoFormat($"Creating nested commodities graphs at kStep = {kStep}");
+
         FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair = AppHelper.TakeValueByKey(
           meapContext.muToNestedCommsGraphPair,
           kStep,
           () => new FwdBkwdNCommsGraphPair());
 
-        SortedDictionary<long, SortedSet<long>> nodeVLevels = meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
-
         TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
 
-        for (long level = kStep;
-             level <= (kStep + CPLTMInfo.LRSubseqSegLength - 2);
-             level++)
-        {
-          foreach(long uId in nodeVLevels[level])
-          {
-            if(sNodeToCommoditiesMap.TryGetValue(uId, out var nodeComms))
-            {
-              foreach (long commId in nodeComms)
-              {
-              }
-            }
-          }
-        }
+        FwdNCommsGraphBuilder fwdNCommsGraphBuilder = new FwdNCommsGraphBuilder(
+          meapContext,
+          kStep,
+          fwdNestedCommsGraph);
 
-        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
+        fwdNCommsGraphBuilder.Run();
 
-        for (long level = (kStep + (CPLTMInfo.LRSubseqSegLength * 2));
-             level >= (kStep + (CPLTMInfo.LRSubseqSegLength + 2));
-             level--)
-        {
-          foreach (long uId in nodeVLevels[level])
-          {
-            if (sNodeToCommoditiesMap.TryGetValue(uId, out var nodeComms))
-            {
-              foreach (long commId in nodeComms)
-              {
-              }
-            }
-          }
-        }
+        log.InfoFormat($"fwdNestedCommsGraph: node count = {fwdNestedCommsGraph.Nodes.Count}");
       }
     }
 

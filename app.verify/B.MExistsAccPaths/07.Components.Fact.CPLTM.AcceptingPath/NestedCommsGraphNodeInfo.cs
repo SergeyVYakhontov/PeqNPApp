@@ -45,12 +45,12 @@ namespace ExistsAcceptingPath
 
     public bool Equals(NestedCommsGraphNodeInfo other) => this == other;
 
-    public static bool operator ==(NestedCommsGraphNodeInfo left, NestedCommsGraphNodeInfo right)
+    public static bool operator ==(in NestedCommsGraphNodeInfo left, in NestedCommsGraphNodeInfo right)
     {
       return left.Id == right.Id;
     }
 
-    public static bool operator !=(NestedCommsGraphNodeInfo left, NestedCommsGraphNodeInfo right)
+    public static bool operator !=(in NestedCommsGraphNodeInfo left, in NestedCommsGraphNodeInfo right)
     {
       return !(left == right);
     }

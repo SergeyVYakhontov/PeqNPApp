@@ -13,6 +13,7 @@
     <Rule Id="RCS1029" Action="None" />
     <Rule Id="RCS1032" Action="None" />
     <Rule Id="RCS1057" Action="None" />
+    <Rule Id="RCS1061" Action="None" />
     <Rule Id="RCS1080" Action="None" />
     <Rule Id="RCS1085" Action="None" />
     <Rule Id="RCS1124" Action="None" />

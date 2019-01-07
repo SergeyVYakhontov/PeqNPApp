@@ -119,8 +119,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-
     private readonly MEAPContext meapContext;
     private readonly TapeSegContext tapeSegContext;
 

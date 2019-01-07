@@ -38,6 +38,26 @@ namespace MTExtDefinitions.v2
     public List<long> KTapeLRSubseq() => kTapeLRSubseq;
     public int LRSubseqSegLength => frameEnd4;
 
+    public IEnumerable<long> FwdCommsLevelSequence(long kStep)
+    {
+      for (long i = kStep;
+           i <= (kStep + LRSubseqSegLength - 2);
+           i++)
+      {
+        yield return i;
+      }
+    }
+
+    public IEnumerable<long> BkwdCommsLevelSequence(long kStep)
+    {
+      for (long i = (kStep + (LRSubseqSegLength * 2));
+           i >= (kStep + (LRSubseqSegLength + 2));
+           i--)
+      {
+        yield return i;
+      }
+    }
+
     #endregion
 
     #region private members

@@ -24,13 +24,6 @@ namespace Core
     public SortedDictionary<long, NodeType> IdToNodeInfoMap { get; private set; }
     public SortedDictionary<long, EdgeType> IdToEdgeInfoMap { get; }
 
-    public void CreateIdToNodeInfoMap()
-    {
-      IdToNodeInfoMap = new SortedDictionary<long, NodeType>();
-
-      Nodes.ForEach(u => { IdToNodeInfoMap[u.Id] = new NodeType(); });
-    }
-
     public void CopyIdToNodeInfoMap(SortedDictionary<long, NodeType> from)
     {
       IdToNodeInfoMap = new SortedDictionary<long, NodeType>(from);

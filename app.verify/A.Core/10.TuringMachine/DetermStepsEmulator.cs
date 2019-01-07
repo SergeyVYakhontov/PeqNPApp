@@ -82,8 +82,6 @@ namespace Core
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-
     private readonly Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> delta;
     private readonly TMInstance tmInstance;
 

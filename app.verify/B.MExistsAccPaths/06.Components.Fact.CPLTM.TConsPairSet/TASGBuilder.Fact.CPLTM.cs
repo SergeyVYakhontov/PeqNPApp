@@ -161,8 +161,6 @@ namespace ExistsAcceptingPath
     private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration =
       new SortedDictionary<long, DAGNode>();
-    private readonly SortedDictionary<ComputationStep, long> compStepToNode =
-      new SortedDictionary<ComputationStep, long>(new CompStepComparer());
     private readonly SortedDictionary<long, TASGNodeInfo> idToInfoMap =
       new SortedDictionary<long, TASGNodeInfo>();
 
@@ -200,7 +198,7 @@ namespace ExistsAcceptingPath
       Queue<DAGNode> nodeQueue,
       DAGNode fromNode,
       ComputationStep fromCompStep,
-      StateSymbolPair from,
+      in StateSymbolPair from,
       StateSymbolDirectionTriple p)
     {
       ComputationStep toCompStep = CompStepSequence.GetSequentialCompStep(fromCompStep);

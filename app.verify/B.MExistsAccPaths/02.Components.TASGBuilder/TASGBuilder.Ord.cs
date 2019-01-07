@@ -164,7 +164,7 @@ namespace ExistsAcceptingPath
       Queue<DAGNode> nodeQueue,
       DAGNode fromNode,
       ComputationStep fromCompStep,
-      StateSymbolPair from,
+      in StateSymbolPair from,
       StateSymbolDirectionTriple p)
     {
       ComputationStep toCompStep = CompStepSequence.GetSequentialCompStep(fromCompStep);

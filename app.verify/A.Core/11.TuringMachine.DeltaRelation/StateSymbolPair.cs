@@ -41,12 +41,12 @@ namespace Core
       return this == other;
     }
 
-    public static bool operator == (StateSymbolPair x, StateSymbolPair y)
+    public static bool operator == (in StateSymbolPair x, in StateSymbolPair y)
     {
       return (x.State == y.State) && (x.Symbol == y.Symbol);
     }
 
-    public static bool operator !=(StateSymbolPair x, StateSymbolPair y)
+    public static bool operator !=(in StateSymbolPair x, in StateSymbolPair y)
     {
       return !(x == y);
     }

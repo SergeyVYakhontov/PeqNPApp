@@ -20,6 +20,9 @@ namespace Core
     List<long> KTapeLRSubseq();
 
     int LRSubseqSegLength { get; }
+
+    IEnumerable<long> FwdCommsLevelSequence(long kStep);
+    IEnumerable<long> BkwdCommsLevelSequence(long kStep);
   }
 }
 

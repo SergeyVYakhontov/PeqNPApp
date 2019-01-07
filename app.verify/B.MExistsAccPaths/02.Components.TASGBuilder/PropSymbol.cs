@@ -51,32 +51,32 @@ namespace ExistsAcceptingPath
       return propSymbolComparer.Compare(this, other);
     }
 
-    public static bool operator ==(PropSymbol left, PropSymbol right)
+    public static bool operator ==(in PropSymbol left, in PropSymbol right)
     {
       return
         (left.Variable == right.Variable) &&
         (left.Symbol == right.Symbol);
     }
 
-    public static bool operator !=(PropSymbol left, PropSymbol right)
+    public static bool operator !=(in PropSymbol left, in PropSymbol right)
       => !(left == right);
 
-    public static bool operator <(PropSymbol left, PropSymbol right)
+    public static bool operator <(in PropSymbol left, in PropSymbol right)
     {
       return left.CompareTo(right) < 0;
     }
 
-    public static bool operator <=(PropSymbol left, PropSymbol right)
+    public static bool operator <=(in PropSymbol left, in PropSymbol right)
     {
       return left.CompareTo(right) <= 0;
     }
 
-    public static bool operator >(PropSymbol left, PropSymbol right)
+    public static bool operator >(in PropSymbol left, in PropSymbol right)
     {
       return left.CompareTo(right) > 0;
     }
 
-    public static bool operator >=(PropSymbol left, PropSymbol right)
+    public static bool operator >=(in PropSymbol left, in PropSymbol right)
     {
       return left.CompareTo(right) >= 0;
     }

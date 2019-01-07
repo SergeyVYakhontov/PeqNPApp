@@ -46,12 +46,12 @@ namespace ExistsAcceptingPath
 
     private readonly MEAPContext meapContext;
 
-    private bool pathExist;
-    private bool pathFound;
+    //private bool pathExist;
+    //private bool pathFound;
     private readonly List<long> tConsistPath = new List<long>();
-    private int[] output = Array.Empty<int>();
+    private readonly int[] output = Array.Empty<int>();
 
-    private void ExtractTConsistSeq()
+    /*private void ExtractTConsistSeq()
     {
       log.Info("MExistsAcceptingPath.Compute: path");
 
@@ -117,12 +117,12 @@ namespace ExistsAcceptingPath
         tmInstance,
         meapContext.mu,
         (uint)meapContext.MEAPSharedContext.Input.Length);
-    }
+    }*/
 
     private void CopyResult()
     {
-      meapContext.PathExists = pathExist;
-      meapContext.PathFound = pathFound;
+      //meapContext.PathExists = pathExist;
+      //meapContext.PathFound = pathFound;
       meapContext.TConsistPath = new List<long>(tConsistPath);
       meapContext.Output = AppHelper.CreateArrayCopy(output);
     }

@@ -41,7 +41,8 @@ namespace ExistsAcceptingPath
 
       nodeEnumeration[s.Id] = s;
       compStepToNode[compStep] = s.Id;
-      idToInfoMap[s.Id] = new TASGNodeInfo()
+
+      idToInfoMap[s.Id] = new TASGNodeInfo
       {
         CompStep = compStep
       };
@@ -194,7 +195,7 @@ namespace ExistsAcceptingPath
       Queue<DAGNode> nodeQueue,
       DAGNode fromNode,
       ComputationStep fromCompStep,
-      StateSymbolPair from,
+      in StateSymbolPair from,
       StateSymbolDirectionTriple p)
     {
       ComputationStep toCompStep = CompStepSequence.GetSequentialCompStep(fromCompStep);
