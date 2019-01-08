@@ -21,10 +21,12 @@ namespace ExistsAcceptingPath
 
     public FwdNCommsGraphBuilder(
       MEAPContext meapContext,
+      SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap,
       long kStep,
       TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph)
     {
       this.meapContext = meapContext;
+      this.nodeToCommoditiesMap = nodeToCommoditiesMap;
       this.kStep = kStep;
       this.fwdNestedCommsGraph = fwdNestedCommsGraph;
       this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
@@ -82,27 +84,25 @@ namespace ExistsAcceptingPath
     #region private members
 
     private readonly MEAPContext meapContext;
+    private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap;
     private readonly long kStep;
     private readonly TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph;
     private readonly ICPLTMInfo CPLTMInfo;
 
-    private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap =
-      new SortedDictionary<long, LinkedList<long>>();
-
     private long nodeId;
     private long edgeId;
 
-    private readonly SortedDictionary<long, DAGNode> sNodeEnumeration =
+    private readonly SortedDictionary<long, DAGNode> nodeEnumeration =
       new SortedDictionary<long, DAGNode>();
 
     private DAGNode GetDAGNode(long uCommId)
     {
-      if (!sNodeEnumeration.TryGetValue(uCommId, out DAGNode dagNode))
+      if (!nodeEnumeration.TryGetValue(uCommId, out DAGNode dagNode))
       {
         dagNode = new DAGNode(nodeId++);
         fwdNestedCommsGraph.AddNode(dagNode);
 
-        sNodeEnumeration[uCommId] = dagNode;
+        nodeEnumeration[uCommId] = dagNode;
       }
 
       return dagNode;

@@ -112,15 +112,27 @@ namespace ExistsAcceptingPath
           () => new FwdBkwdNCommsGraphPair());
 
         TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
+        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
 
         FwdNCommsGraphBuilder fwdNCommsGraphBuilder = new FwdNCommsGraphBuilder(
           meapContext,
+          sNodeToCommoditiesMap,
           kStep,
           fwdNestedCommsGraph);
 
         fwdNCommsGraphBuilder.Run();
 
         log.InfoFormat($"fwdNestedCommsGraph: node count = {fwdNestedCommsGraph.Nodes.Count}");
+
+        BkwdNCommsGraphBuilder bkwdNCommsGraphBuilder = new BkwdNCommsGraphBuilder(
+          meapContext,
+          tNodeToCommoditiesMap,
+          kStep,
+          bkwdNestedCommsGraph);
+
+        bkwdNCommsGraphBuilder.Run();
+
+        log.InfoFormat($"bkwdNestedCommsGraph: node count = {bkwdNestedCommsGraph.Nodes.Count}");
       }
     }
 
