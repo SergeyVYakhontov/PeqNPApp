@@ -40,7 +40,7 @@ namespace ExistsAcceptingPath
     {
       SortedDictionary<long, SortedSet<long>> nodeVLevels = meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
 
-      foreach (long i in CPLTMInfo.FwdCommsLevelSequence(kStep))
+      foreach (long i in CPLTMInfo.FwdCommsKStepSequence(kStep))
       {
         foreach (long uId in nodeVLevels[i])
         {

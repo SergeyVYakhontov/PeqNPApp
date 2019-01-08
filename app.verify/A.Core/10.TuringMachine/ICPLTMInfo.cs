@@ -21,8 +21,8 @@ namespace Core
 
     int LRSubseqSegLength { get; }
 
-    IEnumerable<long> FwdCommsLevelSequence(long kStep);
-    IEnumerable<long> BkwdCommsLevelSequence(long kStep);
+    IEnumerable<long> FwdCommsKStepSequence(long startKStep);
+    IEnumerable<long> BkwdCommsKStepSequence(long startKStep);
   }
 }
 
