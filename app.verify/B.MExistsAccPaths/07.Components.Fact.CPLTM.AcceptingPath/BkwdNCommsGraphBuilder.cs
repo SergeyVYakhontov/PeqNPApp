@@ -56,24 +56,7 @@ namespace ExistsAcceptingPath
             DAGNode vNode = e.FromNode;
             long vId = vNode.Id;
 
-            if (nodeToCommoditiesMap.TryGetValue(uId, out var uNodeComms))
-            {
-              if (nodeToCommoditiesMap.TryGetValue(vId, out var vNodeComms))
-              {
-                foreach (long uCommId in uNodeComms)
-                {
-                  DAGNode uCommNode = GetDAGNode(uCommId);
-
-                  foreach (long vCommId in vNodeComms)
-                  {
-                    DAGNode vCommNode = GetDAGNode(vCommId);
-
-                    DAGEdge eComm = new DAGEdge(edgeId++, uCommNode, vCommNode);
-                    bkwdNestedCommsGraph.AddEdge(eComm);
-                  }
-                }
-              }
-            }
+            ConnectCommsByCFGEdge(uId, vId);
           }
         }
       }
@@ -106,6 +89,28 @@ namespace ExistsAcceptingPath
       }
 
       return dagNode;
+    }
+
+    private void ConnectCommsByCFGEdge(long uId, long vId)
+    {
+      if (nodeToCommoditiesMap.TryGetValue(uId, out var uNodeComms))
+      {
+        if (nodeToCommoditiesMap.TryGetValue(vId, out var vNodeComms))
+        {
+          foreach (long uCommId in uNodeComms)
+          {
+            DAGNode uCommNode = GetDAGNode(uCommId);
+
+            foreach (long vCommId in vNodeComms)
+            {
+              DAGNode vCommNode = GetDAGNode(vCommId);
+
+              DAGEdge eComm = new DAGEdge(edgeId++, uCommNode, vCommNode);
+              bkwdNestedCommsGraph.AddEdge(eComm);
+            }
+          }
+        }
+      }
     }
 
     #endregion

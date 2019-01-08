@@ -28,8 +28,6 @@ namespace ExistsAcceptingPath
 
     public ITASGBuilder TASGBuilder { get; set; }
     public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbitrarySeqGraph { get; set; }
-    //public long TapeLBound { get; set; }
-    //public long TapeRBound { get; set; }
     public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbSeqCFG { get; set; }
     public SortedDictionary<long, SortedSet<long>> NodeVLevels { get; set; }
     public SortedDictionary<long, long> NodeToLevel { get; set; }
