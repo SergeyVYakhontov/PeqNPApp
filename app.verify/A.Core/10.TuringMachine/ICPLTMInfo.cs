@@ -16,9 +16,8 @@ namespace Core
     void ComputeSequences();
 
     uint PathLength { get; }
-
+    SortedDictionary<int, long> CellIndexes();
     List<long> KTapeLRSubseq();
-
     int LRSubseqSegLength { get; }
 
     IEnumerable<long> FwdCommsKStepSequence(long startKStep);

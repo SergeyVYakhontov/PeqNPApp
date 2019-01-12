@@ -35,6 +35,7 @@ namespace MTExtDefinitions.v2
     }
 
     public uint PathLength => (uint)kTapeSequence.Count;
+    public SortedDictionary<int, long> CellIndexes() => cellIndexes;
     public List<long> KTapeLRSubseq() => kTapeLRSubseq;
     public int LRSubseqSegLength => frameEnd4;
 
@@ -126,6 +127,8 @@ namespace MTExtDefinitions.v2
       indexMap[frameStart3 - 1] = 2;
       indexMap[frameStart3] = 0;
 
+      cellIndexes[0] = 0;
+
       determStepsEmulator.DoStepsWhile(
         indexMap,
         () => tmInstance.State() != IF_NDTM.acceptingState,
@@ -149,7 +152,7 @@ namespace MTExtDefinitions.v2
 
       kTapeLRSubseq.Add(0);
 
-      foreach (KeyValuePair<int, long> stepCellPair in cellIndexes)
+      foreach (KeyValuePair<int, long> stepCellPair in cellIndexes.Skip(1))
       {
         currCellIndex = stepCellPair.Value;
 

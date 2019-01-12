@@ -52,6 +52,8 @@ namespace ExistsAcceptingPath
       propSymbolsKeeper = new PropSymbolsKeeperFactCPLTM(MEAPSharedContext);
       propSymbolsKeeper.Init(s.Id);
 
+      CPLTMInfo = MEAPSharedContext.CPLTMInfo;
+
       endNodeIds.Add(G.GetSourceNodeId());
     }
 
@@ -176,6 +178,7 @@ namespace ExistsAcceptingPath
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
 
     private PropSymbolsKeeperFactCPLTM propSymbolsKeeper;
+    private ICPLTMInfo CPLTMInfo;
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
@@ -209,6 +212,13 @@ namespace ExistsAcceptingPath
       toCompStep.sNext = p.Symbol;
       toCompStep.m = p.Direction;
       toCompStep.Shift = p.Shift;
+
+      long nextKTapeMu = CPLTMInfo.CellIndexes()[(int)processedMu + 1];
+
+      if (toCompStep.kappaTape != nextKTapeMu)
+      {
+        return;
+      }
 
       bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
         fromNode,
