@@ -77,10 +77,25 @@ namespace ExistsAcceptingPath
 
     private void FilloutNodeToCommoditiesMap()
     {
-      foreach(KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
+      foreach (KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
       {
         long commId = idCommPair.Key;
         Commodity commodity = idCommPair.Value;
+
+        bool processPair = true;
+
+        if (commodity.sNodeId == meapContext.TArbSeqCFG.GetSourceNodeId())
+        {
+          if (commodity.Variable != 0)
+          {
+            processPair = false;
+          }
+        }
+
+        if (!processPair)
+        {
+          continue;
+        }
 
         LinkedList<long> commsAtSNode = AppHelper.TakeValueByKey(
           sNodeToCommoditiesMap,
@@ -118,7 +133,7 @@ namespace ExistsAcceptingPath
           meapContext,
           sNodeToCommoditiesMap,
           kStep,
-          fwdNestedCommsGraph);
+          fwdBkwdNCommsGraphPair);
 
         fwdNCommsGraphBuilder.Run();
 
@@ -128,11 +143,22 @@ namespace ExistsAcceptingPath
           meapContext,
           tNodeToCommoditiesMap,
           kStep,
-          bkwdNestedCommsGraph);
+          fwdBkwdNCommsGraphPair);
 
         bkwdNCommsGraphBuilder.Run();
 
         log.InfoFormat($"bkwdNestedCommsGraph: node count = {bkwdNestedCommsGraph.Nodes.Count}");
+
+        long fwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap.Sum(t => t.Value.Count);
+        long bkwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap.Sum(t => t.Value.Count);
+
+        long fwdNCGEdgeToCFGEdgeMapCount = fwdBkwdNCommsGraphPair.FwdNCGEdgeToCFGEdgeMap.Count;
+        long bkwdNCGEdgeToCFGEdgeMapCount = fwdBkwdNCommsGraphPair.BkwdNCGEdgeToCFGEdgeMap.Count;
+
+        log.InfoFormat($"FwdCFGNodeToNCGNodesMap count = {fwdCFGNodeToNCGNodesMapCount}");
+        log.InfoFormat($"BkwdCFGNodeToNCGNodesMap count = {bkwdCFGNodeToNCGNodesMapCount}");
+        log.InfoFormat($"FwdNCGEdgeToCFGEdgeMap count = {fwdNCGEdgeToCFGEdgeMapCount}");
+        log.InfoFormat($"BkwdNCGEdgeToCFGEdgeMap count = {bkwdNCGEdgeToCFGEdgeMapCount}");
       }
     }
 

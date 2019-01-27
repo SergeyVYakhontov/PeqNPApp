@@ -22,7 +22,7 @@ namespace Core
 
     #endregion
 
-    #region public memers
+    #region public members
 
     public string Name { get; }
 
