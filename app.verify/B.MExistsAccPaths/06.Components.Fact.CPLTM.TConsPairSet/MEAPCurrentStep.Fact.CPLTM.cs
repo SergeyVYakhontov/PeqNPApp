@@ -70,10 +70,13 @@ namespace ExistsAcceptingPath
 
       meapContext.UnusedNodes = new SortedSet<long>();
 
-      NestedCommsGraphBuilder nestedCommsGraphBuilder =
-        new NestedCommsGraphBuilder(meapContext);
+      NestedCommsGraphBuilder nestedCommsGraphBuilder = new NestedCommsGraphBuilder(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
+
+      NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
+      ncgJointNodesBuilder.Setup();
+      ncgJointNodesBuilder.Run();
 
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();
@@ -157,7 +160,6 @@ namespace ExistsAcceptingPath
       tConsistPairSetBuilder.Trace();
 
       inVarToVarNodes.Clear();
-      tConsistPairSetBuilder = null;
     }
 
     #endregion

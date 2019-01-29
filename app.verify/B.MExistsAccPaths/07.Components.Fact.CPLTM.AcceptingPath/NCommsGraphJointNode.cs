@@ -22,6 +22,30 @@ namespace ExistsAcceptingPath
     public List<KeyValuePair<long, long>> InCommodityPairs { get; } = new List<KeyValuePair<long, long>>();
     public List<KeyValuePair<long, long>> OutCommodityPairs { get; } = new List<KeyValuePair<long, long>>();
 
+    public void AddInCommodityPair(long node1, long node2)
+    {
+      KeyValuePair<long, long> inPair = new KeyValuePair<long, long>(node1, node2);
+
+      InCommodityPairs.Add(inPair);
+      commPairToIdMap[inPair] = pairId++;
+    }
+
+    public void AddOutCommodityPair(long node1, long node2)
+    {
+      KeyValuePair<long, long> outPair = new KeyValuePair<long, long>(node1, node2);
+
+      OutCommodityPairs.Add(outPair);
+      commPairToIdMap[outPair] = pairId++;
+    }
+
+    #endregion
+
+    #region public members
+
+    private long pairId;
+    private readonly SortedDictionary<KeyValuePair<long, long>, long> commPairToIdMap =
+      new SortedDictionary<KeyValuePair<long, long>, long>();
+
     #endregion
   }
 }
