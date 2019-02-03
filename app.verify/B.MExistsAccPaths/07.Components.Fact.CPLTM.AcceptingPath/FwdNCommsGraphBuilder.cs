@@ -85,6 +85,16 @@ namespace ExistsAcceptingPath
       }
     }
 
+    public long DelimiterNodesCount()
+    {
+      SortedDictionary<long, SortedSet<long>> nodeVLevels =
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
+
+      return fwdCFGNodeToNCGNodesMap.Where(t =>
+        nodeVLevels[fwdKStepSequence.Last()].Contains(t.Key))
+        .Sum(t => t.Value.Count);
+    }
+
     #endregion
 
     #region private members
@@ -168,7 +178,7 @@ namespace ExistsAcceptingPath
 
           ICollection<long> vList = AppHelper.TakeValueByKey(
             fwdCFGNodeToNCGNodesMap, vId, () => new List<long>());
-          uList.Add(vId);
+          vList.Add(vId);
 
           fwdNCGEdgeToCFGEdgeMap[eComm.Id] = cfgEdgeId;
         }

@@ -141,6 +141,7 @@ namespace ExistsAcceptingPath
         fwdNCommsGraphBuilder.Run();
 
         log.InfoFormat($"fwdNestedCommsGraph: node count = {fwdNestedCommsGraph.Nodes.Count}");
+        log.InfoFormat($"fwdNestedCommsGraph: regular node count = {fwdNCommsGraphBuilder.DelimiterNodesCount()}");
 
         BkwdNCommsGraphBuilder bkwdNCommsGraphBuilder = new BkwdNCommsGraphBuilder(
           meapContext,
@@ -151,6 +152,7 @@ namespace ExistsAcceptingPath
         bkwdNCommsGraphBuilder.Run();
 
         log.InfoFormat($"bkwdNestedCommsGraph: node count = {bkwdNestedCommsGraph.Nodes.Count}");
+        log.InfoFormat($"bkwdNestedCommsGraph: regular node count = {bkwdNCommsGraphBuilder.DelimiterNodesCount()}");
 
         long fwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap.Sum(
           t => t.Value.Count);

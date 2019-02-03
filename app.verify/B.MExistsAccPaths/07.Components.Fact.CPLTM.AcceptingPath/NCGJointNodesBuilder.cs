@@ -40,7 +40,7 @@ namespace ExistsAcceptingPath
 
       long[] kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq().ToArray();
 
-      for (int i = 0; i<= kTapeLRSubseq.Length; i++)
+      for (int i = 0; i< (kTapeLRSubseq.Length - 1); i++)
       {
         long kStep = kTapeLRSubseq[i];
         long kStepNext = kTapeLRSubseq[i+1];

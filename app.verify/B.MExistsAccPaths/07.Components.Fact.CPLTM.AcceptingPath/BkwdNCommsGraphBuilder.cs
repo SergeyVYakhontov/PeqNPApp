@@ -77,12 +77,22 @@ namespace ExistsAcceptingPath
 
         foreach (DAGEdge e in uNode.InEdges)
         {
-          DAGNode vNode = e.ToNode;
+          DAGNode vNode = e.FromNode;
           long vId = vNode.Id;
 
           ConnectCommAndCFGNodeByCFGEdge(e.Id, uId, vId);
         }
       }
+    }
+
+    public long DelimiterNodesCount()
+    {
+      SortedDictionary<long, SortedSet<long>> nodeVLevels =
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
+
+      return bkwdCFGNodeToNCGNodesMap.Where(t =>
+        nodeVLevels[bkwdKStepSequence.Last()].Contains(t.Key))
+        .Sum(t => t.Value.Count);
     }
 
     #endregion
@@ -168,7 +178,7 @@ namespace ExistsAcceptingPath
 
           ICollection<long> vList = AppHelper.TakeValueByKey(
             bkwdCFGNodeToNCGNodesMap, vId, () => new List<long>());
-          uList.Add(vId);
+          vList.Add(vId);
 
           bkwdNCGEdgeToCFGEdgeMap[eComm.Id] = cfgEdgeId;
         }
