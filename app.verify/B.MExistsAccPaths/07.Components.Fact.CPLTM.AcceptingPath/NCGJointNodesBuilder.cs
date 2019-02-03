@@ -38,10 +38,13 @@ namespace ExistsAcceptingPath
     {
       log.Info("Creating NCG joint nodes");
 
-      List<long> kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq();
+      long[] kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq().ToArray();
 
-      foreach (long kStep in kTapeLRSubseq.Take(kTapeLRSubseq.Count - 2))
+      for (int i = 0; i<= kTapeLRSubseq.Length; i++)
       {
+        long kStep = kTapeLRSubseq[i];
+        long kStepNext = kTapeLRSubseq[i+1];
+
         FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPairL = AppHelper.TakeValueByKey(
           meapContext.muToNestedCommsGraphPair,
           kStep,
@@ -49,15 +52,20 @@ namespace ExistsAcceptingPath
 
         FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPairR = AppHelper.TakeValueByKey(
           meapContext.muToNestedCommsGraphPair,
-          kStep + 1,
+          kStepNext,
           () => new FwdBkwdNCommsGraphPair());
 
-        SortedDictionary<long, SortedSet<long>> nodeVLevels = meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
+        SortedDictionary<long, SortedSet<long>> nodeVLevels =
+          meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
 
-        SortedDictionary<long, List<long>> bkwdCFGNodeToNCGNodesMap = fwdBkwdNCommsGraphPairL.BkwdCFGNodeToNCGNodesMap;
-        SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap = fwdBkwdNCommsGraphPairR.FwdCFGNodeToNCGNodesMap;
+        long[] bkwdKStepSequence = CPLTMInfo.BkwdCommsKStepSequence(kStep).ToArray();
 
-        for (long level = kStep; level <= (kStep + CPLTMInfo.LRSubseqSegLength); level++)
+        SortedDictionary<long, List<long>> bkwdCFGNodeToNCGNodesMap =
+          fwdBkwdNCommsGraphPairL.BkwdCFGNodeToNCGNodesMap;
+        SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap =
+          fwdBkwdNCommsGraphPairR.FwdCFGNodeToNCGNodesMap;
+
+        foreach (long level in bkwdKStepSequence)
         {
           SortedSet<long> cfgNodesAtLevel = nodeVLevels[level];
 
@@ -102,11 +110,15 @@ namespace ExistsAcceptingPath
       List<long> fwdCfgNodes,
       NCommsGraphJointNode ncgJointNode)
     {
-      TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph = fwdBkwdNCommsGraphPairL.BkwdNestedCommsGraph;
-      TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph = fwdBkwdNCommsGraphPairR.FwdNestedCommsGraph;
+      TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph =
+        fwdBkwdNCommsGraphPairL.BkwdNestedCommsGraph;
+      TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph =
+        fwdBkwdNCommsGraphPairR.FwdNestedCommsGraph;
 
-      SortedDictionary<long, long> bkwdNCGEdgeToCFGEdgeMap = fwdBkwdNCommsGraphPairL.BkwdNCGEdgeToCFGEdgeMap;
-      SortedDictionary<long, long> fwdNCGEdgeToCFGEdgeMap = fwdBkwdNCommsGraphPairR.FwdNCGEdgeToCFGEdgeMap;
+      SortedDictionary<long, long> bkwdNCGEdgeToCFGEdgeMap =
+        fwdBkwdNCommsGraphPairL.BkwdNCGEdgeToCFGEdgeMap;
+      SortedDictionary<long, long> fwdNCGEdgeToCFGEdgeMap =
+        fwdBkwdNCommsGraphPairR.FwdNCGEdgeToCFGEdgeMap;
 
       foreach (long bkwdNodeId in bkwdCfgNodes)
       {

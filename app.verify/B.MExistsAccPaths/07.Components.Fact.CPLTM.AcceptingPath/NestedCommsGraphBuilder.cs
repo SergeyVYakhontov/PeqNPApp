@@ -61,7 +61,8 @@ namespace ExistsAcceptingPath
 
     private void VerifyCommodities()
     {
-      SortedDictionary<long, long> nodeToLevel = meapContext.MEAPSharedContext.NodeLevelInfo.NodeToLevel;
+      SortedDictionary<long, long> nodeToLevel =
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeToLevel;
 
       foreach (KeyValuePair<long, Commodity> idCommPair in meapContext.Commodities)
       {
@@ -126,8 +127,10 @@ namespace ExistsAcceptingPath
           kStep,
           () => new FwdBkwdNCommsGraphPair());
 
-        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
-        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
+        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph =
+          fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
+        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph =
+          fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
 
         FwdNCommsGraphBuilder fwdNCommsGraphBuilder = new FwdNCommsGraphBuilder(
           meapContext,
@@ -149,8 +152,10 @@ namespace ExistsAcceptingPath
 
         log.InfoFormat($"bkwdNestedCommsGraph: node count = {bkwdNestedCommsGraph.Nodes.Count}");
 
-        long fwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap.Sum(t => t.Value.Count);
-        long bkwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap.Sum(t => t.Value.Count);
+        long fwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap.Sum(
+          t => t.Value.Count);
+        long bkwdCFGNodeToNCGNodesMapCount = fwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap.Sum(
+          t => t.Value.Count);
 
         long fwdNCGEdgeToCFGEdgeMapCount = fwdBkwdNCommsGraphPair.FwdNCGEdgeToCFGEdgeMap.Count;
         long bkwdNCGEdgeToCFGEdgeMapCount = fwdBkwdNCommsGraphPair.BkwdNCGEdgeToCFGEdgeMap.Count;

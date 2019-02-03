@@ -42,7 +42,7 @@ namespace MTExtDefinitions.v2
     public IEnumerable<long> FwdCommsKStepSequence(long startKStep)
     {
       long from = startKStep;
-      long to = (startKStep + LRSubseqSegLength - 2);
+      long to = (startKStep + LRSubseqSegLength - 1);
 
       for (long i = from; i <= to; i++)
       {
@@ -53,7 +53,7 @@ namespace MTExtDefinitions.v2
     public IEnumerable<long> BkwdCommsKStepSequence(long startKStep)
     {
       long from = (startKStep + (LRSubseqSegLength * 2));
-      long to = (startKStep + LRSubseqSegLength + 2);
+      long to = (startKStep + LRSubseqSegLength + 1);
 
       for (long i = from; i >= to; i--)
       {

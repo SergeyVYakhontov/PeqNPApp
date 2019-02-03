@@ -74,9 +74,9 @@ namespace ExistsAcceptingPath
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
 
-      NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
-      ncgJointNodesBuilder.Setup();
-      ncgJointNodesBuilder.Run();
+      //NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
+      //ncgJointNodesBuilder.Setup();
+      //ncgJointNodesBuilder.Run();
 
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();

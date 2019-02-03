@@ -29,6 +29,7 @@ namespace ExistsAcceptingPath
       this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
       this.nodeToCommoditiesMap = nodeToCommoditiesMap;
       this.kStep = kStep;
+      this.fwdKStepSequence = CPLTMInfo.FwdCommsKStepSequence(kStep).ToArray();
       this.fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
       this.fwdCFGNodeToNCGNodesMap = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap;
       this.fwdNCGEdgeToCFGEdgeMap = fwdBkwdNCommsGraphPair.FwdNCGEdgeToCFGEdgeMap;
@@ -40,11 +41,13 @@ namespace ExistsAcceptingPath
 
     public void Run()
     {
-      SortedDictionary<long, SortedSet<long>> nodeVLevels = meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
+      SortedDictionary<long, SortedSet<long>> nodeVLevels =
+        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
+      long fwdKStepLastIndex = fwdKStepSequence.Length - 1;
 
-      foreach (long i in CPLTMInfo.FwdCommsKStepSequence(kStep))
+      for (long i = 0; i <= (fwdKStepLastIndex - 1); i++)
       {
-        foreach (long uId in nodeVLevels[i])
+        foreach (long uId in nodeVLevels[fwdKStepSequence[i]])
         {
           if (!meapContext.TArbSeqCFG.HasNode(uId))
           {
@@ -58,8 +61,26 @@ namespace ExistsAcceptingPath
             DAGNode vNode = e.ToNode;
             long vId = vNode.Id;
 
-            ConnectCommsByCFGEdge(e.Id, uId, vId);
+            Connect2CommsByCFGEdge(e.Id, uId, vId);
           }
+        }
+      }
+
+      foreach (long uId in nodeVLevels[fwdKStepSequence[fwdKStepLastIndex]])
+      {
+        if (!meapContext.TArbSeqCFG.HasNode(uId))
+        {
+          continue;
+        }
+
+        DAGNode uNode = meapContext.TArbSeqCFG.GetNode(uId);
+
+        foreach (DAGEdge e in uNode.OutEdges)
+        {
+          DAGNode vNode = e.ToNode;
+          long vId = vNode.Id;
+
+          ConnectCommAndCFGNodeByCFGEdge(e.Id, uId, vId);
         }
       }
     }
@@ -72,6 +93,7 @@ namespace ExistsAcceptingPath
     private readonly ICPLTMInfo CPLTMInfo;
     private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap;
     private readonly long kStep;
+    private readonly long[] fwdKStepSequence;
     private readonly TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph;
     private readonly SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap;
     private readonly SortedDictionary<long, long> fwdNCGEdgeToCFGEdgeMap;
@@ -95,7 +117,7 @@ namespace ExistsAcceptingPath
       return dagNode;
     }
 
-    private void ConnectCommsByCFGEdge(long cfgEdgeId, long uId, long vId)
+    private void Connect2CommsByCFGEdge(long cfgEdgeId, long uId, long vId)
     {
       if (nodeToCommoditiesMap.TryGetValue(uId, out var uNodeComms))
       {
@@ -123,6 +145,32 @@ namespace ExistsAcceptingPath
               fwdNCGEdgeToCFGEdgeMap[eComm.Id] = cfgEdgeId;
             }
           }
+        }
+      }
+    }
+
+    private void ConnectCommAndCFGNodeByCFGEdge(long cfgEdgeId, long uId, long vId)
+    {
+      if (nodeToCommoditiesMap.TryGetValue(uId, out var uNodeComms))
+      {
+        DAGNode vCommNode = GetDAGNode(vId);
+
+        foreach (long uCommId in uNodeComms)
+        {
+          DAGNode uCommNode = GetDAGNode(uCommId);
+
+          DAGEdge eComm = new DAGEdge(edgeId++, uCommNode, vCommNode);
+          fwdNestedCommsGraph.AddEdge(eComm);
+
+          ICollection<long> uList = AppHelper.TakeValueByKey(
+            fwdCFGNodeToNCGNodesMap, uId, () => new List<long>());
+          uList.Add(uCommId);
+
+          ICollection<long> vList = AppHelper.TakeValueByKey(
+            fwdCFGNodeToNCGNodesMap, vId, () => new List<long>());
+          uList.Add(vId);
+
+          fwdNCGEdgeToCFGEdgeMap[eComm.Id] = cfgEdgeId;
         }
       }
     }
