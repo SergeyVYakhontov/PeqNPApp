@@ -44,7 +44,7 @@ namespace ExistsAcceptingPath
 
     private long pairId;
     private readonly SortedDictionary<KeyValuePair<long, long>, long> commPairToIdMap =
-      new SortedDictionary<KeyValuePair<long, long>, long>();
+      new SortedDictionary<KeyValuePair<long, long>, long>(new KeyValueComparer());
 
     #endregion
   }

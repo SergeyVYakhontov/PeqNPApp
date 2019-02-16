@@ -108,9 +108,7 @@ namespace ExistsAcceptingPath
     private readonly SortedDictionary<long, List<long>> bkwdCFGNodeToNCGNodesMap;
     private readonly SortedDictionary<long, long> bkwdNCGEdgeToCFGEdgeMap;
 
-    private long nodeId;
     private long edgeId;
-
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration =
       new SortedDictionary<long, DAGNode>();
 
@@ -118,7 +116,7 @@ namespace ExistsAcceptingPath
     {
       if (!nodeEnumeration.TryGetValue(uCommId, out DAGNode dagNode))
       {
-        dagNode = new DAGNode(nodeId++);
+        dagNode = new DAGNode(uCommId);
         bkwdNestedCommsGraph.AddNode(dagNode);
 
         nodeEnumeration[uCommId] = dagNode;

@@ -40,7 +40,7 @@ namespace ExistsAcceptingPath
 
       long[] kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq().ToArray();
 
-      for (int i = 0; i< (kTapeLRSubseq.Length - 1); i++)
+      for (int i = 0; i < (kTapeLRSubseq.Length - 2); i++)
       {
         long kStep = kTapeLRSubseq[i];
         long kStepNext = kTapeLRSubseq[i+1];
@@ -64,6 +64,8 @@ namespace ExistsAcceptingPath
           fwdBkwdNCommsGraphPairL.BkwdCFGNodeToNCGNodesMap;
         SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap =
           fwdBkwdNCommsGraphPairR.FwdCFGNodeToNCGNodesMap;
+
+        log.InfoFormat($"building ncg nodes for kStep = {kStep}");
 
         foreach (long level in bkwdKStepSequence)
         {
@@ -91,6 +93,10 @@ namespace ExistsAcceptingPath
           }
         }
       }
+
+      log.InfoFormat($"ncg jointNodes count: {meapContext.CfgNodeIdToNCGJointNode.Count}");
+      log.InfoFormat($"total InCommodityPairs count: {meapContext.CfgNodeIdToNCGJointNode.Sum(t => t.Value.InCommodityPairs.Count)}");
+      log.InfoFormat($"total OutCommodityPairs count: {meapContext.CfgNodeIdToNCGJointNode.Sum(t => t.Value.OutCommodityPairs.Count)}");
     }
 
     #endregion
@@ -126,7 +132,7 @@ namespace ExistsAcceptingPath
 
         foreach (long fwdNodeId in fwdCfgNodes)
         {
-          DAGNode fwdNode = bkwdNestedCommsGraph.GetNode(fwdNodeId);
+          DAGNode fwdNode = fwdNestedCommsGraph.GetNode(fwdNodeId);
 
           foreach (DAGEdge bkwdEdge in bkwdNode.OutEdges)
           {
