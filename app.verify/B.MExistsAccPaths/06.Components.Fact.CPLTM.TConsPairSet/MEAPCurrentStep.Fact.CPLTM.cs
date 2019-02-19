@@ -19,7 +19,13 @@ namespace ExistsAcceptingPath
     #region Ctors
 
     public MEAPCurrentStepFactCPLTM(MEAPContext meapContext)
-      : base(meapContext) {}
+      : base(meapContext)
+    {
+      this.tasgBuilder = (TASGBuilderFactCPLTM)meapContext.MEAPSharedContext.TASGBuilder;
+      this.meapContext.TASGBuilder = tasgBuilder;
+      this.tasgBuilder.meapContext = meapContext;
+      this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
+    }
 
     #endregion
 
@@ -29,8 +35,6 @@ namespace ExistsAcceptingPath
     {
       log.InfoFormat("mu: {0}", meapContext.mu);
       log.DebugFormat("states = {0}", AppHelper.ArrayToString(states));
-
-      CreateTASGBuilder();
 
       tasgBuilder.CreateTArbitrarySeqGraph();
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
@@ -73,10 +77,12 @@ namespace ExistsAcceptingPath
       NestedCommsGraphBuilder nestedCommsGraphBuilder = new NestedCommsGraphBuilder(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
+      nestedCommsGraphBuilder = null;
 
       NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
       ncgJointNodesBuilder.Setup();
       ncgJointNodesBuilder.Run();
+      ncgJointNodesBuilder = null;
 
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();
@@ -90,76 +96,31 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private TASGBuilderFactCPLTM tasgBuilder;
-    private SortedDictionary<long, SortedSet<long>> inVarToVarNodes;
-
-    private void CreateTASGBuilder()
-    {
-      tasgBuilder = (TASGBuilderFactCPLTM)meapContext.MEAPSharedContext.TASGBuilder;
-
-      meapContext.TASGBuilder = tasgBuilder;
-      tasgBuilder.meapContext = meapContext;
-    }
-
-    private void ProcessVars_s(long[] varsList)
-    {
-      long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
-
-      for (long i = 0; i < varsList.Length; i++)
-      {
-        long var = varsList[i];
-        inVarToVarNodes[var] = new SortedSet<long> { sNodeId };
-      }
-    }
-
-    private void ProcessNode_s()
-    {
-      ProcessVars_s(meapContext.Vars.ToArray());
-    }
-
-    private bool ProcessNode(DAGNode node)
-    {
-      long nodeId = node.Id;
-
-      if (nodeId == meapContext.TArbSeqCFG.GetSourceNodeId())
-      {
-        return true;
-      }
-
-      if (nodeId == meapContext.TArbSeqCFG.GetSinkNodeId())
-      {
-        return true;
-      }
-
-      long nodeVar = meapContext.NodeToVarMap[nodeId];
-      SortedSet<long> varNodes = AppHelper.TakeValueByKey(
-        inVarToVarNodes, nodeVar, () => new SortedSet<long>());
-
-      varNodes.Add(nodeId);
-
-      return true;
-    }
+    private readonly TASGBuilderFactCPLTM tasgBuilder;
+    private readonly ICPLTMInfo CPLTMInfo;
 
     private void ComputeDUPairs()
     {
-      TConsistPairSetBuilderFactCPLTM tConsistPairSetBuilder = new TConsistPairSetBuilderFactCPLTM(meapContext);
-      tConsistPairSetBuilder.Setup();
+      meapContext.TConsistPairCount = 0;
+      meapContext.TConsistPairSet = new SortedSet<CompStepNodePair>(
+        new CompStepNodePairComparer());
 
-      inVarToVarNodes = new SortedDictionary<long, SortedSet<long>>();
-      ProcessNode_s();
+      long[] kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq().ToArray();
 
-      DAG.BFS_VLevels(
-        meapContext.TArbSeqCFG,
-        GraphDirection.Forward,
-        meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels,
-        DAG.Level0,
-        ProcessNode,
-        (_) => true);
+      for (int i = 1; i <= (kTapeLRSubseq.Length - 2); i++)
+      {
+        long kStepA = kTapeLRSubseq[i - 1];
+        long kStepB = kTapeLRSubseq[i];
+        long kStepC = kTapeLRSubseq[i + 1];
 
-      tConsistPairSetBuilder.Run(inVarToVarNodes, DAG.Level0);
-      tConsistPairSetBuilder.Trace();
+        log.InfoFormat($"Computing DU pairs at kStep = {kStepB}");
 
-      inVarToVarNodes.Clear();
+        ComputeKStepDUPairs computeKStepDUPairs = new ComputeKStepDUPairs(
+          meapContext,
+          new Tuple<long, long, long>(kStepA, kStepB, kStepC));
+
+        computeKStepDUPairs.Run();
+      }
     }
 
     #endregion
