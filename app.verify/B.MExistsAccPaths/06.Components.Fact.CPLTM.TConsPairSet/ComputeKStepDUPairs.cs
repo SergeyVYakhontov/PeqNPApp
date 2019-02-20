@@ -35,11 +35,65 @@ namespace ExistsAcceptingPath
 
     public void Run()
     {
-      long kStepA = kSteps.Item2;
+      TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg = meapContext.TArbSeqCFG;
+      SortedDictionary<long, TASGNodeInfo> idToInfoMap = meapContext.TArbSeqCFG.IdToNodeInfoMap;
 
-      foreach (long nodeId in nodeVLevels[kStepA])
+      long kStepA = kSteps.Item1;
+      long kStepB = kSteps.Item2;
+      long kStepC = kSteps.Item3;
+
+      foreach (long nodeId in nodeVLevels[kStepB])
       {
-        duPairs.Add(new KeyValuePair<long, long>(nodeId, nodeId));
+        currDUPairs.Add(new KeyValuePair<long, long>(nodeId, nodeId));
+      }
+
+      for(long i = kStepB; i >= (kStepA + 1); i--)
+      {
+        foreach(KeyValuePair<long, long> duPair in currDUPairs)
+        {
+          long uNodeId = duPair.Key;
+          long vNodeId = duPair.Value;
+
+          DAGNode uNode = cfg.GetNode(uNodeId);
+          DAGNode vNode = cfg.GetNode(vNodeId);
+
+          foreach(DAGEdge uEdge in uNode.InEdges)
+          {
+            foreach (DAGEdge vEdge in vNode.OutEdges)
+            {
+              long defNodeId = uEdge.FromNode.Id;
+              long useNodeId = vEdge.ToNode.Id;
+
+              ComputationStep defCompStep = idToInfoMap[defNodeId].CompStep;
+              ComputationStep useCompStep = idToInfoMap[useNodeId].CompStep;
+
+              if((defCompStep.kappaTape == useCompStep.kappaTape) &&
+                 (defCompStep.sNext == useCompStep.s))
+              {
+                nextDUPairs.Add(new KeyValuePair<long, long>(defNodeId, useNodeId));
+              }
+            }
+          }
+        }
+
+        currDUPairs.Clear();
+        nextDUPairs.ForEach(t => currDUPairs.Add(t));
+
+        foreach(KeyValuePair<long, long> duPair in currDUPairs)
+        {
+          long defNodeId = duPair.Key;
+          long useNodeId = duPair.Value;
+          ComputationStep defCompStep = idToInfoMap[defNodeId].CompStep;
+
+          meapContext.TConsistPairSet.Add(
+            new CompStepNodePair(
+              variable: defCompStep.kappaTape,
+              uNode: duPair.Key,
+              vNode: duPair.Value
+            ));
+
+          meapContext.TConsistPairCount++;
+        }
       }
     }
 
@@ -52,7 +106,9 @@ namespace ExistsAcceptingPath
     private readonly ICPLTMInfo CPLTMInfo;
     private readonly SortedDictionary<long, SortedSet<long>> nodeVLevels;
 
-    private readonly SortedSet<KeyValuePair<long, long>> duPairs =
+    private readonly SortedSet<KeyValuePair<long, long>> currDUPairs =
+      new SortedSet<KeyValuePair<long, long>>(new KeyValueComparer());
+    private readonly SortedSet<KeyValuePair<long, long>> nextDUPairs =
       new SortedSet<KeyValuePair<long, long>>(new KeyValueComparer());
 
     #endregion
