@@ -55,6 +55,10 @@ namespace VerifyResults.v2
       => new IF_ExampleSetB { Name = "08_IF_ES2" };
     public ExampleSet IF_ExampleSetC
       => new IF_ExampleSetC { Name = "08_IF_ES3" };
+    public ExampleSet IF_ExampleSetD
+      => new IF_ExampleSetD { Name = "08_IF_ES3" };
+    public ExampleSet IF_ExampleSetE
+      => new IF_ExampleSetE { Name = "08_IF_ES3" };
 
     // Longest Common Subsequence
     public ExampleSet LCS_ExampleSet

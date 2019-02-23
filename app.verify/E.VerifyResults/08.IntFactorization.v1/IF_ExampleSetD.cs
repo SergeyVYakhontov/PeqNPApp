@@ -24,12 +24,13 @@ namespace VerifyResults.v1
     public override List<IExample> GetLargeExamples()
     {
       List<IExample> largeExamples =
-        new List<IExample>()
+        new List<IExample>
         {
-          new IF_Example()
+          new IF_Example
           {
-            Name = "E148",
-            Input = new int[] { 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0 }.Reverse().ToArray() // 10 0000
+            Name = "E01",
+            // 10 0000
+            Input = new int[] { 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0 }.Reverse().ToArray()
           }
         };
 

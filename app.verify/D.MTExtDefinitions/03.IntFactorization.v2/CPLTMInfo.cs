@@ -28,9 +28,13 @@ namespace MTExtDefinitions.v2
 
     public void ComputeSequences()
     {
+      log.Info("ComputeSequences: setup");
       Setup();
 
+      log.Info("ComputeSequences: ComputeKTapeSequence");
       ComputeKTapeSequence();
+
+      log.Info("ComputeSequences: ComputeKTapeLRSubseq");
       ComputeKTapeLRSubseq();
     }
 
@@ -64,6 +68,9 @@ namespace MTExtDefinitions.v2
     #endregion
 
     #region private members
+
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private readonly int inputLength;
     private int[] input;

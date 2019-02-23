@@ -83,21 +83,6 @@ namespace ExistsAcceptingPath
         long commId = idCommPair.Key;
         Commodity commodity = idCommPair.Value;
 
-        bool processPair = true;
-
-        if (commodity.sNodeId == meapContext.TArbSeqCFG.GetSourceNodeId())
-        {
-          if (commodity.Variable != 0)
-          {
-            processPair = false;
-          }
-        }
-
-        if (!processPair)
-        {
-          continue;
-        }
-
         LinkedList<long> commsAtSNode = AppHelper.TakeValueByKey(
           sNodeToCommoditiesMap,
           commodity.sNodeId,

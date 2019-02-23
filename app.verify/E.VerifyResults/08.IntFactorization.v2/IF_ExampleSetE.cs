@@ -18,18 +18,37 @@ namespace VerifyResults.v2
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>();
+      List<IExample> smallExamples =
+        new List<IExample>
+        {
+          new IF_Example
+          {
+            Name = "E01",
+            // 4834854734712912934856756745239
+            Input = new int[]
+            {
+              1,1,1,1,0,1,0,0,0,0,0,1,1,0,0,1,0,0,0,0,
+              1,0,0,0,0,1,1,0,0,1,1,1,0,1,1,1,1,1,0,1,
+              1,0,0,0,0,0,1,1,0,1,1,1,0,0,1,1,1,0,0,1,
+              0,1,0,0,1,1,0,1,0,0,0,0,0,1,0,0,1,0,1,1,
+              1,0,1,1,1,0,1,1,0,1,0,1,0,0,0,0,0,1,0,1,1,1
+            }.Reverse().ToArray()
+          }
+        };
+
+      return smallExamples;
     }
 
     public override List<IExample> GetLargeExamples()
     {
       List<IExample> largeExamples =
-        new List<IExample>()
+        new List<IExample>
         {
-          new IF_Example()
+          new IF_Example
           {
-            Name = "E148",
-            Input = new int[] { 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0 }.Reverse().ToArray() // 10 0000
+            Name = "E01",
+            // 10 0000
+            Input = new int[] { 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0 }.Reverse().ToArray()
           }
         };
 

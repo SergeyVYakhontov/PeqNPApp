@@ -21,10 +21,11 @@ namespace VerifyResults.v2
       List<IExample> smallExamples =
         new List<IExample>
         {
-          new IF_Example()
+          new IF_Example
           {
             Name = "E01",
-            Input = new int[] {1, 0, 0}.Reverse().ToArray() // 4 = 2 * 2
+            // 4 = 2 * 2
+            Input = new int[] {1, 0, 0}.Reverse().ToArray()
           }
         };
 

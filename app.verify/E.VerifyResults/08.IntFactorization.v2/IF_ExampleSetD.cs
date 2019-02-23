@@ -24,52 +24,61 @@ namespace VerifyResults.v2
     public override List<IExample> GetLargeExamples()
     {
       List<IExample> largeExamples =
-        new List<IExample>()
+        new List<IExample>
         {
+          new IF_Example
+          {
+            Name = "E01",
+            // 1024
+            Input = new int[] {1,0,0,0,0,0,0,0,0,0,0}.Reverse().ToArray()
+          },
+          new IF_Example
+          {
+            Name = "E02",
+            // 40 000
+            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0}.Reverse().ToArray()
+          },
           new IF_Example()
+          {
+            Name = "E03",
+            // 9 = 3 * 3
+            Input = new int[] {1, 0, 0, 1}.Reverse().ToArray()
+          },
+          new IF_Example
+          {
+            Name = "E04",
+            // 50
+            Input = new int[] {1, 1, 0, 0, 1, 0}.Reverse().ToArray()
+          },
+          new IF_Example
           {
             Name = "E05",
-            Input = new int[] {1,0,0,0,0,0,0,0,0,0,0}.Reverse().ToArray() // 1024
+            // 80
+            Input = new int[] {1, 0, 1, 0, 0, 0, 0}.Reverse().ToArray()
           },
-          new IF_Example()
+          new IF_Example
           {
             Name = "E06",
-            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0}.Reverse().ToArray() // 40 000
+            // 81
+            Input = new int[] {1, 0, 1, 0, 0, 0, 1}.Reverse().ToArray()
           },
-          new IF_Example()
+          new IF_Example
           {
             Name = "E07",
-            Input = new int[] {1, 0, 0, 1}.Reverse().ToArray() // 9 = 3 * 3
+            // 225
+            Input = new int[] {1, 1, 1, 0, 0, 0, 0, 1}.Reverse().ToArray()
           },
-          new IF_Example()
+          new IF_Example
           {
             Name = "E08",
-            Input = new int[] {1, 1, 0, 0, 1, 0}.Reverse().ToArray() // 50
+            // 10 0000
+            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0}.Reverse().ToArray()
           },
-          new IF_Example()
+          new IF_Example
           {
             Name = "E09",
-            Input = new int[] {1, 0, 1, 0, 0, 0, 0}.Reverse().ToArray() // 80
-          },
-          new IF_Example()
-          {
-            Name = "E10",
-            Input = new int[] {1, 0, 1, 0, 0, 0, 1}.Reverse().ToArray() // 81
-          },
-          new IF_Example()
-          {
-            Name = "E11",
-            Input = new int[] {1, 1, 1, 0, 0, 0, 0, 1}.Reverse().ToArray() // 225
-          },
-          new IF_Example()
-          {
-            Name = "E12",
-            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0}.Reverse().ToArray() // 10 0000
-          },
-          new IF_Example()
-          {
-            Name = "E13",
-            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0}.Reverse().ToArray() // 40 000
+            // 40 000
+            Input = new int[] {1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0}.Reverse().ToArray()
           }
         };
 

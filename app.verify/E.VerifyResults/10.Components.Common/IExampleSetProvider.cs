@@ -44,6 +44,8 @@ namespace VerifyResults
     ExampleSet IF_ExampleSetA { get; }
     ExampleSet IF_ExampleSetB { get; }
     ExampleSet IF_ExampleSetC { get; }
+    ExampleSet IF_ExampleSetD { get; }
+    ExampleSet IF_ExampleSetE { get; }
 
     // Longest Common Subsequence
     ExampleSet LCS_ExampleSet { get; }
