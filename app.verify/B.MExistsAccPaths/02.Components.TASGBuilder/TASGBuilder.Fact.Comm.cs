@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using Ninject;
 using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -151,6 +152,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
+    private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -207,14 +209,19 @@ namespace ExistsAcceptingPath
       toCompStep.m = p.Direction;
       toCompStep.Shift = p.Shift;
 
-      bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
+      IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
+
+      if (debugOptions.UsePropSymbols)
+      {
+        bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
         fromNode,
         fromCompStep,
         toCompStep);
 
-      if (!ifThereIsFlowFrom)
-      {
-        return;
+        if (!ifThereIsFlowFrom)
+        {
+          return;
+        }
       }
 
       TapeLBound = Math.Min(toCompStep.kappaTape - 1, TapeLBound);
@@ -243,10 +250,10 @@ namespace ExistsAcceptingPath
       DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
       G.AddEdge(e);
 
-      propSymbolsKeeper.PropagateSymbol(
-        fromNode,
-        toNode,
-        toCompStep);
+      if (debugOptions.UsePropSymbols)
+      {
+        propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
+      }
     }
 
     private void TraverseMNPTree()

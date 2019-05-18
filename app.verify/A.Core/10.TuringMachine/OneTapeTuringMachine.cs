@@ -51,6 +51,8 @@ namespace Core
     public virtual long GetRTapeBound(ulong mu, ulong n) => 1 + (long)mu;
     public virtual ulong ExpectedPathLength(ulong n) => n;
 
+    public virtual SortedDictionary<long, SortedSet<int>> UsedTapeSymbols { get; set; }
+
     public const long InstancesCountLimit = 1024 * 1024;
 
     public bool ComputationFinished { get; private set; }

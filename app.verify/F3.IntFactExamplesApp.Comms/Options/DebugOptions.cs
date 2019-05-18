@@ -16,6 +16,9 @@ namespace IntegerFactExamplesAppComms
     public ulong muStart { get => 1; }
     public bool RunRDA { get => true; }
     public bool ComputeCommoditiesExplicitely { get => true; }
+
+    public bool UsePropSymbols { get => true; }
+    public bool UseTapeRestrictions { get => false; }
   }
 }
 

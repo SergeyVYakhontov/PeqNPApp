@@ -16,6 +16,11 @@ namespace OrdinaryExamplesAppSlotsMThreads
     public ulong muStart { get => 1; }
     public bool RunRDA { get => true; }
     public bool ComputeCommoditiesExplicitely { get => true; }
+
+    public bool UsePropSymbols { get =>
+        throw new InvalidOperationException("The option cannot be used in this context"); }
+    public bool UseTapeRestrictions { get =>
+        throw new InvalidOperationException("The option cannot be used in this context"); }
   }
 }
 

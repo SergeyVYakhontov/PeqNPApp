@@ -173,6 +173,8 @@ namespace MTExtDefinitions.v2
       F = new uint[] { acceptingState };
 
       CheckDeltaRelation();
+
+      SetupTapeSymbol();
     }
 
     public override bool UP => true;
@@ -193,6 +195,8 @@ namespace MTExtDefinitions.v2
       return 5 * (n * n);
     }
 
+    public override SortedDictionary<long, SortedSet<int>> UsedTapeSymbols { get; set;  }
+
     public override int[] GetOutput(TMInstance tmInstance, ulong mu, ulong n)
     {
       return tmInstance.GetTapeSubstr(GetLTapeBound(mu, n), GetRTapeBound(mu, n));
@@ -212,6 +216,78 @@ namespace MTExtDefinitions.v2
     private static readonly IKernel configuration = Core.AppContext.Configuration;
 
     private readonly int inputLength;
+
+    private void addSymbol(int tapeIndex, int tapeSymbol)
+    {
+      AppHelper.TakeValueByKey(UsedTapeSymbols, tapeIndex,
+        () => new SortedSet<int>()).Add(tapeSymbol);
+    }
+
+    private void SetupTapeSymbol()
+    {
+      UsedTapeSymbols = new SortedDictionary<long, SortedSet<int>>();
+
+      int frameLength = IF_NDTM.FrameLength(inputLength);
+      int frameStart1 = IF_NDTM.FrameStart1(inputLength);
+      int frameStart2 = IF_NDTM.FrameStart2(inputLength);
+      int frameStart3 = IF_NDTM.FrameStart3(inputLength);
+      int frameEnd4 = IF_NDTM.FrameEnd4(inputLength);
+
+      addSymbol(0, delimiter0);
+      addSymbol(frameStart1, delimiter1);
+      addSymbol(frameStart2, delimiter2);
+      addSymbol(frameStart3, delimiter3);
+      addSymbol(frameEnd4, delimiter4);
+
+      // frame A
+      for (int i = 1; i < frameStart1; i++)
+      {
+        addSymbol(i, OneTapeTuringMachine.blankSymbol);
+        addSymbol(i, 0);
+        addSymbol(i, 1);
+
+        addSymbol(i, markE0);
+        addSymbol(i, markE1);
+      }
+
+      // frame B
+      for (int i = (frameStart1 + 1); i < frameStart2; i++)
+      {
+        addSymbol(i, OneTapeTuringMachine.blankSymbol);
+        addSymbol(i, 0);
+        addSymbol(i, 1);
+
+        addSymbol(i, markB0);
+        addSymbol(i, markB1);
+      }
+
+      // frame C
+      for (int i = (frameStart2 + 1); i < frameStart3; i++)
+      {
+        addSymbol(i, OneTapeTuringMachine.blankSymbol);
+        addSymbol(i, 0);
+        addSymbol(i, 1);
+
+        addSymbol(i, markC0);
+        addSymbol(i, markC1);
+      }
+
+      // frame D
+      for (int i = (frameStart3 + 1); i < frameEnd4; i++)
+      {
+        addSymbol(i, OneTapeTuringMachine.blankSymbol);
+        addSymbol(i, 0);
+        addSymbol(i, 1);
+
+        addSymbol(i, markD0);
+        addSymbol(i, markD1);
+        addSymbol(i, markD2);
+        addSymbol(i, markD3);
+
+        addSymbol(i, markF0);
+        addSymbol(i, markF1);
+      }
+    }
 
     #endregion
   }

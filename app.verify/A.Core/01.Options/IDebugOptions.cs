@@ -15,6 +15,9 @@ namespace Core
     ulong muStart { get; }
     bool RunRDA { get; }
     bool ComputeCommoditiesExplicitely { get; }
+
+    bool UsePropSymbols { get; }
+    bool UseTapeRestrictions { get; }
   }
 }
 

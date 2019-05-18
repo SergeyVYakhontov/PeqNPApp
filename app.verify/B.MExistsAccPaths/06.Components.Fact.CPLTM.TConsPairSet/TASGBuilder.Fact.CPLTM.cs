@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using Ninject;
 using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,6 +156,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
+    private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -220,14 +222,34 @@ namespace ExistsAcceptingPath
         return;
       }
 
-      bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
-        fromNode,
-        fromCompStep,
-        toCompStep);
+      IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
 
-      if (!ifThereIsFlowFrom)
+      if (debugOptions.UsePropSymbols)
       {
-        return;
+        bool ifThereIsFlowFrom = propSymbolsKeeper.IfThereIsFlowFrom(
+          fromNode,
+          fromCompStep,
+          toCompStep);
+
+        if (!ifThereIsFlowFrom)
+        {
+          return;
+        }
+      }
+
+      if (debugOptions.UseTapeRestrictions)
+      {
+        SortedSet<int> tapeSymbols = MEAPSharedContext.MNP.UsedTapeSymbols[toCompStep.kappaTape];
+
+         if (!tapeSymbols.Contains(toCompStep.s))
+        {
+          return;
+        }
+
+        if (!tapeSymbols.Contains(toCompStep.sNext))
+        {
+          return;
+        }
       }
 
       TapeLBound = Math.Min(toCompStep.kappaTape, TapeLBound);
@@ -264,7 +286,10 @@ namespace ExistsAcceptingPath
       DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
       G.AddEdge(e);
 
-      propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
+      if (debugOptions.UsePropSymbols)
+      {
+        propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
+      }
     }
 
     private void TraverseMNPTree()
