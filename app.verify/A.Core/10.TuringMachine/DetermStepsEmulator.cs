@@ -59,9 +59,7 @@ namespace Core
       Func<bool> condition,
       Action<int> action)
     {
-      int stepNumber = 1;
-
-      while(condition())
+      for (int stepNumber = 1; condition(); stepNumber++)
       {
         action(stepNumber);
 
@@ -73,8 +71,6 @@ namespace Core
         {
           DoStep1(0);
         }
-
-        stepNumber++;
       }
     }
 

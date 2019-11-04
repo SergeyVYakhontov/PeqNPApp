@@ -48,10 +48,16 @@ namespace MTExtDefinitions.v2
       long from = startKStep;
       long to = (startKStep + LRSubseqSegLength - 1);
 
+      List<long> fwdCommsKStepSequence = new List<long>();
+
       for (long i = from; i <= to; i++)
       {
-        yield return i;
+        fwdCommsKStepSequence.Add(i);
       }
+
+      Ensure.That(fwdCommsKStepSequence.Count % 2).Is(0);
+
+      return fwdCommsKStepSequence;
     }
 
     public IEnumerable<long> BkwdCommsKStepSequence(long startKStep)
@@ -59,10 +65,16 @@ namespace MTExtDefinitions.v2
       long from = (startKStep + (LRSubseqSegLength * 2));
       long to = (startKStep + LRSubseqSegLength + 1);
 
+      List<long> bkwdCommsKStepSequence = new List<long>();
+
       for (long i = from; i >= to; i--)
       {
-        yield return i;
+        bkwdCommsKStepSequence.Add(i);
       }
+
+      Ensure.That(bkwdCommsKStepSequence.Count % 2).Is(0);
+
+      return bkwdCommsKStepSequence;
     }
 
     #endregion
