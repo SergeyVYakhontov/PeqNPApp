@@ -95,8 +95,8 @@ namespace ExistsAcceptingPath
       }
 
       log.InfoFormat($"ncg jointNodes count: {meapContext.CfgNodeIdToNCGJointNode.Count}");
-      log.InfoFormat($"total InCommodityPairs count: {meapContext.CfgNodeIdToNCGJointNode.Sum(t => t.Value.InCommodityPairs.Count)}");
-      log.InfoFormat($"total OutCommodityPairs count: {meapContext.CfgNodeIdToNCGJointNode.Sum(t => t.Value.OutCommodityPairs.Count)}");
+      log.InfoFormat($"total InCommodityNodes count: {meapContext.CfgNodeIdToNCGJointNode.Sum(t => t.Value.InCommodityNodes.Count)}");
+      log.InfoFormat($"total OutCommodityNodes count: {meapContext.CfgNodeIdToNCGJointNode.Sum(t => t.Value.OutCommodityNodes.Count)}");
     }
 
     #endregion
@@ -134,35 +134,8 @@ namespace ExistsAcceptingPath
         {
           DAGNode fwdNode = fwdNestedCommsGraph.GetNode(fwdNodeId);
 
-          foreach (DAGEdge bkwdEdge in bkwdNode.OutEdges)
-          {
-            long bkwdCFGEdgeId = bkwdNCGEdgeToCFGEdgeMap[bkwdEdge.Id];
-
-            foreach (DAGEdge fwdEdge in fwdNode.InEdges)
-            {
-              long fwdCFGEdgeId = fwdNCGEdgeToCFGEdgeMap[fwdEdge.Id];
-
-              if (bkwdCFGEdgeId == fwdCFGEdgeId)
-              {
-                ncgJointNode.AddInCommodityPair(bkwdNodeId, fwdNodeId);
-              }
-            }
-          }
-
-          foreach (DAGEdge bkwdEdge in bkwdNode.InEdges)
-          {
-            long bkwdCFGEdgeId = bkwdNCGEdgeToCFGEdgeMap[bkwdEdge.Id];
-
-            foreach (DAGEdge fwdEdge in fwdNode.OutEdges)
-            {
-              long fwdCFGEdgeId = fwdNCGEdgeToCFGEdgeMap[fwdEdge.Id];
-
-              if (bkwdCFGEdgeId == fwdCFGEdgeId)
-              {
-                ncgJointNode.AddOutCommodityPair(bkwdNodeId, fwdNodeId);
-              }
-            }
-          }
+          ncgJointNode.AddInCommodityNode(bkwdNodeId);
+          ncgJointNode.AddOutCommodityNode(fwdNodeId);
         }
       }
     }

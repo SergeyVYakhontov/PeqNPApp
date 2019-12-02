@@ -15,22 +15,20 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class NCommsGraphJointNode
+  public class JointNodesReachGraphBuilder
   {
+    #region Ctors
+
+    public JointNodesReachGraphBuilder(LRJointNodesReachGraphPair lrJointNodesReachGraphPair)
+    {
+      this.LRJointNodesReachGraphPair = lrJointNodesReachGraphPair;
+    }
+
+    #endregion
+
     #region public members
 
-    public List<long> InCommodityNodes { get; } = new List<long>();
-    public List<long> OutCommodityNodes { get; } = new List<long>();
-
-    public void AddInCommodityNode(long nodeId)
-    {
-      InCommodityNodes.Add(nodeId);
-    }
-
-    public void AddOutCommodityNode(long nodeId)
-    {
-      OutCommodityNodes.Add(nodeId);
-    }
+    public LRJointNodesReachGraphPair LRJointNodesReachGraphPair { get; }
 
     #endregion
   }
