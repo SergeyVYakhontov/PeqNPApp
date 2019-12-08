@@ -22,6 +22,11 @@ namespace ExistsAcceptingPath
     {
       log.Info("Finding shortest path");
 
+      ComputeJointNodesReachGraphsSet();
+
+      //DetermineTConsistPath();
+      //ExtractTConsistSeq()
+
       CopyResult();
 
       meapContext.AcceptingNodes.Clear();
@@ -50,6 +55,24 @@ namespace ExistsAcceptingPath
     //private bool pathFound;
     private readonly List<long> tConsistPath = new List<long>();
     private readonly int[] output = Array.Empty<int>();
+
+    private void ComputeJointNodesReachGraphsSet()
+    {
+      log.Info("ComputeJointNodesReachGraphsSet");
+
+      foreach (var muCommsGraphPair in meapContext.muToNestedCommsGraphPair.SkipLast(1))
+      {
+        long mu = muCommsGraphPair.Key;
+        FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair = muCommsGraphPair.Value;
+
+        JointNodesReachGraphBuilder jointNodesReachGraphBuilder =
+          new JointNodesReachGraphBuilder(meapContext, mu, fwdBkwdNCommsGraphPair);
+        jointNodesReachGraphBuilder.Run();
+
+        LRJointNodesReachGraphPair lrJointNodesReachGraphPair =
+          jointNodesReachGraphBuilder.LRJointNodesReachGraphPair;
+      }
+    }
 
     /*private void ExtractTConsistSeq()
     {

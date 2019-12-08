@@ -15,22 +15,24 @@ using EnsureThat;
 
 namespace ExistsAcceptingPath
 {
+  using ReachGraphType = TypedDAG<JNodesReachGraphNodeInfo, JNodesReachGraphEdgeInfo>;
+
   public class LRJointNodesReachGraphPair
   {
     #region Ctors
 
     public LRJointNodesReachGraphPair()
     {
-      LeftJointNodesReachGraph = new TypedDAG<JNodesReachGraphNodeInfo, JNodesReachGraphEdgeInfo>(nameof(LeftJointNodesReachGraph));
-      RightJointNodesReachGraph = new TypedDAG<JNodesReachGraphNodeInfo, JNodesReachGraphEdgeInfo>(nameof(RightJointNodesReachGraph));
+      LeftJointNodesReachGraph = new ReachGraphType(nameof(LeftJointNodesReachGraph));
+      RightJointNodesReachGraph = new ReachGraphType(nameof(RightJointNodesReachGraph));
     }
 
     #endregion
 
     #region public members
 
-    public TypedDAG<JNodesReachGraphNodeInfo, JNodesReachGraphEdgeInfo> LeftJointNodesReachGraph { get; }
-    public TypedDAG<JNodesReachGraphNodeInfo, JNodesReachGraphEdgeInfo> RightJointNodesReachGraph { get; }
+    public ReachGraphType LeftJointNodesReachGraph { get; }
+    public ReachGraphType RightJointNodesReachGraph { get; }
 
     #endregion
   }

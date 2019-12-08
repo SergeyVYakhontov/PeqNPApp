@@ -15,14 +15,16 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
+  using NCGraphType = TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>;
+
   public class FwdBkwdNCommsGraphPair
   {
     #region Ctors
 
     public FwdBkwdNCommsGraphPair()
     {
-      FwdNestedCommsGraph = new TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>(nameof(FwdNestedCommsGraph));
-      BkwdNestedCommsGraph = new TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>(nameof(BkwdNestedCommsGraph));
+      FwdNestedCommsGraph = new NCGraphType(nameof(FwdNestedCommsGraph));
+      BkwdNestedCommsGraph = new NCGraphType(nameof(BkwdNestedCommsGraph));
 
       FwdCFGNodeToNCGNodesMap = new SortedDictionary<long, List<long>>();
       BkwdCFGNodeToNCGNodesMap = new SortedDictionary<long, List<long>>();
@@ -35,8 +37,8 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> FwdNestedCommsGraph { get; }
-    public TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> BkwdNestedCommsGraph { get; }
+    public NCGraphType FwdNestedCommsGraph { get; }
+    public NCGraphType BkwdNestedCommsGraph { get; }
 
     public SortedDictionary<long, List<long>> FwdCFGNodeToNCGNodesMap { get; }
     public SortedDictionary<long, List<long>> BkwdCFGNodeToNCGNodesMap { get; }
