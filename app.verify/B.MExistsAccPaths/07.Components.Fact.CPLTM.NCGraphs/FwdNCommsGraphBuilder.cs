@@ -15,6 +15,8 @@ using EnsureThat;
 
 namespace ExistsAcceptingPath
 {
+  using NCGraphType = TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>;
+
   public class FwdNCommsGraphBuilder
   {
     #region Ctors
@@ -29,7 +31,6 @@ namespace ExistsAcceptingPath
       this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
       this.nodeToCommoditiesMap = nodeToCommoditiesMap;
       this.kStep = kStep;
-      this.fwdKStepSequence = CPLTMInfo.FwdCommsKStepSequence(kStep).ToArray();
       this.fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
       this.fwdCFGNodeToNCGNodesMap = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap;
       this.fwdNCGEdgeToCFGEdgeMap = fwdBkwdNCommsGraphPair.FwdNCGEdgeToCFGEdgeMap;
@@ -43,7 +44,9 @@ namespace ExistsAcceptingPath
     {
       SortedDictionary<long, SortedSet<long>> nodeVLevels =
         meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
-      long fwdKStepLastIndex = fwdKStepSequence.Length - 1;
+
+      fwdKStepSequence = CPLTMInfo.FwdCommsKStepSequence(kStep).ToArray();
+      long fwdKStepLastIndex = fwdKStepSequence.LastIndex();
 
       for (long i = 0; i <= (fwdKStepLastIndex - 1); i++)
       {
@@ -103,8 +106,8 @@ namespace ExistsAcceptingPath
     private readonly ICPLTMInfo CPLTMInfo;
     private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap;
     private readonly long kStep;
-    private readonly long[] fwdKStepSequence;
-    private readonly TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph;
+    private long[] fwdKStepSequence;
+    private readonly NCGraphType fwdNestedCommsGraph;
     private readonly SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap;
     private readonly SortedDictionary<long, long> fwdNCGEdgeToCFGEdgeMap;
 

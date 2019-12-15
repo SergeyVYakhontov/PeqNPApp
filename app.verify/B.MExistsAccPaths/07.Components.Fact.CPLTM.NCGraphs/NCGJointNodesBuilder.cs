@@ -15,6 +15,8 @@ using EnsureThat;
 
 namespace ExistsAcceptingPath
 {
+  using NCGraphType = TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>;
+
   public class NCGJointNodesBuilder
   {
     #region Ctors
@@ -40,7 +42,7 @@ namespace ExistsAcceptingPath
 
       long[] kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq().ToArray();
 
-      for (int i = 0; i < (kTapeLRSubseq.Length - 2); i++)
+      for (int i = 0; i < (kTapeLRSubseq.Length - 3); i++)
       {
         long kStep = kTapeLRSubseq[i];
         long kStepNext = kTapeLRSubseq[i+1];
@@ -71,7 +73,11 @@ namespace ExistsAcceptingPath
         {
           SortedSet<long> cfgNodesAtLevel = nodeVLevels[level];
 
-          foreach(long cfgNodeId in cfgNodesAtLevel)
+          long ncgJointNodeCount = 0;
+          long inCommodityNodeCount = 0;
+          long outCommodityNodeCount = 0;
+
+          foreach (long cfgNodeId in cfgNodesAtLevel)
           {
             NCommsGraphJointNode ncgJointNode = AppHelper.TakeValueByKey(
               meapContext.CfgNodeIdToNCGJointNode,
@@ -88,9 +94,18 @@ namespace ExistsAcceptingPath
                   bkwdCfgNodes,
                   fwdCfgNodes,
                   ncgJointNode);
+
+                ncgJointNodeCount++;
+                inCommodityNodeCount += ncgJointNode.InCommodityNodes.Count;
+                outCommodityNodeCount += ncgJointNode.OutCommodityNodes.Count;
               }
             }
           }
+
+          log.InfoFormat($"level: {level}");
+          log.InfoFormat($"ncg jointNodes count at level: {ncgJointNodeCount}");
+          log.InfoFormat($"InCommodityNodes count at level: {inCommodityNodeCount}");
+          log.InfoFormat($"OutCommodityNodes count at level: {outCommodityNodeCount}");
         }
       }
 
@@ -116,10 +131,8 @@ namespace ExistsAcceptingPath
       List<long> fwdCfgNodes,
       NCommsGraphJointNode ncgJointNode)
     {
-      TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph =
-        fwdBkwdNCommsGraphPairL.BkwdNestedCommsGraph;
-      TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph =
-        fwdBkwdNCommsGraphPairR.FwdNestedCommsGraph;
+      NCGraphType bkwdNestedCommsGraph = fwdBkwdNCommsGraphPairL.BkwdNestedCommsGraph;
+      NCGraphType fwdNestedCommsGraph = fwdBkwdNCommsGraphPairR.FwdNestedCommsGraph;
 
       SortedDictionary<long, long> bkwdNCGEdgeToCFGEdgeMap =
         fwdBkwdNCommsGraphPairL.BkwdNCGEdgeToCFGEdgeMap;

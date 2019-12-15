@@ -25,14 +25,14 @@ namespace ExistsAcceptingPath
     public JointNodesReachGraphBuilder(
       MEAPContext meapContext,
       long kStep,
-      FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair)
+      FwdBkwdNCommsGraphPair leftFwdBkwdNCommsGraphPair,
+      FwdBkwdNCommsGraphPair rightFwdBkwdNCommsGraphPair)
     {
       this.meapContext = meapContext;
       this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
       this.kStep = kStep;
-      this.fwdKStepSequence = CPLTMInfo.FwdCommsKStepSequence(kStep).ToArray();
-      this.fwdBkwdNCommsGraphPair = fwdBkwdNCommsGraphPair;
-      this.bkwdKStepSequence = CPLTMInfo.BkwdCommsKStepSequence(kStep).ToArray();
+      this.leftFwdBkwdNCommsGraphPair = leftFwdBkwdNCommsGraphPair;
+      this.rightFwdBkwdNCommsGraphPair = rightFwdBkwdNCommsGraphPair;
 
       this.LRJointNodesReachGraphPair = new LRJointNodesReachGraphPair();
     }
@@ -46,6 +46,12 @@ namespace ExistsAcceptingPath
     public void Run()
     {
       log.Info($"Creating JointNodesReachGraphs at kStep = {kStep}");
+
+      leftFwdKStepSequence = CPLTMInfo.FwdCommsKStepSequence(kStep).ToArray();
+      leftBkwdKStepSequence = CPLTMInfo.BkwdCommsKStepSequence(kStep).ToArray();
+
+      rightFwdKStepSequence = CPLTMInfo.FwdCommsKStepSequence(kStep + 1).ToArray();
+      rightBkwdKStepSequence = CPLTMInfo.BkwdCommsKStepSequence(kStep + 1).ToArray();
 
       log.Info("Creating LeftJointNodesReachGraph");
       ConstructLeftGraph();
@@ -64,22 +70,27 @@ namespace ExistsAcceptingPath
     private readonly MEAPContext meapContext;
     private readonly ICPLTMInfo CPLTMInfo;
     private readonly long kStep;
-    private readonly long[] fwdKStepSequence;
-    private readonly long[] bkwdKStepSequence;
-    private readonly FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair;
+    private long[] leftFwdKStepSequence;
+    private long[] leftBkwdKStepSequence;
+    private long[] rightFwdKStepSequence;
+    private long[] rightBkwdKStepSequence;
+    private readonly FwdBkwdNCommsGraphPair leftFwdBkwdNCommsGraphPair;
+    private readonly FwdBkwdNCommsGraphPair rightFwdBkwdNCommsGraphPair;
 
     private void ConstructLeftGraph()
     {
-      NCGraphType fwdNCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
+      NCGraphType leftBkwdNCommsGraph = leftFwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
+
       ReachGraphType leftJointNodesReachGraph = LRJointNodesReachGraphPair.LeftJointNodesReachGraph;
+      ReachGraphType rightJointNodesReachGraph = LRJointNodesReachGraphPair.RightJointNodesReachGraph;
 
       SortedDictionary<long, SortedSet<long>> nodeVLevels =
         meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
-      long fwdKStepLastIndex = fwdKStepSequence.Length - 1;
+      long bkwdKStepLastIndex = leftBkwdKStepSequence.LastIndex();
 
-      for (long i = (fwdKStepLastIndex - 1); i >= 1; i--)
+      for (long i = (bkwdKStepLastIndex - 1); i >= 0; i--)
       {
-        foreach (long uId in nodeVLevels[fwdKStepSequence[i]])
+        foreach (long uId in nodeVLevels[leftBkwdKStepSequence[i]])
         {
           if (!meapContext.TArbSeqCFG.HasNode(uId))
           {
@@ -88,28 +99,30 @@ namespace ExistsAcceptingPath
 
           DAGNode uNode = meapContext.TArbSeqCFG.GetNode(uId);
 
-          if (!fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap.ContainsKey(uId))
+          if (!leftFwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap.ContainsKey(uId))
           {
             continue;
           }
 
-          List<long> ncgNodes = fwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap[uId];
+          List<long> ncgNodes = leftFwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap[uId];
         }
       }
     }
 
     private void ConstructRightGraph()
     {
-      ReachGraphType rightJointNodesReachGraph = LRJointNodesReachGraphPair.RightJointNodesReachGraph;
+      NCGraphType rightBkwdNCommsGraph = leftFwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
+
       ReachGraphType leftJointNodesReachGraph = LRJointNodesReachGraphPair.LeftJointNodesReachGraph;
+      ReachGraphType rightJointNodesReachGraph = LRJointNodesReachGraphPair.RightJointNodesReachGraph;
 
       SortedDictionary<long, SortedSet<long>> nodeVLevels =
         meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
-      long bkwdKStepLastIndex = bkwdKStepSequence.Length - 1;
+      long fwdKStepLastIndex = rightFwdKStepSequence.LastIndex();
 
-      for (long i = 1; i <= (bkwdKStepLastIndex - 1); i++)
+      for (long i = 0; i <= (fwdKStepLastIndex - 1); i++)
       {
-        foreach (long uId in nodeVLevels[bkwdKStepSequence[i]])
+        foreach (long uId in nodeVLevels[rightFwdKStepSequence[i]])
         {
           if (!meapContext.TArbSeqCFG.HasNode(uId))
           {
@@ -118,12 +131,12 @@ namespace ExistsAcceptingPath
 
           DAGNode uNode = meapContext.TArbSeqCFG.GetNode(uId);
 
-          if (!fwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap.ContainsKey(uId))
+          if (!rightFwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap.ContainsKey(uId))
           {
             continue;
           }
 
-          List<long> ncgNodes = fwdBkwdNCommsGraphPair.BkwdCFGNodeToNCGNodesMap[uId];
+          List<long> ncgNodes = rightFwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap[uId];
         }
       }
     }

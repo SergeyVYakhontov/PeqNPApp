@@ -60,13 +60,20 @@ namespace ExistsAcceptingPath
     {
       log.Info("ComputeJointNodesReachGraphsSet");
 
-      foreach (var muCommsGraphPair in meapContext.muToNestedCommsGraphPair.SkipLast(1))
+      KeyValuePair<long, FwdBkwdNCommsGraphPair>[] nestedCommsGraphPair =
+        meapContext.muToNestedCommsGraphPair.ToArray();
+
+      for (int i = 0; i <= (nestedCommsGraphPair.Length - 2); i++)
       {
-        long mu = muCommsGraphPair.Key;
-        FwdBkwdNCommsGraphPair fwdBkwdNCommsGraphPair = muCommsGraphPair.Value;
+        long mu = nestedCommsGraphPair[i].Key;
+
+        FwdBkwdNCommsGraphPair leftFwdBkwdNCommsGraphPair = nestedCommsGraphPair[i].Value;
+        FwdBkwdNCommsGraphPair rightFwdBkwdNCommsGraphPair = nestedCommsGraphPair[i + 1].Value;
 
         JointNodesReachGraphBuilder jointNodesReachGraphBuilder =
-          new JointNodesReachGraphBuilder(meapContext, mu, fwdBkwdNCommsGraphPair);
+          new JointNodesReachGraphBuilder(
+            meapContext, mu, leftFwdBkwdNCommsGraphPair, rightFwdBkwdNCommsGraphPair);
+
         jointNodesReachGraphBuilder.Run();
 
         LRJointNodesReachGraphPair lrJointNodesReachGraphPair =

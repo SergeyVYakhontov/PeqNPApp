@@ -15,6 +15,8 @@ using EnsureThat;
 
 namespace ExistsAcceptingPath
 {
+  using NCGraphType = TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>;
+
   public class NestedCommsGraphBuilder
   {
     #region Ctors
@@ -103,7 +105,7 @@ namespace ExistsAcceptingPath
     {
       List<long> kTapeLRSubseq = CPLTMInfo.KTapeLRSubseq();
 
-      foreach (long kStep in kTapeLRSubseq.Take(kTapeLRSubseq.Count - 2))
+      foreach (long kStep in kTapeLRSubseq.SkipLast(2))
       {
         log.InfoFormat($"Creating nested commodities graphs at kStep = {kStep}");
 
@@ -112,10 +114,8 @@ namespace ExistsAcceptingPath
           kStep,
           () => new FwdBkwdNCommsGraphPair());
 
-        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> fwdNestedCommsGraph =
-          fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
-        TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo> bkwdNestedCommsGraph =
-          fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
+        NCGraphType fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
+        NCGraphType bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
 
         FwdNCommsGraphBuilder fwdNCommsGraphBuilder = new FwdNCommsGraphBuilder(
           meapContext,
