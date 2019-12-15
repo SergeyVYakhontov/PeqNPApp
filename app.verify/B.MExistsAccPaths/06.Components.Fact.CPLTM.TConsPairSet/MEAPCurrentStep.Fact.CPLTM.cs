@@ -84,6 +84,10 @@ namespace ExistsAcceptingPath
       ncgJointNodesBuilder.Run();
       ncgJointNodesBuilder = null;
 
+      JointNodesReachGraphBuilder jointNodesReachGraphBuilder = new JointNodesReachGraphBuilder(meapContext);
+      jointNodesReachGraphBuilder.Setup();
+      jointNodesReachGraphBuilder.Run();
+
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();
     }

@@ -22,7 +22,7 @@ namespace ExistsAcceptingPath
     {
       log.Info("Finding shortest path");
 
-      ComputeJointNodesReachGraphsSet();
+      ExtractReachGraphNodes();
 
       //DetermineTConsistPath();
       //ExtractTConsistSeq()
@@ -56,29 +56,10 @@ namespace ExistsAcceptingPath
     private readonly List<long> tConsistPath = new List<long>();
     private readonly int[] output = Array.Empty<int>();
 
-    private void ComputeJointNodesReachGraphsSet()
+    private void ExtractReachGraphNodes()
     {
-      log.Info("ComputeJointNodesReachGraphsSet");
-
-      KeyValuePair<long, FwdBkwdNCommsGraphPair>[] nestedCommsGraphPair =
-        meapContext.muToNestedCommsGraphPair.ToArray();
-
-      for (int i = 0; i <= (nestedCommsGraphPair.Length - 2); i++)
-      {
-        long mu = nestedCommsGraphPair[i].Key;
-
-        FwdBkwdNCommsGraphPair leftFwdBkwdNCommsGraphPair = nestedCommsGraphPair[i].Value;
-        FwdBkwdNCommsGraphPair rightFwdBkwdNCommsGraphPair = nestedCommsGraphPair[i + 1].Value;
-
-        JointNodesReachGraphBuilder jointNodesReachGraphBuilder =
-          new JointNodesReachGraphBuilder(
-            meapContext, mu, leftFwdBkwdNCommsGraphPair, rightFwdBkwdNCommsGraphPair);
-
-        jointNodesReachGraphBuilder.Run();
-
-        LRJointNodesReachGraphPair lrJointNodesReachGraphPair =
-          jointNodesReachGraphBuilder.LRJointNodesReachGraphPair;
-      }
+      LRJointNodesReachGraphPair lrJointNodesReachGraphPair =
+        meapContext.muToLRJointNodesReachGraphPair.Last().Value;
     }
 
     /*private void ExtractTConsistSeq()
