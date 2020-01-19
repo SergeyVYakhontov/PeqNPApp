@@ -95,6 +95,7 @@ namespace ExistsAcceptingPath
           }
 
           List<long> ncgNodes = rightFwdBkwdNCommsGraphPair.FwdCFGNodeToNCGNodesMap[uId];
+          NCommsGraphJointNode ncgJointNode = meapContext.CfgNodeIdToNCGJointNode[uId];
         }
       }
     }

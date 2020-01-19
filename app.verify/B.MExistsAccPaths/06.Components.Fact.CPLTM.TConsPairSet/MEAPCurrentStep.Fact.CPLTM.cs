@@ -79,7 +79,7 @@ namespace ExistsAcceptingPath
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder = null;
 
-      NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
+      /* NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
       ncgJointNodesBuilder.Setup();
       ncgJointNodesBuilder.Run();
       ncgJointNodesBuilder = null;
@@ -89,7 +89,7 @@ namespace ExistsAcceptingPath
       jointNodesReachGraphBuilder.Run();
 
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
-      pathFinder.Run();
+      pathFinder.Run(); */
     }
 
     #endregion
