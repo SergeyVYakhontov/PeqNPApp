@@ -15,13 +15,13 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public readonly struct JNodesReachGraphNodeInfo :
-    IEquatable<JNodesReachGraphNodeInfo>,
+  public readonly struct NCGCommonPathGraphNodeInfo :
+    IEquatable<NCGCommonPathGraphNodeInfo>,
     IObjectWithId
   {
     #region Ctors
 
-    public JNodesReachGraphNodeInfo(long id)
+    public NCGCommonPathGraphNodeInfo(long id)
     {
       this.Id = id;
     }
@@ -36,21 +36,21 @@ namespace ExistsAcceptingPath
     {
       Ensure.That(obj).IsNotNull();
 
-      JNodesReachGraphNodeInfo other = (JNodesReachGraphNodeInfo)obj;
+      NCGCommonPathGraphNodeInfo other = (NCGCommonPathGraphNodeInfo)obj;
 
       return this == other;
     }
 
     public override int GetHashCode() => unchecked((int)Id);
 
-    public bool Equals(JNodesReachGraphNodeInfo other) => this == other;
+    public bool Equals(NCGCommonPathGraphNodeInfo other) => this == other;
 
-    public static bool operator ==(in JNodesReachGraphNodeInfo left, in JNodesReachGraphNodeInfo right)
+    public static bool operator ==(in NCGCommonPathGraphNodeInfo left, in NCGCommonPathGraphNodeInfo right)
     {
       return left.Id == right.Id;
     }
 
-    public static bool operator !=(in JNodesReachGraphNodeInfo left, in JNodesReachGraphNodeInfo right)
+    public static bool operator !=(in NCGCommonPathGraphNodeInfo left, in NCGCommonPathGraphNodeInfo right)
     {
       return !(left == right);
     }

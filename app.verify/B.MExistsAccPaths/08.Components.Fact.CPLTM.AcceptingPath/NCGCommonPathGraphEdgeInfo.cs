@@ -15,13 +15,13 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
-  public class JNodesReachGraphEdgeInfo :
-    IEquatable<JNodesReachGraphEdgeInfo>,
+  public class NCGCommonPathGraphEdgeInfo :
+    IEquatable<NCGCommonPathGraphEdgeInfo>,
     IObjectWithId
   {
     #region Ctors
 
-    public JNodesReachGraphEdgeInfo(long id)
+    public NCGCommonPathGraphEdgeInfo(long id)
     {
       this.Id = id;
     }
@@ -36,30 +36,24 @@ namespace ExistsAcceptingPath
     {
       Ensure.That(obj).IsNotNull();
 
-      JNodesReachGraphEdgeInfo other = (JNodesReachGraphEdgeInfo)obj;
+      NCGCommonPathGraphEdgeInfo other = (NCGCommonPathGraphEdgeInfo)obj;
 
       return this == other;
     }
 
     public override int GetHashCode() => unchecked((int)Id);
 
-    public bool Equals(JNodesReachGraphEdgeInfo other) => this == other;
+    public bool Equals(NCGCommonPathGraphEdgeInfo other) => this == other;
 
-    public static bool operator ==(in JNodesReachGraphEdgeInfo left, in JNodesReachGraphEdgeInfo right)
+    public static bool operator ==(in NCGCommonPathGraphEdgeInfo left, in NCGCommonPathGraphEdgeInfo right)
     {
       return left.Id == right.Id;
     }
 
-    public static bool operator !=(in JNodesReachGraphEdgeInfo left, in JNodesReachGraphEdgeInfo right)
+    public static bool operator !=(in NCGCommonPathGraphEdgeInfo left, in NCGCommonPathGraphEdgeInfo right)
     {
       return !(left == right);
     }
-
-    #endregion
-
-    #region public members
-
-    public SortedSet<long> InnerJointNodes { get; } = new SortedSet<long>();
 
     #endregion
   }

@@ -57,8 +57,7 @@ namespace ExistsAcceptingPath
     public SortedSet<long> UnusedNodes { get; set; }
 
     public SortedDictionary<long, FwdBkwdNCommsGraphPair> muToNestedCommsGraphPair { get; set; }
-    public SortedDictionary<long, NCommsGraphJointNode> CfgNodeIdToNCGJointNode { get; set; }
-    public SortedDictionary<long, LRJointNodesReachGraphPair> muToLRJointNodesReachGraphPair { get; set; }
+    public TypedDAG<NCGCommonPathGraphNodeInfo, NCGCommonPathGraphEdgeInfo> NCGCommonPathGraph { get; set; }
 
     public MEAPSharedContext MEAPSharedContext { get; set; }
 

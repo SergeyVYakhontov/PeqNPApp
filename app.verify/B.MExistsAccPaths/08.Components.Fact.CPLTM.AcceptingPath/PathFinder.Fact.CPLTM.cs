@@ -22,8 +22,6 @@ namespace ExistsAcceptingPath
     {
       log.Info("Finding shortest path");
 
-      ExtractReachGraphNodes();
-
       //DetermineTConsistPath();
       //ExtractTConsistSeq()
 
@@ -55,12 +53,6 @@ namespace ExistsAcceptingPath
     //private bool pathFound;
     private readonly List<long> tConsistPath = new List<long>();
     private readonly int[] output = Array.Empty<int>();
-
-    private void ExtractReachGraphNodes()
-    {
-      LRJointNodesReachGraphPair lrJointNodesReachGraphPair =
-        meapContext.muToLRJointNodesReachGraphPair.Last().Value;
-    }
 
     /*private void ExtractTConsistSeq()
     {

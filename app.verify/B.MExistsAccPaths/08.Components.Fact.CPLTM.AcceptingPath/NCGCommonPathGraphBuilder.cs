@@ -16,13 +16,13 @@ using Core;
 namespace ExistsAcceptingPath
 {
   using NCGraphType = TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>;
-  using ReachGraphType = TypedDAG<JNodesReachGraphNodeInfo, JNodesReachGraphEdgeInfo>;
+  using NCGCommonPathGraphType = TypedDAG<NCGCommonPathGraphNodeInfo, NCGCommonPathGraphEdgeInfo>;
 
-  public class JointNodesReachGraphBuilder
+  public class NCGCommonPathGraphBuilder
   {
     #region Ctors
 
-    public JointNodesReachGraphBuilder(MEAPContext meapContext)
+    public NCGCommonPathGraphBuilder(MEAPContext meapContext)
     {
       this.meapContext = meapContext;
       this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
@@ -34,12 +34,12 @@ namespace ExistsAcceptingPath
 
     public void Setup()
     {
-      meapContext.muToLRJointNodesReachGraphPair = new SortedDictionary<long, LRJointNodesReachGraphPair>();
+      meapContext.NCGCommonPathGraph = new NCGCommonPathGraphType("NCGCommonPathGraphType");
     }
 
     public void Run()
     {
-      log.Info("ComputeJointNodesReachGraphsSet");
+      log.Info("Compute NCGCommonPathGraph");
 
       KeyValuePair<long, FwdBkwdNCommsGraphPair>[] nestedCommsGraphPair =
         meapContext.muToNestedCommsGraphPair.ToArray();
@@ -48,30 +48,8 @@ namespace ExistsAcceptingPath
       {
         long mu = nestedCommsGraphPair[i].Key;
 
-        LRJointNodesReachGraphPair lrRJointNodesReachGraphPair = new LRJointNodesReachGraphPair();
-        meapContext.muToLRJointNodesReachGraphPair[mu] = lrRJointNodesReachGraphPair;
-
         FwdBkwdNCommsGraphPair leftFwdBkwdNCommsGraphPair = nestedCommsGraphPair[i].Value;
         FwdBkwdNCommsGraphPair rightFwdBkwdNCommsGraphPair = nestedCommsGraphPair[i + 1].Value;
-
-        LeftJNodesReachGraphBuilder leftJNodesReachGraphBuilder =
-          new LeftJNodesReachGraphBuilder(
-            meapContext,
-            mu,
-            leftFwdBkwdNCommsGraphPair,
-            lrRJointNodesReachGraphPair);
-
-        leftJNodesReachGraphBuilder.Run();
-
-        RightJNodesReachGraphBuilder rightJNodesReachGraphBuilder =
-          new RightJNodesReachGraphBuilder(
-            meapContext,
-            mu,
-            leftFwdBkwdNCommsGraphPair,
-            rightFwdBkwdNCommsGraphPair,
-            lrRJointNodesReachGraphPair);
-
-        rightJNodesReachGraphBuilder.Run();
       }
     }
 
