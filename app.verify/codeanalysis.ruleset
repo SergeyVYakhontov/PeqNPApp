@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Default" ToolsVersion="15.0">
+<RuleSet Name="Default" ToolsVersion="16.0">
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="IDE0001" Action="None" />
     <Rule Id="IDE0002" Action="None" />
