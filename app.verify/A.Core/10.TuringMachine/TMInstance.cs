@@ -150,16 +150,22 @@ namespace Core
       switch (to.Direction)
       {
         case TMDirection.L:
-          instance.CurrentSymbol = to.Symbol;
-          instance.cellIndex -= to.Shift;
-          break;
+          {
+            instance.CurrentSymbol = to.Symbol;
+            instance.cellIndex -= to.Shift;
+            break;
+          }
         case TMDirection.R:
-          instance.CurrentSymbol = to.Symbol;
-          instance.cellIndex += to.Shift;
-          break;
+          {
+            instance.CurrentSymbol = to.Symbol;
+            instance.cellIndex += to.Shift;
+            break;
+          }
         case TMDirection.S:
-          instance.CurrentSymbol = to.Symbol;
-          break;
+          {
+            instance.CurrentSymbol = to.Symbol;
+            break;
+          }
       }
     }
 

@@ -14,7 +14,7 @@ namespace Core
   {
     #region public members
 
-    public static long Level0 => 0;
+    public const long Level0 = 0;
 
     public static bool BFS(
       DAG dag,
@@ -103,6 +103,7 @@ namespace Core
         {
           continue;
         }
+
         processedNodes.Add(u.Id);
 
         bool nodeActionStatus = nodeAction(u);

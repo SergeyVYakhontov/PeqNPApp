@@ -52,22 +52,27 @@ namespace Core
 
         for (uint i = 0; i < itemsToRunCount; i++)
         {
+          uint j = i;
+
           tasks[i] = Task.Factory.StartNew(
-            (object taskIndex) =>
-            {
-              itemsToRun[(uint)taskIndex].Run();
-            },
-            i);
+            () => { itemsToRun[j].Run(); },
+            CancellationToken.None,
+            TaskCreationOptions.DenyChildAttach,
+            TaskScheduler.Default);
         }
 
         switch (waitMethod)
         {
           case WaitMethod.WaitAny:
-            Task.WaitAny(tasks);
-            break;
+            {
+              Task.WaitAny(tasks);
+              break;
+            }
           case WaitMethod.WaitAll:
-            Task.WaitAll(tasks);
-            break;
+            {
+              Task.WaitAll(tasks);
+              break;
+            }
         }
 
         CurrentItem = packetProcessProc(itemsToRun);

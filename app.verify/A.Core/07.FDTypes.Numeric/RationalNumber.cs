@@ -63,7 +63,7 @@ namespace Core
       }
       else
       {
-        return (p + "/" + q);
+        return $"({p}/{q})";
       }
     }
 

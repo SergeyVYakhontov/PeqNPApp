@@ -139,12 +139,12 @@ namespace Core
 
     private long RelativeIndex(long def)
     {
-      return (def - ((long)slot.Left));
+      return (def - (slot.Left));
     }
 
     private long AbsoluteIndex(long def)
     {
-      return (((long)slot.Left) + def);
+      return ((slot.Left) + def);
     }
 
     private void CreateVectors()
@@ -216,7 +216,6 @@ namespace Core
       bool flowChanged = false;
 
       IBitVector vReachInVector = nodeToREACHinVectorMap[vNodeId];
-      IBitVector vReachOutVector = nodeToREACHoutVectorMap[vNodeId];
       IBitVector vGenVector = nodeToGENVectorMap[vNodeId];
       IBitVector vKillVector = nodeToKILLVectorMap[vNodeId];
 

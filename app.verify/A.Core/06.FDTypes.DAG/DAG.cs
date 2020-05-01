@@ -42,9 +42,9 @@ namespace Core
     public DAGNode s { get; private set; }
     public DAGNode t { get; private set; }
 
-    public SortedDictionary<long, DAGNode> NodeEnumeration { get; protected set; }
-    public SortedDictionary<long, DAGEdge> EdgeEnumeration { get; protected set; }
-    public SortedDictionary<KeyValuePair<long, long>, DAGEdge> NodePairEnumeration { get; protected set; }
+    public SortedDictionary<long, DAGNode> NodeEnumeration { get; private set; }
+    public SortedDictionary<long, DAGEdge> EdgeEnumeration { get; private set; }
+    public SortedDictionary<KeyValuePair<long, long>, DAGEdge> NodePairEnumeration { get; private set; }
 
     public void AddNode(DAGNode node)
     {
@@ -230,19 +230,6 @@ namespace Core
     private static readonly IKernel configuration = Core.AppContext.Configuration;
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-    private void InsertNode(DAGNode node)
-    {
-      Nodes.Add(node);
-    }
-
-    private void InsertEdge(DAGEdge edge)
-    {
-      Edges.Add(edge);
-
-      edge.FromNode.OutEdges.Add(edge);
-      edge.ToNode.InEdges.Add(edge);
-    }
 
     #endregion
   }

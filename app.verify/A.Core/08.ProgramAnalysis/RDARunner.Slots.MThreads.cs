@@ -272,7 +272,6 @@ namespace Core
       }
 
       IBitVector vReachInVector = nodeToREACHinVectorMap[vNodeId];
-      IBitVector vReachOutVector = nodeToREACHoutVectorMap[vNodeId];
       IBitVector vGenVector = nodeToGENVectorMap[vNodeId];
       IBitVector vKillVector = nodeToKILLVectorMap[vNodeId];
 

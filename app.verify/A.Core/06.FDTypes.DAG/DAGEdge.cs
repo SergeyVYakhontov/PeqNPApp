@@ -34,7 +34,7 @@ namespace Core
 
     public override string ToString()
     {
-      return "(" + FromNode.Id + "," + ToNode.Id + ")";
+      return $"({FromNode.Id}, {ToNode.Id})";
     }
 
     #endregion

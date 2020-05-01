@@ -16,9 +16,6 @@ namespace Core
 
     public static void CreateCopy(DAG graph, DAG copy)
     {
-      SortedDictionary<long, DAGNode> graphNodeToSubgraphNode =
-        new SortedDictionary<long, DAGNode>();
-
       CopyNodesAndEdges(
         graph,
         new SortedSet<long>(graph.GetAllNodeIds()),

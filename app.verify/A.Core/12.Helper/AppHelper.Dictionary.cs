@@ -19,7 +19,7 @@ namespace Core
       KeyType key,
       Func<ItemType> itemFunc)
     {
-      if (dictionary.TryGetValue(key, out ItemType item))
+      if (dictionary.ContainsKey(key))
       {
         return;
       }
