@@ -12,7 +12,7 @@ using ExistsAcceptingPath;
 
 namespace VerifyResults
 {
-  public enum ExampleKind
+  public enum ExampleKind : byte
   {
     SmallExamples = 0,
     LargeExamples = 1

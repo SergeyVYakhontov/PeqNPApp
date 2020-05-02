@@ -69,8 +69,6 @@ namespace ExistsAcceptingPath
       if (checkKZetaGraphs.TConsistPathFound)
       {
         Done = true;
-
-        return;
       }
     }
 
@@ -98,8 +96,6 @@ namespace ExistsAcceptingPath
       if (tcpepOptimizer.TConsistPathFound)
       {
         Done = true;
-
-        return;
       }
     }
 

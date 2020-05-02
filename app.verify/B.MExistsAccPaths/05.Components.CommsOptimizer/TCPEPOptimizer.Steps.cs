@@ -192,7 +192,6 @@ namespace ExistsAcceptingPath
       if (TryToFindPath(stepName))
       {
         log.Info("step1: path found");
-        return;
       }
     }
 
@@ -233,11 +232,6 @@ namespace ExistsAcceptingPath
       }
 
       CheckIfPathExists(stepName);
-
-      if (ThereIsNoTConsistPath || TConsistPathFound)
-      {
-        return;
-      }
     }
 
     #endregion

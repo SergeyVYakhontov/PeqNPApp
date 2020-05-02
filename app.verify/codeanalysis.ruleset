@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Default" ToolsVersion="16.0">
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="IDE0001" Action="None" />
     <Rule Id="IDE0002" Action="None" />
     <Rule Id="IDE0003" Action="None" />
     <Rule Id="IDE0005" Action="None" />
     <Rule Id="IDE0017" Action="None" />
+    <Rule Id="IDE0032" Action="None" />
     <Rule Id="IDE0047" Action="None" />
     <Rule Id="IDE0049" Action="None" />
     <Rule Id="IDE0052" Action="None" />

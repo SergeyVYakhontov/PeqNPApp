@@ -220,7 +220,7 @@ namespace ExistsAcceptingPath
         {
           endNodes.Add(fromNode);
 
-          if (meapContext.MEAPSharedContext.MNP.F.Contains((uint)fromCompStep.qNext))
+          if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
           {
             acceptingNodes.Add(fromNode);
           }
@@ -268,7 +268,7 @@ namespace ExistsAcceptingPath
       {
         ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
 
-        if (states.Contains((uint)compStep.qNext))
+        if (states.Contains(compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];
 

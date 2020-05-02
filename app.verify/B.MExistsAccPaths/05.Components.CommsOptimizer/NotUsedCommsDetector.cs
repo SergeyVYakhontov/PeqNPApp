@@ -166,7 +166,7 @@ namespace ExistsAcceptingPath
 
     public void MarkUnusedNodes()
     {
-     log.DebugFormat("Unused nodes");
+      log.DebugFormat("Unused nodes");
 
       foreach (KeyValuePair<long, DAGNode> idNodePair in meapContext.TArbSeqCFG.NodeEnumeration)
       {

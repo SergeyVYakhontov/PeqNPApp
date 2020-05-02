@@ -234,7 +234,7 @@ namespace ExistsAcceptingPath
         if (fromCompStep.kappaStep == meapContext.mu)
         {
           endNodes.Add(fromNode);
-          if (meapContext.MEAPSharedContext.MNP.F.Contains((uint)fromCompStep.qNext))
+          if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
           {
             acceptingNodes.Add(fromNode);
           }
@@ -246,6 +246,7 @@ namespace ExistsAcceptingPath
                     GetDeltaElements(fromCompStep.qNext))
         {
           StateSymbolPair from = to.Key;
+
           foreach (StateSymbolDirectionTriple p in to.Value)
           {
             CreateDAGNode(
@@ -267,6 +268,7 @@ namespace ExistsAcceptingPath
       G.SetSinkNode(t);
 
       nodeEnumeration[t.Id] = t;
+
       idToInfoMap[t.Id] = new TASGNodeInfo
       {
         CompStep = new ComputationStep()
@@ -278,10 +280,11 @@ namespace ExistsAcceptingPath
       uint[] states)
     {
       ComputationStep tStep = idToInfoMap[cfg.GetSinkNodeId()].CompStep;
+
       foreach (long uNodeId in endNodeIds)
       {
         ComputationStep compStep = cfg.IdToNodeInfoMap[uNodeId].CompStep;
-        if (states.Contains((uint)compStep.qNext))
+        if (states.Contains(compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];
           DAGEdge e = new DAGEdge(edgeId++, v, cfg.t);
