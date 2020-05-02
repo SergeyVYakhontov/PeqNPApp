@@ -197,17 +197,13 @@ namespace ExistsAcceptingPath
 
     private static String GetEquationKindRepr(EquationKind equationKind)
     {
-      switch (equationKind)
+      return equationKind switch
       {
-        case EquationKind.LessThan:
-          return "-1";
-        case EquationKind.Equal:
-          return "0";
-        case EquationKind.GreaterThan:
-          return "1";
-      }
-
-      return "";
+        EquationKind.LessThan => "-1",
+        EquationKind.Equal => "0",
+        EquationKind.GreaterThan => "1",
+        _ => string.Empty,
+      };
     }
 
     #endregion

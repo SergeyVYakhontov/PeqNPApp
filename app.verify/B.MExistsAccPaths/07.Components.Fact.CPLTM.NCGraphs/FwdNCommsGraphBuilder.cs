@@ -130,9 +130,9 @@ namespace ExistsAcceptingPath
 
     private void Connect2CommsByCFGEdge(long cfgEdgeId, long uId, long vId)
     {
-      if (nodeToCommoditiesMap.TryGetValue(uId, out var uNodeComms))
+      if (nodeToCommoditiesMap.TryGetValue(uId, out LinkedList<long> uNodeComms))
       {
-        if (nodeToCommoditiesMap.TryGetValue(vId, out var vNodeComms))
+        if (nodeToCommoditiesMap.TryGetValue(vId, out LinkedList<long> vNodeComms))
         {
           foreach (long uCommId in uNodeComms)
           {
@@ -162,7 +162,7 @@ namespace ExistsAcceptingPath
 
     private void ConnectCommAndCFGNodeByCFGEdge(long cfgEdgeId, long uId, long vId)
     {
-      if (nodeToCommoditiesMap.TryGetValue(uId, out var uNodeComms))
+      if (nodeToCommoditiesMap.TryGetValue(uId, out LinkedList<long> uNodeComms))
       {
         DAGNode vCommNode = GetDAGNode(vId);
 

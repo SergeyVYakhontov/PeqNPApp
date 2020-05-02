@@ -21,14 +21,14 @@ namespace VerifyResults
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new LAP_Example()
+          new LAP_Example
             {
               Name = "E1",
               Input = new int[] {1, 0, 1}
             },
-          new LAP_Example()
+          new LAP_Example
             {
               Name = "E2",
               Input = new int[] {1, 1, 0}
@@ -48,7 +48,7 @@ namespace VerifyResults
 
       for (int i = 0; i < count; i++)
       {
-        IExample example = new LAP_Example()
+        IExample example = new LAP_Example
           {
             Name = "RE" + i,
             Input = AppHelper.ProduceRandomBinArray(inputLength)

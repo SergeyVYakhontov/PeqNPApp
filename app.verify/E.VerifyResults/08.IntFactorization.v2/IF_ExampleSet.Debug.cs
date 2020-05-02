@@ -19,9 +19,9 @@ namespace VerifyResults.v2
     public override List<IExample> GetSmallExamples()
     {
       List<IExample> exampleForDebug =
-        new List<IExample>()
+        new List<IExample>
         {
-          new IF_Example()
+          new IF_Example
           {
             Name = "E04",
             Input = new int[] {0, 1, 1, -1, -1, 2, 1, 1, -1, -1, 2, 0, 1, -1, -1, 2}

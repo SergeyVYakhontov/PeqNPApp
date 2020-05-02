@@ -21,17 +21,17 @@ namespace VerifyResults
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new SAP_Example()
+          new SAP_Example
             {
               Name = "E1",
               Input = new int[] {1, 0}
             },
-          new SAP_Example()
+          new SAP_Example
             {
               Name = "E2",
-              Input = new int[] {1, 1},
+              Input = new int[] {1, 1}
             }
         };
     }
@@ -48,7 +48,7 @@ namespace VerifyResults
 
       for (int i = 0; i < count; i++)
       {
-        IExample example = new LAP_Example()
+        IExample example = new LAP_Example
           {
             Name = "RE" + i,
             Input = AppHelper.ProduceRandomBinArray(inputLength)

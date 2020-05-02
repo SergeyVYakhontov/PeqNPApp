@@ -28,11 +28,15 @@ namespace ExistsAcceptingPath
       switch (compStep.m)
       {
         case TMDirection.L:
-          seqCompStep.kappaTape -= compStep.Shift;
-          break;
+          {
+            seqCompStep.kappaTape -= compStep.Shift;
+            break;
+          }
         case TMDirection.R:
-          seqCompStep.kappaTape += compStep.Shift;
-          break;
+          {
+            seqCompStep.kappaTape += compStep.Shift;
+            break;
+          }
       }
 
       return seqCompStep;

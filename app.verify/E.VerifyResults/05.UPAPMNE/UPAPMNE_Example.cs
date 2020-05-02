@@ -23,7 +23,7 @@ namespace VerifyResults
 
     public IList<IRunnable> GetRunnables()
     {
-      return new List<IRunnable>()
+      return new List<IRunnable>
         {
           new UPAPMNE_DVN_Runnable(),
           new UPAPMNE_NDTM_Runnable(),

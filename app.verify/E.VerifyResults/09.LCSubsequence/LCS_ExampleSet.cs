@@ -21,9 +21,9 @@ namespace VerifyResults
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new LCS_Example()
+          new LCS_Example
           {
             Name = "E1",
             Input = new int[1] {0}
@@ -39,9 +39,9 @@ namespace VerifyResults
     public override List<IExample> GetRandomExamples(
       int count, int inputLength)
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new LCS_Example()
+          new LCS_Example
             {
               Name = "Random example",
               Input = new int[1]{0}

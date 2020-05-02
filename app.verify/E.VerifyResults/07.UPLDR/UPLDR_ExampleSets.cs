@@ -21,19 +21,19 @@ namespace VerifyResults
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new UPLDR_Example()
+          new UPLDR_Example
             {
               Name = "E1",
               Input = new int[] {1, 2, 4}
             },
-          new UPLDR_Example()
+          new UPLDR_Example
             {
               Name = "E2",
               Input = new int[] {3, 0, 4}
             },
-          new UPLDR_Example()
+          new UPLDR_Example
             {
               Name = "E3",
               Input = new int[]
@@ -55,7 +55,7 @@ namespace VerifyResults
       List<IExample> examples = new List<IExample>();
       for (int i = 0; i < count; i++)
       {
-        IExample example = new UPAPAE_Example()
+        IExample example = new UPAPAE_Example
           {
             Name = "RE" + i,
             Input = AppHelper.ProduceRandomBinArray(inputLength)

@@ -79,23 +79,28 @@ namespace ExistsAcceptingPath
       switch (tapeSegRunnerStateTable.CurrentState)
       {
         case TapeSegRunnerState.CheckKZetaGraphs:
-          tcpepSolver.CheckKZetaGraphs();
-          break;
-
+          {
+            tcpepSolver.CheckKZetaGraphs();
+            break;
+          }
         case TapeSegRunnerState.ReduceCommodities:
-          tcpepSolver.ReduceCommodities();
-          appStatistics.ReduceCommodities++;
-          break;
-
+          {
+            tcpepSolver.ReduceCommodities();
+            appStatistics.ReduceCommodities++;
+            break;
+          }
         case TapeSegRunnerState.RunGaussElimination:
-          tcpepSolver.RunGaussElimination();
-          appStatistics.RunGaussElimination++;
-          break;
-
+          {
+            tcpepSolver.RunGaussElimination();
+            appStatistics.RunGaussElimination++;
+            break;
+          }
         case TapeSegRunnerState.RunLinearProgram:
-          tcpepSolver.RunLinearProgram();
-          Done = true;
-          break;
+          {
+            tcpepSolver.RunLinearProgram();
+            Done = true;
+            break;
+          }
       }
 
       tapeSegRunnerStateTable.MoveToNextState();

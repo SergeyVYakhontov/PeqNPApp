@@ -18,7 +18,7 @@
     <Rule Id="CA1005" Action="Warning" />
     <Rule Id="CA1006" Action="Warning" />
     <Rule Id="CA1007" Action="Warning" />
-    <Rule Id="CA1008" Action="Warning" />
+    <Rule Id="CA1008" Action="None" />
     <Rule Id="CA1009" Action="Warning" />
     <Rule Id="CA1010" Action="Warning" />
     <Rule Id="CA1011" Action="Warning" />
@@ -74,11 +74,11 @@
     <Rule Id="CA1300" Action="Warning" />
     <Rule Id="CA1301" Action="Warning" />
     <Rule Id="CA1302" Action="Warning" />
-    <Rule Id="CA1303" Action="Warning" />
+    <Rule Id="CA1303" Action="None" />
     <Rule Id="CA1304" Action="Warning" />
     <Rule Id="CA1305" Action="None" />
     <Rule Id="CA1306" Action="Warning" />
-    <Rule Id="CA1307" Action="Warning" />
+    <Rule Id="CA1307" Action="None" />
     <Rule Id="CA1308" Action="Warning" />
     <Rule Id="CA1309" Action="Warning" />
     <Rule Id="CA1400" Action="Warning" />
@@ -102,7 +102,7 @@
     <Rule Id="CA1502" Action="Warning" />
     <Rule Id="CA1504" Action="Warning" />
     <Rule Id="CA1505" Action="Warning" />
-    <Rule Id="CA1506" Action="Warning" />
+    <Rule Id="CA1506" Action="None" />
     <Rule Id="CA1600" Action="Warning" />
     <Rule Id="CA1601" Action="Warning" />
     <Rule Id="CA1700" Action="Warning" />
@@ -210,7 +210,7 @@
     <Rule Id="CA2210" Action="Warning" />
     <Rule Id="CA2211" Action="Warning" />
     <Rule Id="CA2212" Action="Warning" />
-    <Rule Id="CA2213" Action="Warning" />
+    <Rule Id="CA2213" Action="None" />
     <Rule Id="CA2214" Action="Warning" />
     <Rule Id="CA2215" Action="Warning" />
     <Rule Id="CA2216" Action="Warning" />
@@ -692,7 +692,7 @@
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers">
     <Rule Id="CA1000" Action="Warning" />
-    <Rule Id="CA1008" Action="Warning" />
+    <Rule Id="CA1008" Action="None" />
     <Rule Id="CA1010" Action="Warning" />
     <Rule Id="CA1012" Action="Warning" />
     <Rule Id="CA1017" Action="Warning" />
@@ -723,7 +723,7 @@
     <Rule Id="CA1501" Action="Warning" />
     <Rule Id="CA1502" Action="Warning" />
     <Rule Id="CA1505" Action="Warning" />
-    <Rule Id="CA1506" Action="Warning" />
+    <Rule Id="CA1506" Action="None" />
     <Rule Id="CA1508" Action="Warning" />
     <Rule Id="CA1509" Action="Warning" />
     <Rule Id="CA1707" Action="None" />
@@ -767,10 +767,10 @@
     <Rule Id="CA2234" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="Microsoft.NetCore.Analyzers" RuleNamespace="Microsoft.NetCore.Analyzers">
-    <Rule Id="CA1303" Action="Warning" />
+    <Rule Id="CA1303" Action="None" />
     <Rule Id="CA1304" Action="Warning" />
     <Rule Id="CA1305" Action="None" />
-    <Rule Id="CA1307" Action="Warning" />
+    <Rule Id="CA1307" Action="None" />
     <Rule Id="CA1308" Action="Warning" />
     <Rule Id="CA1401" Action="Warning" />
     <Rule Id="CA1813" Action="Warning" />
@@ -783,7 +783,7 @@
     <Rule Id="CA2100" Action="Warning" />
     <Rule Id="CA2101" Action="Warning" />
     <Rule Id="CA2208" Action="Warning" />
-    <Rule Id="CA2213" Action="Warning" />
+    <Rule Id="CA2213" Action="None" />
     <Rule Id="CA2229" Action="Warning" />
     <Rule Id="CA2235" Action="Warning" />
     <Rule Id="CA2237" Action="Warning" />
@@ -881,10 +881,11 @@
     <Rule Id="RCS1056" Action="None" />
     <Rule Id="RCS1057" Action="None" />
     <Rule Id="RCS1060" Action="Warning" />
+    <Rule Id="RCS1061" Action="None" />
     <Rule Id="RCS1064" Action="Warning" />
     <Rule Id="RCS1065" Action="None" />
     <Rule Id="RCS1067" Action="Warning" />
-    <Rule Id="RCS1078" Action="Warning" />
+    <Rule Id="RCS1078" Action="None" />
     <Rule Id="RCS1080" Action="None" />
     <Rule Id="RCS1081" Action="None" />
     <Rule Id="RCS1086" Action="None" />
@@ -892,7 +893,7 @@
     <Rule Id="RCS1088" Action="Warning" />
     <Rule Id="RCS1092" Action="Warning" />
     <Rule Id="RCS1094" Action="None" />
-    <Rule Id="RCS1100" Action="Warning" />
+    <Rule Id="RCS1100" Action="None" />
     <Rule Id="RCS1101" Action="Warning" />
     <Rule Id="RCS1111" Action="Warning" />
     <Rule Id="RCS1124" Action="None" />

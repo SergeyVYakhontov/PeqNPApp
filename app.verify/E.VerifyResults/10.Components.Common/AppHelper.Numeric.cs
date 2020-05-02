@@ -33,7 +33,7 @@ namespace VerifyResults
       return new BigInteger(numberBytes);
     }
 
-    public static byte[] BigIntegerToBitArray(BigInteger bigInteger)
+    public static byte[] BigIntegerToBitArray(in BigInteger bigInteger)
     {
       byte[] byteArray = bigInteger.ToByteArray();
       List<byte> bitList = new List<byte>();

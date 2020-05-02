@@ -21,19 +21,19 @@ namespace VerifyResults
 
     public override List<IExample> GetSmallExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
         {
-          new UPAPAE_Example()
+          new UPAPAE_Example
             {
               Name = "E1",
               Input = new int[] {1, 0, 1}
             },
-          new UPAPAE_Example()
+          new UPAPAE_Example
             {
               Name = "E2",
               Input = new int[] {1, 1, 1}
             },
-          new UPAPAE_Example()
+          new UPAPAE_Example
             {
               Name = "E3",
               Input = new int[]
@@ -42,7 +42,7 @@ namespace VerifyResults
                 1, 0, 0, 1, 1
               }
             },
-          new UPAPAE_Example()
+          new UPAPAE_Example
             {
               Name = "E4",
               Input = new int[]
@@ -57,9 +57,9 @@ namespace VerifyResults
 
     public override List<IExample> GetLargeExamples()
     {
-      return new List<IExample>()
+      return new List<IExample>
       {
-          new UPAPAE_Example()
+          new UPAPAE_Example
             {
               Name = "E5",
               Input = new int[]
@@ -81,7 +81,7 @@ namespace VerifyResults
       List<IExample> examples = new List<IExample>();
       for (int i = 0; i < count; i++)
       {
-        IExample example = new UPAPAE_Example()
+        IExample example = new UPAPAE_Example
           {
             Name = "RE" + i,
             Input = AppHelper.ProduceRandomBinArray(inputLength)

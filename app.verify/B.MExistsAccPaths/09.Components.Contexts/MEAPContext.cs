@@ -61,9 +61,12 @@ namespace ExistsAcceptingPath
 
     public MEAPSharedContext MEAPSharedContext { get; set; }
 
-    public bool InCancelationState() =>
-      MEAPSharedContext.DeterminePathRunnerDoneMu < mu &&
-      MEAPSharedContext.CancellationToken.IsCancellationRequested;
+    public bool InCancelationState()
+    {
+      return
+        (MEAPSharedContext.DeterminePathRunnerDoneMu < mu) &&
+        MEAPSharedContext.CancellationToken.IsCancellationRequested;
+    }
 
     #endregion
   }

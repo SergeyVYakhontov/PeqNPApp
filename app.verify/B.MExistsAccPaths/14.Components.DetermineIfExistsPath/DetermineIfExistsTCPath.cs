@@ -47,7 +47,7 @@ namespace ExistsAcceptingPath
       CreateTapeSegContextsList();
 
       List<TapeSegRunnerState> tapeSegRunnerAllowedStates =
-        new List<TapeSegRunnerState>()
+        new List<TapeSegRunnerState>
         {
           TapeSegRunnerState.CheckKZetaGraphs,
           TapeSegRunnerState.ReduceCommodities,
@@ -84,8 +84,7 @@ namespace ExistsAcceptingPath
         };
 
       List<TapeSegRunnerState> tapeSegRunnerAllowedStates =
-        tapeSegRunnerAllowedStates =
-          new List<TapeSegRunnerState>()
+          new List<TapeSegRunnerState>
           {
             TapeSegRunnerState.CheckKZetaGraphs,
             TapeSegRunnerState.ReduceCommodities,
@@ -150,8 +149,8 @@ namespace ExistsAcceptingPath
           TapeSegContext tapeSegContext = new TapeSegContext();
 
           tapeSegContext.TapeSeg = tapeSeg;
-          tapeSegContext.PartialTConsistPath = new List<long>() { meapContext.TArbSeqCFG.GetSourceNodeId() };
-          tapeSegContext.TConsistPathNodes = new List<long>() { meapContext.TArbSeqCFG.GetSourceNodeId() };
+          tapeSegContext.PartialTConsistPath = new List<long> { meapContext.TArbSeqCFG.GetSourceNodeId() };
+          tapeSegContext.TConsistPathNodes = new List<long> { meapContext.TArbSeqCFG.GetSourceNodeId() };
 
           tapeSegContexts.Add(tapeSegContext);
         }

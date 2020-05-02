@@ -23,7 +23,7 @@ namespace VerifyResults.v1
 
     public IList<IRunnable> GetRunnables()
     {
-      return new List<IRunnable>()
+      return new List<IRunnable>
         {
           new IF_DVN_Runnable(),
           //new IF_NDTM_Runnable(AppTracer),

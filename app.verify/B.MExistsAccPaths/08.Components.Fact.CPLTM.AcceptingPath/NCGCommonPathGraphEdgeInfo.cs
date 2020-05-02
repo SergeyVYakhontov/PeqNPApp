@@ -45,12 +45,12 @@ namespace ExistsAcceptingPath
 
     public bool Equals(NCGCommonPathGraphEdgeInfo other) => this == other;
 
-    public static bool operator ==(in NCGCommonPathGraphEdgeInfo left, in NCGCommonPathGraphEdgeInfo right)
+    public static bool operator ==(NCGCommonPathGraphEdgeInfo left, NCGCommonPathGraphEdgeInfo right)
     {
       return left.Id == right.Id;
     }
 
-    public static bool operator !=(in NCGCommonPathGraphEdgeInfo left, in NCGCommonPathGraphEdgeInfo right)
+    public static bool operator !=(NCGCommonPathGraphEdgeInfo left, NCGCommonPathGraphEdgeInfo right)
     {
       return !(left == right);
     }

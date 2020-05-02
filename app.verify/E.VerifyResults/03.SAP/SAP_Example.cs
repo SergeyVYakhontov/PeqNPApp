@@ -21,7 +21,7 @@ namespace VerifyResults
 
     public IList<IRunnable> GetRunnables()
     {
-      return new List<IRunnable>()
+      return new List<IRunnable>
         {
           new SAP_DVN_Runnable(),
           new SAP_NDTM_Runnable(),

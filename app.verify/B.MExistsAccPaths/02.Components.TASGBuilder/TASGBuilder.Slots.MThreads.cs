@@ -42,7 +42,8 @@ namespace ExistsAcceptingPath
 
       nodeEnumeration[s.Id] = s;
       compStepToNode[compStep] = s.Id;
-      idToInfoMap[s.Id] = new TASGNodeInfo()
+
+      idToInfoMap[s.Id] = new TASGNodeInfo
       {
         CompStep = compStep
       };
