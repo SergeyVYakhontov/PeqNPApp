@@ -46,6 +46,7 @@ namespace ExistsAcceptingPath
 
     public long kappaTape { get; set; }
     public ulong kappaStep { get; set; }
+    public int sTo { get; set; }
 
     public override bool Equals(Object obj)
     {
@@ -57,7 +58,7 @@ namespace ExistsAcceptingPath
     public override int GetHashCode() => unchecked((int)kappaStep);
 
     public override String ToString() =>
-      $"(q={q}, s={s}, q'={qNext}, s'={sNext}, m={m}, sh={Shift}, tp={kappaTape}, st={kappaStep})";
+      $"(q={q}, s={s}, q'={qNext}, s'={sNext}, m={m}, sh={Shift}, tp={kappaTape}, st={kappaStep}, sTo={sTo})";
 
     public bool Equals(ComputationStep other)
     {
@@ -79,7 +80,8 @@ namespace ExistsAcceptingPath
         (left.m == right.m) &&
         (left.Shift == right.Shift) &&
         (left.kappaTape == right.kappaTape) &&
-        (left.kappaStep == right.kappaStep);
+        (left.kappaStep == right.kappaStep) &&
+        (left.sTo == right.sTo);
     }
 
     public static bool operator !=(ComputationStep left, ComputationStep right)

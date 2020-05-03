@@ -6,6 +6,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using Ninject;
+using EnsureThat;
 using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,7 +33,7 @@ namespace ExistsAcceptingPath
       MEAPSharedContext.NodeLevelInfo.AddNodeAtLevel(s.Id, 0);
       processedMu = 0;
 
-      ComputationStep compStep = new ComputationStep
+      sCompStep = new ComputationStep
       {
         q = MEAPSharedContext.MNP.qStart,
         s = MEAPSharedContext.Input[0],
@@ -41,13 +42,15 @@ namespace ExistsAcceptingPath
         m = TMDirection.R,
         Shift = 1,
         kappaTape = 0,
-        kappaStep = 0
+        kappaStep = 0,
+        sTo = OneTapeNDTM.blankSymbol
       };
 
       nodeEnumeration[s.Id] = s;
+
       idToInfoMap[s.Id] = new TASGNodeInfo
       {
-        CompStep = compStep
+        CompStep = sCompStep
       };
 
       propSymbolsKeeper = new PropSymbolsKeeperFactCPLTM(MEAPSharedContext);
@@ -66,6 +69,8 @@ namespace ExistsAcceptingPath
       log.Info("Traverse MNP tree");
       TraverseMNPTree();
 
+      Ensure.That(newEdgesCount).IsNot(0);
+
       newNodeEnumeration.ForEach(t => nodeEnumeration[t.Key] = t.Value);
       log.InfoFormat(
         "newNodeEnumeration, nodeEnumeration: {0} {1}",
@@ -74,6 +79,7 @@ namespace ExistsAcceptingPath
 
       newNodeEnumeration.Clear();
       newCompStepToNode.Clear();
+      newEdgesCount = 0;
 
       endNodeIds.Clear();
       endNodes.ForEach(e => endNodeIds.Add(e.Id));
@@ -119,6 +125,8 @@ namespace ExistsAcceptingPath
 
       log.Info("Create CFG idToInfoMap");
       meapContext.TArbSeqCFG.CopyIdToNodeInfoMap(idToInfoMap);
+
+      RemoveUnusedNodeVLevels();
 
       log.InfoFormat(
         "idToInfoMap: {0} {1}",
@@ -174,22 +182,41 @@ namespace ExistsAcceptingPath
     private long treesCut;
     private long processedMu;
 
+    private ComputationStep sCompStep;
     private readonly SortedDictionary<long, DAGNode> newNodeEnumeration =
       new SortedDictionary<long, DAGNode>();
     private readonly SortedDictionary<ComputationStep, long> newCompStepToNode =
       new SortedDictionary<ComputationStep, long>(new CompStepComparer());
+    private long newEdgesCount;
 
     private PropSymbolsKeeperFactCPLTM propSymbolsKeeper;
     private ICPLTMInfo CPLTMInfo;
 
-    private DAGNode GetDAGNode(ComputationStep compStep)
+    private void GetDAGNode(
+      ComputationStep fromCompStep,
+      ComputationStep compStep,
+      out DAGNode toNode,
+      out bool createEdge)
     {
-      if (!newCompStepToNode.TryGetValue(compStep, out long nodeIdToTake))
+      if (fromCompStep == sCompStep)
       {
-        return null;
+        toNode = null;
+        createEdge = true;
+
+        return;
       }
 
-      return newNodeEnumeration[nodeIdToTake];
+      toNode = null;
+      createEdge = (fromCompStep.sTo == compStep.s);
+
+      foreach (KeyValuePair<ComputationStep, long> itemPair in newCompStepToNode)
+      {
+        if (itemPair.Key == compStep)
+        {
+          toNode = newNodeEnumeration[itemPair.Value];
+          return;
+        }
+      }
     }
 
     private List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>>
@@ -204,7 +231,8 @@ namespace ExistsAcceptingPath
       DAGNode fromNode,
       ComputationStep fromCompStep,
       in StateSymbolPair from,
-      StateSymbolDirectionTriple p)
+      StateSymbolDirectionTriple p,
+      int sTo)
     {
       ComputationStep toCompStep = CompStepSequence.GetSequentialCompStep(fromCompStep);
 
@@ -261,8 +289,9 @@ namespace ExistsAcceptingPath
       toCompStep.sNext = p.Symbol;
       toCompStep.m = p.Direction;
       toCompStep.Shift = p.Shift;
+      toCompStep.sTo = sTo;
 
-      DAGNode toNode = GetDAGNode(toCompStep);
+      GetDAGNode(fromCompStep, toCompStep, out DAGNode toNode, out bool createEdge);
 
       if (toNode == null)
       {
@@ -280,15 +309,23 @@ namespace ExistsAcceptingPath
       }
       else
       {
-        treesCut++;
+        if (createEdge)
+        {
+          treesCut++;
+        }
       }
 
-      DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
-      G.AddEdge(e);
-
-      if (debugOptions.UsePropSymbols)
+      if (createEdge)
       {
-        propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
+        DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
+        G.AddEdge(e);
+
+        newEdgesCount++;
+
+        if (debugOptions.UsePropSymbols)
+        {
+          propSymbolsKeeper.PropagateSymbol(fromNode, toNode, toCompStep);
+        }
       }
     }
 
@@ -319,19 +356,26 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in
-                   GetDeltaElements(fromCompStep.qNext))
+        IList<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>> deltaElements = GetDeltaElements(fromCompStep.qNext);
+
+        foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in deltaElements)
         {
           StateSymbolPair from = to.Key;
 
           foreach (StateSymbolDirectionTriple p in to.Value)
           {
-            CreateDAGNode(
-              nodeQueue,
-              fromNode,
-              fromCompStep,
-              from,
-              p);
+            int[] gamma = meapContext.MEAPSharedContext.MNP.Gamma;
+
+            foreach (int sTo in gamma)
+            {
+              CreateDAGNode(
+                nodeQueue,
+                fromNode,
+                fromCompStep,
+                from,
+                p,
+                sTo);
+            }
           }
         }
       }
@@ -373,6 +417,17 @@ namespace ExistsAcceptingPath
           cfg.AddEdge(e);
           tStep.kappaStep = compStep.kappaStep + 1;
         }
+      }
+    }
+
+    public void RemoveUnusedNodeVLevels()
+    {
+      foreach(KeyValuePair<long, SortedSet<long>> itemPair in MEAPSharedContext.NodeLevelInfo.NodeVLevels)
+      {
+        SortedSet<long> levelNodeIds = itemPair.Value;
+        IReadOnlyCollection<long> cfgNodeIds = meapContext.TArbSeqCFG.GetAllNodeIds();
+
+        levelNodeIds.IntersectWith(cfgNodeIds);
       }
     }
 

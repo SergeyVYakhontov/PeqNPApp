@@ -65,7 +65,18 @@ namespace ExistsAcceptingPath
                     }
                     else if (x.kappaStep == y.kappaStep)
                     {
-                      return 0;
+                      if (x.sTo < y.sTo)
+                      {
+                        return -1;
+                      }
+                      else if (x.sTo == y.sTo)
+                      {
+                        return 0;
+                      }
+                      else
+                      {
+                        return 1;
+                      }
                     }
                     else
                     {
