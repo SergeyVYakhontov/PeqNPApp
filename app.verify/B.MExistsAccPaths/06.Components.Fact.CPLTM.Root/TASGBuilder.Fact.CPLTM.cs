@@ -43,7 +43,7 @@ namespace ExistsAcceptingPath
         Shift = 1,
         kappaTape = 0,
         kappaStep = 0,
-        sTo = OneTapeNDTM.blankSymbol
+        sTo = OneTapeTuringMachine.blankSymbol
       };
 
       nodeEnumeration[s.Id] = s;
@@ -107,6 +107,8 @@ namespace ExistsAcceptingPath
     public override void CreateTArbSeqCFG(uint[] states)
     {
       log.Info("Building TArbSeqCFG");
+
+      Ensure.That(meapContext.AcceptingNodes).HasItems();
 
       log.Info("Create sink node");
       CreateSinkNode();
@@ -227,7 +229,6 @@ namespace ExistsAcceptingPath
     }
 
     private void CreateDAGNode(
-      Queue<DAGNode> nodeQueue,
       DAGNode fromNode,
       ComputationStep fromCompStep,
       in StateSymbolPair from,
@@ -305,7 +306,12 @@ namespace ExistsAcceptingPath
         AppHelper.TakeValueByKey(idToInfoMap, toNode.Id, () => new TASGNodeInfo())
           .CompStep = toCompStep;
 
-        nodeQueue.Enqueue(toNode);
+        endNodes.Add(toNode);
+
+        if (meapContext.MEAPSharedContext.MNP.F.Contains(toCompStep.qNext))
+        {
+          acceptingNodes.Add(toNode);
+        }
       }
       else
       {
@@ -344,18 +350,6 @@ namespace ExistsAcceptingPath
         DAGNode fromNode = nodeQueue.Dequeue();
         ComputationStep fromCompStep = idToInfoMap[fromNode.Id].CompStep;
 
-        if (fromCompStep.kappaStep == meapContext.mu)
-        {
-          endNodes.Add(fromNode);
-
-          if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
-          {
-            acceptingNodes.Add(fromNode);
-          }
-
-          continue;
-        }
-
         IList<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>> deltaElements = GetDeltaElements(fromCompStep.qNext);
 
         foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in deltaElements)
@@ -368,13 +362,7 @@ namespace ExistsAcceptingPath
 
             foreach (int sTo in gamma)
             {
-              CreateDAGNode(
-                nodeQueue,
-                fromNode,
-                fromCompStep,
-                from,
-                p,
-                sTo);
+              CreateDAGNode(fromNode, fromCompStep, from, p, sTo);
             }
           }
         }

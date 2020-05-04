@@ -213,8 +213,6 @@ namespace ExistsAcceptingPath
       {
         DAGNode fromNode = nodeQueue.Dequeue();
         ComputationStep fromCompStep = idToInfoMap[fromNode.Id].CompStep;
-        List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>> deltaElements =
-          GetDeltaElements(fromCompStep.qNext);
 
         if (fromCompStep.kappaStep == meapContext.mu)
         {
@@ -228,19 +226,16 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in
-          deltaElements)
+        List<KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>>> deltaElements =
+          GetDeltaElements(fromCompStep.qNext);
+
+        foreach (KeyValuePair<StateSymbolPair, List<StateSymbolDirectionTriple>> to in deltaElements)
         {
           StateSymbolPair from = to.Key;
 
           foreach (StateSymbolDirectionTriple p in to.Value)
           {
-            CreateDAGNode(
-              nodeQueue,
-              fromNode,
-              fromCompStep,
-              from,
-              p);
+            CreateDAGNode(nodeQueue, fromNode, fromCompStep, from, p);
           }
         }
       }

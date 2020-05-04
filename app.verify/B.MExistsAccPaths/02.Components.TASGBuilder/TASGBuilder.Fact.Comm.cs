@@ -277,6 +277,7 @@ namespace ExistsAcceptingPath
         if (fromCompStep.kappaStep == meapContext.mu)
         {
           endNodes.Add(fromNode);
+
           if (meapContext.MEAPSharedContext.MNP.F.Contains(fromCompStep.qNext))
           {
             acceptingNodes.Add(fromNode);
@@ -289,14 +290,10 @@ namespace ExistsAcceptingPath
                     GetDeltaElements(fromCompStep.qNext))
         {
           StateSymbolPair from = to.Key;
+
           foreach (StateSymbolDirectionTriple p in to.Value)
           {
-            CreateDAGNode(
-              nodeQueue,
-              fromNode,
-              fromCompStep,
-              from,
-              p);
+            CreateDAGNode(nodeQueue, fromNode, fromCompStep, from, p);
           }
         }
       }

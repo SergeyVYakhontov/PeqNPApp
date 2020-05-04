@@ -19,7 +19,7 @@ namespace IntegerFactExamplesAppComms
 {
   public class CommonOptions : ICommonOptions
   {
-    public bool CheckDataStructures { get => false; }
+    public bool CheckDataStructures { get => true; }
     public ulong RDASlotMaxSize { get => 256; }
     public float LinProgEpsilon { get => 0.0001F; }
   }

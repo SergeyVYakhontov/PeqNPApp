@@ -43,10 +43,51 @@ namespace ExistsAcceptingPath
       Ensure.That(crossEdges.Any()).IsFalse();
     }
 
+    public static void CheckNodesHaveTheSameSymbolFrom(
+      MEAPContext meapContext)
+    {
+      foreach (KeyValuePair<long, DAGNode> itemPair in meapContext.TArbSeqCFG.NodeEnumeration)
+      {
+        long uNodeId = itemPair.Key;
+
+        if (uNodeId == meapContext.TArbSeqCFG.GetSourceNodeId())
+        {
+          continue;
+        }
+
+        DAGNode uNode = itemPair.Value;
+        ComputationStep uCompStep = meapContext.TArbSeqCFG.IdToNodeInfoMap[uNodeId].CompStep;
+
+        bool firstEdge = true;
+        int sTo = OneTapeTuringMachine.blankSymbol;
+
+        foreach (DAGEdge e in uNode.OutEdges)
+        {
+          long vNodeId = e.ToNode.Id;
+          ComputationStep vCompStep = meapContext.TArbSeqCFG.IdToNodeInfoMap[vNodeId].CompStep;
+
+          if (vNodeId == meapContext.TArbSeqCFG.GetSinkNodeId())
+          {
+            continue;
+          }
+
+          if (firstEdge)
+          {
+            sTo = vCompStep.s;
+            firstEdge = false;
+          }
+          else
+          {
+            Ensure.That(vCompStep.s).Is(sTo);
+          }
+        }
+      }
+    }
+
     public static void CheckCommoditiesHaveNoSingleNodes(
       MEAPContext meapContext)
     {
-      foreach(Commodity commodity in meapContext.Commodities.Values)
+      foreach (Commodity commodity in meapContext.Commodities.Values)
       {
         Ensure.That(IsGraphHasSingleNode(commodity.Gi)).IsFalse();
       }

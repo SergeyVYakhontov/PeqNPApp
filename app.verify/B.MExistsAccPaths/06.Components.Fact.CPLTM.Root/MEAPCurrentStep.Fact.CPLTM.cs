@@ -63,6 +63,7 @@ namespace ExistsAcceptingPath
       if (commonOptions.CheckDataStructures)
       {
         CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
+        CheckDataStructures.CheckNodesHaveTheSameSymbolFrom(meapContext);
       }
 
       ComputeDUPairs();

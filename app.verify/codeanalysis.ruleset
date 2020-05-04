@@ -10,6 +10,7 @@
     <Rule Id="IDE0047" Action="None" />
     <Rule Id="IDE0049" Action="None" />
     <Rule Id="IDE0052" Action="None" />
+    <Rule Id="IDE0058" Action="None" />
     <Rule Id="IDE0059" Action="None" />
     <Rule Id="IDE1006" Action="None" />
     <Rule Id="CA1000" Action="Warning" />
