@@ -40,7 +40,7 @@ namespace ExistsAcceptingPath
         Shift = 1,
         kappaTape = 0,
         kappaStep = 0,
-        sTo = OneTapeTuringMachine.blankSymbol
+        sTheSame = OneTapeTuringMachine.blankSymbol
       };
 
       nodeEnumeration[s.Id] = s;
@@ -274,7 +274,7 @@ namespace ExistsAcceptingPath
       toCompStep.sNext = p.Symbol;
       toCompStep.m = p.Direction;
       toCompStep.Shift = p.Shift;
-      toCompStep.sTo = sTo;
+      toCompStep.sTheSame = sTo;
 
       GetDAGNode(toCompStep, out DAGNode toNode);
 

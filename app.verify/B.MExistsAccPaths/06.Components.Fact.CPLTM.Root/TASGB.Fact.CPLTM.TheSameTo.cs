@@ -40,7 +40,7 @@ namespace ExistsAcceptingPath
         Shift = 1,
         kappaTape = 0,
         kappaStep = 0,
-        sTo = OneTapeTuringMachine.blankSymbol
+        sTheSame = OneTapeTuringMachine.blankSymbol
       };
 
       nodeEnumeration[s.Id] = s;
@@ -206,7 +206,7 @@ namespace ExistsAcceptingPath
       }
 
       toNode = null;
-      createEdge = (fromCompStep.sTo == compStep.s);
+      createEdge = (fromCompStep.sTheSame == compStep.s);
 
       foreach (KeyValuePair<ComputationStep, long> itemPair in newCompStepToNode)
       {
@@ -287,7 +287,7 @@ namespace ExistsAcceptingPath
       toCompStep.sNext = p.Symbol;
       toCompStep.m = p.Direction;
       toCompStep.Shift = p.Shift;
-      toCompStep.sTo = sTo;
+      toCompStep.sTheSame = sTo;
 
       GetDAGNode(fromCompStep, toCompStep, out DAGNode toNode, out bool createEdge);
 
