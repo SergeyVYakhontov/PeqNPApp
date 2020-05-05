@@ -43,10 +43,11 @@ namespace ExistsAcceptingPath
       ComputeNodeVLevels(meapContext.TArbSeqCFG);
 
       ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
+      ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
+        checkDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
       }
 
       log.DebugFormat("states = {0}", AppHelper.ArrayToString(states));
@@ -74,13 +75,13 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private TASGBuilderSlotsMThreads tasgBuilder;
+    private ITASGBuilder tasgBuilder;
     private TConsistPairSetBuilderSlotsMThreads tConsistPairSetBuilder;
     private SortedDictionary<long, SortedSet<long>> inVarToVarNodes;
 
     private void CreateTASGBuilder()
     {
-      tasgBuilder = (TASGBuilderSlotsMThreads)meapContext.MEAPSharedContext.TASGBuilder;
+      tasgBuilder = meapContext.MEAPSharedContext.TASGBuilder;
 
       tasgBuilder.meapContext = meapContext;
       meapContext.TASGBuilder = tasgBuilder;

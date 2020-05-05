@@ -35,6 +35,10 @@ namespace IntegerFactExamplesAppCPLTM
 
       Bind<ILinEqsAlgorithmProvider>().To<LinEqsAlgorithmProvider>()
         .InSingletonScope();
+      Bind<ICheckDataStructures>().To<CheckDataStructuresTheSameFrom>()
+        .InSingletonScope();
+      Bind<ITASGBuilder>().ToConstructor<TASGBuilderFactCPLTMTheSameFrom>(
+        _ => new TASGBuilderFactCPLTMTheSameFrom());
       Bind<IMeapCurrentStep>().ToConstructor<MEAPCurrentStepFactCPLTM>(
         arg => new MEAPCurrentStepFactCPLTM(arg.Inject<MEAPContext>()));
       Bind<DeterminePathRunner>().ToConstructor<DeterminePathRunnerFactCPLTM>(

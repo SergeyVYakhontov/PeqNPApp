@@ -21,7 +21,7 @@ namespace ExistsAcceptingPath
     public MEAPCurrentStepFactCPLTM(MEAPContext meapContext)
       : base(meapContext)
     {
-      this.tasgBuilder = (TASGBuilderFactCPLTM)meapContext.MEAPSharedContext.TASGBuilder;
+      this.tasgBuilder = meapContext.MEAPSharedContext.TASGBuilder;
       this.meapContext.TASGBuilder = tasgBuilder;
       this.tasgBuilder.meapContext = meapContext;
       this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
@@ -59,10 +59,11 @@ namespace ExistsAcceptingPath
       }
 
       ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
+      ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckTASGNodesHaveTheSameSymbolFrom(meapContext);
+        checkDataStructures.CheckTASGNodesHaveTheSameSymbol(meapContext);
       }
 
       ComputeDUPairs();
@@ -81,7 +82,7 @@ namespace ExistsAcceptingPath
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckNCGNodesHaveTheSameSymbolFrom(meapContext);
+        checkDataStructures.CheckNCGNodesHaveTheSameSymbol(meapContext);
       }
 
       NCGCommonPathGraphBuilder ncgCommonPathGraphBuilder = new NCGCommonPathGraphBuilder(meapContext);
@@ -101,7 +102,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private readonly TASGBuilderFactCPLTM tasgBuilder;
+    private readonly ITASGBuilder tasgBuilder;
     private readonly ICPLTMInfo CPLTMInfo;
 
     private void ComputeDUPairs()

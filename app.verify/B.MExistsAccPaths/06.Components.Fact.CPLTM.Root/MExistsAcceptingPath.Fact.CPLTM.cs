@@ -64,7 +64,7 @@ namespace ExistsAcceptingPath
 
       MEAPSharedContext.NodeLevelInfo = new NodeLevelInfo();
 
-      TASGBuilderFactCPLTM tasgBuilder = new TASGBuilderFactCPLTM();
+      ITASGBuilder tasgBuilder = configuration.Get<ITASGBuilder>();
 
       MEAPSharedContext.TASGBuilder = tasgBuilder;
       tasgBuilder.MEAPSharedContext = MEAPSharedContext;

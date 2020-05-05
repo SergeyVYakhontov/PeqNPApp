@@ -34,6 +34,10 @@ namespace IntegerFactExamplesAppComms
 
       Bind<ILinEqsAlgorithmProvider>().To<LinEqsAlgorithmProvider>()
         .InSingletonScope();
+      Bind<ICheckDataStructures>().To<CheckDataStructures>()
+        .InSingletonScope();
+      Bind<ITASGBuilder>().ToConstructor<TASGBuilderFactComm>(
+        _ => new TASGBuilderFactComm());
       Bind<IMeapCurrentStep>().ToConstructor<MEAPCurrentStepFactComm>(
         arg => new MEAPCurrentStepFactComm(arg.Inject<MEAPContext>()));
       Bind<DeterminePathRunner>().ToConstructor<DeterminePathRunnerFactComms>(

@@ -35,6 +35,10 @@ namespace OrdinaryExamplesAppSingleThread
 
       Bind<ILinEqsAlgorithmProvider>().To<LinEqsAlgorithmProvider>()
         .InSingletonScope();
+      Bind<ICheckDataStructures>().To<CheckDataStructures>()
+        .InSingletonScope();
+      Bind<ITASGBuilder>().ToConstructor<TASGBuilderOrd>(
+        _ => new TASGBuilderOrd());
       Bind<IMeapCurrentStep>().ToConstructor<MEAPCurrentStepOrd>(
         arg => new MEAPCurrentStepOrd(arg.Inject<MEAPContext>()));
       Bind<DeterminePathRunner>().ToConstructor<DeterminePathRunnerOrd>(

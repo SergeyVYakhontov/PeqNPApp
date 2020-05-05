@@ -68,7 +68,9 @@ namespace ExistsAcceptingPath
         excludedDefs.AddRange(toRemove);
       }
 
-      CheckDataStructures.CheckCommoditiesHaveNoSingleNodes(meapContext);
+      ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
+
+      checkDataStructures.CheckCommoditiesHaveNoSingleNodes(meapContext);
     }
 
     public void CreateCommodityGraphs()
@@ -91,17 +93,18 @@ namespace ExistsAcceptingPath
         }
 
         ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
+        ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
 
         if (commonOptions.CheckDataStructures)
         {
-          CheckDataStructures.CheckCommoditiesHaveNoSingleNodes(meapContext);
+          checkDataStructures.CheckCommoditiesHaveNoSingleNodes(meapContext);
         }
 
         ExcludeDefs();
 
         if (commonOptions.CheckDataStructures)
         {
-          CheckDataStructures.CheckCommoditiesHaveNoSingleNodes(meapContext);
+          checkDataStructures.CheckCommoditiesHaveNoSingleNodes(meapContext);
         }
       }
     }

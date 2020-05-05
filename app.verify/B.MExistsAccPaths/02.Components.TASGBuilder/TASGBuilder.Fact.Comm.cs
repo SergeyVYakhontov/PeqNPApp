@@ -16,9 +16,7 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public MEAPContext meapContext { get; set; }
-
-    public void Init(MEAPSharedContext MEAPSharedContext)
+    public override void Init()
     {
       G = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("TASG");
       TapeLBound = 1;

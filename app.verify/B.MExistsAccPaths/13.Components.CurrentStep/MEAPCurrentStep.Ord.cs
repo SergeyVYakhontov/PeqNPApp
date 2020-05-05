@@ -29,9 +29,12 @@ namespace ExistsAcceptingPath
     {
       log.InfoFormat("mu: {0}", meapContext.mu);
 
-      TASGBuilderOrd tasgBuilder = new TASGBuilderOrd(meapContext);
-      meapContext.TASGBuilder = tasgBuilder;
+      ITASGBuilder tasgBuilder = configuration.Get<ITASGBuilder>();
 
+      meapContext.TASGBuilder = tasgBuilder;
+      tasgBuilder.meapContext = meapContext;
+
+      tasgBuilder.Init();
       tasgBuilder.CreateTArbitrarySeqGraph();
       tasgBuilder.CreateTArbSeqCFG(states);
       meapContext.TArbSeqCFG.Trace();
@@ -44,10 +47,11 @@ namespace ExistsAcceptingPath
       ComputeNodeVLevels(meapContext.TArbSeqCFG);
 
       ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
+      ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
+        checkDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
       }
 
       meapContext.DUPairCount = 0;

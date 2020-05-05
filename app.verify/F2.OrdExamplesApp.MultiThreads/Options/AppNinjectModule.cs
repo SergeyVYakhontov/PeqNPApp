@@ -35,6 +35,10 @@ namespace OrdinaryExamplesAppSlotsMThreads
 
       Bind<ILinEqsAlgorithmProvider>().To<LinEqsAlgorithmProvider>()
         .InSingletonScope();
+      Bind<ICheckDataStructures>().To<CheckDataStructures>()
+        .InSingletonScope();
+      Bind<ITASGBuilder>().ToConstructor<TASGBuilderSlotsMThreads>(
+        _ => new TASGBuilderSlotsMThreads());
       Bind<IMeapCurrentStep>().ToConstructor<MEAPCurrentStepSlotsMultiThreads>(
         arg => new MEAPCurrentStepSlotsMultiThreads(arg.Inject<MEAPContext>()));
       Bind<DeterminePathRunner>().ToConstructor<DeterminePathRunnerSlotsMThreads>(

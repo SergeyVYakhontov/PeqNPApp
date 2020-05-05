@@ -13,22 +13,43 @@ namespace ExistsAcceptingPath
 {
   public class TASGBuilderOrd : TASGBuilder
   {
-    #region Ctors
-
-    public TASGBuilderOrd(MEAPContext meapContext)
-    {
-      this.meapContext = meapContext;
-    }
-
-    #endregion
-
     #region public members
+
+    public override void Init()
+    {
+      G = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("TASG");
+
+      TapeLBound = 1;
+      TapeRBound = 1;
+
+      DAGNode s = new DAGNode(nodeId++);
+      G.AddNode(s);
+      G.SetSourceNode(s);
+
+      ComputationStep compStep = new ComputationStep
+      {
+        q = meapContext.MEAPSharedContext.MNP.qStart,
+        s = meapContext.MEAPSharedContext.Input[0],
+        qNext = meapContext.MEAPSharedContext.MNP.qStart,
+        sNext = meapContext.MEAPSharedContext.Input[0],
+        m = TMDirection.S,
+        kappaTape = 1,
+        kappaStep = 0
+      };
+
+      nodeEnumeration[s.Id] = s;
+      compStepToNode[compStep] = s.Id;
+
+      idToInfoMap[s.Id] = new TASGNodeInfo
+      {
+        CompStep = compStep
+      };
+    }
 
     public override void CreateTArbitrarySeqGraph()
     {
       log.Info("Building TArbitrarySeqGraph");
 
-      Init();
       TraverseMNPTree();
       CreateSinkNode();
 
@@ -98,8 +119,6 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    private readonly MEAPContext meapContext;
-
     private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
     private long nodeId;
     private long edgeId;
@@ -128,37 +147,6 @@ namespace ExistsAcceptingPath
     {
       return meapContext.MEAPSharedContext.MNP.Delta.Where(
         d => (d.Key.State == state)).ToList();
-    }
-
-    private void Init()
-    {
-      G = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("TASG");
-
-      TapeLBound = 1;
-      TapeRBound = 1;
-
-      DAGNode s = new DAGNode(nodeId++);
-      G.AddNode(s);
-      G.SetSourceNode(s);
-
-      ComputationStep compStep = new ComputationStep
-      {
-        q = meapContext.MEAPSharedContext.MNP.qStart,
-        s = meapContext.MEAPSharedContext.Input[0],
-        qNext = meapContext.MEAPSharedContext.MNP.qStart,
-        sNext = meapContext.MEAPSharedContext.Input[0],
-        m = TMDirection.S,
-        kappaTape = 1,
-        kappaStep = 0
-      };
-
-      nodeEnumeration[s.Id] = s;
-      compStepToNode[compStep] = s.Id;
-
-      idToInfoMap[s.Id] = new TASGNodeInfo
-      {
-        CompStep = compStep
-      };
     }
 
     private void CreateDAGNode(

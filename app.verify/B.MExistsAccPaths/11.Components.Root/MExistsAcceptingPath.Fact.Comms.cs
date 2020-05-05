@@ -51,9 +51,12 @@ namespace ExistsAcceptingPath
       IDebugOptions debugOptions = configuration.Get<IDebugOptions>();
       ulong currentMu = debugOptions.muStart;
 
-      TASGBuilderFactComm tasgBuilder = new TASGBuilderFactComm();
+      ITASGBuilder tasgBuilder = configuration.Get<ITASGBuilder>();
+
       MEAPSharedContext.TASGBuilder = tasgBuilder;
-      tasgBuilder.Init(MEAPSharedContext);
+      tasgBuilder.MEAPSharedContext = MEAPSharedContext;
+
+      tasgBuilder.Init();
 
       while (true)
       {
