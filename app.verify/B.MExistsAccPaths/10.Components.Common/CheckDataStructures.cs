@@ -12,6 +12,8 @@ using Core;
 
 namespace ExistsAcceptingPath
 {
+  using NCGraphType = TypedDAG<NestedCommsGraphNodeInfo, StdEdgeInfo>;
+
   public static class CheckDataStructures
   {
     #region public members
@@ -19,6 +21,7 @@ namespace ExistsAcceptingPath
     public static void CheckTASGHasNoBackAndCrossEdges(DAG dag)
     {
       log.Info("CheckTASGHasNoBackAndCrossEdges");
+
       SortedDictionary<long, SortedSet<long>> VLevelSets =
         new SortedDictionary<long,SortedSet<long>>();
 
@@ -43,9 +46,11 @@ namespace ExistsAcceptingPath
       Ensure.That(crossEdges.Any()).IsFalse();
     }
 
-    public static void CheckNodesHaveTheSameSymbolFrom(
+    public static void CheckTASGNodesHaveTheSameSymbolFrom(
       MEAPContext meapContext)
     {
+      log.Info("CheckTASGNodesHaveTheSameSymbolFrom");
+
       foreach (KeyValuePair<long, DAGNode> itemPair in meapContext.TArbSeqCFG.NodeEnumeration)
       {
         long uNodeId = itemPair.Key;
@@ -84,9 +89,63 @@ namespace ExistsAcceptingPath
       }
     }
 
+    public static void CheckNCGNodesHaveTheSameSymbolFrom(
+      MEAPContext meapContext)
+    {
+      log.Info("CheckNCGNodesHaveTheSameSymbolFrom");
+
+      foreach (KeyValuePair<long, FwdBkwdNCommsGraphPair> ncgItemPair in
+        meapContext.muToNestedCommsGraphPair)
+      {
+        NCGraphType bkwdNestedCommsGraph = ncgItemPair.Value.BkwdNestedCommsGraph;
+
+        foreach(KeyValuePair<long, DAGNode> ncgNodeItemPair in bkwdNestedCommsGraph.NodeEnumeration)
+        {
+          long uNCGNodeId = ncgNodeItemPair.Key;
+          DAGNode ncgNode = ncgNodeItemPair.Value;
+
+          if(!meapContext.Commodities.TryGetValue(uNCGNodeId, out Commodity uComm))
+          {
+            continue;
+          }
+
+          long uNodeId = uComm.tNodeId;
+          ComputationStep uCompStep = meapContext.TArbSeqCFG.IdToNodeInfoMap[uNodeId].CompStep;
+
+          bool firstEdge = true;
+          int sTo = OneTapeTuringMachine.blankSymbol;
+
+          foreach (DAGEdge e in ncgNode.InEdges)
+          {
+            long vNCGNodeId = e.FromNode.Id;
+            Commodity vComm = meapContext.Commodities[vNCGNodeId];
+            long vNodeId = vComm.tNodeId;
+            ComputationStep vCompStep = meapContext.TArbSeqCFG.IdToNodeInfoMap[vNodeId].CompStep;
+
+            if (vNodeId == meapContext.TArbSeqCFG.GetSinkNodeId())
+            {
+              continue;
+            }
+
+            if (firstEdge)
+            {
+              sTo = vCompStep.s;
+              firstEdge = false;
+            }
+            else
+            {
+              Ensure.That(vCompStep.s).Is(sTo);
+            }
+          }
+        }
+      }
+    }
+
     public static void CheckCommoditiesHaveNoSingleNodes(
       MEAPContext meapContext)
     {
+      log.Info("CheckCommoditiesHaveNoSingleNodes");
+
       foreach (Commodity commodity in meapContext.Commodities.Values)
       {
         Ensure.That(IsGraphHasSingleNode(commodity.Gi)).IsFalse();

@@ -62,8 +62,7 @@ namespace ExistsAcceptingPath
 
       if (commonOptions.CheckDataStructures)
       {
-        CheckDataStructures.CheckTASGHasNoBackAndCrossEdges(meapContext.TArbSeqCFG);
-        CheckDataStructures.CheckNodesHaveTheSameSymbolFrom(meapContext);
+        CheckDataStructures.CheckTASGNodesHaveTheSameSymbolFrom(meapContext);
       }
 
       ComputeDUPairs();
@@ -79,6 +78,11 @@ namespace ExistsAcceptingPath
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder = null;
+
+      if (commonOptions.CheckDataStructures)
+      {
+        CheckDataStructures.CheckNCGNodesHaveTheSameSymbolFrom(meapContext);
+      }
 
       NCGCommonPathGraphBuilder ncgCommonPathGraphBuilder = new NCGCommonPathGraphBuilder(meapContext);
       ncgCommonPathGraphBuilder.Setup();
