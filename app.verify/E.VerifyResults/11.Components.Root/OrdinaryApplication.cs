@@ -21,6 +21,15 @@ namespace VerifyResults
   {
     #region public members
 
+    public OrdinaryApplication()
+    {
+      this.configuration = Core.AppContext.GetConfiguration();
+    }
+
+    #endregion
+
+    #region public members
+
     public void Run(string[] args)
     {
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
@@ -49,7 +58,8 @@ namespace VerifyResults
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

@@ -20,6 +20,8 @@ namespace ExistsAcceptingPath
 
     public MExistsAcceptingPathOrd(MExistsAcceptingPathCtorArgs mExistsAcceptingPathCtorArgs)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.tMachine = mExistsAcceptingPathCtorArgs.tMachine;
     }
 
@@ -97,7 +99,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
 
     private readonly OneTapeTuringMachine tMachine;
 

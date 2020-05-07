@@ -18,6 +18,8 @@ namespace ExistsAcceptingPath
 
     public TConsistPairSetBuilderOrd(MEAPContext meapContext)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.meapContext = meapContext;
     }
 
@@ -116,7 +118,8 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

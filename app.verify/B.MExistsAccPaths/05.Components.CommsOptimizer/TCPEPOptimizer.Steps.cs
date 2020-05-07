@@ -19,7 +19,10 @@ namespace ExistsAcceptingPath
     #region Ctors
 
     public TCPEPOptimizer(MEAPContext meapContext, TapeSegContext tapeSegContext)
-      : base(meapContext, tapeSegContext) { }
+      : base(meapContext, tapeSegContext)
+    {
+      this.configuration = Core.AppContext.GetConfiguration();
+    }
 
     #endregion
 
@@ -131,8 +134,10 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private readonly IReadOnlyKernel configuration;
+
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private SortedDictionary<long, Commodity> commoditiesSubset;
     private readonly SortedSet<long> totalExcludedComms = new SortedSet<long>();

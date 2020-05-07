@@ -15,14 +15,6 @@ namespace VerifyResults
 {
   public abstract class ExampleSet
   {
-    #region private members
-
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-    #endregion
-
     #region public members
 
     public bool RunSmallExamples()
@@ -33,7 +25,9 @@ namespace VerifyResults
         "Small examples {0}, errors: {1}",
           Name, !result);
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
+
       appStatistics.ThereWereErrors = (appStatistics.ThereWereErrors || !result);
 
       return result;
@@ -47,7 +41,9 @@ namespace VerifyResults
         "Large examples {0}, errors: {1}",
           Name, !result);
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
+
       appStatistics.ThereWereErrors = (appStatistics.ThereWereErrors || !result);
 
       return result;
@@ -180,6 +176,13 @@ namespace VerifyResults
       int inputLength);
 
     public abstract ICheckAlgorithm GetCheckAlgorithm();
+
+    #endregion
+
+    #region private members
+
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     #endregion
   }

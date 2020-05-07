@@ -20,6 +20,8 @@ namespace Core
 
     public LinEqSetSolverSparseMThreads(SparseMatrix A)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.A = A;
 
       m = A.m;
@@ -57,7 +59,7 @@ namespace Core
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
 
     private readonly SparseMatrix A;
     private readonly long m, n;

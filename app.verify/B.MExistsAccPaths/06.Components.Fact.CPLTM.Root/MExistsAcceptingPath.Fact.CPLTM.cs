@@ -20,6 +20,8 @@ namespace ExistsAcceptingPath
 
     public MExistsAcceptingPathFactCPLTM(MExistsAcceptingPathCtorArgs mExistsAcceptingPathCtorArgs)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.tMachine = mExistsAcceptingPathCtorArgs.tMachine;
     }
 
@@ -126,7 +128,8 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

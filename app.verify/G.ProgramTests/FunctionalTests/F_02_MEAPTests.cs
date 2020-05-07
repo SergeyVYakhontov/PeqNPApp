@@ -41,9 +41,11 @@ namespace FunctionalTests
     [Fact]
     public void T01_SlotsMThreads_Lang01_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang01_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -57,9 +59,11 @@ namespace FunctionalTests
     [Fact]
     public void T02_SlotsMThreads_Lang02_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang02_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -73,9 +77,11 @@ namespace FunctionalTests
     [Fact]
     public void T03_SlotsMThreads_SAP_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.SAP_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -89,9 +95,11 @@ namespace FunctionalTests
     [Fact]
     public void T04_SlotsMThreads_LAP_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.LAP_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -105,9 +113,11 @@ namespace FunctionalTests
     [Fact]
     public void T05_SlotsMThreads_UPAPMNE_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.UPAPMNE_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -121,9 +131,11 @@ namespace FunctionalTests
     [Fact]
     public void T06_SlotsMThreads_UPAPAE_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.UPAPAE_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -137,9 +149,11 @@ namespace FunctionalTests
     [Fact]
     public void T07_SlotsMThreads_UPLDR_Test()
     {
-      configuration.Load<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<OrdinaryExamplesAppSlotsMThreads.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.UPLDR_ExampleSet);
 
       IApplication application = configuration.Get<IApplication>();
@@ -153,9 +167,11 @@ namespace FunctionalTests
     [Fact]
     public void T08_IF_Comms_Test()
     {
-      configuration.Load<IntegerFactExamplesAppComms.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<IntegerFactExamplesAppComms.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
@@ -169,9 +185,11 @@ namespace FunctionalTests
     [Fact]
     public void T09_IF_CPLTM_Test()
     {
-      configuration.Load<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
@@ -186,12 +204,9 @@ namespace FunctionalTests
 
     #region private members
 
-    private readonly IKernel configuration = Core.AppContext.Configuration;
-
     private void ResetNinjectKernel()
     {
-      List<Ninject.Modules.INinjectModule> modules = configuration.GetModules().ToList();
-      modules.ForEach(m => configuration.Unload(m.Name));
+      Core.AppContext.UnloadConfigurationModule();
     }
 
     #endregion

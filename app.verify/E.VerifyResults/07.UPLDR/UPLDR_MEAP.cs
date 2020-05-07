@@ -20,6 +20,8 @@ namespace VerifyResults
 
     public UPLDR_MEAP(OneTapeTuringMachine tm)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.tm = tm;
     }
 
@@ -53,7 +55,7 @@ namespace VerifyResults
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
 
     private readonly OneTapeTuringMachine tm;
     private IMExistsAcceptingPath mExistAcceptingPaths;

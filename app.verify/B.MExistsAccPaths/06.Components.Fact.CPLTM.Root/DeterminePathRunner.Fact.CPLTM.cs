@@ -19,7 +19,10 @@ namespace ExistsAcceptingPath
     #region Ctors
 
     public DeterminePathRunnerFactCPLTM(DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs)
-      : base(determinePathRunnerCtorArgs) { }
+      : base(determinePathRunnerCtorArgs)
+    {
+      this.configuration = Core.AppContext.GetConfiguration();
+    }
 
     #endregion
 
@@ -65,6 +68,12 @@ namespace ExistsAcceptingPath
         }
       }
     }
+
+    #endregion
+
+    #region private members
+
+    private readonly IReadOnlyKernel configuration;
 
     #endregion
   }

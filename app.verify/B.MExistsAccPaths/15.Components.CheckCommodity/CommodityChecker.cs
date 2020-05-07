@@ -58,8 +58,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    protected static readonly IKernel configuration = Core.AppContext.Configuration;
-
     protected readonly LinEquationContext linEquationContext = new LinEquationContext();
     private readonly Commodity commodity;
     private readonly SortedSet<long> tConsistPathComms;

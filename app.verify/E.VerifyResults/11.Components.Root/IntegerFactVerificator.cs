@@ -17,6 +17,15 @@ namespace VerifyResults
   {
     #region public members
 
+    public IntegerFactVerificator()
+    {
+      this.configuration = Core.AppContext.GetConfiguration();
+    }
+
+    #endregion
+
+    #region public members
+
     public override void Run()
     {
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
@@ -48,6 +57,8 @@ namespace VerifyResults
     #endregion
 
     #region private members
+
+    private readonly IReadOnlyKernel configuration;
 
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

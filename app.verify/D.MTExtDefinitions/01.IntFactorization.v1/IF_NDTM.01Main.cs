@@ -21,6 +21,8 @@ namespace MTExtDefinitions.v1
 
     public IF_NDTM(int inputLength) : base("NDTM")
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.inputLength = inputLength;
     }
 
@@ -162,7 +164,7 @@ namespace MTExtDefinitions.v1
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
 
     private readonly int inputLength;
     private static int FrameLength(int inputLength) => inputLength + 2;

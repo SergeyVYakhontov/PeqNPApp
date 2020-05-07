@@ -34,7 +34,9 @@ namespace FunctionalTests
     {
       OrdinaryExamplesAppSingleThread.Program.Main(new string[] { "test" });
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
+
       Assert.False(appStatistics.ThereWereErrors);
     }
 
@@ -43,7 +45,9 @@ namespace FunctionalTests
     {
       OrdinaryExamplesAppSlotsMThreads.Program.Main(new string[] { "test" });
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
+
       Assert.False(appStatistics.ThereWereErrors);
     }
 
@@ -52,7 +56,9 @@ namespace FunctionalTests
     {
       IntegerFactExamplesAppComms.Program.Main(new string[] { "test" });
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
+
       Assert.False(appStatistics.ThereWereErrors);
     }
 
@@ -61,7 +67,9 @@ namespace FunctionalTests
     {
       IntegerFactExamplesAppCPLTM.Program.Main(new string[] { "test" });
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
+
       Assert.False(appStatistics.ThereWereErrors);
     }
 
@@ -69,12 +77,9 @@ namespace FunctionalTests
 
     #region private members
 
-    private readonly IKernel configuration = Core.AppContext.Configuration;
-
     private void ResetNinjectKernel()
     {
-      List<Ninject.Modules.INinjectModule> modules = configuration.GetModules().ToList();
-      modules.ForEach(m => configuration.Unload(m.Name));
+      Core.AppContext.UnloadConfigurationModule();
     }
 
     #endregion

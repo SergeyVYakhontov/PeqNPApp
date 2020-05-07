@@ -33,8 +33,6 @@ namespace UnitTests
 
     #region private members
 
-    private readonly IKernel configuration = Core.AppContext.Configuration;
-
     protected int frameLength;
     protected int frameStart1;
     protected int frameStart2;
@@ -43,7 +41,7 @@ namespace UnitTests
 
     protected void Setup(int inputLength)
     {
-      configuration.Load<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<IntegerFactExamplesAppCPLTM.AppNinjectModule>();
 
       frameLength = MTExtDefinitions.v2.IF_NDTM.FrameLength(inputLength);
       frameStart1 = MTExtDefinitions.v2.IF_NDTM.FrameStart1(inputLength);
@@ -54,8 +52,7 @@ namespace UnitTests
 
     protected void ResetNinjectKernel()
     {
-      List<Ninject.Modules.INinjectModule> modules = configuration.GetModules().ToList();
-      modules.ForEach(m => configuration.Unload(m.Name));
+      Core.AppContext.UnloadConfigurationModule();
     }
 
     #endregion

@@ -29,11 +29,15 @@ namespace ExistsAcceptingPath
          commodity,
          tConsistPathComms,
          tInconsistPathComms)
-    { }
+    {
+      this.configuration = Core.AppContext.GetConfiguration();
+    }
 
     #endregion
 
     #region private members
+
+    private readonly IReadOnlyKernel configuration;
 
     protected override bool CheckCommodity()
     {

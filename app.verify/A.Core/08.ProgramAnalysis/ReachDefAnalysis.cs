@@ -17,6 +17,8 @@ namespace Core
 
     public ReachDefAnalysis(string name, ReachDefAnalysisContext rdaContext)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.Name = name;
       this.rdaContext = rdaContext;
     }
@@ -71,7 +73,8 @@ namespace Core
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -84,7 +87,7 @@ namespace Core
     private readonly SortedDictionary<long, IBitVector> nodeToREACHinVectorMap = new SortedDictionary<long, IBitVector>();
     private readonly SortedDictionary<long, IBitVector> nodeToREACHoutVectorMap = new SortedDictionary<long, IBitVector>();
 
-    private static IBitVector CreateBitVector(ulong size)
+    private IBitVector CreateBitVector(ulong size)
     {
       IBitVectorProvider bitVectorProvider = configuration.Get<IBitVectorProvider>();
 

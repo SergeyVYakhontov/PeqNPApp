@@ -17,6 +17,8 @@ namespace Core
 
     public ReachDefAnalysisSlotsMThreads(string name, ReachDefAnalysisContext rdaContext)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.Name = name;
       this.rdaContext = rdaContext;
     }
@@ -132,9 +134,10 @@ namespace Core
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-    private static readonly log4net.ILog log =
-      log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private readonly IReadOnlyKernel configuration;
+
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private readonly ReachDefAnalysisContext rdaContext;
 

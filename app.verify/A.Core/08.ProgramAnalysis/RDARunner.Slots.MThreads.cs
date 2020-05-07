@@ -17,6 +17,8 @@ namespace Core
 
     public RDARunnerSlotsMThreads(long id)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.Id = id;
     }
 
@@ -99,7 +101,8 @@ namespace Core
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -127,14 +130,14 @@ namespace Core
     private readonly SortedDictionary<long, IBitVector> nodeToREACHoutVectorMap =
       new SortedDictionary<long, IBitVector>();
 
-    private static IBitVector CreateBitVector(ulong size)
+    private IBitVector CreateBitVector(ulong size)
     {
       IBitVectorProvider bitVectorProvider = configuration.Get<IBitVectorProvider>();
 
       return bitVectorProvider.CreateVector(size);
     }
 
-    private static IBitVector CreateBitVector(IBitVector v)
+    private IBitVector CreateBitVector(IBitVector v)
     {
       IBitVectorProvider bitVectorProvider = configuration.Get<IBitVectorProvider>();
 

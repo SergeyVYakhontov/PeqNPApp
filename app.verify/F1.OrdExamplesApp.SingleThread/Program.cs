@@ -37,7 +37,9 @@ namespace OrdinaryExamplesAppSingleThread
 
       Setup();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IApplication application = configuration.Get<IApplication>();
+
       application.Run(args);
 
       if (!args.Contains("test"))
@@ -50,16 +52,16 @@ namespace OrdinaryExamplesAppSingleThread
 
     #region private mermbers
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
-    private static readonly log4net.ILog log =
-      log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private static void Setup()
     {
       log.Info("Setup");
 
-      configuration.Load<AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
 
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.Lang01_ExampleSet);

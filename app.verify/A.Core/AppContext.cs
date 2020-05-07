@@ -15,7 +15,29 @@ namespace Core
   {
     #region public members
 
-    public static IKernel Configuration { get; } = new StandardKernel();
+    public static IReadOnlyKernel GetConfiguration() => configuration;
+
+    public static void LoadConfigurationModule<T>()
+      where T : Ninject.Modules.INinjectModule, new()
+    {
+      kernelConfiguration = new KernelConfiguration(new T());
+      configuration = kernelConfiguration.BuildReadonlyKernel();
+    }
+
+    public static void UnloadConfigurationModule()
+    {
+      kernelConfiguration.Dispose();
+
+      kernelConfiguration = null;
+      configuration = null;
+    }
+
+    #endregion
+
+    #region private members
+
+    private static KernelConfiguration kernelConfiguration;
+    private static IReadOnlyKernel configuration;
 
     #endregion
   }

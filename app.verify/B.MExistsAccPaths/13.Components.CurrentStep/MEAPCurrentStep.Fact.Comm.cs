@@ -19,7 +19,10 @@ namespace ExistsAcceptingPath
     #region Ctors
 
     public MEAPCurrentStepFactComm(MEAPContext meapContext)
-      : base(meapContext) {}
+      : base(meapContext)
+    {
+      this.configuration = Core.AppContext.GetConfiguration();
+    }
 
     #endregion
 
@@ -71,7 +74,8 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

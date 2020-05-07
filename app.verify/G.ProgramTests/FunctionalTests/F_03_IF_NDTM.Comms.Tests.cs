@@ -41,9 +41,11 @@ namespace FunctionalTests
     [Fact]
     public void ExampleSetA_Test()
     {
-      configuration.Load<IntegerFactExamplesAppComms.AppNinjectModule>();
+      Core.AppContext.LoadConfigurationModule<IntegerFactExamplesAppComms.AppNinjectModule>();
 
+      IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
+
       exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetA);
 
       IApplication application = configuration.Get<IApplication>();
@@ -58,12 +60,9 @@ namespace FunctionalTests
 
     #region private members
 
-    private readonly IKernel configuration = Core.AppContext.Configuration;
-
     private void ResetNinjectKernel()
     {
-      List<Ninject.Modules.INinjectModule> modules = configuration.GetModules().ToList();
-      modules.ForEach(m => configuration.Unload(m.Name));
+      Core.AppContext.UnloadConfigurationModule();
     }
 
     #endregion

@@ -20,6 +20,8 @@ namespace VerifyResults.v2
 
     public IF_MEAP(OneTapeTuringMachine tm)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.tm = tm;
     }
 
@@ -49,7 +51,7 @@ namespace VerifyResults.v2
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
 
     private readonly OneTapeTuringMachine tm;
     private IMExistsAcceptingPath mExistAcceptingPaths;

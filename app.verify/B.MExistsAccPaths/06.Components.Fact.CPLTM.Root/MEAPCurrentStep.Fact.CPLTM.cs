@@ -21,6 +21,8 @@ namespace ExistsAcceptingPath
     public MEAPCurrentStepFactCPLTM(MEAPContext meapContext)
       : base(meapContext)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.tasgBuilder = meapContext.MEAPSharedContext.TASGBuilder;
       this.meapContext.TASGBuilder = tasgBuilder;
       this.tasgBuilder.meapContext = meapContext;
@@ -98,7 +100,8 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

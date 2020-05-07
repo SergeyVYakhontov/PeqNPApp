@@ -20,12 +20,6 @@ namespace VerifyResults
     public abstract void Run();
 
     #endregion
-
-    #region private members
-
-    protected static readonly IKernel configuration = Core.AppContext.Configuration;
-
-    #endregion
   }
 }
 

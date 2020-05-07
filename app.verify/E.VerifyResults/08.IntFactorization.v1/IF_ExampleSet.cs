@@ -28,12 +28,6 @@ namespace VerifyResults.v1
     }
 
     #endregion
-
-    #region private members
-
-    protected static readonly IKernel configuration = Core.AppContext.Configuration;
-
-    #endregion
   }
 }
 

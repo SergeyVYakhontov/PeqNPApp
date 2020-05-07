@@ -25,8 +25,10 @@ namespace ExistsAcceptingPath
       )
       :base(meapContext, tapeSegContext)
     {
+      this.configuration = Core.AppContext.GetConfiguration();
+
       this.Id = id;
-      tapeSegRunnerStateTable = new TapeSegRunnerStateTable(allowedStates);
+      this.tapeSegRunnerStateTable = new TapeSegRunnerStateTable(allowedStates);
     }
 
     #endregion
@@ -116,7 +118,8 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly IKernel configuration = Core.AppContext.Configuration;
+    private readonly IReadOnlyKernel configuration;
+
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

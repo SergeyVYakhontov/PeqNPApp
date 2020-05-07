@@ -41,7 +41,6 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    protected static readonly IKernel configuration = Core.AppContext.Configuration;
     protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
