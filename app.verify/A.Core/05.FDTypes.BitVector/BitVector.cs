@@ -112,8 +112,9 @@ namespace Core
     public override bool Equals(Object obj)
     {
       BitVector v = obj as BitVector;
+      Ensure.That(v).IsNotNull();
 
-      Ensure.That(Size).Is(v.Size);
+      Ensure.That(Size).Is(v!.Size);
 
       return items.SequenceEqual(v.items);
     }

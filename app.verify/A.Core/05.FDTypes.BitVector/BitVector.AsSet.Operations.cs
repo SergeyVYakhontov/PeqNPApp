@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using EnsureThat;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -17,7 +18,10 @@ namespace Core
       BitVectorAsSet v1 = x as BitVectorAsSet;
       BitVectorAsSet v2 = y as BitVectorAsSet;
 
-      SortedSet<ulong> zBits = new SortedSet<ulong>(v1.bits.Except(v2.bits));
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      SortedSet<ulong> zBits = new SortedSet<ulong>(v1!.bits.Except(v2!.bits));
 
       return new BitVectorAsSet(zBits);
     }
@@ -27,7 +31,10 @@ namespace Core
       BitVectorAsSet v1 = x as BitVectorAsSet;
       BitVectorAsSet v2 = y as BitVectorAsSet;
 
-      SortedSet<ulong> zBits = new SortedSet<ulong>(v1.bits.Intersect(v2.bits));
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      SortedSet<ulong> zBits = new SortedSet<ulong>(v1!.bits.Intersect(v2!.bits));
 
       return new BitVectorAsSet(zBits);
     }
@@ -37,7 +44,10 @@ namespace Core
       BitVectorAsSet v1 = x as BitVectorAsSet;
       BitVectorAsSet v2 = y as BitVectorAsSet;
 
-      SortedSet<ulong> zBits = new SortedSet<ulong>(v1.bits.Union(v2.bits));
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      SortedSet<ulong> zBits = new SortedSet<ulong>(v1!.bits.Union(v2!.bits));
 
       return new BitVectorAsSet(zBits);
     }

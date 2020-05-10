@@ -80,8 +80,9 @@ namespace Core
     public override bool Equals(Object obj)
     {
       BitVectorAsSet v = obj as BitVectorAsSet;
+      Ensure.That(v).IsNotNull();
 
-      return bits.SetEquals(v.bits);
+      return bits.SetEquals(v!.bits);
     }
 
     public override int GetHashCode()

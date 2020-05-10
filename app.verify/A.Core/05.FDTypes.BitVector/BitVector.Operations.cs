@@ -18,7 +18,10 @@ namespace Core
       BitVector v1 = x as BitVector;
       BitVector v2 = y as BitVector;
 
-      Ensure.That(v1.Size).Is(v2.Size);
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      Ensure.That(v1!.Size).Is(v2!.Size);
 
       BitVector result = new BitVector(v1.Size);
 
@@ -35,9 +38,12 @@ namespace Core
       BitVector v1 = x as BitVector;
       BitVector v2 = y as BitVector;
 
-      Ensure.That(x.Size).Is(v2.Size);
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
 
-      BitVector result = new BitVector(v1.Size);
+      Ensure.That(x.Size).Is(v2!.Size);
+
+      BitVector result = new BitVector(v1!.Size);
 
       for (ulong i = 0; i < (ulong)v1.items.Length; i++)
       {
@@ -52,7 +58,10 @@ namespace Core
       BitVector v1 = x as BitVector;
       BitVector v2 = y as BitVector;
 
-      Ensure.That(v1.Size).Is(v2.Size);
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      Ensure.That(v1!.Size).Is(v2!.Size);
 
       BitVector result = new BitVector(v1.Size);
 

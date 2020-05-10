@@ -23,6 +23,8 @@ namespace Core
       WaitMethod waitMethod,
       Func<ItemType[], ItemType> packetProcessProc)
     {
+      this.CurrentItem = default!;
+
       this.collectionToRun = collectionToRun;
       this.packetItemsCount = packetItemsCount;
       this.waitMethod = waitMethod;

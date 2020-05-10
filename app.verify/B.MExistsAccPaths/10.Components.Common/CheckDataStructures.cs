@@ -62,7 +62,7 @@ namespace ExistsAcceptingPath
     #region private members
 
     protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private static bool IsGraphHasSingleNode(DAG dag)
     {

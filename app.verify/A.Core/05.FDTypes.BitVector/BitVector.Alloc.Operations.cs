@@ -18,7 +18,10 @@ namespace Core
       BitVectorAlloc v1 = x as BitVectorAlloc;
       BitVectorAlloc v2 = y as BitVectorAlloc;
 
-      Ensure.That(v1.Size).Is(v2.Size);
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      Ensure.That(v1!.Size).Is(v2!.Size);
 
       BitVectorAlloc result = new BitVectorAlloc(v1.Size);
 
@@ -81,7 +84,10 @@ namespace Core
       BitVectorAlloc v1 = x as BitVectorAlloc;
       BitVectorAlloc v2 = y as BitVectorAlloc;
 
-      Ensure.That(v1.Size).Is(v2.Size);
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      Ensure.That(v1!.Size).Is(v2!.Size);
 
       BitVectorAlloc result = new BitVectorAlloc(v1.Size);
 
@@ -144,7 +150,10 @@ namespace Core
       BitVectorAlloc v1 = x as BitVectorAlloc;
       BitVectorAlloc v2 = y as BitVectorAlloc;
 
-      Ensure.That(v1.Size).Is(v2.Size);
+      Ensure.That(v1).IsNotNull();
+      Ensure.That(v2).IsNotNull();
+
+      Ensure.That(v1!.Size).Is(v2!.Size);
 
       BitVectorAlloc result = new BitVectorAlloc(v1.Size);
 

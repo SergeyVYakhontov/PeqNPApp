@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using EnsureThat;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -15,8 +16,9 @@ namespace Core
     public void BitwiseSubtract(IBitVector u)
     {
       BitVectorAsSet v = u as BitVectorAsSet;
+      Ensure.That(v).IsNotNull();
 
-      foreach (ulong b in v.bits)
+      foreach (ulong b in v!.bits)
       {
         bits.Remove(b);
       }
@@ -25,8 +27,9 @@ namespace Core
     public void BitwiseOr(IBitVector u)
     {
       BitVectorAsSet v = u as BitVectorAsSet;
+      Ensure.That(v).IsNotNull();
 
-      foreach (ulong b in v.bits)
+      foreach (ulong b in v!.bits)
       {
         bits.Add(b);
       }

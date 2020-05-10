@@ -53,7 +53,7 @@ namespace OrdinaryExamplesAppSingleThread
     #region private mermbers
 
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private static void Setup()
     {

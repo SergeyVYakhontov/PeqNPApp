@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Ninject;
+using EnsureThat;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,7 +107,7 @@ namespace Core
     private readonly IReadOnlyKernel configuration;
 
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private ReachDefAnalysisContext rdaContext;
     private SortedSet<long> vars;
@@ -149,8 +152,9 @@ namespace Core
       foreach (long nodeId in varNodes)
       {
         rdaContext.NodeToDefsSet.TryGetValue(nodeId, out List<long> defs);
+        Ensure.That(defs).IsNotNull();
 
-        foreach (long def in defs)
+        foreach (long def in defs!)
         {
           long variable = rdaContext.DefToVarMap[def];
 

@@ -132,9 +132,10 @@ namespace Core
 
     public override bool Equals(Object obj)
     {
-      BitVectorAlloc v = (BitVectorAlloc)obj;
+      BitVectorAlloc v = obj as BitVectorAlloc;
+      Ensure.That(v).IsNotNull();
 
-      Ensure.That(Size).Is(v.Size);
+      Ensure.That(Size).Is(v!.Size);
 
       if (!allocated && !v.allocated)
       {

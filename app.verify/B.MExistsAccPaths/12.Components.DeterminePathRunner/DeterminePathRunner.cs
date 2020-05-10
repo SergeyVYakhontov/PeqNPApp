@@ -42,7 +42,7 @@ namespace ExistsAcceptingPath
     #region private members
 
     protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     protected readonly MEAPSharedContext MEAPSharedContext;
     protected readonly OneTapeTuringMachine tMachine;

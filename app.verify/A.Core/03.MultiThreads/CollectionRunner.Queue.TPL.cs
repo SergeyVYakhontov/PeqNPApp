@@ -24,6 +24,8 @@ namespace Core
       Func<ItemType[], ItemType> packetProcessProc,
       IComparer<ItemType> itemComparer)
     {
+      this.CurrentItem = default!;
+
       this.collectionToRun = collectionToRun;
       this.packetItemsCount = packetItemsCount;
       this.waitMethod = waitMethod;

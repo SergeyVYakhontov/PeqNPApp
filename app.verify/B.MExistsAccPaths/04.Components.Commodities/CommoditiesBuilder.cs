@@ -134,7 +134,7 @@ namespace ExistsAcceptingPath
     private readonly IReadOnlyKernel configuration;
 
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private static readonly object objectToLock = new object();
 
