@@ -50,6 +50,8 @@ namespace ExistsAcceptingPath
       {
         if (!SelectNode(partialTConsistPath, out long initNodeId))
         {
+          log.Info("Path not found (select node)");
+
           return;
         }
 
