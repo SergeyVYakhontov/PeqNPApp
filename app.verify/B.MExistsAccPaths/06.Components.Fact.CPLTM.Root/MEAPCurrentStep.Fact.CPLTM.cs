@@ -63,10 +63,10 @@ namespace ExistsAcceptingPath
       ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
       ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
 
-      if (commonOptions.CheckDataStructures)
+      /*if (commonOptions.CheckDataStructures)
       {
         checkDataStructures.CheckTASGNodesHaveTheSameSymbol(meapContext);
-      }
+      }*/
 
       ComputeDUPairs();
 
@@ -82,15 +82,15 @@ namespace ExistsAcceptingPath
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder = null;
 
-      if (commonOptions.CheckDataStructures)
+      /*if (commonOptions.CheckDataStructures)
       {
         checkDataStructures.CheckNCGNodesHaveTheSameSymbol(meapContext);
-      }
+      }*/
 
-      NCGCommonPathGraphBuilder ncgCommonPathGraphBuilder = new NCGCommonPathGraphBuilder(meapContext);
-      ncgCommonPathGraphBuilder.Setup();
-      ncgCommonPathGraphBuilder.Run();
-      ncgCommonPathGraphBuilder = null;
+      NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
+      ncgJointNodesBuilder.Setup();
+      ncgJointNodesBuilder.Run();
+      ncgJointNodesBuilder = null;
 
       PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
       pathFinder.Run();
@@ -103,7 +103,7 @@ namespace ExistsAcceptingPath
     private readonly IReadOnlyKernel configuration;
 
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
-      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
+    System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private readonly ITASGBuilder tasgBuilder;
     private readonly ICPLTMInfo CPLTMInfo;
