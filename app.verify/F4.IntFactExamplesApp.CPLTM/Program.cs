@@ -23,15 +23,6 @@ namespace IntegerFactExamplesAppCPLTM
 
     public static void Main(string[] args)
     {
-      if (!args.Contains("test"))
-      {
-        Console.BufferWidth = Console.LargestWindowWidth;
-        Console.BufferHeight = Console.LargestWindowHeight;
-
-        Console.SetWindowPosition(0, 0);
-        Console.SetWindowSize(150, 35);
-      }
-
       log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
       log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 

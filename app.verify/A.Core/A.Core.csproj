@@ -1,27 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
     <Nullable>warnings</Nullable>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="EnsureThatCore" Version="1.0.0" />
-    <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="Ninject" Version="4.0.0-beta-0134" />
+    <PackageReference Include="EnsureThatCore" Version="1.0.0"/>
+    <PackageReference Include="log4net" Version="2.0.12"/>
+    <PackageReference Include="Ninject" Version="4.0.0-beta-0134"/>
   </ItemGroup>
-
 </Project>

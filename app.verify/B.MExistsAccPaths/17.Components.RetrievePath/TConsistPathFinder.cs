@@ -39,9 +39,8 @@ namespace ExistsAcceptingPath
         });
 
       List<KeyValuePair<long, ComputationStep>> pathCompSteps =
-        tapeSegContext.TapeSegTConsistPath.Select(uId =>
-        new KeyValuePair<long, ComputationStep>(uId, meapContext.TArbSeqCFG.IdToNodeInfoMap[uId].CompStep))
-          .ToList();
+        tapeSegContext.TapeSegTConsistPath.ConvertAll(uId =>
+          new KeyValuePair<long, ComputationStep>(uId, meapContext.TArbSeqCFG.IdToNodeInfoMap[uId].CompStep));
 
       pathCompSteps.ForEach(s =>
         {

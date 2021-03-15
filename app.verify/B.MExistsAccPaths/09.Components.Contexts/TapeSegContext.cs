@@ -36,7 +36,7 @@ namespace ExistsAcceptingPath
     public SortedDictionary<long, SortedDictionary<long, SortedSet<long>>> KiToZetaToKjIntSet { get; set; }
     public SortedDictionary<long, SortedDictionary<long, SortedSet<long>>> KjToZetaToKiIntSet { get; set; }
     public SortedSet<KeyValuePair<long, long>> StrongConnCommodityPairs { get; set; }
-    public String MathQueryString { get; set; }
+    public string MathQueryString { get; set; }
     public Single[] TCPELinProgSolution { get; set; }
 
     // finding path

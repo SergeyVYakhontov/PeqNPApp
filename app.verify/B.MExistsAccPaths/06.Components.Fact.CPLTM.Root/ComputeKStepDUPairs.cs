@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ninject;
-using Core;
 using EnsureThat;
+using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
