@@ -23,7 +23,7 @@ namespace Core
 
       Ensure.That(v1!.Size).Is(v2!.Size);
 
-      BitVector result = new BitVector(v1.Size);
+      BitVector result = new(v1.Size);
 
       for (ulong i = 0; i < (ulong)v1.items.Length; i++)
       {
@@ -43,7 +43,7 @@ namespace Core
 
       Ensure.That(x.Size).Is(v2!.Size);
 
-      BitVector result = new BitVector(v1!.Size);
+      BitVector result = new(v1!.Size);
 
       for (ulong i = 0; i < (ulong)v1.items.Length; i++)
       {
@@ -63,7 +63,7 @@ namespace Core
 
       Ensure.That(v1!.Size).Is(v2!.Size);
 
-      BitVector result = new BitVector(v1.Size);
+      BitVector result = new(v1.Size);
 
       for (ulong i = 0; i < (ulong)v1.items.Length; i++)
       {

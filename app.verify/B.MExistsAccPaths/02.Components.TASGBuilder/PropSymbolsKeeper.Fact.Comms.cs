@@ -106,7 +106,7 @@ namespace ExistsAcceptingPath
 
     public void RemoveUnusedSymbols(List<long> endNodeIds)
     {
-      SortedSet<long> toRemove = new SortedSet<long>();
+      SortedSet<long> toRemove = new();
 
       propagatedSymbols
         .Where(t => !endNodeIds.Contains(t.Key))
@@ -130,8 +130,7 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private readonly MEAPSharedContext MEAPSharedContext;
-    private readonly SortedDictionary<long, SortedSet<PropSymbol>> propagatedSymbols =
-      new SortedDictionary<long, SortedSet<PropSymbol>>();
+    private readonly SortedDictionary<long, SortedSet<PropSymbol>> propagatedSymbols = new();
 
     #endregion
   }

@@ -62,8 +62,7 @@ namespace Core
       edge.ToNode.InEdges.Add(edge);
 
       EdgeEnumeration[edge.Id] = edge;
-      KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(
-        edge.FromNode.Id, edge.ToNode.Id);
+      KeyValuePair<long, long> nodePair = new(edge.FromNode.Id, edge.ToNode.Id);
 
       Ensure.That(NodePairEnumeration.ContainsKey(nodePair)).IsFalse();
       NodePairEnumeration[nodePair] = edge;
@@ -79,8 +78,7 @@ namespace Core
         Edges.Remove(e);
 
         EdgeEnumeration.Remove(e.Id);
-        KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(
-          e.FromNode.Id, e.ToNode.Id);
+        KeyValuePair<long, long> nodePair = new(e.FromNode.Id, e.ToNode.Id);
         NodePairEnumeration.Remove(nodePair);
       }
 
@@ -90,8 +88,7 @@ namespace Core
         Edges.Remove(e);
 
         EdgeEnumeration.Remove(e.Id);
-        KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(
-          e.FromNode.Id, e.ToNode.Id);
+        KeyValuePair<long, long> nodePair = new(e.FromNode.Id, e.ToNode.Id);
         NodePairEnumeration.Remove(nodePair);
       }
 
@@ -105,8 +102,7 @@ namespace Core
       edge.ToNode.InEdges.Remove(edge);
 
       EdgeEnumeration.Remove(edge.Id);
-      KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(
-        edge.FromNode.Id, edge.ToNode.Id);
+      KeyValuePair<long, long> nodePair = new(edge.FromNode.Id, edge.ToNode.Id);
       NodePairEnumeration.Remove(nodePair);
     }
 
@@ -115,17 +111,17 @@ namespace Core
       DAGNode fromNode = NodeEnumeration[fromNodeId];
       DAGNode toNode = NodeEnumeration[toNodeId];
 
-      DAGEdge edge = new DAGEdge(edgeId, fromNode, toNode);
+      DAGEdge edge = new(edgeId, fromNode, toNode);
       Edges.Add(edge);
 
       EdgeEnumeration[edgeId] = edge;
-      KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(fromNodeId, toNodeId);
+      KeyValuePair<long, long> nodePair = new(fromNodeId, toNodeId);
       NodePairEnumeration[nodePair] = edge;
     }
 
     public void RemoveNodePair(long fromNodeId, long toNodeId)
     {
-      KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(fromNodeId, toNodeId);
+      KeyValuePair<long, long> nodePair = new(fromNodeId, toNodeId);
       DAGEdge e = NodePairEnumeration[nodePair];
       RemoveEdge(e);
     }
@@ -137,7 +133,7 @@ namespace Core
 
     public bool AreConnected(long uId, long vId)
     {
-      KeyValuePair<long, long> nodePair = new KeyValuePair<long, long>(uId, vId);
+      KeyValuePair<long, long> nodePair = new(uId, vId);
 
       return NodePairEnumeration.ContainsKey(nodePair);
     }

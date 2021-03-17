@@ -92,7 +92,7 @@ namespace Core
 
     public override string ToString()
     {
-      StringBuilder repr = new StringBuilder();
+      StringBuilder repr = new();
 
       foreach(ulong e in bits)
       {
@@ -106,7 +106,7 @@ namespace Core
 
     #region private members
 
-    private readonly SortedSet<ulong> bits = new SortedSet<ulong>();
+    private readonly SortedSet<ulong> bits = new();
 
     private readonly ulong maxSize;
 

@@ -42,8 +42,8 @@ namespace Core
 
     #region private members
 
-    private readonly Queue<T> queue = new Queue<T>();
-    private readonly SortedSet<long> itemsId = new SortedSet<long>();
+    private readonly Queue<T> queue = new();
+    private readonly SortedSet<long> itemsId = new();
 
     #endregion
   }

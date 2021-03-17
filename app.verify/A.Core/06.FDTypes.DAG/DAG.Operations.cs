@@ -64,7 +64,7 @@ namespace Core
       DAG graph,
       Predicate<DAGNode> nodeFilter)
     {
-      SortedSet<long> labelMap = new SortedSet<long>();
+      SortedSet<long> labelMap = new();
 
       PropagateProperties(
         graph,
@@ -91,7 +91,7 @@ namespace Core
 
       foreach (long nodeId in nodeIdSubset)
       {
-        DAGNode subgraphNode = new DAGNode(nodeId);
+        DAGNode subgraphNode = new(nodeId);
         subgraph.AddNode(subgraphNode);
       }
 
@@ -111,7 +111,7 @@ namespace Core
         DAGNode uSubgraphNode = subgraph.NodeEnumeration[nodePair.Key.Key];
         DAGNode vSubgraphNode = subgraph.NodeEnumeration[nodePair.Key.Value];
 
-        DAGEdge subgraphEdge = new DAGEdge(nodePair.Value.Id, uSubgraphNode, vSubgraphNode);
+        DAGEdge subgraphEdge = new(nodePair.Value.Id, uSubgraphNode, vSubgraphNode);
         subgraph.AddEdge(subgraphEdge);
       }
     }
@@ -122,8 +122,8 @@ namespace Core
       long tNodeId,
       DAG subgraph)
     {
-      SortedSet<long> labelAMap = new SortedSet<long>();
-      SortedSet<long> labelBMap = new SortedSet<long>();
+      SortedSet<long> labelAMap = new();
+      SortedSet<long> labelBMap = new();
 
       PropagateProperties(
         graph,
@@ -162,7 +162,7 @@ namespace Core
       long tNodeId,
       DAG subgraph)
     {
-      SortedSet<long> labelBMap = new SortedSet<long>();
+      SortedSet<long> labelBMap = new();
 
       PropagateProperties(
         graph,

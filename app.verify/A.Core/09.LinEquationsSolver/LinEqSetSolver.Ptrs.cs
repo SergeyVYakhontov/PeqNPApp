@@ -145,7 +145,9 @@ namespace Core
                       long Mij_p = *Mi_p_ptr;
                       long Mij_q = *Mi_q_ptr;
 
+#pragma warning disable CA1508
                       if (Mkj_p == 0)
+#pragma warning restore CA1508
                       {
                         Mk_p_ptr++;
                         Mk_q_ptr++;

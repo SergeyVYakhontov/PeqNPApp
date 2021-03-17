@@ -23,7 +23,7 @@ namespace Core
 
       Ensure.That(v1!.Size).Is(v2!.Size);
 
-      BitVectorAlloc result = new BitVectorAlloc(v1.Size);
+      BitVectorAlloc result = new(v1.Size);
 
       if (!v1.allocated && !v2.allocated)
       {
@@ -89,7 +89,7 @@ namespace Core
 
       Ensure.That(v1!.Size).Is(v2!.Size);
 
-      BitVectorAlloc result = new BitVectorAlloc(v1.Size);
+      BitVectorAlloc result = new(v1.Size);
 
       if (!v1.allocated && !v2.allocated)
       {
@@ -155,7 +155,7 @@ namespace Core
 
       Ensure.That(v1!.Size).Is(v2!.Size);
 
-      BitVectorAlloc result = new BitVectorAlloc(v1.Size);
+      BitVectorAlloc result = new(v1.Size);
 
       if (!v1.allocated && !v2.allocated)
       {

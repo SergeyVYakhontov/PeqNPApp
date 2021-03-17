@@ -189,7 +189,7 @@ namespace Core
 
     public IEnumerable<ulong> GetBit1List()
     {
-      LinkedList<ulong> itemList = new LinkedList<ulong>();
+      LinkedList<ulong> itemList = new();
 
       if (!allocated)
       {

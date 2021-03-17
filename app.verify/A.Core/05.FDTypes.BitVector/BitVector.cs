@@ -126,7 +126,7 @@ namespace Core
 
     public override string ToString()
     {
-      StringBuilder repr = new StringBuilder();
+      StringBuilder repr = new();
 
       for (ulong i = 0; i < Size; i++)
       {

@@ -22,8 +22,8 @@ namespace Core
       Predicate<DAGNode> filter,
       Predicate<DAGNode> action)
     {
-      SortedSet<long> processedNodes = new SortedSet<long>();
-      QueueWithIdSet<DAGNode> nodeQueue = new QueueWithIdSet<DAGNode>();
+      SortedSet<long> processedNodes = new();
+      QueueWithIdSet<DAGNode> nodeQueue = new();
       bool status = false;
 
       initNodes.ForEach(u =>
@@ -73,7 +73,7 @@ namespace Core
       Action<DAGNode, long> nodeAction,
       Action<DAGEdge, long> edgeAction)
     {
-      SortedSet<long> processedNodes = new SortedSet<long>();
+      SortedSet<long> processedNodes = new();
       DFS(s, processedNodes, direction, 0, nodeAction, edgeAction);
     }
 
@@ -86,9 +86,9 @@ namespace Core
       Predicate<DAGNode> nodeAction,
       Predicate<DAGEdge> edgeAction)
     {
-      QueueWithIdSet<DAGNode> nodeQueue = new QueueWithIdSet<DAGNode>();
+      QueueWithIdSet<DAGNode> nodeQueue = new();
       bool status = false;
-      SortedSet<long> processedNodes = new SortedSet<long>();
+      SortedSet<long> processedNodes = new();
       DAGNode s = dag.NodeEnumeration[fromNodeId];
 
       if (nodeFilter(s))
@@ -146,7 +146,7 @@ namespace Core
       path = new List<long>();
       pathFound = false;
 
-      SortedSet<long> processedNodes = new SortedSet<long>();
+      SortedSet<long> processedNodes = new();
       DAGNode currentNode = (direction == GraphDirection.Forward ? s : t);
 
       if (!nodeFilter(currentNode))
@@ -206,7 +206,7 @@ namespace Core
       List<long> path,
       ref bool pathFound)
     {
-      SortedSet<long> processedNodes = new SortedSet<long>();
+      SortedSet<long> processedNodes = new();
 
       FindPath_DFS(
         s,

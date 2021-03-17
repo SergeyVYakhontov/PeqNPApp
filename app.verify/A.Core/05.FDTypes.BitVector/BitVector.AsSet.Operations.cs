@@ -21,7 +21,7 @@ namespace Core
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      SortedSet<ulong> zBits = new SortedSet<ulong>(v1!.bits.Except(v2!.bits));
+      SortedSet<ulong> zBits = new(v1!.bits.Except(v2!.bits));
 
       return new BitVectorAsSet(zBits);
     }
@@ -34,7 +34,7 @@ namespace Core
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      SortedSet<ulong> zBits = new SortedSet<ulong>(v1!.bits.Intersect(v2!.bits));
+      SortedSet<ulong> zBits = new(v1!.bits.Intersect(v2!.bits));
 
       return new BitVectorAsSet(zBits);
     }
@@ -47,7 +47,7 @@ namespace Core
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      SortedSet<ulong> zBits = new SortedSet<ulong>(v1!.bits.Union(v2!.bits));
+      SortedSet<ulong> zBits = new(v1!.bits.Union(v2!.bits));
 
       return new BitVectorAsSet(zBits);
     }

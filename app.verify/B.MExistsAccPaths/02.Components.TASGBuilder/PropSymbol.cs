@@ -85,8 +85,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly PropSymbolComparer propSymbolComparer =
-      new PropSymbolComparer();
+    private static readonly PropSymbolComparer propSymbolComparer = new();
 
     #endregion
   }

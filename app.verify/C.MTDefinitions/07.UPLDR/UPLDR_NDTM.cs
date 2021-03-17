@@ -40,7 +40,7 @@ namespace MTDefinitions
       const int acceptingSymbol = variousSymbolsEnd + 1;
       const int acceptingSymbolReplace = acceptingSymbol + 1;
 
-      List<uint> qList = new List<uint> { qStart, acceptingState, rejectingState };
+      List<uint> qList = new() { qStart, acceptingState, rejectingState };
 
       new IntSegment(variousStatesStart, variousStatesEnd)
         .ForEach(q => qList.Add((uint)q));
@@ -48,7 +48,7 @@ namespace MTDefinitions
       qList.Add(preAcceptingState);
       Q = qList.ToArray();
 
-      List<int> gammaList = new List<int> { blankSymbol };
+      List<int> gammaList = new() { blankSymbol };
 
       new IntSegment(variousSymbolsStart, variousSymbolsEnd)
         .ForEach(g => gammaList.Add(g));
@@ -65,8 +65,7 @@ namespace MTDefinitions
       sigmaList.Add(acceptingSymbol);
       Sigma = sigmaList.ToArray();
 
-      Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> delta =
-        new Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>>();
+      Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> delta = new();
 
       foreach (uint q in Q)
       {

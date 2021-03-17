@@ -18,12 +18,11 @@ namespace ExistsAcceptingPath
     public static ComputationStep GetSequentialCompStep(
       ComputationStep compStep)
     {
-      ComputationStep seqCompStep =
-        new ComputationStep
-          {
+      ComputationStep seqCompStep = new()
+        {
             kappaTape = compStep.kappaTape,
             kappaStep = compStep.kappaStep + 1
-          };
+        };
 
       switch (compStep.m)
       {

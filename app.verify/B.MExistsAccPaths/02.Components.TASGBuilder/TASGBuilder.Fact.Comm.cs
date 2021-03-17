@@ -31,11 +31,11 @@ namespace ExistsAcceptingPath
       TapeLBound = 1;
       TapeRBound = 1;
 
-      DAGNode s = new DAGNode(nodeId++);
+      DAGNode s = new(nodeId++);
       G.AddNode(s);
       G.SetSourceNode(s);
 
-      ComputationStep compStep = new ComputationStep
+      ComputationStep compStep = new()
       {
         q = MEAPSharedContext.MNP.qStart,
         s = MEAPSharedContext.Input[0],
@@ -104,7 +104,7 @@ namespace ExistsAcceptingPath
       log.Info("Building TArbSeqCFG");
 
       log.Info("Create TArbSeqGraph copy");
-      TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg = new TypedDAG<TASGNodeInfo, StdEdgeInfo>("CFG");
+      TypedDAG<TASGNodeInfo, StdEdgeInfo> cfg = new("CFG");
       DAG.CreateCopy(G, cfg);
       cfg.CopyIdToNodeInfoMap(idToInfoMap);
 
@@ -167,22 +167,22 @@ namespace ExistsAcceptingPath
     private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
     private long nodeId;
     private long edgeId;
-    private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
-    private readonly SortedDictionary<ComputationStep, long> compStepToNode =
-      new SortedDictionary<ComputationStep, long>(new CompStepComparer());
-    private readonly SortedDictionary<long, TASGNodeInfo> idToInfoMap = new SortedDictionary<long, TASGNodeInfo>();
+    private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new();
+    private readonly SortedDictionary<ComputationStep, long> compStepToNode = new(new CompStepComparer());
+    private readonly SortedDictionary<long, TASGNodeInfo> idToInfoMap = new();
 
-    private readonly List<DAGNode> endNodes = new List<DAGNode>();
-    private readonly List<long> endNodeIds = new List<long>();
-    private readonly List<DAGNode> acceptingNodes = new List<DAGNode>();
+    private readonly List<DAGNode> endNodes = new();
+    private readonly List<long> endNodeIds = new();
+    private readonly List<DAGNode> acceptingNodes = new();
     private long treesCut;
-    private readonly SortedSet<ulong> processedMu = new SortedSet<ulong>();
+    private readonly SortedSet<ulong> processedMu = new();
 
-    private readonly SortedDictionary<long, DAGNode> newNodeEnumeration = new SortedDictionary<long, DAGNode>();
-    private readonly SortedDictionary<ComputationStep, long> newCompStepToNode =
-      new SortedDictionary<ComputationStep, long>(new CompStepComparer());
+    private readonly SortedDictionary<long, DAGNode> newNodeEnumeration = new();
+    private readonly SortedDictionary<ComputationStep, long> newCompStepToNode = new(new CompStepComparer());
 
     private PropSymbolsKeeperFactComms propSymbolsKeeper;
+
+    public SortedDictionary<ComputationStep, long> CompStepToNode => compStepToNode;
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
@@ -255,7 +255,7 @@ namespace ExistsAcceptingPath
         treesCut++;
       }
 
-      DAGEdge e = new DAGEdge(edgeId++, fromNode, toNode);
+      DAGEdge e = new(edgeId++, fromNode, toNode);
       G.AddEdge(e);
 
       if (debugOptions.UsePropSymbols)
@@ -266,7 +266,7 @@ namespace ExistsAcceptingPath
 
     private void TraverseMNPTree()
     {
-      Queue<DAGNode> nodeQueue = new Queue<DAGNode>();
+      Queue<DAGNode> nodeQueue = new();
 
       endNodeIds.ForEach(p =>
         {
@@ -309,7 +309,7 @@ namespace ExistsAcceptingPath
 
     private void CreateSinkNode()
     {
-      DAGNode t = new DAGNode(nodeId++);
+      DAGNode t = new(nodeId++);
 
       G.AddNode(t);
       G.SetSinkNode(t);
@@ -334,7 +334,7 @@ namespace ExistsAcceptingPath
         if (states.Contains(compStep.qNext))
         {
           DAGNode v = cfg.NodeEnumeration[uNodeId];
-          DAGEdge e = new DAGEdge(edgeId++, v, cfg.t);
+          DAGEdge e = new(edgeId++, v, cfg.t);
 
           cfg.AddEdge(e);
           tStep.kappaStep = compStep.kappaStep + 1;

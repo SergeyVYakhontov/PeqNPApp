@@ -110,7 +110,7 @@ namespace Core
     private readonly Func<ItemType[], ItemType> packetProcessProc;
     private readonly IComparer<ItemType> itemComparer;
 
-    private readonly List<ItemType> itemsQueue = new List<ItemType>();
+    private readonly List<ItemType> itemsQueue = new();
 
     private ItemType[] SelectItemsToRun()
     {

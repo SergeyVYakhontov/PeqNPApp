@@ -29,7 +29,7 @@ namespace Core
 
     public IEnumerable<ulong> GetBit1List()
     {
-      LinkedList<ulong> itemList = new LinkedList<ulong>();
+      LinkedList<ulong> itemList = new();
 
       for (ulong i = 0; i < Size; i++)
       {

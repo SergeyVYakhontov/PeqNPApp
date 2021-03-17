@@ -113,7 +113,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly CompStepComparer compStepComparer = new CompStepComparer();
+    private static readonly CompStepComparer compStepComparer = new();
 
     #endregion
   }
