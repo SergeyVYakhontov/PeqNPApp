@@ -38,12 +38,12 @@ namespace ExistsAcceptingPath
 
         foreach (long forwardNodeId in currentTapeSegContext.TConsistPathNodes)
         {
-          TapeSegContext forwardTapeSegContext = new TapeSegContext(currentTapeSegContext);
+          TapeSegContext forwardTapeSegContext = new(currentTapeSegContext);
           forwardTapeSegContext.PartialTConsistPath.Add(forwardNodeId);
 
           meapContext.TapeSegContext = forwardTapeSegContext;
 
-          DetermineIfExistsTCPath determineIfExistsTCSeq = new DetermineIfExistsTCPath(meapContext);
+          DetermineIfExistsTCPath determineIfExistsTCSeq = new(meapContext);
           determineIfExistsTCSeq.RunToRetrievePath();
 
           if (meapContext.TapeSegContext.TapeSegPathFound)

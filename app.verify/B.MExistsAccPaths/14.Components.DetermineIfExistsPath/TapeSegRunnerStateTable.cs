@@ -50,15 +50,14 @@ namespace ExistsAcceptingPath
 
     private readonly IReadOnlyCollection<TapeSegRunnerState> allowedStates;
 
-    private readonly List<(TapeSegRunnerState from, TapeSegRunnerState to)> stateTable =
-      new List<(TapeSegRunnerState from, TapeSegRunnerState to)>
-        {
-          (TapeSegRunnerState.CheckKZetaGraphs, TapeSegRunnerState.ReduceCommodities),
-          (TapeSegRunnerState.ReduceCommodities, TapeSegRunnerState.RunGaussElimination),
-          (TapeSegRunnerState.RunGaussElimination, TapeSegRunnerState.RunLinearProgram),
-          (TapeSegRunnerState.ReduceCommodities, TapeSegRunnerState.RunLinearProgram),
-          (TapeSegRunnerState.RunLinearProgram, TapeSegRunnerState.Done)
-        };
+    private readonly List<(TapeSegRunnerState from, TapeSegRunnerState to)> stateTable = new()
+      {
+        (TapeSegRunnerState.CheckKZetaGraphs, TapeSegRunnerState.ReduceCommodities),
+        (TapeSegRunnerState.ReduceCommodities, TapeSegRunnerState.RunGaussElimination),
+        (TapeSegRunnerState.RunGaussElimination, TapeSegRunnerState.RunLinearProgram),
+        (TapeSegRunnerState.ReduceCommodities, TapeSegRunnerState.RunLinearProgram),
+        (TapeSegRunnerState.RunLinearProgram, TapeSegRunnerState.Done)
+      };
 
     #endregion
   }

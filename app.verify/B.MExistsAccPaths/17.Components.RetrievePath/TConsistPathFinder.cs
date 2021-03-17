@@ -49,9 +49,11 @@ namespace ExistsAcceptingPath
             s.Key.ToString(), s.Value);
         });
 
-      TMInstance tmInstance = new TMInstance(
-        meapContext.MEAPSharedContext.MNP,
-        meapContext.MEAPSharedContext.Input);
+      TMInstance tmInstance = new
+        (
+          meapContext.MEAPSharedContext.MNP,
+          meapContext.MEAPSharedContext.Input
+        );
 
       meapContext.MEAPSharedContext.MNP.PrepareTapeFwd(
         meapContext.MEAPSharedContext.Input,

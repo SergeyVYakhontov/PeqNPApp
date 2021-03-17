@@ -52,7 +52,8 @@ namespace VerifyResults
     public override List<IExample> GetRandomExamples(
       int count, int inputLength)
     {
-      List<IExample> examples = new List<IExample>();
+      List<IExample> examples = new();
+
       for (int i = 0; i < count; i++)
       {
         IExample example = new UPAPAE_Example

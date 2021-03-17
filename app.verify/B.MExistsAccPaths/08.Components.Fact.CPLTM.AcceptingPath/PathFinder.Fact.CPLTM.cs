@@ -51,7 +51,7 @@ namespace ExistsAcceptingPath
 
     //private bool pathExist;
     //private bool pathFound;
-    private readonly List<long> tConsistPath = new List<long>();
+    private readonly List<long> tConsistPath = new();
     private readonly int[] output = Array.Empty<int>();
 
     /*private void ExtractTConsistSeq()

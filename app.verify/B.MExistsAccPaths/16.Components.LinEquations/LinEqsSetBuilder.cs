@@ -42,7 +42,7 @@ namespace ExistsAcceptingPath
         tapeSegContext.TArbSeqCFGUnusedNodes);
 
       {
-        SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
+        SortedDictionary<long, RationalNumber> coeffs = new();
         long sNodeId = meapContext.TArbSeqCFG.GetSourceNodeId();
 
         long sNodeVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[sNodeId];
@@ -53,7 +53,7 @@ namespace ExistsAcceptingPath
       }
 
       {
-        SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
+        SortedDictionary<long, RationalNumber> coeffs = new();
         long tNodeId = meapContext.TArbSeqCFG.GetSinkNodeId();
 
         long tNodeVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[tNodeId];

@@ -112,8 +112,7 @@ namespace ExistsAcceptingPath
     private readonly SortedDictionary<long, long> bkwdNCGEdgeToCFGEdgeMap;
 
     private long edgeId;
-    private readonly SortedDictionary<long, DAGNode> nodeEnumeration =
-      new SortedDictionary<long, DAGNode>();
+    private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new();
 
     private DAGNode GetDAGNode(long uCommId)
     {
@@ -142,7 +141,7 @@ namespace ExistsAcceptingPath
             {
               DAGNode vCommNode = GetDAGNode(vCommId);
 
-              DAGEdge eComm = new DAGEdge(edgeId++, uCommNode, vCommNode);
+              DAGEdge eComm = new(edgeId++, uCommNode, vCommNode);
               bkwdNestedCommsGraph.AddEdge(eComm);
 
               ICollection<long> uList = AppHelper.TakeValueByKey(
@@ -170,7 +169,7 @@ namespace ExistsAcceptingPath
         {
           DAGNode uCommNode = GetDAGNode(uCommId);
 
-          DAGEdge eComm = new DAGEdge(edgeId++, uCommNode, vCommNode);
+          DAGEdge eComm = new(edgeId++, uCommNode, vCommNode);
           bkwdNestedCommsGraph.AddEdge(eComm);
 
           ICollection<long> uList = AppHelper.TakeValueByKey(

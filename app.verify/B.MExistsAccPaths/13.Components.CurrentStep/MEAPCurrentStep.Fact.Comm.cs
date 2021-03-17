@@ -64,7 +64,7 @@ namespace ExistsAcceptingPath
 
       ComputeCommodities();
 
-      DetermineIfExistsTCPath determineIfExistsTCSeq = new DetermineIfExistsTCPath(meapContext);
+      DetermineIfExistsTCPath determineIfExistsTCSeq = new(meapContext);
       determineIfExistsTCSeq.RunForMultipleTapeSegs();
 
       CopyResultFromTapeSegContext();

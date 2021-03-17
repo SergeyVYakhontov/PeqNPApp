@@ -171,10 +171,10 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private static readonly Object objectToLock = new Object();
+    private static readonly Object objectToLock = new();
     private TCPEPOptimizer tcpepOptimizer;
     private CheckKZetaGraphs checkKZetaGraphs;
-    private readonly LinEquationContext linEquationContext = new LinEquationContext();
+    private readonly LinEquationContext linEquationContext = new();
 
     private void CreatePartialTConsistPathEqsSet()
     {
@@ -182,7 +182,7 @@ namespace ExistsAcceptingPath
       {
         long pathVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[uNodeId];
 
-        SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>
+        SortedDictionary<long, RationalNumber> coeffs = new()
         {
           [pathVar] = RationalNumber.Const_1
         };
@@ -197,11 +197,10 @@ namespace ExistsAcceptingPath
     {
       long objectiveVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[meapContext.TArbSeqCFG.GetSourceNodeId()];
 
-      SortedDictionary<long, RationalNumber> coeffs =
-        new SortedDictionary<long, RationalNumber>
-          {
-            [objectiveVar] = RationalNumber.Const_1
-          };
+      SortedDictionary<long, RationalNumber> coeffs = new()
+        {
+          [objectiveVar] = RationalNumber.Const_1
+        };
 
       long equation = linEquationContext.TCPELinProgMatrix.AddEquation(
         coeffs, EquationKind.Equal, RationalNumber.Const_1);
@@ -271,7 +270,7 @@ namespace ExistsAcceptingPath
       tapeSegContext.TapeSegTConsistPath = new List<long>();
       tapeSegContext.TapeSegOutput = Array.Empty<int>();
 
-      StrongConnCommsBuilder strongConnCommsBuilder = new StrongConnCommsBuilder(meapContext, tapeSegContext);
+      StrongConnCommsBuilder strongConnCommsBuilder = new(meapContext, tapeSegContext);
       strongConnCommsBuilder.Run();
 
       if (tapeSegContext.KSetZetaSubset.Count(v => v.Value.Any()) > 1)
@@ -289,7 +288,7 @@ namespace ExistsAcceptingPath
 
       tapeSegContext.TapeSegPathExists = true;
 
-      LPTConsistPathFinder tConsistPathFinder = new LPTConsistPathFinder(meapContext, tapeSegContext, linEquationContext);
+      LPTConsistPathFinder tConsistPathFinder = new(meapContext, tapeSegContext, linEquationContext);
       tConsistPathFinder.FindTConsistPath();
 
       if (tapeSegContext.TapeSegPathFound)

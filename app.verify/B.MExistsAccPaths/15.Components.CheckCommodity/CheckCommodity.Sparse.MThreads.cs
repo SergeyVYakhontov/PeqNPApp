@@ -55,7 +55,7 @@ namespace ExistsAcceptingPath
 
       linEquationContext.TCPELinProgMatrix.GetLinEqSetSparseMatrix(out SparseMatrix A);
 
-      LinEqSetSolverSparseMThreads linEqSetSolver = new LinEqSetSolverSparseMThreads(A);
+      LinEqSetSolverSparseMThreads linEqSetSolver = new(A);
 
       return linEqSetSolver.IfSolutionExists();
     }

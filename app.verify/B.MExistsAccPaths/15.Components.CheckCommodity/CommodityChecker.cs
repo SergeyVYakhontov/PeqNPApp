@@ -58,7 +58,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    protected readonly LinEquationContext linEquationContext = new LinEquationContext();
+    protected readonly LinEquationContext linEquationContext = new();
     private readonly Commodity commodity;
     private readonly SortedSet<long> tConsistPathComms;
     private readonly SortedSet<long> tInconsistPathComms;
@@ -67,7 +67,7 @@ namespace ExistsAcceptingPath
 
     protected void AddCommodityCheckEquation()
     {
-      SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
+      SortedDictionary<long, RationalNumber> coeffs = new();
       long sNodeId = commodity.Gi.GetSourceNodeId();
 
       long sNodeVar = linEquationContext.KiLinProgEqsSets[commodity.Id].NodeToVar[sNodeId];

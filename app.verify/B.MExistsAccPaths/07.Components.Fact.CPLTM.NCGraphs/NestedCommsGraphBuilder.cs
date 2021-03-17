@@ -56,10 +56,8 @@ namespace ExistsAcceptingPath
     private readonly ICPLTMInfo CPLTMInfo;
     private readonly MEAPContext meapContext;
 
-    private readonly SortedDictionary<long, LinkedList<long>> sNodeToCommoditiesMap =
-      new SortedDictionary<long, LinkedList<long>>();
-    private readonly SortedDictionary<long, LinkedList<long>> tNodeToCommoditiesMap =
-      new SortedDictionary<long, LinkedList<long>>();
+    private readonly SortedDictionary<long, LinkedList<long>> sNodeToCommoditiesMap = new();
+    private readonly SortedDictionary<long, LinkedList<long>> tNodeToCommoditiesMap = new();
 
     private void VerifyCommodities()
     {
@@ -117,22 +115,26 @@ namespace ExistsAcceptingPath
         NCGraphType fwdNestedCommsGraph = fwdBkwdNCommsGraphPair.FwdNestedCommsGraph;
         NCGraphType bkwdNestedCommsGraph = fwdBkwdNCommsGraphPair.BkwdNestedCommsGraph;
 
-        FwdNCommsGraphBuilder fwdNCommsGraphBuilder = new FwdNCommsGraphBuilder(
-          meapContext,
-          sNodeToCommoditiesMap,
-          kStep,
-          fwdBkwdNCommsGraphPair);
+        FwdNCommsGraphBuilder fwdNCommsGraphBuilder = new
+          (
+            meapContext,
+            sNodeToCommoditiesMap,
+            kStep,
+            fwdBkwdNCommsGraphPair
+          );
 
         fwdNCommsGraphBuilder.Run();
 
         log.InfoFormat($"fwdNestedCommsGraph: node count = {fwdNestedCommsGraph.Nodes.Count}");
         log.InfoFormat($"fwdNestedCommsGraph: regular node count = {fwdNCommsGraphBuilder.DelimiterNodesCount()}");
 
-        BkwdNCommsGraphBuilder bkwdNCommsGraphBuilder = new BkwdNCommsGraphBuilder(
-          meapContext,
-          tNodeToCommoditiesMap,
-          kStep,
-          fwdBkwdNCommsGraphPair);
+        BkwdNCommsGraphBuilder bkwdNCommsGraphBuilder = new
+          (
+            meapContext,
+            tNodeToCommoditiesMap,
+            kStep,
+            fwdBkwdNCommsGraphPair
+          );
 
         bkwdNCommsGraphBuilder.Run();
 

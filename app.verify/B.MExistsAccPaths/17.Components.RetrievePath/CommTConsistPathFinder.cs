@@ -88,11 +88,11 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly SortedSet<long> processedNodes = new SortedSet<long>();
+    private readonly SortedSet<long> processedNodes = new();
 
     private bool FindPathInCaseSingleZeta()
     {
-      GraphTConZetaBuilder gtczBuilder = new GraphTConZetaBuilder(meapContext);
+      GraphTConZetaBuilder gtczBuilder = new(meapContext);
       TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = gtczBuilder.Run(tapeSegContext.KSetZetaSubset.First().Value);
 
       DAG.FindPath_Greedy(

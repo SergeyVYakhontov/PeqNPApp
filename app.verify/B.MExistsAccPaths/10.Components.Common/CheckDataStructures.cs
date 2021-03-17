@@ -20,8 +20,7 @@ namespace ExistsAcceptingPath
     {
       log.Info("CheckTASGHasNoBackAndCrossEdges");
 
-      SortedDictionary<long, SortedSet<long>> VLevelSets =
-        new SortedDictionary<long,SortedSet<long>>();
+      SortedDictionary<long, SortedSet<long>> VLevelSets = new();
 
       DAG.DFS(
         dag.s,

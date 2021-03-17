@@ -64,7 +64,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly SortedSet<long> stCommNodes = new SortedSet<long>();
+    private readonly SortedSet<long> stCommNodes = new();
 
     private void CreateCommoditiesEquationsSet()
     {
@@ -89,7 +89,7 @@ namespace ExistsAcceptingPath
 
     private DAGLinEquationsSet CreateKZetaEquationsSet(SortedSet<long> commodities)
     {
-      DAGLinEquationsSet KZetaEqsSet = new DAGLinEquationsSet(linEquationContext.TCPELinProgMatrix, meapContext.TArbSeqCFG);
+      DAGLinEquationsSet KZetaEqsSet = new(linEquationContext.TCPELinProgMatrix, meapContext.TArbSeqCFG);
 
       foreach (KeyValuePair<long, DAGNode> idNodePair in meapContext.TArbSeqCFG.NodeEnumeration)
       {
@@ -100,9 +100,9 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        List<DAGLinEquationsSet> sList = new List<DAGLinEquationsSet>();
-        List<DAGLinEquationsSet> tList = new List<DAGLinEquationsSet>();
-        List<DAGLinEquationsSet> uList = new List<DAGLinEquationsSet>();
+        List<DAGLinEquationsSet> sList = new();
+        List<DAGLinEquationsSet> tList = new();
+        List<DAGLinEquationsSet> uList = new();
 
         bool isSNode = meapContext.TArbSeqCFG.IsSourceNode(idNodePair.Value.Id);
         bool isTNode = meapContext.TArbSeqCFG.IsSinkNode(idNodePair.Value.Id);
@@ -139,7 +139,7 @@ namespace ExistsAcceptingPath
 
           if (sList.Any())
           {
-            SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
+            SortedDictionary<long, RationalNumber> coeffs = new();
 
             foreach (DAGLinEquationsSet eqSet in sList)
             {
@@ -155,7 +155,7 @@ namespace ExistsAcceptingPath
 
           if (tList.Any())
           {
-            SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
+            SortedDictionary<long, RationalNumber> coeffs = new();
 
             foreach (DAGLinEquationsSet eqSet in tList)
             {
@@ -185,8 +185,8 @@ namespace ExistsAcceptingPath
           continue;
         }
 
-        List<DAGEquationsSet> uList = new List<DAGEquationsSet>();
-        SortedSet<long> uVars = new SortedSet<long>();
+        List<DAGEquationsSet> uList = new();
+        SortedSet<long> uVars = new();
 
         foreach (KeyValuePair<long, DAGLinEquationsSet> eqsSetPair in linEquationContext.KSetZetaLinProgEqsSets)
         {
@@ -202,11 +202,10 @@ namespace ExistsAcceptingPath
         {
           long uNodeVar = linEquationContext.TArbSeqCFGLinProgEqsSet.NodeToVar[uNodeId];
 
-          SortedDictionary<long, RationalNumber> coeffs =
-            new SortedDictionary<long, RationalNumber>
-              {
-                [uNodeVar] = RationalNumber.Const_1
-              };
+          SortedDictionary<long, RationalNumber> coeffs = new()
+            {
+              [uNodeVar] = RationalNumber.Const_1
+            };
 
           long equation = linEquationContext.TCPELinProgMatrix.AddEquation(coeffs, EquationKind.Equal, RationalNumber.Const_0);
           tcpeLinProgEqsSet.AddEquation(equation);
@@ -215,7 +214,7 @@ namespace ExistsAcceptingPath
         {
           foreach (DAGEquationsSet eqsSet in uList)
           {
-            SortedDictionary<long, RationalNumber> coeffs = new SortedDictionary<long, RationalNumber>();
+            SortedDictionary<long, RationalNumber> coeffs = new();
 
             long commVar = eqsSet.NodeToVar[uNodeId];
             coeffs[commVar] = RationalNumber.Const_1;

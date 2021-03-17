@@ -182,8 +182,6 @@ namespace ExistsAcceptingPath
 
     private PropSymbolsKeeperFactComms propSymbolsKeeper;
 
-    public SortedDictionary<ComputationStep, long> CompStepToNode => compStepToNode;
-
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
       if (!newCompStepToNode.TryGetValue(compStep, out long nodeId))

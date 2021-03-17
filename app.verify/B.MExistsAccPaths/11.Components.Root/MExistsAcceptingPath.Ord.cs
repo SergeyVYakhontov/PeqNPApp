@@ -31,7 +31,7 @@ namespace ExistsAcceptingPath
 
     public void Determine(int[] input, out bool result, out int[] output)
     {
-      MEAPSharedContext MEAPSharedContext = new MEAPSharedContext();
+      MEAPSharedContext MEAPSharedContext = new();
 
       MEAPSharedContext.MNP = tMachine;
       MEAPSharedContext.Input = input;
@@ -55,19 +55,18 @@ namespace ExistsAcceptingPath
 
       while (true)
       {
-        List<DeterminePathRunner> determinePathRunners = new List<DeterminePathRunner>();
+        List<DeterminePathRunner> determinePathRunners = new();
         ulong baseMu = currentMu;
 
         for (long i = 0; i < determinePathRunnersCount; i++)
         {
-          DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs =
-            new DeterminePathRunnerCtorArgs
-              {
+          DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs = new()
+            {
                 tMachine = tMachine,
                 input = input,
                 currentMu = currentMu++,
                 MEAPSharedContext = MEAPSharedContext
-              };
+            };
 
           DeterminePathRunner determinePathRunner = configuration.Get<DeterminePathRunner>(
             new Ninject.Parameters.ConstructorArgument(
@@ -77,12 +76,13 @@ namespace ExistsAcceptingPath
           determinePathRunners.Add(determinePathRunner);
         }
 
-        TPLCollectionRunner<DeterminePathRunner> determinePathRunnerSet =
-          new TPLCollectionRunner<DeterminePathRunner>(
+        TPLCollectionRunner<DeterminePathRunner> determinePathRunnerSet = new
+          (
             determinePathRunners,
             determinePathRunnersCount,
             WaitMethod.WaitAll,
-            itemsArray => Array.Find(itemsArray, s => s.Done));
+            itemsArray => Array.Find(itemsArray, s => s.Done)
+          );
         determinePathRunnerSet.Run();
 
         if (determinePathRunnerSet.Done)

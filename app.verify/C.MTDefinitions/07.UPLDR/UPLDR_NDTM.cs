@@ -57,7 +57,7 @@ namespace MTDefinitions
       gammaList.Add(acceptingSymbolReplace);
       Gamma = gammaList.ToArray();
 
-      List<int> sigmaList = new List<int> { blankSymbol };
+      List<int> sigmaList = new() { blankSymbol };
 
       new IntSegment(variousSymbolsStart, variousSymbolsEnd)
         .ForEach(g => sigmaList.Add(g));
@@ -77,14 +77,8 @@ namespace MTDefinitions
             continue;
           }
 
-          StateSymbolPair deltaPairKey =
-            new StateSymbolPair
-              (
-                state: q,
-                symbol: s
-              );
-
-          List<StateSymbolDirectionTriple> deltaPairValueList = new List<StateSymbolDirectionTriple>();
+          StateSymbolPair deltaPairKey = new(state: q, symbol: s);
+          List<StateSymbolDirectionTriple> deltaPairValueList = new();
 
           foreach (uint qNext in Q)
           {
@@ -129,12 +123,7 @@ namespace MTDefinitions
           continue;
         }
 
-        StateSymbolPair preAcceptingDeltaPairKey =
-          new StateSymbolPair
-            (
-              state: qStart,
-              symbol: s
-            );
+        StateSymbolPair preAcceptingDeltaPairKey = new(state: qStart, symbol: s);
 
         delta[preAcceptingDeltaPairKey].Add(
           new StateSymbolDirectionTriple
@@ -153,15 +142,9 @@ namespace MTDefinitions
           continue;
         }
 
-        StateSymbolPair preAcceptingDeltaPairKey =
-          new StateSymbolPair
-            (
-              state: preAcceptingState,
-              symbol: s
-            );
+        StateSymbolPair preAcceptingDeltaPairKey = new(state: preAcceptingState, symbol: s);
 
-        List<StateSymbolDirectionTriple> preAcceptingDeltaPairValueList =
-          new List<StateSymbolDirectionTriple>
+        List<StateSymbolDirectionTriple> preAcceptingDeltaPairValueList = new()
           {
             new StateSymbolDirectionTriple
               (
@@ -175,15 +158,9 @@ namespace MTDefinitions
       }
 
       {
-        StateSymbolPair acceptingDeltaPairKey =
-          new StateSymbolPair
-            (
-              state: preAcceptingState,
-              symbol: acceptingSymbol
-            );
+        StateSymbolPair acceptingDeltaPairKey = new(state: preAcceptingState, symbol: acceptingSymbol);
 
-        List<StateSymbolDirectionTriple> acceptingDeltaPairValueList =
-          new List<StateSymbolDirectionTriple>
+        List<StateSymbolDirectionTriple> acceptingDeltaPairValueList = new()
           {
             new StateSymbolDirectionTriple
               (

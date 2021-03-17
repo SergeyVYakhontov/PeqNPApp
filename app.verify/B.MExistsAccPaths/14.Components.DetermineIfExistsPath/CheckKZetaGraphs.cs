@@ -59,8 +59,8 @@ namespace ExistsAcceptingPath
 
     private SortedSet<long> FindUsedSubgraph(SortedSet<long> usedNodes)
     {
-      SortedSet<long> labelMapA = new SortedSet<long>();
-      SortedSet<long> labelMapB = new SortedSet<long>();
+      SortedSet<long> labelMapA = new();
+      SortedSet<long> labelMapB = new();
 
       DAG.PropagateProperties(
         meapContext.TArbSeqCFG,
@@ -85,7 +85,7 @@ namespace ExistsAcceptingPath
 
     private void ComputeUnusedNodes()
     {
-      SortedSet<long> usedNodes = new SortedSet<long>();
+      SortedSet<long> usedNodes = new();
 
       foreach (KeyValuePair<long, Commodity> idCommList in commoditiesSubset)
       {

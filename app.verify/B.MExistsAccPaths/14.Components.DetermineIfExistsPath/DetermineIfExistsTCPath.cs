@@ -48,8 +48,7 @@ namespace ExistsAcceptingPath
       CreateKZetaSets();
       CreateTapeSegContextsList();
 
-      List<TapeSegRunnerState> tapeSegRunnerAllowedStates =
-        new List<TapeSegRunnerState>
+      List<TapeSegRunnerState> tapeSegRunnerAllowedStates = new()
         {
           TapeSegRunnerState.CheckKZetaGraphs,
           TapeSegRunnerState.ReduceCommodities,
@@ -85,14 +84,13 @@ namespace ExistsAcceptingPath
           meapContext.TapeSegContext
         };
 
-      List<TapeSegRunnerState> tapeSegRunnerAllowedStates =
-          new List<TapeSegRunnerState>
-          {
-            TapeSegRunnerState.CheckKZetaGraphs,
-            TapeSegRunnerState.ReduceCommodities,
-            TapeSegRunnerState.RunLinearProgram,
-            TapeSegRunnerState.Done
-          };
+      List<TapeSegRunnerState> tapeSegRunnerAllowedStates = new()
+        {
+          TapeSegRunnerState.CheckKZetaGraphs,
+          TapeSegRunnerState.ReduceCommodities,
+          TapeSegRunnerState.RunLinearProgram,
+          TapeSegRunnerState.Done
+        };
 
       TapeSegLoop(tapeSegRunnerAllowedStates);
 
@@ -142,14 +140,14 @@ namespace ExistsAcceptingPath
       {
         for (long R = L; R <= to; R++)
         {
-          LongSegment tapeSeg = new LongSegment(L, R);
+          LongSegment tapeSeg = new(L, R);
 
           if (!tapeSeg.Contains(1))
           {
             continue;
           }
 
-          TapeSegContext tapeSegContext = new TapeSegContext();
+          TapeSegContext tapeSegContext = new();
 
           tapeSegContext.TapeSeg = tapeSeg;
           tapeSegContext.PartialTConsistPath = new List<long> { meapContext.TArbSeqCFG.GetSourceNodeId() };
@@ -179,16 +177,18 @@ namespace ExistsAcceptingPath
 
     private void TapeSegLoop(List<TapeSegRunnerState> tapeSegRunnerAllowedStates)
     {
-      List<TapeSegRunner> tapeSegRunnersList = new List<TapeSegRunner>();
+      List<TapeSegRunner> tapeSegRunnersList = new();
       long id = 0;
 
       foreach (TapeSegContext tapeSegContext in tapeSegContexts)
       {
-        TapeSegRunner tapeSegRunner = new TapeSegRunner(
-          id++,
-          meapContext,
-          tapeSegContext,
-          tapeSegRunnerAllowedStates);
+        TapeSegRunner tapeSegRunner = new
+          (
+            id++,
+            meapContext,
+            tapeSegContext,
+            tapeSegRunnerAllowedStates
+          );
 
         tapeSegRunner.Init();
         tapeSegRunnersList.Add(tapeSegRunner);
@@ -197,13 +197,14 @@ namespace ExistsAcceptingPath
       ITPLOptions tplOptions = configuration.Get<ITPLOptions>();
       uint tapeSegRunnersCount = tplOptions.TapeSegRunnersCount;
 
-      TPLCollectionRunnerWithQueue<TapeSegRunner> tapeSegCollectionRunner =
-        new TPLCollectionRunnerWithQueue<TapeSegRunner>(
+      TPLCollectionRunnerWithQueue<TapeSegRunner> tapeSegCollectionRunner = new
+        (
           tapeSegRunnersList,
           tapeSegRunnersCount,
           WaitMethod.WaitAll,
           ProcessTapeSegRunners,
-          new TapeSegRunnerComparer());
+          new TapeSegRunnerComparer()
+        );
 
       tapeSegCollectionRunner.Run();
     }

@@ -48,7 +48,7 @@ namespace MTExtDefinitions.v2
       long from = startKStep;
       long to = (startKStep + LRSubseqSegLength - 1);
 
-      List<long> fwdCommsKStepSequence = new List<long>();
+      List<long> fwdCommsKStepSequence = new();
 
       for (long i = from; i <= to; i++)
       {
@@ -65,7 +65,7 @@ namespace MTExtDefinitions.v2
       long from = (startKStep + (LRSubseqSegLength * 2));
       long to = (startKStep + LRSubseqSegLength + 1);
 
-      List<long> bkwdCommsKStepSequence = new List<long>();
+      List<long> bkwdCommsKStepSequence = new();
 
       for (long i = from; i >= to; i--)
       {
@@ -96,12 +96,12 @@ namespace MTExtDefinitions.v2
     private IF_NDTM tm;
     private TMInstance tmInstance;
 
-    private readonly Dictionary<int, byte> indexMap = new Dictionary<int, byte>();
+    private readonly Dictionary<int, byte> indexMap = new();
     private DetermStepsEmulator determStepsEmulator;
 
-    private readonly List<long> kTapeSequence = new List<long>();
-    private readonly List<long> kTapeLRSubseq = new List<long>();
-    private readonly SortedDictionary<int, long> cellIndexes = new SortedDictionary<int, long>();
+    private readonly List<long> kTapeSequence = new();
+    private readonly List<long> kTapeLRSubseq = new();
+    private readonly SortedDictionary<int, long> cellIndexes = new();
 
     private void Setup()
     {

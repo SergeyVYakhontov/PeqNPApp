@@ -55,7 +55,7 @@ namespace ExistsAcceptingPath
 
       linEquationContext.TCPELinProgMatrix.GetLinEqSetMatrixFast(out long[][] A_p, out long[][] A_q);
 
-      LinEqSetSolverPtrs linEqSetSolver = new LinEqSetSolverPtrs(A_p, A_q);
+      LinEqSetSolverPtrs linEqSetSolver = new(A_p, A_q);
 
       return linEqSetSolver.IfSolutionExists();
     }

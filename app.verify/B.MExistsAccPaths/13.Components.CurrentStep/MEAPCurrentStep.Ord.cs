@@ -60,7 +60,7 @@ namespace ExistsAcceptingPath
       meapContext.DUPairCount = 0;
       meapContext.TConsistPairCount = 0;
 
-      TConsistPairSetBuilderOrd tConsistPairSetBuilder = new TConsistPairSetBuilderOrd(meapContext);
+      TConsistPairSetBuilderOrd tConsistPairSetBuilder = new(meapContext);
       tConsistPairSetBuilder.Run();
 
       log.InfoFormat("defUsePairSet: {0}", meapContext.DUPairCount);
@@ -83,7 +83,7 @@ namespace ExistsAcceptingPath
 
       log.DebugFormat("states = {0}", AppHelper.ArrayToString(states));
 
-      DetermineIfExistsTCPath determineIfExistsTCSeq = new DetermineIfExistsTCPath(meapContext);
+      DetermineIfExistsTCPath determineIfExistsTCSeq = new(meapContext);
       determineIfExistsTCSeq.RunForMultipleTapeSegs();
 
       CopyResultFromTapeSegContext();

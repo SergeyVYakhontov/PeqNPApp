@@ -55,7 +55,7 @@ namespace ExistsAcceptingPath
 
       linEquationContext.TCPELinProgMatrix.GetLinEqSetMatrixOrd(out RationalNumber[][] A);
 
-      LinEqSetSolver linEqSetSolver = new LinEqSetSolver(A);
+      LinEqSetSolver linEqSetSolver = new(A);
 
       return linEqSetSolver.IfSolutionExists();
     }

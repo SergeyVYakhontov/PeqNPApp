@@ -64,7 +64,7 @@ namespace ExistsAcceptingPath
       DAG graph,
       SortedSet<long> unusedNodes)
     {
-      DAGLinEquationsSet eqsSet = new DAGLinEquationsSet(linProgMatrix, graph);
+      DAGLinEquationsSet eqsSet = new(linProgMatrix, graph);
 
       SortedDictionary<long, long> nodeToVar = eqsSet.NodeToVar;
       SortedDictionary<long, long> edgeToVar = eqsSet.EdgeToVar;
@@ -102,11 +102,10 @@ namespace ExistsAcceptingPath
 
         long uNodeVar = nodeToVar[uNodeId];
 
-        SortedDictionary<long, RationalNumber> coeffsIn =
-          new SortedDictionary<long, RationalNumber>
-        {
-          [uNodeVar] = RationalNumber.Const_1
-        };
+        SortedDictionary<long, RationalNumber> coeffsIn =  new()
+          {
+            [uNodeVar] = RationalNumber.Const_1
+          };
 
         if (u.InEdges.Any())
         {
@@ -133,8 +132,7 @@ namespace ExistsAcceptingPath
           eqsSet.AddEquation(equationIn);
         }
 
-        SortedDictionary<long, RationalNumber> coeffsOut =
-          new SortedDictionary<long, RationalNumber>
+        SortedDictionary<long, RationalNumber> coeffsOut = new()
           {
             [uNodeVar] = RationalNumber.Const_1
           };
