@@ -197,7 +197,7 @@ namespace ExistsAcceptingPath
       SortedDictionary<long, SortedSet<long>> varToVarNodes,
       long currentLevel)
     {
-      ReachDefAnalysisSlotsMThreads reachDefAnalysis = new ReachDefAnalysisSlotsMThreads("RDA", rdaContext);
+      ReachDefAnalysisSlotsMThreads reachDefAnalysis = new("RDA", rdaContext);
       reachDefAnalysis.Run(varToVarNodes, meapContext.NodeVLevels, currentLevel);
 
       return reachDefAnalysis.DefUsePairSet;

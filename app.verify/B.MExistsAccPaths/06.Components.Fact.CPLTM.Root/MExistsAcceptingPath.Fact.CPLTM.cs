@@ -46,7 +46,7 @@ namespace ExistsAcceptingPath
 
       log.InfoFormat($"path length: {cpltmInfo.PathLength}");
 
-      MEAPSharedContext MEAPSharedContext = new MEAPSharedContext
+      MEAPSharedContext MEAPSharedContext = new()
       {
         MNP = tMachine,
         Input = input,
@@ -78,18 +78,17 @@ namespace ExistsAcceptingPath
 
       while (currentMu <= maxMu)
       {
-        List<DeterminePathRunner> determinePathRunners = new List<DeterminePathRunner>();
+        List<DeterminePathRunner> determinePathRunners = new();
 
         for (long i = 0; i < determinePathRunnersCount; i++)
         {
-          DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs =
-            new DeterminePathRunnerCtorArgs
-              {
+          DeterminePathRunnerCtorArgs determinePathRunnerCtorArgs = new()
+            {
                 tMachine = tMachine,
                 input = input,
                 currentMu = currentMu,
                 MEAPSharedContext = MEAPSharedContext
-              };
+            };
 
           currentMu++;
 
@@ -102,12 +101,13 @@ namespace ExistsAcceptingPath
           determinePathRunners.Add(determinePathRunner);
         }
 
-        TPLCollectionRunner<DeterminePathRunner> determinePathRunnerSet =
-          new TPLCollectionRunner<DeterminePathRunner>(
+        TPLCollectionRunner<DeterminePathRunner> determinePathRunnerSet = new
+          (
             determinePathRunners,
             determinePathRunnersCount,
             WaitMethod.WaitAll,
-            itemsArray => Array.Find(itemsArray, s => s.Done));
+            itemsArray => Array.Find(itemsArray, s => s.Done)
+          );
 
         determinePathRunnerSet.Run();
 

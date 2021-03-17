@@ -34,13 +34,8 @@ namespace Core
 
       for (long i = m - 1; i >= 0; i--)
       {
-        RationalNumber lastColumnCoeff = new RationalNumber(
-          A_p[i][lastColumnIndex],
-          A_q[i][lastColumnIndex]);
-
-        RationalNumber bVectorElem = new RationalNumber(
-          A_p[i][bVectorIndex()],
-          A_q[i][bVectorIndex()]);
+        RationalNumber lastColumnCoeff = new(A_p[i][lastColumnIndex], A_q[i][lastColumnIndex]);
+        RationalNumber bVectorElem = new(A_p[i][bVectorIndex()], A_q[i][bVectorIndex()]);
 
         if (!lastColumnCoeff.IsEqualsTo0())
         {

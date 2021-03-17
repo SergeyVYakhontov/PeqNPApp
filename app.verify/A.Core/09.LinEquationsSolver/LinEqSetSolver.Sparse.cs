@@ -63,7 +63,7 @@ namespace Core
     private void RunGaussElimination()
     {
       long s = 0;
-      RationalNumber t = new RationalNumber(0, 1);
+      RationalNumber t = new(0, 1);
 
       for (long k = 0; k < m; k++)
       {

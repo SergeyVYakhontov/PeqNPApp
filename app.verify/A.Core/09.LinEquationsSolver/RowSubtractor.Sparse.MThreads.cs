@@ -53,7 +53,7 @@ namespace Core
 
     public void Run()
     {
-      RationalNumber t = new RationalNumber(0, 1);
+      RationalNumber t = new(0, 1);
       RationalNumber Mip = A.Get(rowIndex, p);
 
       if (Mip.IsEqualsTo0())

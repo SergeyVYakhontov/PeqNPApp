@@ -61,7 +61,7 @@ namespace Core
 
     public void Run(int[] input)
     {
-      TMInstance instance = new TMInstance(this, input);
+      TMInstance instance = new(this, input);
       PrepareTapeFwd(input, instance);
 
       instances.Enqueue(instance);
@@ -129,7 +129,7 @@ namespace Core
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly Queue<TMInstance> instances = new Queue<TMInstance>();
+    private readonly Queue<TMInstance> instances = new();
 
     private BigInteger instancesMaxCount;
     private BigInteger instancesTotalCount;
@@ -194,8 +194,7 @@ namespace Core
         });
       }
 
-      SortedSet<StateSymbolDirectionTriple> triples = new SortedSet<StateSymbolDirectionTriple>(
-        new StateSymbolDirectionTripleComparer());
+      SortedSet<StateSymbolDirectionTriple> triples = new(new StateSymbolDirectionTripleComparer());
 
       Delta.ForEach(p =>
       {

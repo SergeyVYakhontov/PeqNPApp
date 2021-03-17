@@ -77,7 +77,7 @@ namespace ExistsAcceptingPath
 
       meapContext.UnusedNodes = new SortedSet<long>();
 
-      NestedCommsGraphBuilder nestedCommsGraphBuilder = new NestedCommsGraphBuilder(meapContext);
+      NestedCommsGraphBuilder nestedCommsGraphBuilder = new(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder = null;
@@ -87,12 +87,12 @@ namespace ExistsAcceptingPath
         checkDataStructures.CheckNCGNodesHaveTheSameSymbol(meapContext);
       }*/
 
-      NCGJointNodesBuilder ncgJointNodesBuilder = new NCGJointNodesBuilder(meapContext);
+      NCGJointNodesBuilder ncgJointNodesBuilder = new(meapContext);
       ncgJointNodesBuilder.Setup();
       ncgJointNodesBuilder.Run();
       ncgJointNodesBuilder = null;
 
-      PathFinderFactCPLTM pathFinder = new PathFinderFactCPLTM(meapContext);
+      PathFinderFactCPLTM pathFinder = new(meapContext);
       pathFinder.Run();
     }
 
@@ -124,9 +124,11 @@ namespace ExistsAcceptingPath
 
         log.InfoFormat($"Computing DU pairs at kStep = {kStepB}");
 
-        ComputeKStepDUPairs computeKStepDUPairs = new ComputeKStepDUPairs(
-          meapContext,
-          new Tuple<long, long, long>(kStepA, kStepB, kStepC));
+        ComputeKStepDUPairs computeKStepDUPairs = new
+          (
+            meapContext,
+            new Tuple<long, long, long>(kStepA, kStepB, kStepC)
+          );
 
         computeKStepDUPairs.Run();
       }

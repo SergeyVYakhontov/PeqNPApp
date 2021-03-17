@@ -91,8 +91,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private static readonly CompStepNodePairComparer compStepNodePairComparer =
-      new CompStepNodePairComparer();
+    private static readonly CompStepNodePairComparer compStepNodePairComparer = new();
 
     #endregion
   }

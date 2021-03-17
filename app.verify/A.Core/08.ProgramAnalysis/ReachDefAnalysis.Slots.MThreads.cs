@@ -39,7 +39,7 @@ namespace Core
       log.InfoFormat("varToVarNodes: {0}", varToVarNodes.Count);
 
       DefUsePairSet = new SortedDictionary<long, SortedSet<DefUsePair>>();
-      List<RDARunnerSlotsMThreads> rdaRunnersList = new List<RDARunnerSlotsMThreads>();
+      List<RDARunnerSlotsMThreads> rdaRunnersList = new();
 
       if (!varToVarNodes.Any())
       {
@@ -50,8 +50,7 @@ namespace Core
       long varToVarNodesProcessed = 0;
       long slotNo = 0;
 
-      List<KeyValuePair<long, long>> varToVarNodesPairsList =
-        new List<KeyValuePair<long, long>>();
+      List<KeyValuePair<long, long>> varToVarNodesPairsList = new();
 
       varToVarNodes.ForEach(
         t1 => t1.Value.ForEach(
@@ -61,8 +60,8 @@ namespace Core
 
       while (true)
       {
-        SortedSet<long> varsSet = new SortedSet<long>();
-        SortedSet<long> varNodesSet = new SortedSet<long>();
+        SortedSet<long> varsSet = new();
+        SortedSet<long> varNodesSet = new();
 
         if ((varToVarNodesPairs.Length - varToVarNodesProcessed) == 0)
         {
@@ -103,7 +102,7 @@ namespace Core
         varToVarNodesProcessed += varsToProcess;
 
         log.InfoFormat("Current slot: {0}", slotNo++);
-        RDARunnerSlotsMThreads rdaRunner = new RDARunnerSlotsMThreads(runnerId++);
+        RDARunnerSlotsMThreads rdaRunner = new(runnerId++);
 
         varsSet.ForEach(t => DefUsePairSet[t] =
           new SortedSet<DefUsePair>(new DefUsePairComparer()));
@@ -121,12 +120,13 @@ namespace Core
       ITPLOptions tplOptions = configuration.Get<ITPLOptions>();
       uint slotsMThRDAProcessCount = tplOptions.SlotsMThRDAProcessCount;
 
-      TPLCollectionRunner<RDARunnerSlotsMThreads> rdaSetRunner =
-        new TPLCollectionRunner<RDARunnerSlotsMThreads>(
+      TPLCollectionRunner<RDARunnerSlotsMThreads> rdaSetRunner = new
+        (
           rdaRunnersList,
           slotsMThRDAProcessCount,
           WaitMethod.WaitAll,
-          _ => null);
+          _ => null
+        );
       rdaSetRunner.Run();
     }
 

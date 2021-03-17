@@ -153,12 +153,12 @@ namespace Core
           }
 
           Task[] tasks = new Task[rowsToSubtractCount];
-          List<RowSubtractorSparceMThreads> rowSubtractors = new List<RowSubtractorSparceMThreads>();
+          List<RowSubtractorSparceMThreads> rowSubtractors = new();
 
           for (int i = 0; i < rowsToSubtractCount; i++)
           {
             long row = rowsToSubtract[i];
-            RowSubtractorSparceMThreads rowSubtractor = new RowSubtractorSparceMThreads();
+            RowSubtractorSparceMThreads rowSubtractor = new();
 
             rowSubtractor.A = A;
             rowSubtractor.rowIndex = row;
@@ -171,12 +171,13 @@ namespace Core
             rowSubtractors.Add(rowSubtractor);
           }
 
-          TPLCollectionRunner<RowSubtractorSparceMThreads> rowSubtractorsRunner =
-            new TPLCollectionRunner<RowSubtractorSparceMThreads>(
+          TPLCollectionRunner<RowSubtractorSparceMThreads> rowSubtractorsRunner = new
+            (
               rowSubtractors,
               gaussElimRunnersCount,
               WaitMethod.WaitAll,
-              _ => null);
+              _ => null
+            );
           rowSubtractorsRunner.Run();
 
           from += rowsToSubtract.Length;

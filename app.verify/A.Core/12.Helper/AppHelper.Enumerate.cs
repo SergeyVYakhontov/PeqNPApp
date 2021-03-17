@@ -63,7 +63,7 @@ namespace Core
     {
       Ensure.That(sequence.Count()).IsGte(2);
 
-      List<KeyValuePair<T, T>> sequencePairs = new List<KeyValuePair<T, T>>();
+      List<KeyValuePair<T, T>> sequencePairs = new();
       T item = sequence.First();
 
       foreach (T nextItem in sequence.Skip(1))

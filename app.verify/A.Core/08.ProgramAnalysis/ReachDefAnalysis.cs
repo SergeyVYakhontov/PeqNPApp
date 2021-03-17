@@ -80,12 +80,12 @@ namespace Core
 
     private readonly ReachDefAnalysisContext rdaContext;
 
-    private readonly SortedDictionary<long, IBitVector> varToDEFSVectorMap = new SortedDictionary<long, IBitVector>();
+    private readonly SortedDictionary<long, IBitVector> varToDEFSVectorMap = new();
 
-    private readonly SortedDictionary<long, IBitVector> nodeToGENVectorMap = new SortedDictionary<long, IBitVector>();
-    private readonly SortedDictionary<long, IBitVector> nodeToKILLVectorMap = new SortedDictionary<long, IBitVector>();
-    private readonly SortedDictionary<long, IBitVector> nodeToREACHinVectorMap = new SortedDictionary<long, IBitVector>();
-    private readonly SortedDictionary<long, IBitVector> nodeToREACHoutVectorMap = new SortedDictionary<long, IBitVector>();
+    private readonly SortedDictionary<long, IBitVector> nodeToGENVectorMap = new();
+    private readonly SortedDictionary<long, IBitVector> nodeToKILLVectorMap = new();
+    private readonly SortedDictionary<long, IBitVector> nodeToREACHinVectorMap = new();
+    private readonly SortedDictionary<long, IBitVector> nodeToREACHoutVectorMap = new();
 
     private IBitVector CreateBitVector(ulong size)
     {
@@ -212,7 +212,7 @@ namespace Core
 
           if (useList.Contains(variable))
           {
-            DefUsePair defUsePair = new DefUsePair
+            DefUsePair defUsePair = new
               (
                 variable,
                 defNodeId,

@@ -106,10 +106,8 @@ namespace ExistsAcceptingPath
     private readonly ICPLTMInfo CPLTMInfo;
     private readonly SortedDictionary<long, SortedSet<long>> nodeVLevels;
 
-    private readonly SortedSet<KeyValuePair<long, long>> currDUPairs =
-      new SortedSet<KeyValuePair<long, long>>(new KeyValueComparer());
-    private readonly SortedSet<KeyValuePair<long, long>> nextDUPairs =
-      new SortedSet<KeyValuePair<long, long>>(new KeyValueComparer());
+    private readonly SortedSet<KeyValuePair<long, long>> currDUPairs = new(new KeyValueComparer());
+    private readonly SortedSet<KeyValuePair<long, long>> nextDUPairs = new(new KeyValueComparer());
 
     #endregion
   }

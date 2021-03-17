@@ -41,7 +41,7 @@ namespace ExistsAcceptingPath
       TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz,
       SortedSet<long> excludedComms)
     {
-      List<long> commsToRemove = new List<long>();
+      List<long> commsToRemove = new();
 
       foreach (long commodityId in zetaCommodities)
       {
@@ -82,7 +82,7 @@ namespace ExistsAcceptingPath
 
     private bool RemoveNotCoveredCommodities(SortedSet<long> excludedComms)
     {
-      SortedSet<long> toRemove = new SortedSet<long>();
+      SortedSet<long> toRemove = new();
 
       foreach (KeyValuePair<long, DAGNode> idNodePair in meapContext.TArbSeqCFG.NodeEnumeration)
       {
@@ -139,7 +139,7 @@ namespace ExistsAcceptingPath
 
     private bool RemoveNotConnectedCommodities(SortedSet<long> excludedComms)
     {
-      SortedSet<long> toRemove = new SortedSet<long>();
+      SortedSet<long> toRemove = new();
 
       foreach (KeyValuePair<long, Commodity> idCommList in commoditiesSubset)
       {
@@ -219,11 +219,11 @@ namespace ExistsAcceptingPath
     public bool RemoveUnusedCommodities1(SortedSet<long> excludedComms)
     {
       long excludedCommsCount = excludedComms.Count;
-      SortedDictionary<long, TypedDAG<GTCZNodeInfo, StdEdgeInfo>> gtczSet = new SortedDictionary<long, TypedDAG<GTCZNodeInfo, StdEdgeInfo>>();
+      SortedDictionary<long, TypedDAG<GTCZNodeInfo, StdEdgeInfo>> gtczSet = new();
 
       foreach (KeyValuePair<long, SortedSet<long>> idCommList in tapeSegContext.KSetZetaSubset)
       {
-        GraphTConZetaBuilder gtczBuilder = new GraphTConZetaBuilder(meapContext);
+        GraphTConZetaBuilder gtczBuilder = new(meapContext);
         TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = gtczBuilder.Run(idCommList.Value);
 
         gtczSet[idCommList.Key] = gtcz;

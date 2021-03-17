@@ -71,7 +71,7 @@ namespace Core
 
     public static string ArrayToString<T>(T[] objectArray)
     {
-      StringBuilder repr = new StringBuilder();
+      StringBuilder repr = new();
       const ulong maxLength = 128;
 
       repr.Append('(');

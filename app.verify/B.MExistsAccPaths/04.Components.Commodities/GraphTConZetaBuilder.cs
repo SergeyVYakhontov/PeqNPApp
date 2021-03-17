@@ -26,8 +26,8 @@ namespace ExistsAcceptingPath
 
     public TypedDAG<GTCZNodeInfo, StdEdgeInfo> Run(SortedSet<long> commodities)
     {
-      TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = new TypedDAG<GTCZNodeInfo, StdEdgeInfo>("GTCZ");
-      SortedDictionary<long, DAGNode> nodeEnumeration = new SortedDictionary<long, DAGNode>();
+      TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = new("GTCZ");
+      SortedDictionary<long, DAGNode> nodeEnumeration = new();
       long edgeId = 0;
 
       foreach (long commodityId in commodities)
@@ -39,7 +39,7 @@ namespace ExistsAcceptingPath
 
         if (!nodeEnumeration.ContainsKey(sNodeId))
         {
-          DAGNode newNode = new DAGNode(sNodeId);
+          DAGNode newNode = new(sNodeId);
           gtcz.AddNode(newNode);
 
           if (meapContext.TArbSeqCFG.IsSourceNode(sNodeId))
@@ -52,7 +52,7 @@ namespace ExistsAcceptingPath
 
         if (!nodeEnumeration.ContainsKey(tNodeId))
         {
-          DAGNode newNode = new DAGNode(tNodeId);
+          DAGNode newNode = new(tNodeId);
           gtcz.AddNode(newNode);
 
           if (meapContext.TArbSeqCFG.IsSinkNode(tNodeId))
@@ -68,7 +68,7 @@ namespace ExistsAcceptingPath
 
         if (!gtcz.AreConnected(from.Id, to.Id))
         {
-          DAGEdge newEdge = new DAGEdge(edgeId++, from, to);
+          DAGEdge newEdge = new(edgeId++, from, to);
           gtcz.AddEdge(newEdge);
         }
       }

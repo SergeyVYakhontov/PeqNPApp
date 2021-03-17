@@ -59,20 +59,20 @@ namespace Core
 
     public List<TMInstance> DoStep()
     {
-      List<TMInstance> newInstances = new List<TMInstance>();
+      List<TMInstance> newInstances = new();
 
       if (IsFinalState(state))
       {
         return newInstances;
       }
 
-      StateSymbolPair from = new StateSymbolPair(state, CurrentSymbol);
+      StateSymbolPair from = new(state, CurrentSymbol);
 
       if (owner.Delta.ContainsKey(from))
       {
         foreach (StateSymbolDirectionTriple to in owner.Delta[from])
         {
-          TMInstance newInstance = new TMInstance(this);
+          TMInstance newInstance = new(this);
 
           MoveToNextConfiguration(to, newInstance);
           newInstance.Level = Level + 1;

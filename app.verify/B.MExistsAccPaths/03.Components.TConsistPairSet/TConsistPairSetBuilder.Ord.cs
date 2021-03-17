@@ -176,7 +176,7 @@ namespace ExistsAcceptingPath
 
     private List<DefUsePair> RunReachDefAnalysis()
     {
-      ReachDefAnalysisContext rdaContext = new ReachDefAnalysisContext
+      ReachDefAnalysisContext rdaContext = new
         (
           meapContext.TArbSeqCFG,
           meapContext.Vars,
@@ -184,7 +184,7 @@ namespace ExistsAcceptingPath
           meapContext.Usages
         );
 
-      ReachDefAnalysis reachDefAnalysis = new ReachDefAnalysis("RDA", rdaContext);
+      ReachDefAnalysis reachDefAnalysis = new("RDA", rdaContext);
 
       rdaContext.EnumerateDefsAndUsages();
       reachDefAnalysis.Run();

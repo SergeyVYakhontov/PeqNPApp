@@ -87,9 +87,9 @@ namespace ExistsAcceptingPath
         return;
       }
 
-      SortedSet<long> tConsistPathComms = new SortedSet<long>();
-      SortedSet<long> tInconsistPathComms = new SortedSet<long>();
-      List<CommodityChecker> commCheckers = new List<CommodityChecker>();
+      SortedSet<long> tConsistPathComms = new();
+      SortedSet<long> tInconsistPathComms = new();
+      List<CommodityChecker> commCheckers = new();
 
       ILinEqsAlgorithmProvider linEqsAlgorithmProvider = configuration.Get<ILinEqsAlgorithmProvider>();
 
@@ -106,12 +106,13 @@ namespace ExistsAcceptingPath
             tInconsistPathComms));
       }
 
-      TPLCollectionRunner<CommodityChecker> commodityCheckerRunner =
-        new TPLCollectionRunner<CommodityChecker>(
+      TPLCollectionRunner<CommodityChecker> commodityCheckerRunner = new
+        (
           commCheckers,
           linEqSetRunnersCount,
           WaitMethod.WaitAll,
-          _ => null);
+          _ => null
+        );
 
       commodityCheckerRunner.Run();
 
@@ -119,7 +120,7 @@ namespace ExistsAcceptingPath
         "Gauss elimination process, excluded: {0}",
         tInconsistPathComms.Count);
 
-      SortedSet<long> excludedComms = new SortedSet<long>();
+      SortedSet<long> excludedComms = new();
       tInconsistPathComms.ForEach(
         c =>
         {
@@ -140,7 +141,7 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private SortedDictionary<long, Commodity> commoditiesSubset;
-    private readonly SortedSet<long> totalExcludedComms = new SortedSet<long>();
+    private readonly SortedSet<long> totalExcludedComms = new();
     private long totalCommoditiesCount;
 
     private NodesCoverageKeeper nodesCoverageKeeper;
@@ -163,7 +164,7 @@ namespace ExistsAcceptingPath
 
     private bool TryToFindPath(String stepName)
     {
-      CommTConsistPathFinder commTConsistPathFinder = new CommTConsistPathFinder(meapContext, tapeSegContext, null);
+      CommTConsistPathFinder commTConsistPathFinder = new(meapContext, tapeSegContext, null);
       commTConsistPathFinder.FindTConsistPath();
 
       if (tapeSegContext.TapeSegPathFound)
@@ -202,7 +203,7 @@ namespace ExistsAcceptingPath
 
     private void ReduceCommoditiesSet(String stepName)
     {
-      SortedSet<long> excludedComms = new SortedSet<long>();
+      SortedSet<long> excludedComms = new();
       while (notUsedCommsDetector.RemoveUnusedCommodities1(excludedComms)) { }
 
       long totalExcludedCommsCount = totalExcludedComms.Count;

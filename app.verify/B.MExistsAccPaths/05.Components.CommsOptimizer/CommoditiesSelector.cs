@@ -31,7 +31,7 @@ namespace ExistsAcceptingPath
 
     public Commodity[] Run(long count)
     {
-      List<Commodity> commoditiesToCheck = new List<Commodity>();
+      List<Commodity> commoditiesToCheck = new();
 
       while (true)
       {
@@ -61,7 +61,7 @@ namespace ExistsAcceptingPath
     private readonly MEAPContext meapContext;
     private readonly TapeSegContext tapeSegContext;
 
-    private readonly SortedSet<long> alreadySelected = new SortedSet<long>();
+    private readonly SortedSet<long> alreadySelected = new();
 
     private Commodity SelectCommodity(
       SortedDictionary<long, SortedSet<long>> kSetZetaSubset,
@@ -69,7 +69,7 @@ namespace ExistsAcceptingPath
     {
       foreach (KeyValuePair<long, SortedSet<long>> idCommList in kSetZetaSubset)
       {
-        GraphTConZetaBuilder gtczBuilder = new GraphTConZetaBuilder(meapContext);
+        GraphTConZetaBuilder gtczBuilder = new(meapContext);
         TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = gtczBuilder.Run(idCommList.Value);
 
         foreach (long commodityId in idCommList.Value)

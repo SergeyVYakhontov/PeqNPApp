@@ -35,7 +35,7 @@ namespace Core
 
     public void DoStepsN(uint n)
     {
-      IntSegment segment1n = new IntSegment(1, (int)n);
+      IntSegment segment1n = new(1, (int)n);
       segment1n.ForEach(DoStep1);
     }
 

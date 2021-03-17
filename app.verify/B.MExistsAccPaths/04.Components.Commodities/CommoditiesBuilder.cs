@@ -42,7 +42,7 @@ namespace ExistsAcceptingPath
         Commodity commodity = p.Value;
         long commVar = commodity.Variable;
 
-        List<long> toRemove = new List<long>();
+        List<long> toRemove = new();
 
         foreach (long uNodeId in commodity.Gi.GetInnerNodeIds())
         {
@@ -63,7 +63,7 @@ namespace ExistsAcceptingPath
             commodity.Gi.GetSinkNodeId() +
             " remove: " + r));
 
-        DAG newGi = new DAG("Gi");
+        DAG newGi = new("Gi");
         DAG.CutChains(commodity.Gi, newGi);
         commodity.Gi = newGi;
 
@@ -88,7 +88,7 @@ namespace ExistsAcceptingPath
           long commodityId = p.Key;
           Commodity commodity = p.Value;
 
-          DAG Gi = new DAG("Gi");
+          DAG Gi = new("Gi");
           DAG.MakeCommodity(meapContext.TArbSeqCFG, commodity.sNodeId, commodity.tNodeId, Gi);
 
           commodity.Gi = Gi;
@@ -136,7 +136,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private static readonly object objectToLock = new object();
+    private static readonly object objectToLock = new();
 
     protected readonly MEAPContext meapContext;
 
@@ -144,12 +144,10 @@ namespace ExistsAcceptingPath
     protected readonly long tNodeId;
 
     protected long pairCount;
-    protected readonly SortedDictionary<long, CompStepNodePair> compStepNodePairEnum =
-      new SortedDictionary<long, CompStepNodePair>();
+    protected readonly SortedDictionary<long, CompStepNodePair> compStepNodePairEnum = new();
 
-    protected readonly SortedDictionary<long, Commodity> commodities =
-      new SortedDictionary<long, Commodity>();
-    protected readonly List<long> excludedDefs = new List<long>();
+    protected readonly SortedDictionary<long, Commodity> commodities = new();
+    protected readonly List<long> excludedDefs = new();
 
     #endregion
   }
