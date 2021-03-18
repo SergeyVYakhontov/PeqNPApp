@@ -29,7 +29,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public void Determine(int[] input, out bool result, out int[] output)
+    public (bool, int[]) Determine(int[] input)
     {
       MEAPSharedContext MEAPSharedContext = new();
 
@@ -94,10 +94,10 @@ namespace ExistsAcceptingPath
 
         if (determinePathRunnerSet.Done)
         {
-          result = determinePathRunnerSet.CurrentItem.Result;
-          output = determinePathRunnerSet.CurrentItem.Output;
+          bool result = determinePathRunnerSet.CurrentItem.Result;
+          int[] output = determinePathRunnerSet.CurrentItem.Output;
 
-          return;
+          return (result, output);
         }
       }
     }

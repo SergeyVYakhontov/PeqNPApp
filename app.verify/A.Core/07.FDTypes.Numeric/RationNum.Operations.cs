@@ -16,39 +16,35 @@ namespace Core
   {
     #region public members
 
-    public static void Normalize(ref long p, ref long q)
+    public static (long, long) Normalize(long p, long q)
     {
       Ensure.That(q, "Divisor").IsNot(0);
 
       if (p == 0)
       {
-        q = 1;
-
-        return;
+        return (p, 1);
       }
 
       if (q < 0)
       {
-        p = -p;
-        q = -q;
+        return (-p, -q);
       }
 
       if (q == 1)
       {
-        return;
+        return (p, q);
       }
 
       long pAbs = Math.Abs(p);
 
       if ((pAbs == 1) && (q == 1))
       {
-        return;
+        return (p, q);
       }
 
       long gcd = AppHelper.GCD(pAbs, q);
 
-      p /= gcd;
-      q /= gcd;
+      return (p/gcd, q/gcd);
     }
 
     public void Assign(RationalNumber r)

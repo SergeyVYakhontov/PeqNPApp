@@ -53,7 +53,7 @@ namespace ExistsAcceptingPath
       tcpeLinProgBuilder.CreateTCPEPLinProgEqsSet();
       AddCommodityCheckEquation();
 
-      linEquationContext.TCPELinProgMatrix.GetLinEqSetMatrixOrd(out RationalNumber[][] A);
+      RationalNumber[][] A = linEquationContext.TCPELinProgMatrix.GetLinEqSetMatrixOrd();
 
       LinEqSetSolver linEqSetSolver = new(A);
 

@@ -25,7 +25,6 @@ namespace ExistsAcceptingPath
     {
       this.meapContext = meapContext;
       this.kSteps = kSteps;
-      this.CPLTMInfo = meapContext.MEAPSharedContext.CPLTMInfo;
       this.nodeVLevels = meapContext.MEAPSharedContext.NodeLevelInfo.NodeVLevels;
     }
 
@@ -103,7 +102,6 @@ namespace ExistsAcceptingPath
 
     private readonly MEAPContext meapContext;
     private readonly Tuple<long, long, long> kSteps;
-    private readonly ICPLTMInfo CPLTMInfo;
     private readonly SortedDictionary<long, SortedSet<long>> nodeVLevels;
 
     private readonly SortedSet<KeyValuePair<long, long>> currDUPairs = new(new KeyValueComparer());

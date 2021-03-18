@@ -132,19 +132,17 @@ namespace Core
       return status;
     }
 
-    public static void FindPath_Greedy(
+    public static (List<long>, bool) FindPath_Greedy(
       DAGNode s,
       DAGNode t,
       GraphDirection direction,
       Predicate<DAGNode> nodeFilter,
       Predicate<DAGEdge> edgeFilter,
       Action<DAGNode> nodeAction,
-      Action<DAGEdge> edgeAction,
-      out List<long> path,
-      out bool pathFound)
+      Action<DAGEdge> edgeAction)
     {
-      path = new List<long>();
-      pathFound = false;
+      List<long> path = new();
+      bool pathFound = false;
 
       SortedSet<long> processedNodes = new();
       DAGNode currentNode = (direction == GraphDirection.Forward ? s : t);
@@ -153,7 +151,7 @@ namespace Core
       {
         pathFound = false;
 
-        return;
+        return (path, pathFound);
       }
 
       while (true)
@@ -168,7 +166,7 @@ namespace Core
         {
           pathFound = true;
 
-          return;
+          return (path, pathFound);
         }
 
         List<DAGEdge> nextEdges = (direction == GraphDirection.Forward ?
@@ -190,12 +188,12 @@ namespace Core
 
         if (!nextNodeFound)
         {
-          return;
+          return (path, pathFound);
         }
       }
     }
 
-    public static void FindPath_DFS(
+    public static bool FindPath_DFS(
       DAG dag,
       DAGNode s,
       GraphDirection direction,
@@ -203,12 +201,11 @@ namespace Core
       Predicate<DAGEdge> edgeFilter,
       Action<DAGNode, long> nodeAction,
       Action<DAGEdge, long> edgeAction,
-      List<long> path,
-      ref bool pathFound)
+      List<long> path)
     {
       SortedSet<long> processedNodes = new();
 
-      FindPath_DFS(
+      bool pathFound = FindPath_DFS(
         s,
         dag.t,
         processedNodes,
@@ -218,18 +215,17 @@ namespace Core
         edgeFilter,
         nodeAction,
         edgeAction,
-        path,
-        ref pathFound);
+        path);
+
+        return pathFound;
     }
 
-    public static void ClassifyDAGEdges(
+    public static (SortedSet<long>, SortedSet<long>) ClassifyDAGEdges(
       DAG graph,
-      SortedDictionary<long, SortedSet<long>> VLevelSets,
-      out SortedSet<long> backEdges,
-      out SortedSet<long> crossEdges)
+      SortedDictionary<long, SortedSet<long>> VLevelSets)
     {
-      backEdges = new SortedSet<long>();
-      crossEdges = new SortedSet<long>();
+      SortedSet<long> backEdges = new();
+      SortedSet<long> crossEdges = new();
 
       foreach (DAGEdge e in graph.Edges)
       {
@@ -264,6 +260,8 @@ namespace Core
           }
         }
       }
+
+      return (backEdges, crossEdges);
     }
 
     #endregion
@@ -314,7 +312,7 @@ namespace Core
       }
     }
 
-    private static void FindPath_DFS(
+    private static bool FindPath_DFS(
       DAGNode u,
       DAGNode t,
       SortedSet<long> processedNodes,
@@ -324,17 +322,16 @@ namespace Core
       Predicate<DAGEdge> edgeFilter,
       Action<DAGNode, long> nodeAction,
       Action<DAGEdge, long> edgeAction,
-      List<long> path,
-      ref bool pathFound)
+      List<long> path)
     {
       if (!nodeFilter(u))
       {
-        return;
+        return false;
       }
 
       if (processedNodes.Contains(u.Id))
       {
-        return;
+        return false;
       }
 
       nodeAction(u, level);
@@ -344,8 +341,7 @@ namespace Core
 
       if (u.Id == t.Id)
       {
-        pathFound = true;
-        return;
+        return true;
       }
 
       foreach (DAGEdge e in (direction == GraphDirection.Forward ? u.OutEdges : u.InEdges))
@@ -355,7 +351,7 @@ namespace Core
           continue;
         }
 
-        FindPath_DFS(
+        bool pathFound = FindPath_DFS(
           (direction == GraphDirection.Forward ? e.ToNode : e.FromNode),
           t,
           processedNodes,
@@ -365,18 +361,19 @@ namespace Core
           edgeFilter,
           nodeAction,
           edgeAction,
-          path,
-          ref pathFound);
+          path);
 
         edgeAction(e, level);
 
         if (pathFound)
         {
-          return;
+          return true;
         }
       }
 
       path.RemoveAt(path.Count - 1);
+
+      return false;
     }
 
     #endregion

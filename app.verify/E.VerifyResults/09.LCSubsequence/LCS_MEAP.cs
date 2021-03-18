@@ -33,7 +33,7 @@ namespace VerifyResults
         new Ninject.Parameters.ConstructorArgument(
           nameof(mExistsAcceptingPathCtorArgs),
           mExistsAcceptingPathCtorArgs));
-      mExistAcceptingPaths.Determine(input, out pathExists, out output);
+      (pathExists, output) = mExistAcceptingPaths.Determine(input);
 
       return pathExists;
     }

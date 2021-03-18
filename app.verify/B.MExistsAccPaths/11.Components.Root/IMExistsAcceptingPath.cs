@@ -16,7 +16,7 @@ namespace ExistsAcceptingPath
 {
   public interface IMExistsAcceptingPath
   {
-    void Determine(int[] input, out bool result, out int[] output);
+    (bool, int[]) Determine(int[] input);
   }
 }
 

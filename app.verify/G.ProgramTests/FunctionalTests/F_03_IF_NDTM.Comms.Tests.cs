@@ -60,7 +60,7 @@ namespace FunctionalTests
 
     #region private members
 
-    private void ResetNinjectKernel()
+    private static void ResetNinjectKernel()
     {
       Core.AppContext.UnloadConfigurationModule();
     }

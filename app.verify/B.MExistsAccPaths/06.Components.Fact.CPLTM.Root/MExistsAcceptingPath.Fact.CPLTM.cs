@@ -29,7 +29,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public void Determine(int[] input, out bool result, out int[] output)
+    public (bool, int[]) Determine(int[] input)
     {
       int inputLength = input.Length;
 
@@ -75,6 +75,9 @@ namespace ExistsAcceptingPath
 
       ITPLOptions tplOptions = configuration.Get<ITPLOptions>();
       uint determinePathRunnersCount = tplOptions.DeterminePathRunnersCount;
+
+      bool result;
+      int[] output;
 
       while (currentMu <= maxMu)
       {
@@ -122,6 +125,8 @@ namespace ExistsAcceptingPath
 
       result = true;
       output = Array.Empty<int>();
+
+      return (result, output);
     }
 
     #endregion

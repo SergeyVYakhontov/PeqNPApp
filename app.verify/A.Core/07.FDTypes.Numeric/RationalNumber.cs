@@ -78,13 +78,7 @@ namespace Core
 
     private void Normalize()
     {
-      long p_param = p;
-      long q_param = q;
-
-      RationalNumber.Normalize(ref p_param, ref q_param);
-
-      p = p_param;
-      q = q_param;
+      (p, q) = RationalNumber.Normalize(p, q);
     }
 
     #endregion

@@ -95,7 +95,7 @@ namespace Core
           }
         }
 
-        AppHelper.SwapElems(ref A[k], ref A[i_max]);
+        (A[k], A[i_max]) = (A[i_max], A[k]);
 
         long p = k + s;
 
