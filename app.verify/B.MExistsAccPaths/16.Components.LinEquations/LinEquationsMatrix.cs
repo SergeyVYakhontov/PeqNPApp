@@ -82,12 +82,12 @@ namespace ExistsAcceptingPath
         "b={" + bVectorStr + "};";
     }
 
-    public void GetLinEqSetMatrixOrd(out RationalNumber[][] A)
+    public RationalNumber[][] GetLinEqSetMatrixOrd()
     {
       long m = EquationsCount;
       long n = VarsCount;
 
-      A = AppHelper.CreateAmnMatrix<RationalNumber>(m, n + 1);
+      RationalNumber[][] A = AppHelper.CreateAmnMatrix<RationalNumber>(m, n + 1);
       RationalNumber[][] A_local = A;
 
       for (int i = 0; i < m; i++)
@@ -108,17 +108,17 @@ namespace ExistsAcceptingPath
       {
         A_local[r.Key][n] = new RationalNumber(r.Value.Value);
       });
+
+      return A;
     }
 
-    public void GetLinEqSetMatrixFast(out long[][] A_p, out long[][] A_q)
+    public (long[][], long[][]) GetLinEqSetMatrixFast()
     {
       long m = EquationsCount;
       long n = VarsCount;
 
-      A_p = AppHelper.CreateAmnMatrix<long>(m, n + 1);
-      A_q = AppHelper.CreateAmnMatrix<long>(m, n + 1);
-      long[][] A_p_local = A_p;
-      long[][] A_q_local = A_q;
+      long[][] A_p = AppHelper.CreateAmnMatrix<long>(m, n + 1);
+      long[][] A_q = AppHelper.CreateAmnMatrix<long>(m, n + 1);
 
       for (int i = 0; i < m; i++)
       {
@@ -131,35 +131,38 @@ namespace ExistsAcceptingPath
 
       Equations.ForEach(r1 => r1.Value.ForEach(
         r2 =>{
-          A_p_local[r1.Key][r2.Key] = r2.Value.ToLong();
-          A_q_local[r1.Key][r2.Key] = 1;
+          A_p[r1.Key][r2.Key] = r2.Value.ToLong();
+          A_q[r1.Key][r2.Key] = 1;
         }));
 
       VectorB.ForEach(r =>
         {
-          A_p_local[r.Key][n] = r.Value.Value.ToLong();
-          A_q_local[r.Key][n] = 1;
+          A_p[r.Key][n] = r.Value.Value.ToLong();
+          A_q[r.Key][n] = 1;
         });
+
+        return (A_p, A_q);
     }
 
-    public void GetLinEqSetSparseMatrix(out SparseMatrix A)
+    public SparseMatrix GetLinEqSetSparseMatrix()
     {
       long m = EquationsCount;
       long n = VarsCount;
 
-      A = new SparseMatrix(m, n + 1);
-      SparseMatrix A_local = A;
+      SparseMatrix A = new(m, n + 1);
 
       Equations.ForEach(r1 => r1.Value.ForEach(
         r2 =>
         {
-          A_local.Set(r1.Key, r2.Key, new RationalNumber(r2.Value));
+          A.Set(r1.Key, r2.Key, new RationalNumber(r2.Value));
         }));
 
       VectorB.ForEach(r =>
       {
-        A_local.Set(r.Key, n, new RationalNumber(r.Value.Value));
+        A.Set(r.Key, n, new RationalNumber(r.Value.Value));
       });
+
+      return A;
     }
 
     public String GetLinProgQuery()

@@ -87,7 +87,6 @@ namespace MTExtDefinitions.v2
     private readonly int inputLength;
     private int[] input;
 
-    private int frameLength;
     private int frameStart1;
     private int frameStart2;
     private int frameStart3;
@@ -108,7 +107,6 @@ namespace MTExtDefinitions.v2
       input = new int[inputLength];
       input[0] = 1;
 
-      frameLength = IF_NDTM.FrameLength(inputLength);
       frameStart1 = IF_NDTM.FrameStart1(inputLength);
       frameStart2 = IF_NDTM.FrameStart2(inputLength);
       frameStart3 = IF_NDTM.FrameStart3(inputLength);

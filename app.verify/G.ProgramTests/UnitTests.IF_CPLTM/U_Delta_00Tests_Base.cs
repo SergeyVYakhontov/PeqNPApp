@@ -50,7 +50,7 @@ namespace UnitTests
       frameEnd4 = MTExtDefinitions.v2.IF_NDTM.FrameEnd4(inputLength);
     }
 
-    protected void ResetNinjectKernel()
+    protected static void ResetNinjectKernel()
     {
       Core.AppContext.UnloadConfigurationModule();
     }

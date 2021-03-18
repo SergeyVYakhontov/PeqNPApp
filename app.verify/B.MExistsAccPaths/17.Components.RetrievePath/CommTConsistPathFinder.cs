@@ -58,15 +58,14 @@ namespace ExistsAcceptingPath
         DAGNode initNode = meapContext.TArbSeqCFG.NodeEnumeration[initNodeId];
         processedNodes.Add(initNodeId);
 
-        DAG.FindPath_Greedy(
+        (List<long> tConsistPath, bool KPathFound) = DAG.FindPath_Greedy(
           initNode,
           meapContext.TArbSeqCFG.t,
           GraphDirection.Forward,
           u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id),
           d => NodeInChain(d.ToNode),
           u => processedNodes.Add(u.Id),
-          (_) => { },
-          out List<long> tConsistPath, out bool KPathFound);
+          (_) => { });
 
         if (KPathFound)
         {
@@ -95,15 +94,14 @@ namespace ExistsAcceptingPath
       GraphTConZetaBuilder gtczBuilder = new(meapContext);
       TypedDAG<GTCZNodeInfo, StdEdgeInfo> gtcz = gtczBuilder.Run(tapeSegContext.KSetZetaSubset.First().Value);
 
-      DAG.FindPath_Greedy(
+      (List<long> tConsistPath, bool KPathFound) = DAG.FindPath_Greedy(
          gtcz.s,
         gtcz.t,
         GraphDirection.Forward,
         u => !tapeSegContext.TArbSeqCFGUnusedNodes.Contains(u.Id),
         _ => true,
         _ => { },
-        _ => { },
-        out List<long> tConsistPath, out bool KPathFound);
+        _ => { });
 
       tapeSegContext.TapeSegTConsistPath = new List<long>(tConsistPath);
       tapeSegContext.TapeSegPathFound = KPathFound;

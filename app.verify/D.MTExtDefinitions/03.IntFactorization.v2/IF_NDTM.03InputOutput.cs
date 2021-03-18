@@ -33,18 +33,14 @@ namespace MTExtDefinitions.v2
         GetRTapeBound(0, (uint)input.Length));
     }
 
-    public static void RetrieveFactors(
-      int inputLength,
-      int[] factorsString,
-      out int[] factorX,
-      out int[] factorY)
+    public static (int[], int[]) RetrieveFactors(int inputLength, int[] factorsString)
     {
       int frameLength = FrameLength(inputLength);
 
       long i1 = 1 + frameLength + 1;
       long j1 = Array.IndexOf(factorsString, blankSymbol, (int)i1);
 
-      factorX = AppHelper.CreateSubArray(factorsString, i1, j1 - i1);
+      int[] factorX = AppHelper.CreateSubArray(factorsString, i1, j1 - i1);
 
       AppHelper.ReplaceInArray(factorX, markB0, 0, (int a, int b) => (a == b));
       AppHelper.ReplaceInArray(factorX, markB1, 1, (int a, int b) => (a == b));
@@ -52,10 +48,12 @@ namespace MTExtDefinitions.v2
       long i2 = 1 + (2 * frameLength) + 1;
       long j2 = Array.IndexOf(factorsString, blankSymbol, (int)i2);
 
-      factorY = AppHelper.CreateSubArray(factorsString, i2, j2 - i2);
+      int[] factorY = AppHelper.CreateSubArray(factorsString, i2, j2 - i2);
 
       AppHelper.ReplaceInArray(factorY, markC0, 0, (int a, int b) => (a == b));
       AppHelper.ReplaceInArray(factorY, markC1, 1, (int a, int b) => (a == b));
+
+      return (factorX, factorY);
     }
 
     #endregion

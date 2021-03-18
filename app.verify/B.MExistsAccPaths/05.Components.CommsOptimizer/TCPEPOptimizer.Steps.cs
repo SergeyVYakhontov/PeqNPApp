@@ -56,7 +56,6 @@ namespace ExistsAcceptingPath
         meapContext,
         tapeSegContext,
         commoditiesSubset,
-        totalExcludedComms,
         nodesCoverageKeeper);
 
       commoditiesSelector = new CommoditiesSelector(meapContext, tapeSegContext);

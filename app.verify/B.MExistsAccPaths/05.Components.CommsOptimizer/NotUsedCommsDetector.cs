@@ -21,13 +21,11 @@ namespace ExistsAcceptingPath
       MEAPContext meapContext,
       TapeSegContext tapeSegContext,
       SortedDictionary<long, Commodity> commoditiesSubset,
-      SortedSet<long> totalExcludedComms,
       NodesCoverageKeeper nodesCoverageKeeper)
     {
       this.meapContext = meapContext;
       this.tapeSegContext = tapeSegContext;
       this.commoditiesSubset = commoditiesSubset;
-      this.totalExcludedComms = totalExcludedComms;
       this.nodesCoverageKeeper = nodesCoverageKeeper;
     }
 
@@ -264,7 +262,6 @@ namespace ExistsAcceptingPath
     private readonly TapeSegContext tapeSegContext;
 
     private readonly SortedDictionary<long, Commodity> commoditiesSubset;
-    private readonly SortedSet<long> totalExcludedComms;
 
     private readonly NodesCoverageKeeper nodesCoverageKeeper;
 

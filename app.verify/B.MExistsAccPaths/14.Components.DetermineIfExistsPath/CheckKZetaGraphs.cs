@@ -37,8 +37,6 @@ namespace ExistsAcceptingPath
       tapeSegContext.KSetZetaSubset.Select(p => p.Value).ToList()
         .ForEach(e => e.ForEach(c => commoditiesSubset[c] =
           meapContext.Commodities[c]));
-
-      totalCommoditiesCount = commoditiesSubset.Count;
     }
 
     public void Run()
@@ -55,7 +53,6 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private SortedDictionary<long, Commodity> commoditiesSubset;
-    private long totalCommoditiesCount;
 
     private SortedSet<long> FindUsedSubgraph(SortedSet<long> usedNodes)
     {

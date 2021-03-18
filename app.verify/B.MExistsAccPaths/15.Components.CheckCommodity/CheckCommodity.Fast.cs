@@ -53,8 +53,7 @@ namespace ExistsAcceptingPath
       tcpeLinProgBuilder.CreateTCPEPLinProgEqsSet();
       AddCommodityCheckEquation();
 
-      linEquationContext.TCPELinProgMatrix.GetLinEqSetMatrixFast(out long[][] A_p, out long[][] A_q);
-
+      (long[][] A_p, long[][] A_q) = linEquationContext.TCPELinProgMatrix.GetLinEqSetMatrixFast();
       LinEqSetSolverPtrs linEqSetSolver = new(A_p, A_q);
 
       return linEqSetSolver.IfSolutionExists();

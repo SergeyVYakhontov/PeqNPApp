@@ -96,8 +96,8 @@ namespace Core
           }
         }
 
-        AppHelper.SwapElems(ref A_p[k], ref A_p[i_max]);
-        AppHelper.SwapElems(ref A_q[k], ref A_q[i_max]);
+        (A_p[k], A_p[i_max]) = (A_p[i_max], A_p[k]);
+        (A_q[k], A_q[i_max]) = (A_q[i_max], A_q[k]);
 
         long[] Mkp = A_p[k];
         long[] Mkq = A_q[k];
@@ -165,7 +165,7 @@ namespace Core
                       t_p = (t_p * Mij_q) - (Mij_p * t_q);
                       t_q = Mij_q * t_q;
 
-                      RationalNumber.Normalize(ref t_p, ref t_q);
+                      (t_p, t_q) = RationalNumber.Normalize(t_p, t_q);
 
                       *Mi_p_ptr = t_p;
                       *Mi_q_ptr = t_q;
