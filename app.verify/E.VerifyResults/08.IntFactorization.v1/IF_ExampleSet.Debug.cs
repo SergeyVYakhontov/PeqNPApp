@@ -18,8 +18,7 @@ namespace VerifyResults.v1
 
     public override List<IExample> GetSmallExamples()
     {
-      List<IExample> exampleForDebug =
-        new List<IExample>
+      List<IExample> exampleForDebug = new()
         {
           new IF_Example
           {

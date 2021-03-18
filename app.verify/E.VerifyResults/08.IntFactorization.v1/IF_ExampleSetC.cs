@@ -23,8 +23,7 @@ namespace VerifyResults.v1
 
     public override List<IExample> GetLargeExamples()
     {
-      List<IExample> largeExamples =
-        new List<IExample>
+      List<IExample> largeExamples = new()
         {
           new IF_Example
           {

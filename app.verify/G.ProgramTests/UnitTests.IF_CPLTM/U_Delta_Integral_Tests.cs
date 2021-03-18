@@ -35,13 +35,13 @@ namespace UnitTests
       int[] input = new int[] {  1, 0, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 52) + 4;
@@ -65,13 +65,13 @@ namespace UnitTests
       int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 68) + 4;
@@ -95,13 +95,13 @@ namespace UnitTests
       int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 126) + 3;
@@ -125,13 +125,13 @@ namespace UnitTests
       int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 304) + 4;
@@ -155,13 +155,13 @@ namespace UnitTests
       int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 340) + 4;
@@ -185,13 +185,13 @@ namespace UnitTests
       int[] input = new int[] { 1, 0, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 320) + 4;
@@ -215,13 +215,13 @@ namespace UnitTests
       int[] input = new int[] { 1, 1, 0 }.Reverse().ToArray();
       Setup(input.Length);
 
-      MTExtDefinitions.v2.IF_NDTM tm = new MTExtDefinitions.v2.IF_NDTM(input.Length);
+      MTExtDefinitions.v2.IF_NDTM tm = new(input.Length);
       tm.Setup();
 
-      TMInstance tmInstance = new TMInstance(tm, input);
+      TMInstance tmInstance = new(tm, input);
       tm.PrepareTapeFwd(input, tmInstance);
 
-      DetermStepsEmulator determStepsEmulator = new DetermStepsEmulator(tm.Delta, tmInstance);
+      DetermStepsEmulator determStepsEmulator = new(tm.Delta, tmInstance);
       determStepsEmulator.SetupConfiguration(1, tm.qStart);
 
       uint stepsNum = ((uint)frameLength * 340) + 4;

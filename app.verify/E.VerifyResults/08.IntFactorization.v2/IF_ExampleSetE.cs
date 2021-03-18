@@ -18,8 +18,7 @@ namespace VerifyResults.v2
 
     public override List<IExample> GetSmallExamples()
     {
-      List<IExample> smallExamples =
-        new List<IExample>
+      List<IExample> smallExamples = new()
         {
           new IF_Example
           {
@@ -41,8 +40,7 @@ namespace VerifyResults.v2
 
     public override List<IExample> GetLargeExamples()
     {
-      List<IExample> largeExamples =
-        new List<IExample>
+      List<IExample> largeExamples = new()
         {
           new IF_Example
           {

@@ -36,7 +36,7 @@ namespace VerifyResults
     public static byte[] BigIntegerToBitArray(in BigInteger bigInteger)
     {
       byte[] byteArray = bigInteger.ToByteArray();
-      List<byte> bitList = new List<byte>();
+      List<byte> bitList = new();
 
       for (long i = 0; i < byteArray.Length; i++)
       {

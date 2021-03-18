@@ -31,11 +31,7 @@ namespace VerifyResults
 
     public bool Decide(int[] input)
     {
-      MExistsAcceptingPathCtorArgs mExistsAcceptingPathCtorArgs =
-        new MExistsAcceptingPathCtorArgs
-          {
-            tMachine = tm
-          };
+      MExistsAcceptingPathCtorArgs mExistsAcceptingPathCtorArgs = new() { tMachine = tm };
 
       mExistAcceptingPaths = configuration.Get<IMExistsAcceptingPath>(
         new Ninject.Parameters.ConstructorArgument(

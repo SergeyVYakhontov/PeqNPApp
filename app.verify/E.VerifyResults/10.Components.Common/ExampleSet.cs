@@ -73,8 +73,8 @@ namespace VerifyResults
         log.Info(currentExample.Name);
 
         IList<IRunnable> runnables = currentExample.GetRunnables();
-        List<bool> decideOutputs = new List<bool>();
-        List<int[]> computeOutputs = new List<int[]>();
+        List<bool> decideOutputs = new();
+        List<int[]> computeOutputs = new();
 
         while (runnables.Any())
         {

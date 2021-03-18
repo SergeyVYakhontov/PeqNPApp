@@ -16,7 +16,7 @@ namespace VerifyResults
   {
     #region public members
 
-    public static readonly Random RandNumber = new Random(0);
+    public static readonly Random RandNumber = new(0);
 
     public static int[] ProduceRandomArray(int alphabetSize, int length)
     {
