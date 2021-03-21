@@ -21,8 +21,8 @@ namespace Core
 
     #region public members
 
-    public SortedDictionary<long, NodeType> IdToNodeInfoMap { get; private set; }
-    public SortedDictionary<long, EdgeType> IdToEdgeInfoMap { get; }
+    public SortedDictionary<long, NodeType> IdToNodeInfoMap { get; private set; } = new();
+    public SortedDictionary<long, EdgeType> IdToEdgeInfoMap { get; } = new();
 
     public void CopyIdToNodeInfoMap(SortedDictionary<long, NodeType> from)
     {

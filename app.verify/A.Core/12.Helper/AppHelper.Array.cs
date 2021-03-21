@@ -70,6 +70,7 @@ namespace Core
     }
 
     public static string ArrayToString<T>(T[] objectArray)
+      where T: notnull
     {
       StringBuilder repr = new();
       const ulong maxLength = 128;

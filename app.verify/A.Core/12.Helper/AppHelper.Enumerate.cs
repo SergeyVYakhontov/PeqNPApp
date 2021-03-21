@@ -49,6 +49,7 @@ namespace Core
     public static void ForEach<KeyType, ItemType>(
       this SortedDictionary<KeyType, ItemType>.ValueCollection valueCollection,
       Action<ItemType> action)
+      where KeyType: notnull
     {
       SortedDictionary<KeyType, ItemType>.ValueCollection.Enumerator enumerator =
         valueCollection.GetEnumerator();

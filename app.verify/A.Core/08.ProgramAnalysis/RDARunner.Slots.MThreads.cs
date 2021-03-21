@@ -29,7 +29,7 @@ namespace Core
     #region public members
 
     public long Id { get; }
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
 
     public bool Done { get; private set; }
 
@@ -108,17 +108,18 @@ namespace Core
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private ReachDefAnalysisContext rdaContext;
-    private SortedSet<long> vars;
-    private SortedSet<long> varNodes;
-    private SortedDictionary<long, SortedSet<long>> nodeVLevels;
+    [NotNull]
+    private ReachDefAnalysisContext? rdaContext;
+    private SortedSet<long> vars = new();
+    private SortedSet<long> varNodes = new();
+    private SortedDictionary<long, SortedSet<long>> nodeVLevels = new();
     private long currentLevel;
-    private SortedDictionary<long, SortedSet<DefUsePair>> defUsePairSet;
+    private SortedDictionary<long, SortedSet<DefUsePair>> defUsePairSet = new();
 
     private readonly SortedSet<long> nodesToProcess = new();
     private readonly SortedSet<long> slotBitSet = new();
-    private SortedDictionary<long, long> fBits;
-    private SortedDictionary<long, long> bBits;
+    private SortedDictionary<long, long> fBits = new();
+    private SortedDictionary<long, long> bBits = new();
 
     private readonly SortedDictionary<long, IBitVector> varToDEFSVectorMap = new();
 
@@ -145,7 +146,7 @@ namespace Core
     {
       foreach (long nodeId in varNodes)
       {
-        rdaContext.NodeToDefsSet.TryGetValue(nodeId, out List<long> defs);
+        rdaContext.NodeToDefsSet.TryGetValue(nodeId, out List<long>? defs);
         Ensure.That(defs).IsNotNull();
 
         foreach (long def in defs!)

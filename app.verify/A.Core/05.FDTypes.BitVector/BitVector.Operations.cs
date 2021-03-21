@@ -21,7 +21,7 @@ namespace Core
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      Ensure.That(v1!.Size).Is(v2!.Size);
+      Ensure.That(v1.Size).Is(v2.Size);
 
       BitVector result = new(v1.Size);
 
@@ -35,15 +35,15 @@ namespace Core
 
     public IBitVector BitwiseAnd(IBitVector x, IBitVector y)
     {
-      BitVector v1 = x as BitVector;
-      BitVector v2 = y as BitVector;
+      BitVector v1 = (BitVector)x;
+      BitVector v2 = (BitVector)y;
 
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      Ensure.That(x.Size).Is(v2!.Size);
+      Ensure.That(x.Size).Is(v2.Size);
 
-      BitVector result = new(v1!.Size);
+      BitVector result = new(v1.Size);
 
       for (ulong i = 0; i < (ulong)v1.items.Length; i++)
       {
@@ -55,13 +55,13 @@ namespace Core
 
     public IBitVector BitwiseOr(IBitVector x, IBitVector y)
     {
-      BitVector v1 = x as BitVector;
-      BitVector v2 = y as BitVector;
+      BitVector v1 = (BitVector)x;
+      BitVector v2 = (BitVector)y;
 
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      Ensure.That(v1!.Size).Is(v2!.Size);
+      Ensure.That(v1.Size).Is(v2.Size);
 
       BitVector result = new(v1.Size);
 

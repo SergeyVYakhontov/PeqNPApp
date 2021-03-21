@@ -28,11 +28,11 @@ namespace Core
 
     public long Id { get; }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
       Ensure.That(obj).IsNotNull();
 
-      StdEdgeInfo other = (StdEdgeInfo)obj;
+      StdEdgeInfo other = (StdEdgeInfo)obj!;
 
       return this == other;
     }

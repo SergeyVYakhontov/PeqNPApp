@@ -32,7 +32,7 @@ namespace Core
 
         foreach (long vNodeId in currentLevelNodes.Value)
         {
-          if(nodeEnumeration.TryGetValue(vNodeId, out DAGNode vNode))
+          if(nodeEnumeration.TryGetValue(vNodeId, out DAGNode? vNode))
           {
             nodeAction(vNode);
           }

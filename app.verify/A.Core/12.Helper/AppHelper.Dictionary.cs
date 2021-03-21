@@ -18,6 +18,7 @@ namespace Core
       SortedDictionary<KeyType, ItemType> dictionary,
       KeyType key,
       Func<ItemType> itemFunc)
+      where KeyType: notnull
     {
       if (dictionary.ContainsKey(key))
       {
@@ -32,8 +33,9 @@ namespace Core
       IDictionary<KeyType, ItemType> dictionary,
       KeyType key,
       Func<ItemType> itemFunc)
+      where KeyType: notnull
     {
-      if (dictionary.TryGetValue(key, out ItemType item))
+      if (dictionary.TryGetValue(key, out ItemType? item))
       {
         return item;
       }
@@ -65,7 +67,7 @@ namespace Core
 
       with.ToList().ForEach(e =>
         {
-          if (d.TryGetValue(e.Key, out List<T2> value))
+          if (d.TryGetValue(e.Key, out List<T2>? value))
           {
             d[e.Key].AddRange(e.Value);
 

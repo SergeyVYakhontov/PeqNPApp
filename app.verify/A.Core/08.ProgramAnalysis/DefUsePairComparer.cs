@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Ninject;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,9 +16,9 @@ namespace Core
   {
     #region public members
 
-    public int Compare(DefUsePair x, DefUsePair y)
+    public int Compare(DefUsePair? x, DefUsePair? y)
     {
-      if (x.Variable < y.Variable)
+      if (x!.Variable < y!.Variable)
       {
         return -1;
       }

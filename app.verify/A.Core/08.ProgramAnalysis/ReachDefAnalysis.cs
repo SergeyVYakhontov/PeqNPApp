@@ -27,8 +27,8 @@ namespace Core
 
     #region public members
 
-    public string Name { get; }
-    public List<DefUsePair> DefUsePairSet { get; private set; }
+    public string Name { get; } = string.Empty;
+    public List<DefUsePair> DefUsePairSet { get; private set; } = new();
 
     public void Run()
     {

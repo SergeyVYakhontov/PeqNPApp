@@ -27,8 +27,9 @@ namespace Core
 
     #region public members
 
-    public string Name { get; }
-    public SortedDictionary<long, SortedSet<DefUsePair>> DefUsePairSet { get; private set; }
+    public string Name { get; } = string.Empty;
+    public SortedDictionary<long, SortedSet<DefUsePair>>
+      DefUsePairSet { get; private set; } = new();
 
     public void Run(
       SortedDictionary<long, SortedSet<long>> varToVarNodes,
@@ -125,7 +126,7 @@ namespace Core
           rdaRunnersList,
           slotsMThRDAProcessCount,
           WaitMethod.WaitAll,
-          _ => null
+          _ => default!
         );
       rdaSetRunner.Run();
     }

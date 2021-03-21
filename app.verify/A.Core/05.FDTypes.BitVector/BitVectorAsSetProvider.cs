@@ -22,7 +22,7 @@ namespace Core
 
     public IBitVector CreateVector(IBitVector v)
     {
-      return new BitVectorAsSet(v as BitVectorAsSet);
+      return new BitVectorAsSet((BitVectorAsSet)v);
     }
 
     #endregion

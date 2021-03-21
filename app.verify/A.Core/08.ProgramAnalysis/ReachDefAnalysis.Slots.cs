@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Ninject;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,8 +33,8 @@ namespace Core
 
     #region public members
 
-    public string Name { get; }
-    public List<DefUsePair> DefUsePairSet { get; private set; }
+    public string Name { get; } = string.Empty;
+    public List<DefUsePair> DefUsePairSet { get; private set; } = new();
 
     public void Run()
     {
@@ -109,10 +110,12 @@ namespace Core
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private readonly ReachDefAnalysisContext rdaContext;
-    private readonly SortedDictionary<long, SortedSet<long>> nodeVLevels;
+    private readonly SortedDictionary<long, SortedSet<long>> nodeVLevels = new();
 
     private long slotMaxSize;
-    private LongSegment slot;
+
+    [NotNull]
+    private LongSegment? slot;
 
     private readonly SortedDictionary<long, IBitVector> varToDEFSVectorMap = new();
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Ninject;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,16 +29,19 @@ namespace Core
     {
       kernelConfiguration.Dispose();
 
-      kernelConfiguration = null;
-      configuration = null;
+      kernelConfiguration = default!;
+      configuration = default!;
     }
 
     #endregion
 
     #region private members
 
-    private static KernelConfiguration kernelConfiguration;
-    private static IReadOnlyKernel configuration;
+    [NotNull]
+    private static KernelConfiguration? kernelConfiguration;
+
+    [NotNull]
+    private static IReadOnlyKernel? configuration;
 
     #endregion
   }

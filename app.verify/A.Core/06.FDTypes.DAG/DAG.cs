@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Ninject;
 using EnsureThat;
 
@@ -27,6 +28,7 @@ namespace Core
 
       this.NodeEnumeration = new SortedDictionary<long, DAGNode>();
       this.EdgeEnumeration = new SortedDictionary<long, DAGEdge>();
+
       this.NodePairEnumeration =
         new SortedDictionary<KeyValuePair<long, long>, DAGEdge>(
           new KeyValueComparer());
@@ -36,17 +38,22 @@ namespace Core
 
     #region public members
 
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
 
-    public List<DAGNode> Nodes { get; }
-    public List<DAGEdge> Edges { get; }
+    public List<DAGNode> Nodes { get; } = new();
+    public List<DAGEdge> Edges { get; } = new();
 
-    public DAGNode s { get; private set; }
-    public DAGNode t { get; private set; }
+    [NotNull]
+    public DAGNode? s { get; private set; }
+    [NotNull]
+    public DAGNode? t { get; private set; }
 
-    public SortedDictionary<long, DAGNode> NodeEnumeration { get; private set; }
-    public SortedDictionary<long, DAGEdge> EdgeEnumeration { get; private set; }
-    public SortedDictionary<KeyValuePair<long, long>, DAGEdge> NodePairEnumeration { get; private set; }
+    public SortedDictionary<long, DAGNode>
+      NodeEnumeration { get; private set; } = new();
+    public SortedDictionary<long, DAGEdge>
+      EdgeEnumeration { get; private set; } = new();
+    public SortedDictionary<KeyValuePair<long, long>, DAGEdge>
+      NodePairEnumeration { get; private set; } = new();
 
     public void AddNode(DAGNode node)
     {
