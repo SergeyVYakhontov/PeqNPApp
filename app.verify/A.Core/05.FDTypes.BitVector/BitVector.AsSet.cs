@@ -77,12 +77,13 @@ namespace Core
       return !bits.Any();
     }
 
-    public override bool Equals(Object obj)
+    public override bool Equals(Object? obj)
     {
-      BitVectorAsSet v = obj as BitVectorAsSet;
+      BitVectorAsSet v = (BitVectorAsSet)obj!;
+
       Ensure.That(v).IsNotNull();
 
-      return bits.SetEquals(v!.bits);
+      return bits.SetEquals(v.bits);
     }
 
     public override int GetHashCode()

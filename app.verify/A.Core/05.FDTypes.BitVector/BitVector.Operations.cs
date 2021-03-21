@@ -15,8 +15,8 @@ namespace Core
   {
     public IBitVector BitwiseSubtract(IBitVector x, IBitVector y)
     {
-      BitVector v1 = x as BitVector;
-      BitVector v2 = y as BitVector;
+      BitVector v1 = (BitVector)x;
+      BitVector v2 = (BitVector)y;
 
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();

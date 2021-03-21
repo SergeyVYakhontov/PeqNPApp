@@ -15,7 +15,7 @@ namespace Core
   {
     public void BitwiseSubtract(IBitVector u)
     {
-      BitVectorAsSet v = u as BitVectorAsSet;
+      BitVectorAsSet v = (BitVectorAsSet)u;
       Ensure.That(v).IsNotNull();
 
       foreach (ulong b in v!.bits)
@@ -26,7 +26,7 @@ namespace Core
 
     public void BitwiseOr(IBitVector u)
     {
-      BitVectorAsSet v = u as BitVectorAsSet;
+      BitVectorAsSet v = (BitVectorAsSet)u;
       Ensure.That(v).IsNotNull();
 
       foreach (ulong b in v!.bits)

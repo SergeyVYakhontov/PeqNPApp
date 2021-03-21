@@ -130,12 +130,12 @@ namespace Core
       return items.All(p => p == 0);
     }
 
-    public override bool Equals(Object obj)
+    public override bool Equals(Object? obj)
     {
-      BitVectorAlloc v = obj as BitVectorAlloc;
-      Ensure.That(v).IsNotNull();
+      BitVectorAlloc v = (BitVectorAlloc)obj!;
 
-      Ensure.That(Size).Is(v!.Size);
+      Ensure.That(v).IsNotNull();
+      Ensure.That(Size).Is(v.Size);
 
       if (!allocated && !v.allocated)
       {
@@ -180,7 +180,7 @@ namespace Core
 
     private bool allocated;
     private readonly ulong wordCount;
-    private UInt64[] items;
+    private UInt64[] items = Array.Empty<UInt64>();
 
     private void InitBits()
     {
@@ -210,7 +210,7 @@ namespace Core
         return;
       }
 
-      items = null;
+      items = Array.Empty<UInt64>();
       allocated = false;
     }
 

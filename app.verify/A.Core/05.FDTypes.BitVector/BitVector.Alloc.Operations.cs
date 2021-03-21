@@ -15,13 +15,13 @@ namespace Core
   {
     public IBitVector BitwiseSubtract(IBitVector x, IBitVector y)
     {
-      BitVectorAlloc v1 = x as BitVectorAlloc;
-      BitVectorAlloc v2 = y as BitVectorAlloc;
+      BitVectorAlloc v1 = (BitVectorAlloc)x;
+      BitVectorAlloc v2 = (BitVectorAlloc)y;
 
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      Ensure.That(v1!.Size).Is(v2!.Size);
+      Ensure.That(v1.Size).Is(v2.Size);
 
       BitVectorAlloc result = new(v1.Size);
 
@@ -81,13 +81,13 @@ namespace Core
 
     public IBitVector BitwiseAnd(IBitVector x, IBitVector y)
     {
-      BitVectorAlloc v1 = x as BitVectorAlloc;
-      BitVectorAlloc v2 = y as BitVectorAlloc;
+      BitVectorAlloc v1 = (BitVectorAlloc)x;
+      BitVectorAlloc v2 = (BitVectorAlloc)y;
 
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      Ensure.That(v1!.Size).Is(v2!.Size);
+      Ensure.That(v1.Size).Is(v2.Size);
 
       BitVectorAlloc result = new(v1.Size);
 
@@ -147,13 +147,13 @@ namespace Core
 
     public IBitVector BitwiseOr(IBitVector x, IBitVector y)
     {
-      BitVectorAlloc v1 = x as BitVectorAlloc;
-      BitVectorAlloc v2 = y as BitVectorAlloc;
+      BitVectorAlloc v1 = (BitVectorAlloc)x;
+      BitVectorAlloc v2 = (BitVectorAlloc)y;
 
       Ensure.That(v1).IsNotNull();
       Ensure.That(v2).IsNotNull();
 
-      Ensure.That(v1!.Size).Is(v2!.Size);
+      Ensure.That(v1.Size).Is(v2.Size);
 
       BitVectorAlloc result = new(v1.Size);
 

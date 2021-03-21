@@ -7,7 +7,7 @@
     <ApplicationIcon></ApplicationIcon>
     <Win32Resource />
     <StartupObject />
-    <Nullable>warnings</Nullable>
+    <Nullable>Enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -109,12 +109,12 @@ namespace Core
       return items.All(p => p == 0);
     }
 
-    public override bool Equals(Object obj)
+    public override bool Equals(Object? obj)
     {
-      BitVector v = obj as BitVector;
-      Ensure.That(v).IsNotNull();
+      BitVector v = (BitVector)obj!;
 
-      Ensure.That(Size).Is(v!.Size);
+      Ensure.That(v).IsNotNull();
+      Ensure.That(Size).Is(v.Size);
 
       return items.SequenceEqual(v.items);
     }
@@ -142,7 +142,7 @@ namespace Core
 
     private const byte wordSize = sizeof(UInt64);
     private readonly ulong wordCount;
-    private readonly UInt64[] items;
+    private readonly UInt64[] items = Array.Empty<UInt64>();
 
     private void InitBits()
     {

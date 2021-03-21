@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
-    <Nullable>warnings</Nullable>
+    <Nullable>Enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
