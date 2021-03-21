@@ -85,18 +85,18 @@ namespace MTExtDefinitions.v2
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private readonly int inputLength;
-    private int[] input;
+    private int[] input = Array.Empty<int>();
 
     private int frameStart1;
     private int frameStart2;
     private int frameStart3;
     private int frameEnd4;
 
-    private IF_NDTM tm;
-    private TMInstance tmInstance;
+    private IF_NDTM tm = default!;
+    private TMInstance tmInstance = default!;
 
     private readonly Dictionary<int, byte> indexMap = new();
-    private DetermStepsEmulator determStepsEmulator;
+    private DetermStepsEmulator determStepsEmulator = default!;
 
     private readonly List<long> kTapeSequence = new();
     private readonly List<long> kTapeLRSubseq = new();

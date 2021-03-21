@@ -49,11 +49,11 @@ namespace VerifyResults
 
     private readonly IReadOnlyKernel configuration;
 
-    private readonly OneTapeTuringMachine tm;
-    private IMExistsAcceptingPath mExistAcceptingPaths;
+    private readonly OneTapeTuringMachine tm = default!;
+    private IMExistsAcceptingPath mExistAcceptingPaths = default!;
 
     private bool pathExists;
-    private int[] output;
+    private int[] output = Array.Empty<int>();
 
     #endregion
   }

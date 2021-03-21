@@ -35,7 +35,7 @@ namespace VerifyResults
 
     #region private members
 
-    private UPLDR_DVN dvn;
+    private UPLDR_DVN dvn = default!;
 
     #endregion
   }

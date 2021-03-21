@@ -20,7 +20,7 @@ namespace VerifyResults.v1
   {
     #region public members
 
-    public override string Name { get; set; }
+    public override string Name { get; set; } = string.Empty;
 
     public override ICheckAlgorithm GetCheckAlgorithm()
     {

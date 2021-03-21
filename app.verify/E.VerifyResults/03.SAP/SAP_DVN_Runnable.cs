@@ -36,7 +36,7 @@ namespace VerifyResults
 
     #region private members
 
-    private SAP_DVN dvn;
+    private SAP_DVN dvn = default!;
 
     #endregion
   }

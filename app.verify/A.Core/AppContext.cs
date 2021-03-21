@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Diagnostics.CodeAnalysis;
 using Ninject;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,11 +36,9 @@ namespace Core
 
     #region private members
 
-    [NotNull]
-    private static KernelConfiguration? kernelConfiguration;
+    private static KernelConfiguration kernelConfiguration = default!;
 
-    [NotNull]
-    private static IReadOnlyKernel? configuration;
+    private static IReadOnlyKernel configuration = default!;
 
     #endregion
   }

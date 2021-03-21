@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Diagnostics.CodeAnalysis;
 using Ninject;
 using EnsureThat;
 
@@ -108,8 +107,7 @@ namespace Core
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    [NotNull]
-    private ReachDefAnalysisContext? rdaContext;
+    private ReachDefAnalysisContext rdaContext = default!;
     private SortedSet<long> vars = new();
     private SortedSet<long> varNodes = new();
     private SortedDictionary<long, SortedSet<long>> nodeVLevels = new();

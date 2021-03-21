@@ -41,7 +41,7 @@ namespace VerifyResults.v2
 
     #region private members
 
-    private IF_MEAP meap;
+    private IF_MEAP meap = default!;
 
     #endregion
   }

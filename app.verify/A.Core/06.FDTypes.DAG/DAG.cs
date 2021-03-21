@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Diagnostics.CodeAnalysis;
 using Ninject;
 using EnsureThat;
 
@@ -43,10 +42,8 @@ namespace Core
     public List<DAGNode> Nodes { get; } = new();
     public List<DAGEdge> Edges { get; } = new();
 
-    [NotNull]
-    public DAGNode? s { get; private set; }
-    [NotNull]
-    public DAGNode? t { get; private set; }
+    public DAGNode s { get; private set; } = default!;
+    public DAGNode t { get; private set; } = default!;
 
     public SortedDictionary<long, DAGNode>
       NodeEnumeration { get; private set; } = new();

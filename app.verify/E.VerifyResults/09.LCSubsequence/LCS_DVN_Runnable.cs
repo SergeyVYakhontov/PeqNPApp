@@ -36,7 +36,7 @@ namespace VerifyResults
 
     #region private members
 
-    private LCS_DVN dvn;
+    private LCS_DVN dvn = default!;
 
     #endregion
   }

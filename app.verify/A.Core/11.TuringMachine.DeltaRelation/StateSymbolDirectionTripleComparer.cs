@@ -14,9 +14,9 @@ namespace Core
   {
     #region public members
 
-    public int Compare(StateSymbolDirectionTriple x, StateSymbolDirectionTriple y)
+    public int Compare(StateSymbolDirectionTriple? x, StateSymbolDirectionTriple? y)
     {
-      if (x.State < y.State)
+      if (x!.State < y!.State)
       {
         return -1;
       }

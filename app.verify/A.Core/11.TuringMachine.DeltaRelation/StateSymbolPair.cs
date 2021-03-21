@@ -27,9 +27,9 @@ namespace Core
     public uint State { get; }
     public int Symbol { get; }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-      StateSymbolPair toCompare = (StateSymbolPair)obj;
+      StateSymbolPair toCompare = (StateSymbolPair)obj!;
 
       return this == toCompare;
     }

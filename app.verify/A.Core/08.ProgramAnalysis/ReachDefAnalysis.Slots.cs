@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Diagnostics.CodeAnalysis;
 using Ninject;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,8 +113,7 @@ namespace Core
 
     private long slotMaxSize;
 
-    [NotNull]
-    private LongSegment? slot;
+    private LongSegment slot = default!;
 
     private readonly SortedDictionary<long, IBitVector> varToDEFSVectorMap = new();
 

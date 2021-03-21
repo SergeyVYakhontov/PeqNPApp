@@ -58,7 +58,7 @@ namespace VerifyResults.v1
     public ExampleSet IF_ExampleSetD
       => new IF_ExampleSetD { Name = "08_IF_ES3" };
     public ExampleSet IF_ExampleSetE
-      => null;
+      =>  default!;
 
     // Longest Common Subsequence
     public ExampleSet LCS_ExampleSet

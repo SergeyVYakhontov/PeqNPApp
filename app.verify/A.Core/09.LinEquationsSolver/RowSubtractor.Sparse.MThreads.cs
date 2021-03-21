@@ -38,7 +38,7 @@ namespace Core
 
     #region public members
 
-    public SparseMatrix A { get; set; }
+    public SparseMatrix A { get; set; } = default!;
 
     public long rowIndex { get; set; }
 
@@ -46,8 +46,8 @@ namespace Core
     public long n { get; set; }
     public long p { get; set; }
 
-    public SortedDictionary<long, RationalNumber> Mk { get; set; }
-    public RationalNumber Mkp { get; set; }
+    public SortedDictionary<long, RationalNumber> Mk { get; set; } = new();
+    public RationalNumber Mkp { get; set; } = default!;
 
     public bool Done { get; }
 

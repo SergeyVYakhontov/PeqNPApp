@@ -36,7 +36,7 @@ namespace VerifyResults
 
     #region private members
 
-    private Lang01_DVN dvn;
+    private Lang01_DVN dvn = default!;
 
     #endregion
   }

@@ -16,9 +16,9 @@ namespace Core
     public void BitwiseSubtract(IBitVector u)
     {
       BitVectorAlloc v = (BitVectorAlloc)u;
-      Ensure.That(v).IsNotNull();
 
-      Ensure.That(Size).Is(v!.Size);
+      Ensure.That(v).IsNotNull();
+      Ensure.That(Size).Is(v.Size);
 
       if (!allocated && !v.allocated)
       {
@@ -135,7 +135,7 @@ namespace Core
       BitVectorAlloc v = (BitVectorAlloc)u;
 
       Ensure.That(v).IsNotNull();
-      Ensure.That(Size).Is(v!.Size);
+      Ensure.That(Size).Is(v.Size);
 
       if (!allocated && !v.allocated)
       {

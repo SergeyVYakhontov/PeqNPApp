@@ -17,7 +17,7 @@ namespace VerifyResults.v1
   {
     #region private members
 
-    private IF_DVN dvn;
+    private IF_DVN dvn = default!;
 
     #endregion
 

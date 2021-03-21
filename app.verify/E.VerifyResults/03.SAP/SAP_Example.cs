@@ -15,9 +15,9 @@ namespace VerifyResults
   {
     #region public members
 
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    public int[] Input { get; set; }
+    public int[] Input { get; set; } = Array.Empty<int>();
 
     public IList<IRunnable> GetRunnables()
     {

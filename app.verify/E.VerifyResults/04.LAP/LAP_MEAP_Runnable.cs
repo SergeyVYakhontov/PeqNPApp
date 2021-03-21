@@ -40,7 +40,7 @@ namespace VerifyResults
 
     #region privare members
 
-    private LAP_MEAP meap;
+    private LAP_MEAP meap = default!;
 
     #endregion
   }

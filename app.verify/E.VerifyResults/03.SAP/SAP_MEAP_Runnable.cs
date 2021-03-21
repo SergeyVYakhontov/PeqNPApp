@@ -40,7 +40,7 @@ namespace VerifyResults
 
     #region private members
 
-    private SAP_MEAP meap;
+    private SAP_MEAP meap = default!;
 
     #endregion
   }

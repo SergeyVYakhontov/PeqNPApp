@@ -24,16 +24,16 @@ namespace Core
 
     #region public members
 
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
 
-    public uint[] Q { get; protected set; }
-    public int[] Gamma { get; protected set; }
+    public uint[] Q { get; protected set; } = Array.Empty<uint>();
+    public int[] Gamma { get; protected set; } = Array.Empty<int>();
     public const int blankSymbol = -1;
-    public int[] Sigma { get; protected set; }
+    public int[] Sigma { get; protected set; } = Array.Empty<int>();
     public Dictionary<StateSymbolPair, List<StateSymbolDirectionTriple>> Delta
-      { get; protected set; }
+      { get; protected set; } = new();
     public uint qStart { get; protected set; }
-    public uint[] F { get; protected set; }
+    public uint[] F { get; protected set; } = Array.Empty<uint>();
 
     public bool Accepted { get; private set; }
 
@@ -51,7 +51,7 @@ namespace Core
     public virtual long GetRTapeBound(ulong mu, ulong n) => 1 + (long)mu;
     public virtual ulong ExpectedPathLength(ulong n) => n;
 
-    public virtual SortedDictionary<long, SortedSet<int>> UsedTapeSymbols { get; set; }
+    public virtual SortedDictionary<long, SortedSet<int>> UsedTapeSymbols { get; set; } = new();
 
     public const long InstancesCountLimit = 1024 * 1024;
 
@@ -178,7 +178,7 @@ namespace Core
 
     #region private members
 
-    protected TMInstance acceptingInstance;
+    protected TMInstance acceptingInstance = default!;
 
     protected virtual void CheckDeltaRelation()
     {

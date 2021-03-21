@@ -29,7 +29,7 @@ namespace VerifyResults
 
     #region privatre members
 
-    protected OneTapeTuringMachine tm;
+    protected OneTapeTuringMachine tm = default!;
 
     #endregion
   }

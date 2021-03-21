@@ -176,7 +176,7 @@ namespace Core
               rowSubtractors,
               gaussElimRunnersCount,
               WaitMethod.WaitAll,
-              _ => null
+              _ => default!
             );
           rowSubtractorsRunner.Run();
 

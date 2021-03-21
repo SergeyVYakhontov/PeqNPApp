@@ -36,7 +36,7 @@ namespace VerifyResults
 
     #region private members
 
-    private UPAPAE_DVN dvn;
+    private UPAPAE_DVN dvn = default!;
 
     #endregion
   }

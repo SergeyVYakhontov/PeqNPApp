@@ -40,7 +40,7 @@ namespace VerifyResults
 
     #region private members
 
-    private Lang01_MEAP meap;
+    private Lang01_MEAP meap = default!;
 
     #endregion
   }

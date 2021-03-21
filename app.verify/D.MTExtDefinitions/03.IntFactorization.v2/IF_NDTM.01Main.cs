@@ -197,7 +197,7 @@ namespace MTExtDefinitions.v2
       return 5 * (n * n);
     }
 
-    public override SortedDictionary<long, SortedSet<int>> UsedTapeSymbols { get; set;  }
+    public override SortedDictionary<long, SortedSet<int>> UsedTapeSymbols { get; set; } = new();
 
     public override int[] GetOutput(TMInstance tmInstance, ulong mu, ulong n)
     {

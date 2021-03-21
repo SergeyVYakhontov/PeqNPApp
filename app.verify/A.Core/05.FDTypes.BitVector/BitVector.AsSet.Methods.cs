@@ -18,7 +18,7 @@ namespace Core
       BitVectorAsSet v = (BitVectorAsSet)u;
       Ensure.That(v).IsNotNull();
 
-      foreach (ulong b in v!.bits)
+      foreach (ulong b in v.bits)
       {
         bits.Remove(b);
       }
@@ -29,7 +29,7 @@ namespace Core
       BitVectorAsSet v = (BitVectorAsSet)u;
       Ensure.That(v).IsNotNull();
 
-      foreach (ulong b in v!.bits)
+      foreach (ulong b in v.bits)
       {
         bits.Add(b);
       }

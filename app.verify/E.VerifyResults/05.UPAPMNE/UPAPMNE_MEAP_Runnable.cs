@@ -40,7 +40,7 @@ namespace VerifyResults
 
     #region private members
 
-    private UPAPMNE_MEAP meap;
+    private UPAPMNE_MEAP meap = default!;
 
     #endregion
   }

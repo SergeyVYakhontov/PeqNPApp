@@ -49,7 +49,7 @@ namespace Core
 
     #region public members
 
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
     public long Level { get; private set; }
 
     public bool IsInFinalState()
@@ -185,9 +185,9 @@ namespace Core
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly OneTapeTuringMachine owner;
+    private readonly OneTapeTuringMachine owner = default!;
 
-    private readonly TapeArray tape;
+    private readonly TapeArray tape = default!;
     private long cellIndex;
     private uint state;
 

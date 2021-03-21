@@ -35,7 +35,7 @@ namespace VerifyResults
 
     #region private members
 
-    private LAP_DVN dvn;
+    private LAP_DVN dvn = default!;
 
     #endregion
   }
