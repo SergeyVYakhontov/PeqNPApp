@@ -17,11 +17,11 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public LinEquationsMatrix TCPELinProgMatrix { get; set; }
-    public DAGLinEquationsSet TCPELinProgEqsSet { get; set; }
-    public DAGLinEquationsSet TArbSeqCFGLinProgEqsSet { get; set; }
-    public SortedDictionary<long, DAGLinEquationsSet> KiLinProgEqsSets { get; set; }
-    public SortedDictionary<long, DAGLinEquationsSet> KSetZetaLinProgEqsSets { get; set; }
+    public LinEquationsMatrix TCPELinProgMatrix { get; set; } = default!;
+    public DAGLinEquationsSet TCPELinProgEqsSet { get; set; } = default!;
+    public DAGLinEquationsSet TArbSeqCFGLinProgEqsSet { get; set; } = default!;
+    public SortedDictionary<long, DAGLinEquationsSet> KiLinProgEqsSets { get; set; } = new();
+    public SortedDictionary<long, DAGLinEquationsSet> KSetZetaLinProgEqsSets { get; set; } = new();
 
     #endregion
   }

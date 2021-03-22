@@ -52,7 +52,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private SortedDictionary<long, Commodity> commoditiesSubset;
+    private SortedDictionary<long, Commodity> commoditiesSubset = new();
 
     private SortedSet<long> FindUsedSubgraph(SortedSet<long> usedNodes)
     {

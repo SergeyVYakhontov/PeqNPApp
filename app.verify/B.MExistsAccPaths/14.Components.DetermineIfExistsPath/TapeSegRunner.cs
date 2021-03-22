@@ -49,7 +49,7 @@ namespace ExistsAcceptingPath
       tapeSegContext.TapeSegPathFound = false;
       tapeSegContext.TapeSegTConsistPath = new List<long>();
       tapeSegContext.TapeSegOutput = Array.Empty<int>();
-      tapeSegContext.TCPELinProgSolution = null;
+      tapeSegContext.TCPELinProgSolution = default!;
 
       ILinEqsAlgorithmProvider linEqsAlgorithmProvider = configuration.Get<ILinEqsAlgorithmProvider>();
 
@@ -123,8 +123,8 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly TapeSegRunnerStateTable tapeSegRunnerStateTable;
-    private TCPEPSolver tcpepSolver;
+    private readonly TapeSegRunnerStateTable tapeSegRunnerStateTable = default!;
+    private TCPEPSolver tcpepSolver = default!;
 
     #endregion
   }

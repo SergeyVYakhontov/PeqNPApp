@@ -172,8 +172,8 @@ namespace ExistsAcceptingPath
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
     private static readonly Object objectToLock = new();
-    private TCPEPOptimizer tcpepOptimizer;
-    private CheckKZetaGraphs checkKZetaGraphs;
+    private TCPEPOptimizer tcpepOptimizer = default!;
+    private CheckKZetaGraphs checkKZetaGraphs = default!;
     private readonly LinEquationContext linEquationContext = new();
 
     private void CreatePartialTConsistPathEqsSet()

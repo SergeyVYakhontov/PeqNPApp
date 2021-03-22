@@ -81,7 +81,7 @@ namespace ExistsAcceptingPath
             determinePathRunners,
             determinePathRunnersCount,
             WaitMethod.WaitAll,
-            itemsArray => Array.Find(itemsArray, s => s.Done)
+            itemsArray => Array.Find(itemsArray, s => s.Done)!
           );
         determinePathRunnerSet.Run();
 

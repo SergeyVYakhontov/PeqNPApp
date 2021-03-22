@@ -16,9 +16,9 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public int Compare(TapeSegRunner x, TapeSegRunner y)
+    public int Compare(TapeSegRunner? x, TapeSegRunner? y)
     {
-      if (x.TapeSegRunnerState < y.TapeSegRunnerState)
+      if (x!.TapeSegRunnerState < y!.TapeSegRunnerState)
       {
         return -1;
       }

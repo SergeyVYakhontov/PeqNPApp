@@ -20,45 +20,45 @@ namespace ExistsAcceptingPath
     // the result
     public bool PathExists { get; set; }
     public bool PathFound { get; set; }
-    public List<long> TConsistPath { get; set; }
-    public int[] Output { get; set; }
+    public List<long> TConsistPath { get; set; } = new();
+    public int[] Output { get; set; } = Array.Empty<int>();
 
     // TArbSeqCFG construction
     public ulong mu { get; set; }
 
-    public ITASGBuilder TASGBuilder { get; set; }
-    public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbitrarySeqGraph { get; set; }
-    public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbSeqCFG { get; set; }
-    public SortedDictionary<long, SortedSet<long>> NodeVLevels { get; set; }
-    public SortedDictionary<long, long> NodeToLevel { get; set; }
-    public SortedDictionary<long, long> EdgeToLevel { get; set; }
+    public ITASGBuilder TASGBuilder { get; set; } = default!;
+    public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbitrarySeqGraph { get; set; } = default!;
+    public TypedDAG<TASGNodeInfo, StdEdgeInfo> TArbSeqCFG { get; set; } = default!;
+    public SortedDictionary<long, SortedSet<long>> NodeVLevels { get; set; } = new();
+    public SortedDictionary<long, long> NodeToLevel { get; set; } = new();
+    public SortedDictionary<long, long> EdgeToLevel { get; set; } = new();
 
     // RDA info
-    public SortedSet<long> Vars { get; set; }
-    public IDictionary<long, ICollection<long>> Assignments { get; set; }
-    public IDictionary<long, ICollection<long>> Usages { get; set; }
-    public SortedDictionary<long, long> NodeToVarMap { get; set; }
+    public SortedSet<long> Vars { get; set; } = new();
+    public IDictionary<long, ICollection<long>> Assignments { get; set; } = default!;
+    public IDictionary<long, ICollection<long>> Usages { get; set; } = default!;
+    public SortedDictionary<long, long> NodeToVarMap { get; set; } = new();
     public long DUPairCount { get; set; }
     public long TConsistPairCount { get; set; }
-    public SortedSet<CompStepNodePair> TConsistPairSet { get; set; }
-    public SortedSet<CompStepNodePair> TInconsistPairSet { get; set; }
+    public SortedSet<CompStepNodePair> TConsistPairSet { get; set; } = new();
+    public SortedSet<CompStepNodePair> TInconsistPairSet { get; set; } = new();
 
     // commodities found
-    public LongSegment CommSeg { get; set; }
-    public CommoditiesBuilder CommoditiesBuilder { get; set; }
-    public SortedDictionary<long, Commodity> Commodities { get; set; }
-    public SortedDictionary<long, List<Commodity>> KSetZetaSets { get; set; }
+    public LongSegment CommSeg { get; set; } = default!;
+    public CommoditiesBuilder CommoditiesBuilder { get; set; } = default!;
+    public SortedDictionary<long, Commodity> Commodities { get; set; } = new();
+    public SortedDictionary<long, List<Commodity>> KSetZetaSets { get; set; } = new();
 
     // if path found in this tape seg
-    public TapeSegContext TapeSegContext { get; set; }
+    public TapeSegContext TapeSegContext { get; set; } = default!;
 
     // Factorization algorithm
-    public SortedSet<long> AcceptingNodes { get; set; }
-    public SortedSet<long> UnusedNodes { get; set; }
+    public SortedSet<long> AcceptingNodes { get; set; } = new();
+    public SortedSet<long> UnusedNodes { get; set; } = new();
 
-    public SortedDictionary<long, FwdBkwdNCommsGraphPair> muToNestedCommsGraphPair { get; set; }
-    public SortedDictionary<long, NCommsGraphJointNode> CfgNodeIdToNCGJointNode { get; set; }
-    public MEAPSharedContext MEAPSharedContext { get; set; }
+    public SortedDictionary<long, FwdBkwdNCommsGraphPair> muToNestedCommsGraphPair { get; set; } = new();
+    public SortedDictionary<long, NCommsGraphJointNode> CfgNodeIdToNCGJointNode { get; set; } = new();
+    public MEAPSharedContext MEAPSharedContext { get; set; } = default!;
 
     public bool InCancelationState()
     {

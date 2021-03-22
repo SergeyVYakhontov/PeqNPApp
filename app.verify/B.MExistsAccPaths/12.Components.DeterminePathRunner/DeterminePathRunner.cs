@@ -32,7 +32,7 @@ namespace ExistsAcceptingPath
     #region public members
 
     public bool Result { get; set; }
-    public int[] Output {  get; set; }
+    public int[] Output {  get; set; } = Array.Empty<int>();
     public bool Done { get; set; }
 
     public abstract void Run();
@@ -44,12 +44,12 @@ namespace ExistsAcceptingPath
     protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    protected readonly MEAPSharedContext MEAPSharedContext;
-    protected readonly OneTapeTuringMachine tMachine;
-    protected readonly int[] input;
+    protected readonly MEAPSharedContext MEAPSharedContext = default!;
+    protected readonly OneTapeTuringMachine tMachine = default!;
+    protected readonly int[] input = Array.Empty<int>();
     protected readonly ulong currentMu;
 
-    protected MEAPContext meapContext;
+    protected MEAPContext meapContext = default!;
     protected long baseMu;
 
     #endregion

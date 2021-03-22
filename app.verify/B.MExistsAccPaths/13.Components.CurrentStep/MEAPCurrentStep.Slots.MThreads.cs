@@ -79,9 +79,9 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private ITASGBuilder tasgBuilder;
-    private TConsistPairSetBuilderSlotsMThreads tConsistPairSetBuilder;
-    private SortedDictionary<long, SortedSet<long>> inVarToVarNodes;
+    private ITASGBuilder tasgBuilder = default!;
+    private TConsistPairSetBuilderSlotsMThreads tConsistPairSetBuilder = default!;
+    private SortedDictionary<long, SortedSet<long>> inVarToVarNodes = new();
 
     private void CreateTASGBuilder()
     {

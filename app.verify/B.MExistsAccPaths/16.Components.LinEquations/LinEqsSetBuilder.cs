@@ -32,7 +32,7 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    protected DAGLinEquationsSet tcpeLinProgEqsSet;
+    protected DAGLinEquationsSet tcpeLinProgEqsSet = default!;
 
     protected void CreateTArbSeqCFGEqsSet()
     {

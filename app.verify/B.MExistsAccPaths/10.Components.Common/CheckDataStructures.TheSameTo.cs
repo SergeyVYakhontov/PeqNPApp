@@ -74,7 +74,7 @@ namespace ExistsAcceptingPath
           long uNCGNodeId = ncgNodeItemPair.Key;
           DAGNode uNCGNode = ncgNodeItemPair.Value;
 
-          if (!meapContext.Commodities.TryGetValue(uNCGNodeId, out Commodity uComm))
+          if (!meapContext.Commodities.TryGetValue(uNCGNodeId, out Commodity? uComm))
           {
             continue;
           }

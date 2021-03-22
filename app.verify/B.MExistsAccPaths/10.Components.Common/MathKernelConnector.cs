@@ -13,6 +13,15 @@ namespace ExistsAcceptingPath
 {
   public class MathKernelConnector
   {
+    #region Ctors
+
+    public MathKernelConnector()
+    {
+      MathKernel = default!;
+    }
+
+    #endregion
+
     #region public members
 
     public IKernelLink MathKernel { get; private set; }
@@ -26,7 +35,7 @@ namespace ExistsAcceptingPath
     public void UnloadMathKernel()
     {
       MathKernel.Close();
-      MathKernel = null;
+      MathKernel = default!;
     }
 
     #endregion

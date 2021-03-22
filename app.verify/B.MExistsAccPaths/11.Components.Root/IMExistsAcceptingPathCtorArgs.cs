@@ -16,7 +16,7 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public OneTapeTuringMachine tMachine { get; set; }
+    public OneTapeTuringMachine tMachine { get; set; } = default!;
 
     #endregion
   }

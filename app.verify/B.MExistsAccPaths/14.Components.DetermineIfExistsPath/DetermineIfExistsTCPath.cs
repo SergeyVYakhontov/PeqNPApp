@@ -109,8 +109,8 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly MEAPContext meapContext;
-    private List<TapeSegContext> tapeSegContexts;
+    private readonly MEAPContext meapContext = default!;
+    private List<TapeSegContext> tapeSegContexts = new();
 
     private void CreateKZetaSets()
     {
@@ -172,7 +172,7 @@ namespace ExistsAcceptingPath
         }
       }
 
-      return null;
+      return default!;
     }
 
     private void TapeSegLoop(List<TapeSegRunnerState> tapeSegRunnerAllowedStates)
