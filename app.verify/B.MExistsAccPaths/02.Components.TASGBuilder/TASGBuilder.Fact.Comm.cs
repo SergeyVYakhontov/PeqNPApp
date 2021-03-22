@@ -164,7 +164,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
+    private TypedDAG<TASGNodeInfo, StdEdgeInfo> G = default!;
     private long nodeId;
     private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new();
@@ -180,13 +180,13 @@ namespace ExistsAcceptingPath
     private readonly SortedDictionary<long, DAGNode> newNodeEnumeration = new();
     private readonly SortedDictionary<ComputationStep, long> newCompStepToNode = new(new CompStepComparer());
 
-    private PropSymbolsKeeperFactComms propSymbolsKeeper;
+    private PropSymbolsKeeperFactComms propSymbolsKeeper = default!;
 
     private DAGNode GetDAGNode(ComputationStep compStep)
     {
       if (!newCompStepToNode.TryGetValue(compStep, out long nodeId))
       {
-        return null;
+        return default!;
       }
 
       return newNodeEnumeration[nodeId];

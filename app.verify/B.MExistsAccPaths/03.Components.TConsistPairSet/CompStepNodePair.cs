@@ -34,11 +34,11 @@ namespace ExistsAcceptingPath
     public long uNode { get; }
     public long vNode { get; }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
       Ensure.That(obj).IsNotNull();
 
-      CompStepNodePair other = (CompStepNodePair)obj;
+      CompStepNodePair other = (CompStepNodePair)obj!;
 
       return this == other;
     }

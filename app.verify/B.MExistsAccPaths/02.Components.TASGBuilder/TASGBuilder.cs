@@ -16,10 +16,10 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public MEAPContext meapContext { get; set; }
-    public MEAPSharedContext MEAPSharedContext { get; set; }
+    public MEAPContext meapContext { get; set; } = default!;
+    public MEAPSharedContext MEAPSharedContext { get; set; } = default!;
 
-    public String Name { get; protected set; }
+    public String Name { get; protected set; } = string.Empty;
 
     public long TapeLBound { get; protected set; }
     public long TapeRBound { get; protected set; }

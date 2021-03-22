@@ -15,7 +15,7 @@ namespace ExistsAcceptingPath
   {
     #region public members
 
-    public ComputationStep CompStep { get; set; }
+    public ComputationStep CompStep { get; set; } = default!;
 
     #endregion
   }

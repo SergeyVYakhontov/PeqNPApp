@@ -27,7 +27,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
 
     public void Init()
     {
@@ -144,9 +144,9 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private readonly MEAPContext meapContext;
-    private ReachDefAnalysisContext rdaContext;
-    private SortedDictionary<long, SortedSet<DefUsePair>> defUsePairSet;
+    private readonly MEAPContext meapContext = default!;
+    private ReachDefAnalysisContext rdaContext = default!;
+    private SortedDictionary<long, SortedSet<DefUsePair>> defUsePairSet = new();
 
     private void CreateVariableSets()
     {

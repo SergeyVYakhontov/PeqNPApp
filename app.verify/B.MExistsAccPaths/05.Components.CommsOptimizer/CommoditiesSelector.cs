@@ -58,8 +58,8 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private readonly MEAPContext meapContext;
-    private readonly TapeSegContext tapeSegContext;
+    private readonly MEAPContext meapContext = default!;
+    private readonly TapeSegContext tapeSegContext = default!;
 
     private readonly SortedSet<long> alreadySelected = new();
 
@@ -121,7 +121,7 @@ namespace ExistsAcceptingPath
         }
       }
 
-      return null;
+      return default!;
     }
 
     private Commodity SelectAnyCommodity(
@@ -142,7 +142,7 @@ namespace ExistsAcceptingPath
         }
       }
 
-      return null;
+      return default!;
     }
 
     #endregion

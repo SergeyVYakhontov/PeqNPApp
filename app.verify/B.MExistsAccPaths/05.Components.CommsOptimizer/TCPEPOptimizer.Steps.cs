@@ -110,7 +110,7 @@ namespace ExistsAcceptingPath
           commCheckers,
           linEqSetRunnersCount,
           WaitMethod.WaitAll,
-          _ => null
+          _ => default!
         );
 
       commodityCheckerRunner.Run();
@@ -139,13 +139,13 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private SortedDictionary<long, Commodity> commoditiesSubset;
+    private SortedDictionary<long, Commodity> commoditiesSubset = new();
     private readonly SortedSet<long> totalExcludedComms = new();
     private long totalCommoditiesCount;
 
-    private NodesCoverageKeeper nodesCoverageKeeper;
-    private NotUsedCommsDetector notUsedCommsDetector;
-    private CommoditiesSelector commoditiesSelector;
+    private NodesCoverageKeeper nodesCoverageKeeper = default!;
+    private NotUsedCommsDetector notUsedCommsDetector = default!;
+    private CommoditiesSelector commoditiesSelector = default!;
 
     private bool IsKZetaGraphComplete()
     {
@@ -163,7 +163,7 @@ namespace ExistsAcceptingPath
 
     private bool TryToFindPath(String stepName)
     {
-      CommTConsistPathFinder commTConsistPathFinder = new(meapContext, tapeSegContext, null);
+      CommTConsistPathFinder commTConsistPathFinder = new(meapContext, tapeSegContext, default!);
       commTConsistPathFinder.FindTConsistPath();
 
       if (tapeSegContext.TapeSegPathFound)

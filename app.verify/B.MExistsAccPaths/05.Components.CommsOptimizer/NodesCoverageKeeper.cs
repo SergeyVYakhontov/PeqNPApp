@@ -33,9 +33,9 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public SortedDictionary<long, SortedSet<long>> CommoditiesAtNodes { get; private set; }
-    public SortedDictionary<long, SortedDictionary<long, long>> NodesCoverage { get; private set; }
-    public SortedDictionary<long, long> CommoditiesAt_stNodes { get; private set; }
+    public SortedDictionary<long, SortedSet<long>> CommoditiesAtNodes { get; private set; } = new();
+    public SortedDictionary<long, SortedDictionary<long, long>> NodesCoverage { get; private set; } = new();
+    public SortedDictionary<long, long> CommoditiesAt_stNodes { get; private set; } = new();
 
     public void ComputeCoverage()
     {

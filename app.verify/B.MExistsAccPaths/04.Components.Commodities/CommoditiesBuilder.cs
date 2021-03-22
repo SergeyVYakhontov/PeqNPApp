@@ -30,7 +30,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
 
     public abstract void EnumeratePairs();
     public abstract SortedDictionary<long, Commodity> CreateCommodities();
@@ -138,7 +138,7 @@ namespace ExistsAcceptingPath
 
     private static readonly object objectToLock = new();
 
-    protected readonly MEAPContext meapContext;
+    protected readonly MEAPContext meapContext = default!;
 
     protected readonly long sNodeId;
     protected readonly long tNodeId;

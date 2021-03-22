@@ -15,9 +15,9 @@ namespace ExistsAcceptingPath
   {
     #region public methods
 
-    public int Compare(ComputationStep x, ComputationStep y)
+    public int Compare(ComputationStep? x, ComputationStep? y)
     {
-      if (x.q < y.q)
+      if (x!.q < y!.q)
       {
         return -1;
       }

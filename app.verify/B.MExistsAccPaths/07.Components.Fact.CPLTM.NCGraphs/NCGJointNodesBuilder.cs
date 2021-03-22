@@ -84,9 +84,9 @@ namespace ExistsAcceptingPath
               cfgNodeId,
               () => new NCommsGraphJointNode());
 
-            if (bkwdCFGNodeToNCGNodesMap.TryGetValue(cfgNodeId, out List<long> bkwdCfgNodes))
+            if (bkwdCFGNodeToNCGNodesMap.TryGetValue(cfgNodeId, out List<long>? bkwdCfgNodes))
             {
-              if (fwdCFGNodeToNCGNodesMap.TryGetValue(cfgNodeId, out List<long> fwdCfgNodes))
+              if (fwdCFGNodeToNCGNodesMap.TryGetValue(cfgNodeId, out List<long>? fwdCfgNodes))
               {
                 ProcessBkwdFwdNodesLists(
                   fwdBkwdNCommsGraphPairL,

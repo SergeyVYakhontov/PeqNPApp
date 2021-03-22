@@ -49,7 +49,7 @@ namespace ExistsAcceptingPath
 
         log.DebugFormat("Build commodites: {0}", i);
 
-        Commodity newCommodity = new("Ki", i, compStepNodePair.Variable, null);
+        Commodity newCommodity = new("Ki", i, compStepNodePair.Variable, default!);
 
         newCommodity.sNodeId = sNode.Id;
         newCommodity.tNodeId = tNode.Id;

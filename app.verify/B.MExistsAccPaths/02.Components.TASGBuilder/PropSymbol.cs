@@ -31,11 +31,11 @@ namespace ExistsAcceptingPath
     public long Variable { get; }
     public int Symbol { get; }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
       Ensure.That(obj).IsNotNull();
 
-      PropSymbol other = (PropSymbol)obj;
+      PropSymbol other = (PropSymbol)obj!;
 
       return this == other;
     }

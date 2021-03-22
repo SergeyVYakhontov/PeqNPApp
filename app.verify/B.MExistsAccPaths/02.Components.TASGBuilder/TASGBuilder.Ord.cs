@@ -78,7 +78,7 @@ namespace ExistsAcceptingPath
       DAG.CutChains_t(cfg, meapContext.TArbSeqCFG);
 
       meapContext.TArbSeqCFG.CopyIdToNodeInfoMap(idToInfoMap);
-      meapContext.TArbitrarySeqGraph = null;
+      meapContext.TArbitrarySeqGraph = default!;
 
       log.InfoFormat(
         "idToInfoMap: {0} {1}",
@@ -119,7 +119,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
+    private TypedDAG<TASGNodeInfo, StdEdgeInfo> G = default!;
     private long nodeId;
     private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new();
@@ -135,7 +135,7 @@ namespace ExistsAcceptingPath
     {
       if (!compStepToNode.TryGetValue(compStep, out long nodeId))
       {
-        return null;
+        return default!;
       }
 
       return nodeEnumeration[nodeId];

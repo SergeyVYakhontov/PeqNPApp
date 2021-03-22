@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using EnsureThat;
 using Core;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,9 +49,11 @@ namespace ExistsAcceptingPath
     public ulong kappaStep { get; set; }
     public int sTheSame { get; set; }
 
-    public override bool Equals(Object obj)
+    public override bool Equals(Object? obj)
     {
-      ComputationStep other = (ComputationStep)obj;
+      Ensure.That(obj).IsNotNull();
+
+      ComputationStep other = (ComputationStep)obj!;
 
       return this == other;
     }
@@ -60,12 +63,12 @@ namespace ExistsAcceptingPath
     public override String ToString() =>
       $"(q={q}, s={s}, q'={qNext}, s'={sNext}, m={m}, sh={Shift}, tp={kappaTape}, st={kappaStep}, sTo={sTheSame})";
 
-    public bool Equals(ComputationStep other)
+    public bool Equals(ComputationStep? other)
     {
-      return this == other;
+      return this == other!;
     }
 
-    public int CompareTo(ComputationStep other)
+    public int CompareTo(ComputationStep? other)
     {
       return compStepComparer.Compare(this, other);
     }

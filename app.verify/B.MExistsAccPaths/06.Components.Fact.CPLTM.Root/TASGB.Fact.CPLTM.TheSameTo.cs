@@ -177,7 +177,7 @@ namespace ExistsAcceptingPath
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
       System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
 
-    private TypedDAG<TASGNodeInfo, StdEdgeInfo> G;
+    private TypedDAG<TASGNodeInfo, StdEdgeInfo> G = default!;
     private long nodeId;
     private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new();
@@ -189,13 +189,13 @@ namespace ExistsAcceptingPath
     private long treesCut;
     private long processedMu;
 
-    private ComputationStep sCompStep;
+    private ComputationStep sCompStep = default!;
     private readonly SortedDictionary<long, DAGNode> newNodeEnumeration = new();
     private readonly SortedDictionary<ComputationStep, long> newCompStepToNode = new(new CompStepComparer());
     private long newEdgesCount;
 
-    private PropSymbolsKeeperFactCPLTM propSymbolsKeeper;
-    private ICPLTMInfo CPLTMInfo;
+    private PropSymbolsKeeperFactCPLTM propSymbolsKeeper = default!;
+    private ICPLTMInfo CPLTMInfo = default!;
 
     private void GetDAGNode(
       ComputationStep fromCompStep,
@@ -205,13 +205,13 @@ namespace ExistsAcceptingPath
     {
       if (fromCompStep == sCompStep)
       {
-        toNode = null;
+        toNode = default!;
         createEdge = true;
 
         return;
       }
 
-      toNode = null;
+      toNode = default!;
       createEdge = (fromCompStep.sTheSame == compStep.s);
 
       foreach (KeyValuePair<ComputationStep, long> itemPair in newCompStepToNode)

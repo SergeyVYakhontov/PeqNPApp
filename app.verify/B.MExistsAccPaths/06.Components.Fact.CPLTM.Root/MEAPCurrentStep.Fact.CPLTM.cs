@@ -73,14 +73,14 @@ namespace ExistsAcceptingPath
       meapContext.CommoditiesBuilder = new CommoditiesBuilderFactCPLTM(meapContext);
       meapContext.CommoditiesBuilder.EnumeratePairs();
       meapContext.Commodities = meapContext.CommoditiesBuilder.CreateCommodities();
-      meapContext.CommoditiesBuilder = null;
+      meapContext.CommoditiesBuilder = default!;
 
       meapContext.UnusedNodes = new SortedSet<long>();
 
       NestedCommsGraphBuilder nestedCommsGraphBuilder = new(meapContext);
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
-      nestedCommsGraphBuilder = null;
+      nestedCommsGraphBuilder = default!;
 
       /*if (commonOptions.CheckDataStructures)
       {
@@ -90,7 +90,7 @@ namespace ExistsAcceptingPath
       NCGJointNodesBuilder ncgJointNodesBuilder = new(meapContext);
       ncgJointNodesBuilder.Setup();
       ncgJointNodesBuilder.Run();
-      ncgJointNodesBuilder = null;
+      ncgJointNodesBuilder = default!;
 
       PathFinderFactCPLTM pathFinder = new(meapContext);
       pathFinder.Run();

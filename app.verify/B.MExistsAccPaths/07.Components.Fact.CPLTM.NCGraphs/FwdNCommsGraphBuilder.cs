@@ -102,21 +102,21 @@ namespace ExistsAcceptingPath
 
     #region private members
 
-    private readonly MEAPContext meapContext;
-    private readonly ICPLTMInfo CPLTMInfo;
-    private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap;
+    private readonly MEAPContext meapContext = default!;
+    private readonly ICPLTMInfo CPLTMInfo = default!;
+    private readonly SortedDictionary<long, LinkedList<long>> nodeToCommoditiesMap = new();
     private readonly long kStep;
-    private long[] fwdKStepSequence;
-    private readonly NCGraphType fwdNestedCommsGraph;
-    private readonly SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap;
-    private readonly SortedDictionary<long, long> fwdNCGEdgeToCFGEdgeMap;
+    private long[] fwdKStepSequence = Array.Empty<long>();
+    private readonly NCGraphType fwdNestedCommsGraph = default!;
+    private readonly SortedDictionary<long, List<long>> fwdCFGNodeToNCGNodesMap = new();
+    private readonly SortedDictionary<long, long> fwdNCGEdgeToCFGEdgeMap = new();
 
     private long edgeId;
     private readonly SortedDictionary<long, DAGNode> nodeEnumeration = new();
 
     private DAGNode GetDAGNode(long uCommId)
     {
-      if (!nodeEnumeration.TryGetValue(uCommId, out DAGNode dagNode))
+      if (!nodeEnumeration.TryGetValue(uCommId, out DAGNode? dagNode))
       {
         dagNode = new DAGNode(uCommId);
         fwdNestedCommsGraph.AddNode(dagNode);
@@ -129,9 +129,9 @@ namespace ExistsAcceptingPath
 
     private void Connect2CommsByCFGEdge(long cfgEdgeId, long uId, long vId)
     {
-      if (nodeToCommoditiesMap.TryGetValue(uId, out LinkedList<long> uNodeComms))
+      if (nodeToCommoditiesMap.TryGetValue(uId, out LinkedList<long>? uNodeComms))
       {
-        if (nodeToCommoditiesMap.TryGetValue(vId, out LinkedList<long> vNodeComms))
+        if (nodeToCommoditiesMap.TryGetValue(vId, out LinkedList<long>? vNodeComms))
         {
           foreach (long uCommId in uNodeComms)
           {
@@ -161,7 +161,7 @@ namespace ExistsAcceptingPath
 
     private void ConnectCommAndCFGNodeByCFGEdge(long cfgEdgeId, long uId, long vId)
     {
-      if (nodeToCommoditiesMap.TryGetValue(uId, out LinkedList<long> uNodeComms))
+      if (nodeToCommoditiesMap.TryGetValue(uId, out LinkedList<long>? uNodeComms))
       {
         DAGNode vCommNode = GetDAGNode(vId);
 

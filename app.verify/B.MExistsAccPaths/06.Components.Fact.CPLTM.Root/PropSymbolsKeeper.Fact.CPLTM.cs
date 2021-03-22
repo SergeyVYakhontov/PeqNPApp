@@ -24,7 +24,7 @@ namespace ExistsAcceptingPath
 
     #region public members
 
-    public string Name { get; }
+    public string Name { get; } = string.Empty;
 
     public void Init(long sNodeId)
     {

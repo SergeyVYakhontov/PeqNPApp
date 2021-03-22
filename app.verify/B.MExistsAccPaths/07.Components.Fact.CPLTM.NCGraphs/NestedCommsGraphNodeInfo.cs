@@ -32,11 +32,11 @@ namespace ExistsAcceptingPath
 
     public long Id { get; }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
       Ensure.That(obj).IsNotNull();
 
-      NestedCommsGraphNodeInfo other = (NestedCommsGraphNodeInfo)obj;
+      NestedCommsGraphNodeInfo other = (NestedCommsGraphNodeInfo)obj!;
 
       return this == other;
     }
