@@ -23,7 +23,8 @@ namespace OrdinaryExamplesAppSlotsMThreads
 
     public static void Main(string[] args)
     {
-      log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
+      log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(
+        System.Reflection.Assembly.GetEntryAssembly());
       log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 
       Setup();

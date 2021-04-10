@@ -63,11 +63,6 @@ namespace ExistsAcceptingPath
       ICommonOptions commonOptions = configuration.Get<ICommonOptions>();
       ICheckDataStructures checkDataStructures = configuration.Get<ICheckDataStructures>();
 
-      /*if (commonOptions.CheckDataStructures)
-      {
-        checkDataStructures.CheckTASGNodesHaveTheSameSymbol(meapContext);
-      }*/
-
       ComputeDUPairs();
 
       meapContext.CommoditiesBuilder = new CommoditiesBuilderFactCPLTM(meapContext);
@@ -81,16 +76,6 @@ namespace ExistsAcceptingPath
       nestedCommsGraphBuilder.Setup();
       nestedCommsGraphBuilder.Run();
       nestedCommsGraphBuilder = default!;
-
-      /*if (commonOptions.CheckDataStructures)
-      {
-        checkDataStructures.CheckNCGNodesHaveTheSameSymbol(meapContext);
-      }*/
-
-      NCGJointNodesBuilder ncgJointNodesBuilder = new(meapContext);
-      ncgJointNodesBuilder.Setup();
-      ncgJointNodesBuilder.Run();
-      ncgJointNodesBuilder = default!;
 
       PathFinderFactCPLTM pathFinder = new(meapContext);
       pathFinder.Run();

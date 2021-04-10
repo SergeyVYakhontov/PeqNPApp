@@ -1,15 +1,10 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.IO;
+using System.Reflection;
 using Ninject;
-using Xunit;
+using EnsureThat;
 using Core;
 using ExistsAcceptingPath;
 using VerifyResults;
@@ -18,28 +13,25 @@ using VerifyResults;
 
 namespace FunctionalTests
 {
-  [TestCaseOrderer("ProgramTests.AlphabeticalTestOrderer", "G.ProgramTests")]
-  public sealed class F_03_IF_NDTM_Comms_Tests : IDisposable
+  public static class F_03_IF_NDTM_Comms_Tests
   {
-    #region Ctors
+    #region public members
 
-    static F_03_IF_NDTM_Comms_Tests()
+    public static void RunTests()
     {
-      log4net.Repository.ILoggerRepository logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
-      log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+      ExampleSetA_Test();
     }
 
     #endregion
 
-    #region public members
+    #region private members
 
-    public void Dispose()
+    private static void ResetNinjectKernel()
     {
-      ResetNinjectKernel();
+      Core.AppContext.UnloadConfigurationModule();
     }
 
-    [Fact]
-    public void ExampleSetA_Test()
+    private static void ExampleSetA_Test()
     {
       Core.AppContext.LoadConfigurationModule<IntegerFactExamplesAppComms.AppNinjectModule>();
 
@@ -53,16 +45,10 @@ namespace FunctionalTests
 
       AppStatistics appStatistics = configuration.Get<AppStatistics>();
 
-      Assert.False(appStatistics.ThereWereErrors);
-    }
+      Ensure.That(appStatistics.ThereWereErrors).IsFalse();
+      ResetNinjectKernel();
 
-    #endregion
-
-    #region private members
-
-    private static void ResetNinjectKernel()
-    {
-      Core.AppContext.UnloadConfigurationModule();
+      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
     }
 
     #endregion

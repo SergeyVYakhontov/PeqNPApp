@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
+    <ApplicationIcon></ApplicationIcon>
+    <Nullable>Enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="log4net.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\F1.OrdExamplesApp.SingleThread\F1.OrdExamplesApp.SingleThread.csproj"/>
+    <ProjectReference Include="..\F2.OrdExamplesApp.MultiThreads\F2.OrdExamplesApp.Slots.MThreads.csproj"/>
+    <ProjectReference Include="..\F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj"/>
+    <ProjectReference Include="..\F4.IntFactExamplesApp.CPLTM\F4.IntFactExamplesApp.CPLTM.csproj"/>
+  </ItemGroup>
+</Project>
