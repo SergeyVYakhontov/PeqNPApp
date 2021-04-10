@@ -34,6 +34,9 @@ namespace FunctionalTests
 
     #region private members
 
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
+
     private static void ResetNinjectKernel()
     {
       Core.AppContext.UnloadConfigurationModule();
@@ -56,7 +59,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T02_SlotsMThreads_Lang02_Test()
@@ -76,7 +82,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T03_SlotsMThreads_SAP_Test()
@@ -96,7 +105,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T04_SlotsMThreads_LAP_Test()
@@ -116,7 +128,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T05_SlotsMThreads_UPAPMNE_Test()
@@ -136,7 +151,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T06_SlotsMThreads_UPAPAE_Test()
@@ -156,7 +174,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T07_SlotsMThreads_UPLDR_Test()
@@ -176,7 +197,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T08_IF_Comms_Test()
@@ -196,7 +220,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T09_IF_CPLTM_Test()
@@ -216,7 +243,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     #endregion

@@ -29,6 +29,9 @@ namespace FunctionalTests
 
     #region private members
 
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+      System.Reflection.MethodBase.GetCurrentMethod()!.DeclaringType);
+
     private static void ResetNinjectKernel()
     {
       Core.AppContext.UnloadConfigurationModule();
@@ -44,7 +47,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T02_OrdinaryExamplesAppSlotsMThreads_Test()
@@ -57,7 +63,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T03_IntegerFactExamplesAppComms_Test()
@@ -70,7 +79,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     private static void T04_IntegerFactExamplesAppCPLTM_Test()
@@ -83,7 +95,10 @@ namespace FunctionalTests
       Ensure.That(appStatistics.ThereWereErrors).IsFalse();
       ResetNinjectKernel();
 
-      Console.WriteLine($"Passed: {MethodBase.GetCurrentMethod()}");
+      log.InfoFormat(
+        "Passed: {0}.{1}",
+        MethodBase.GetCurrentMethod()!.DeclaringType,
+        MethodBase.GetCurrentMethod());
     }
 
     #endregion
