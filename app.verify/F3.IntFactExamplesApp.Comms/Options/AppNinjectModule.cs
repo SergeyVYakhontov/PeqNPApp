@@ -1,20 +1,5 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.IO;
-using Ninject;
-using Core;
-using ExistsAcceptingPath;
-using VerifyResults;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 namespace IntegerFactExamplesAppComms
 {
   public class AppNinjectModule : Ninject.Modules.NinjectModule

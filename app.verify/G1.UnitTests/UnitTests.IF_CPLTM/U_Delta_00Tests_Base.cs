@@ -1,22 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.IO;
-using Ninject;
-using Xunit;
-using Core;
-using ExistsAcceptingPath;
-using MTExtDefinitions;
-using VerifyResults;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 namespace UnitTests
 {
   public class U_CPLTM_Delta_Tests_Base
