@@ -10,5 +10,6 @@ global using System.Numerics;
 global using System.Text;
 global using EnsureThat;
 global using Ninject;
+global using Wolfram.NETLink;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
