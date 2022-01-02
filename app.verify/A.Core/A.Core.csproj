@@ -1,22 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
-    <Nullable>Enable</Nullable>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="EnsureThatCore" Version="1.0.0"/>
-    <PackageReference Include="log4net" Version="2.0.12"/>
-    <PackageReference Include="Ninject" Version="4.0.0-beta-0134"/>
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
+		<Nullable>Enable</Nullable>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="EnsureThatCore" Version="1.0.0"/>
+		<PackageReference Include="log4net" Version="2.0.13"/>
+		<PackageReference Include="Ninject" Version="4.0.0-beta-0134"/>
+	</ItemGroup>
 </Project>

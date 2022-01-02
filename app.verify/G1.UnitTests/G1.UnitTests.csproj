@@ -1,41 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <IsPackable>false</IsPackable>
-    <CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
-    <Nullable>Enable</Nullable>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'"/>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Remove="log4net.config"/>
-    <None Remove="xunit.runner.json"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="xunit.runner.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0"/>
-    <PackageReference Include="xunit" Version="2.4.1"/>
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\F1.OrdExamplesApp.SingleThread\F1.OrdExamplesApp.SingleThread.csproj"/>
-    <ProjectReference Include="..\F2.OrdExamplesApp.MultiThreads\F2.OrdExamplesApp.Slots.MThreads.csproj"/>
-    <ProjectReference Include="..\F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj"/>
-    <ProjectReference Include="..\F4.IntFactExamplesApp.CPLTM\F4.IntFactExamplesApp.CPLTM.csproj"/>
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<CodeAnalysisRuleSet>..\codeanalysis.ruleset</CodeAnalysisRuleSet>
+		<Nullable>Enable</Nullable>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'"/>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="log4net.config"/>
+		<None Remove="xunit.runner.json"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="log4net.config">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="xunit.runner.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0"/>
+		<PackageReference Include="xunit" Version="2.4.1"/>
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\F1.OrdExamplesApp.SingleThread\F1.OrdExamplesApp.SingleThread.csproj"/>
+		<ProjectReference Include="..\F2.OrdExamplesApp.MultiThreads\F2.OrdExamplesApp.Slots.MThreads.csproj"/>
+		<ProjectReference Include="..\F3.IntFactExamplesApp.Comms\F3.IntFactExamplesApp.Comms.csproj"/>
+		<ProjectReference Include="..\F4.IntFactExamplesApp.CPLTM\F4.IntFactExamplesApp.CPLTM.csproj"/>
+	</ItemGroup>
 </Project>

@@ -1,13 +1,5 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 namespace Core
 {
   public class TapeArray
@@ -36,42 +28,61 @@ namespace Core
 
     public void SetValue(long cellIndex, int value)
     {
-      IncreaseTapeSize(cellIndex);
-      tape[GetCellArrayIndex(cellIndex)] = value;
+      lock (lockObject)
+      {
+        IncreaseTapeSize(cellIndex);
+        tape[GetCellArrayIndex(cellIndex)] = value;
+      }
     }
 
     public int GetValue(long cellIndex)
     {
-      IncreaseTapeSize(cellIndex);
-      return tape[GetCellArrayIndex(cellIndex)];
+      lock (lockObject)
+      {
+        IncreaseTapeSize(cellIndex);
+
+        return tape[GetCellArrayIndex(cellIndex)];
+      }
     }
 
     public int this[long cellIndex]
     {
       get
       {
-        return GetValue(cellIndex);
+        lock (lockObject)
+        {
+          return GetValue(cellIndex);
+        }
       }
       set
       {
-        SetValue(cellIndex, value);
+        lock (lockObject)
+        {
+          SetValue(cellIndex, value);
+        }
       }
     }
 
     public int[] GetSubArray(long leftIndex, long rightIndex)
     {
-      IncreaseTapeSize(leftIndex);
-      IncreaseTapeSize(rightIndex + 1);
+      lock (lockObject)
+      {
+        IncreaseTapeSize(leftIndex);
+        IncreaseTapeSize(rightIndex + 1);
 
-      return AppHelper.CreateSubArray(
-        tape,
-        GetCellArrayIndex(leftIndex),
-        GetCellArrayIndex(rightIndex) - GetCellArrayIndex(leftIndex) + 1);
+        return AppHelper.CreateSubArray(
+          tape,
+          GetCellArrayIndex(leftIndex),
+          GetCellArrayIndex(rightIndex) - GetCellArrayIndex(leftIndex) + 1);
+      }
     }
 
     public string GetStringRepr()
     {
-      return AppHelper.ArrayToString(tape);
+      lock (lockObject)
+      {
+        return AppHelper.ArrayToString(tape);
+      }
     }
 
     #endregion
@@ -83,6 +94,8 @@ namespace Core
 
     private int[] tape;
     private long indexBase;
+
+    private readonly object lockObject = new();
 
     private long GetCellArrayIndex(long cellIndex)
     {
