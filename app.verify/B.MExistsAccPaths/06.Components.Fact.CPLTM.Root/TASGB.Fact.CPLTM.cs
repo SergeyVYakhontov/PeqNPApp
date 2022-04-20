@@ -123,8 +123,6 @@ namespace ExistsAcceptingPath
       log.Info("Create CFG idToInfoMap");
       meapContext.TArbSeqCFG.CopyIdToNodeInfoMap(idToInfoMap);
 
-      RemoveUnusedNodeVLevels();
-
       log.InfoFormat(
         "idToInfoMap: {0} {1}",
           idToInfoMap.Count,

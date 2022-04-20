@@ -41,7 +41,7 @@ namespace IntegerFactExamplesAppCPLTM
       IReadOnlyKernel configuration = Core.AppContext.GetConfiguration();
       IExampleSetProvider exampleSetProvider = configuration.Get<IExampleSetProvider>();
 
-      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetC);
+      exampleSetProvider.ExampleSets.Add(exampleSetProvider.IF_ExampleSetD);
     }
 
     #endregion
