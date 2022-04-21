@@ -7,6 +7,7 @@ namespace ExistsAcceptingPath
     #region public members
 
     public List<long> InCommodityNodes { get; } = new List<long>();
+
     public List<long> OutCommodityNodes { get; } = new List<long>();
 
     public void AddInCommodityNode(long nodeId)

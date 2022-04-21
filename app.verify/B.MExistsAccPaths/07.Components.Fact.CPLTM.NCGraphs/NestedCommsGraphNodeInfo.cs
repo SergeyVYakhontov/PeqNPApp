@@ -2,7 +2,7 @@
 
 namespace ExistsAcceptingPath
 {
-  public readonly struct NestedCommsGraphNodeInfo :
+  public readonly record struct NestedCommsGraphNodeInfo :
     IEquatable<NestedCommsGraphNodeInfo>,
     IObjectWithId
   {
@@ -19,28 +19,9 @@ namespace ExistsAcceptingPath
 
     public long Id { get; }
 
-    public override bool Equals(object? obj)
-    {
-      Ensure.That(obj).IsNotNull();
-
-      NestedCommsGraphNodeInfo other = (NestedCommsGraphNodeInfo)obj!;
-
-      return this == other;
-    }
-
     public override int GetHashCode() => unchecked((int)Id);
 
     public bool Equals(NestedCommsGraphNodeInfo other) => this == other;
-
-    public static bool operator ==(in NestedCommsGraphNodeInfo left, in NestedCommsGraphNodeInfo right)
-    {
-      return left.Id == right.Id;
-    }
-
-    public static bool operator !=(in NestedCommsGraphNodeInfo left, in NestedCommsGraphNodeInfo right)
-    {
-      return !(left == right);
-    }
 
     #endregion
   }

@@ -2,7 +2,7 @@
 
 namespace ExistsAcceptingPath
 {
-  public readonly struct CompStepNodePair :
+  public readonly record struct CompStepNodePair :
     IEquatable<CompStepNodePair>,
     IComparable<CompStepNodePair>
   {
@@ -22,39 +22,16 @@ namespace ExistsAcceptingPath
     public long Variable { get; }
 
     public long uNode { get; }
+
     public long vNode { get; }
-
-    public override bool Equals(object? obj)
-    {
-      Ensure.That(obj).IsNotNull();
-
-      CompStepNodePair other = (CompStepNodePair)obj!;
-
-      return this == other;
-    }
 
     public override int GetHashCode() => unchecked((int)Variable);
 
     public override string ToString() => $"({Variable}, {uNode}, {vNode})";
 
-    public bool Equals(CompStepNodePair other) => this == other;
-
     public int CompareTo(CompStepNodePair other)
     {
       return compStepNodePairComparer.Compare(this, other);
-    }
-
-    public static bool operator ==(in CompStepNodePair left, in CompStepNodePair right)
-    {
-      return
-        (left.Variable == right.Variable) &&
-        (left.uNode == right.uNode) &&
-        (left.vNode == right.vNode);
-    }
-
-    public static bool operator !=(in CompStepNodePair left, in CompStepNodePair right)
-    {
-      return !(left == right);
     }
 
     public static bool operator <(in CompStepNodePair left, in CompStepNodePair right)

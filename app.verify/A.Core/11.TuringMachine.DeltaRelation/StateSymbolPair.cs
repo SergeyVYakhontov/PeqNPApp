@@ -2,7 +2,7 @@
 
 namespace Core
 {
-  public readonly struct StateSymbolPair : IEquatable<StateSymbolPair>
+  public readonly record struct StateSymbolPair : IEquatable<StateSymbolPair>
   {
     #region Ctors
 
@@ -17,31 +17,10 @@ namespace Core
     #region public members
 
     public uint State { get; }
+
     public int Symbol { get; }
 
-    public override bool Equals(object? obj)
-    {
-      StateSymbolPair toCompare = (StateSymbolPair)obj!;
-
-      return this == toCompare;
-    }
-
     public override int GetHashCode() => unchecked((int)State);
-
-    public bool Equals(StateSymbolPair other)
-    {
-      return this == other;
-    }
-
-    public static bool operator == (in StateSymbolPair x, in StateSymbolPair y)
-    {
-      return (x.State == y.State) && (x.Symbol == y.Symbol);
-    }
-
-    public static bool operator !=(in StateSymbolPair x, in StateSymbolPair y)
-    {
-      return !(x == y);
-    }
 
     #endregion
   }

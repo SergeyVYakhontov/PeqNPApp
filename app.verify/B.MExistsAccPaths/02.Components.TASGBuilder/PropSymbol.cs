@@ -2,7 +2,7 @@
 
 namespace ExistsAcceptingPath
 {
-  public readonly struct PropSymbol :
+  public readonly record struct PropSymbol :
     IEquatable<PropSymbol>,
     IComparable<PropSymbol>
   {
@@ -19,37 +19,17 @@ namespace ExistsAcceptingPath
     #region public members
 
     public long Variable { get; }
+    
     public int Symbol { get; }
-
-    public override bool Equals(object? obj)
-    {
-      Ensure.That(obj).IsNotNull();
-
-      PropSymbol other = (PropSymbol)obj!;
-
-      return this == other;
-    }
 
     public override int GetHashCode() => Symbol;
 
     public override string ToString() => $"({Variable}, {Symbol})";
 
-    public bool Equals(PropSymbol other) => this == other;
-
     public int CompareTo(PropSymbol other)
     {
       return propSymbolComparer.Compare(this, other);
     }
-
-    public static bool operator ==(in PropSymbol left, in PropSymbol right)
-    {
-      return
-        (left.Variable == right.Variable) &&
-        (left.Symbol == right.Symbol);
-    }
-
-    public static bool operator !=(in PropSymbol left, in PropSymbol right)
-      => !(left == right);
 
     public static bool operator <(in PropSymbol left, in PropSymbol right)
     {
@@ -82,4 +62,3 @@ namespace ExistsAcceptingPath
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
